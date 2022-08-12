@@ -7,7 +7,7 @@ import { AutoComplete } from 'projects/ngym-chips/src/lib/model/autoComplete';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'yaani-email-libraries';
+  title = 'yaanimail-frontend-libraries';
   pattern: RegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   autoCompleteItems!: AutoComplete[];
   i: number = 0;

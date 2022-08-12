@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "yaani-email-libraries": {
+    "yaanimail-frontend-libraries": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/yaani-email-libraries",
+            "outputPath": "dist/yaanimail-frontend-libraries",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "yaani-email-libraries:build:production"
+              "browserTarget": "yaanimail-frontend-libraries:build:production"
             },
             "development": {
-              "browserTarget": "yaani-email-libraries:build:development"
+              "browserTarget": "yaanimail-frontend-libraries:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "yaani-email-libraries:build"
+            "browserTarget": "yaanimail-frontend-libraries:build"
           }
         },
         "test": {
@@ -169,5 +169,5 @@
       }
     }
   },
-  "defaultProject": "yaani-email-libraries"
+  "defaultProject": "yaanimail-frontend-libraries"
 }
