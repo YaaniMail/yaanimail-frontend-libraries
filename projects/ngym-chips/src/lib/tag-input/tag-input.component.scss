@@ -1,0 +1,16 @@
+input:focus {
+    outline: none;
+}
+
+.form-control {
+    border: none;
+    border-bottom: 1px solid #8498a9;
+    border-radius: 0px;
+    background-color: transparent;
+    padding: 6px;
+    box-shadow: 0 0 #000;
+}
+
+.autoComplete {
+    position: relative;
+}

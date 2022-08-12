@@ -1,0 +1,29 @@
+$padding-flex-size: 0.5rem; // mb-2 for bootstrap
+$margin-bottom-size: 1.5rem; // mb-4 for bootstrap
+
+.ym-home-map-container {
+    display: flex;
+    .ym-home-map-image {
+        padding: $padding-flex-size;
+    }
+    .ym-home-map-text-container {
+        padding: $padding-flex-size;
+        .ym-home-map-card-title {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 34px;
+            margin-bottom: $margin-bottom-size;
+        }
+        .ym-home-map-card-desc {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+            margin-bottom: $margin-bottom-size;
+        }
+        .ym-home-map-card-tagline {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 20px;
+        }
+    }
+}

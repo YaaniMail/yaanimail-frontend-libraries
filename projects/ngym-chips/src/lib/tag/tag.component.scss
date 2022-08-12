@@ -1,0 +1,22 @@
+.tag {
+    padding: 5px;
+    margin: 5px;
+    align-items: center;
+    background-color: #edf2f5;
+    color: #0b3254;
+    border-radius: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    span {
+        padding-right: 5px;
+    }
+}
+
+.tag.active {
+    background-color: blue;
+    color: white;
+}
+
+.tag.invalid {
+    color: red;
+}

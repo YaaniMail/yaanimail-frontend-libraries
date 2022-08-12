@@ -1,0 +1,11 @@
+<div class="dropdown">
+    <div class="item" (click)="onSelectItem(item)" *ngFor="let item of autoCompleteItems">
+        <div class="initials">
+            {{ item.initials }}
+        </div>
+        <div class="info">
+            <div>{{ item.name }}</div>
+            <div>{{ item.email }}</div>
+        </div>
+    </div>
+</div>

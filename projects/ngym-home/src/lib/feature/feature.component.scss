@@ -1,0 +1,30 @@
+$feature-background-color: white;
+$feature-border-rad: 8px;
+$margin-size: 0.5rem;
+
+.ym-home-feature-card {
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.4s ease-in 0s;
+    &:hover {
+        background-color: $feature-background-color;
+        border-radius: $feature-border-rad;
+        box-shadow: 0 11px 55px 0 rgba(0, 0, 0, 0.07);
+        transform: translateY(-10px);
+    }
+    .ym-home-feature-card-title {
+        margin-top: $margin-size;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 34px;
+    }
+    .ym-home-feature-card-desc {
+        margin-top: $margin-size;
+        margin-bottom: $margin-size;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 30px;
+    }
+}

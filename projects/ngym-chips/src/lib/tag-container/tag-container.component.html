@@ -1,0 +1,12 @@
+<div class="ym-tag-container">
+    <div *ngFor="let t of tags">
+        <ngym-tag [tag]="t" [pattern]="pattern" (onRemoveEmitter)="removeTag($event)"
+            (onSelectEmitter)="selectTag($event)" (onEditEmitter)="assignTagToEdit($event)"></ngym-tag>
+    </div>
+    <div>
+        <ngym-tag-input [autoCompleteItems]="autoCompleteItems" (onEnterEmitter)="addTag($event)"
+            (onKeyPressedEmitter)="getAutoCompleteItems($event)"
+            (onAutoCompleteSelectEmitter)="selectAutoCompleteItem($event)">
+        </ngym-tag-input>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="section-header">Chips Test</div>
+<div class="section-desc">Duplicate NOT allowed [duplicateAllowed], Valid email [pattern]</div>
+<div class="section">
+    <ngym-tag-container (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false"
+        [pattern]="pattern" [autoCompleteItems]="autoCompleteItems">
+    </ngym-tag-container>
+</div>
