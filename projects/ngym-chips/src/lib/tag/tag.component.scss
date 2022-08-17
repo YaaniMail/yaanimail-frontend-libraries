@@ -5,7 +5,7 @@
     background-color: #edf2f5;
     color: #0b3254;
     border-radius: 11px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: inherit;
     cursor: pointer;
     span {
         padding-right: 5px;
@@ -13,10 +13,10 @@
 }
 
 .tag.active {
-    background-color: blue;
+    background-color: #00a0df;
     color: white;
 }
 
 .tag.invalid {
-    color: red;
+    color: #f05f6d;
 }

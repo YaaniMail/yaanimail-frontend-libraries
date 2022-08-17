@@ -16,6 +16,7 @@ export class TagContainerComponent {
   tags: Tag[] = [];
   @Input() editAllowed!: boolean;
   @Input() duplicateAllowed!: boolean;
+  @Input() dragAllowed!: boolean;
   @Input() pattern!: RegExp;
   @Input() autoCompleteItems!: AutoComplete[];
   @Output() onSelectEmitter = new EventEmitter<Tag>();
