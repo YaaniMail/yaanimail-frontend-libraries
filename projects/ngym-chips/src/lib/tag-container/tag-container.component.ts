@@ -10,6 +10,9 @@ import { TagInputComponent } from '../tag-input/tag-input.component';
 })
 export class TagContainerComponent {
   selectedTagId: number = -1;
+  startingTagIndex!: number;
+  droppingTagIndex!: number;
+  draggingTag!: Tag;
   tags: Tag[] = [];
   @Input() editAllowed!: boolean;
   @Input() duplicateAllowed!: boolean;
@@ -89,6 +92,35 @@ export class TagContainerComponent {
     const isDuplicate = _tags.some(t => t === value);
 
     return isDuplicate;
+  }
+
+  /**
+   * Starting event of dragging single tag
+   */
+  onDragStart(event: DragEvent, tag: Tag, index: number): void {
+    event.stopPropagation();
+    this.draggingTag = tag;
+    this.startingTagIndex = index;
+  }
+
+  /**
+   * Getting dragged over item and index to replace it
+   */
+  onDragOver(event: DragEvent, index: number): void {
+    event.preventDefault();
+    this.droppingTagIndex = index;
+  }
+
+  /**
+   * Drag event finishes. Removing item first and then inserting it at desired index.
+   */
+  onDrop(event: DragEvent): void {
+    if (this.startingTagIndex === this.droppingTagIndex) {
+      return;
+    }
+
+    this.removeTag(this.draggingTag.id);
+    this.tags.splice(this.droppingTagIndex, 0, this.draggingTag);
   }
 
 }

@@ -1,7 +1,10 @@
 <div class="ym-tag-container">
-    <div *ngFor="let t of tags">
-        <ngym-tag [tag]="t" [pattern]="pattern" [selectedTagId]="selectedTagId" (onRemoveEmitter)="removeTag($event)"
-            (onSelectEmitter)="selectTag($event)" (onEditEmitter)="assignTagToEdit($event)"></ngym-tag>
+    <div class="ym-tag-drag-zone" (drop)="onDrop($event)">
+        <ngym-tag *ngFor="let t of tags; let i = index" [tag]="t" [pattern]="pattern" [selectedTagId]="selectedTagId"
+            (onRemoveEmitter)="removeTag($event)" (onSelectEmitter)="selectTag($event)"
+            (onEditEmitter)="assignTagToEdit($event)" draggable="true" (dragstart)="onDragStart($event, t, i)"
+            (dragover)="onDragOver($event, i)">
+        </ngym-tag>
     </div>
     <div>
         <ngym-tag-input [autoCompleteItems]="autoCompleteItems" (onEnterEmitter)="addTag($event)"
