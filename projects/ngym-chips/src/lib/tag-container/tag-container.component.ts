@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
 import { AutoComplete } from '../model/autoComplete';
 import { Tag } from '../model/tag';
 import { TagInputComponent } from '../tag-input/tag-input.component';
@@ -8,7 +8,8 @@ import { TagInputComponent } from '../tag-input/tag-input.component';
   templateUrl: './tag-container.component.html',
   styleUrls: ['./tag-container.component.scss']
 })
-export class TagContainerComponent implements OnChanges {
+export class TagContainerComponent {
+  selectedTagId: number = -1;
   tags: Tag[] = [];
   @Input() editAllowed!: boolean;
   @Input() duplicateAllowed!: boolean;
@@ -17,10 +18,16 @@ export class TagContainerComponent implements OnChanges {
   @Output() onSelectEmitter = new EventEmitter<Tag>();
   @Output() onKeyPressedEmitter = new EventEmitter<KeyboardEvent>();
   @ViewChild(TagInputComponent) tagInputComponent!: TagInputComponent;
+  @HostListener('document:keydown', ['$event'])
+  // Deleting a selected tag if a keyboard event of Bacspace is clicked globally.
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'Backspace' && this.selectedTagId !== -1) {
+      this.removeTag(this.selectedTagId);
+      this.selectedTagId = -1;
+    }
+  }
 
   constructor() { }
-
-  ngOnChanges(): void { }
 
   /**
    * Add a new tag to container. Showing every tag on screen by ngFor.
@@ -47,6 +54,7 @@ export class TagContainerComponent implements OnChanges {
    * Parent communication for which tag is selected
    */
   selectTag(tag: Tag): void {
+    this.selectedTagId = tag.id;
     this.onSelectEmitter.emit(tag);
   }
 

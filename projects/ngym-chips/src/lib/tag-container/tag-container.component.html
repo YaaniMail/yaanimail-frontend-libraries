@@ -1,6 +1,6 @@
 <div class="ym-tag-container">
     <div *ngFor="let t of tags">
-        <ngym-tag [tag]="t" [pattern]="pattern" (onRemoveEmitter)="removeTag($event)"
+        <ngym-tag [tag]="t" [pattern]="pattern" [selectedTagId]="selectedTagId" (onRemoveEmitter)="removeTag($event)"
             (onSelectEmitter)="selectTag($event)" (onEditEmitter)="assignTagToEdit($event)"></ngym-tag>
     </div>
     <div>

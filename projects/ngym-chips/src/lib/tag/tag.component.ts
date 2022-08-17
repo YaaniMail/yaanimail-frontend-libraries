@@ -8,9 +8,9 @@ import { Tag } from '../model/tag';
 })
 export class TagComponent implements OnInit {
   valid!: boolean;
-  selected!: boolean;
   isEditable: boolean = false;
   regex!: RegExp
+  @Input() selectedTagId!: number;
   @Input() pattern!: RegExp;
   @Input() tag!: Tag;
   @Output() onSelectEmitter = new EventEmitter<Tag>();
@@ -27,8 +27,6 @@ export class TagComponent implements OnInit {
    *  Selecting tag and parent communication
    */
   selectTag(tag: Tag): void {
-    // changing background of the Tag for selecting
-    this.selected = !this.selected;
     // Communication to Parent Component(TagContainer) to select tag with object itself
     this.onSelectEmitter.emit(tag);
   }
