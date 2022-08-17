@@ -1,6 +1,6 @@
 <form [formGroup]="form">
     <input type="text" class="form-control" formControlName="newTag" (keyup)="onKeyPressed()"
-        (keyup.enter)="onEnter($event)" autofocus />
+        (keyup.enter)="onEnter($event)" (mousedown)="onMouseDown()" (focus)="onFocus()" autofocus />
     <div class="autoComplete" *ngIf="autoCompleteVisible">
         <ngym-tag-input-autocomplete [autoCompleteItems]="autoCompleteItems"
             (onSelectEmitter)="selectAutoCompleteItem($event)">

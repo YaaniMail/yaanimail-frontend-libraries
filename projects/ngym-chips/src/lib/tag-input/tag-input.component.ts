@@ -51,6 +51,9 @@ export class TagInputComponent implements OnInit {
     const _tag = this.createTagObject(this.id, item.email);
     this.onAutoCompleteSelectEmitter.emit(_tag);
     this.form.reset();
+
+    this.id++;
+    this.autoCompleteVisible = false;
   }
 
   /**
@@ -66,32 +69,22 @@ export class TagInputComponent implements OnInit {
    */
   onKeyPressed(): void {
     const draft = this.form.value.newTag;
-
-    if (draft === null) {
-      return;
-    }
-
-    if (draft.length === 0) {
-      this.autoCompleteVisible = false;
-    } else {
-      this.autoCompleteVisible = true;
-    }
-
+    this.checkAutoCompleteVisible();
     this.onKeyPressedEmitter.emit(draft);
   }
 
   /**
-   * onBlur event for input
+   * onMouseDown event for tag-input
    */
-  onBlur(): void {
+  onMouseDown(): void {
     this.autoCompleteVisible = false;
   }
 
   /**
-   * onFocus event for input
+   * onFocus event for tag-input
    */
   onFocus(): void {
-    this.autoCompleteVisible = true;
+    this.checkAutoCompleteVisible();
   }
 
   /**
@@ -111,5 +104,24 @@ export class TagInputComponent implements OnInit {
 
     this.id++;
     this.form.reset();
+    this.checkAutoCompleteVisible();
+  }
+
+  /**
+   * Check if auto complete should be visible or not
+   */
+  checkAutoCompleteVisible(): void {
+    const draft = this.form.value.newTag;
+
+    if (draft === null) {
+      this.autoCompleteVisible = false;
+      return;
+    }
+
+    if (draft.length === 0) {
+      this.autoCompleteVisible = false;
+    } else {
+      this.autoCompleteVisible = true;
+    }
   }
 }
