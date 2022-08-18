@@ -17,7 +17,12 @@ export class AppComponent {
   }
 
   changeAutoCompleteItems(event: any): void {
-    this.autoCompleteItems = [{ 'initials': 'DE', 'name': 'yağız', 'email': 'yagiz1@yposta.net' }, { 'initials': 'DE', 'name': 'yağız', 'email': 'yagiz2@yposta.net' }, { 'initials': 'DE', 'name': 'yağız', 'email': 'yagiz3@yposta.net' }, { 'initials': 'DE', 'name': 'yağız', 'email': 'yagiz4@yposta.net' }, { 'initials': 'DE', 'name': 'yağız', 'email': 'yagiz5@yposta.net' }, { 'initials': 'DE', 'name': 'yağız', 'email': 'yagiz6@yposta.net' }];
-    this.autoCompleteItems.push({ 'initials': 'RE' + this.i, 'name': 'yağız', 'email': 'yagiz@yposta.net' });
+    this.autoCompleteItems = [
+      { 'name': 'Yağız Öztürk', 'email': 'yagiz1@yposta.net' },
+      { 'name': 'Damla Özdemir', 'email': 'yagiz2@yposta.net' },
+      { 'name': 'Michael Jordan', 'email': 'yagiz3@yposta.net' },
+      { 'name': 'Che Guevera', 'email': 'yagiz4@yposta.net' },
+      { 'name': 'Osman Hamdi', 'email': 'yagiz5@yposta.net' },
+      { 'name': 'Büyük Atatürk', 'email': 'yagiz6@yposta.net' }];
   }
 }

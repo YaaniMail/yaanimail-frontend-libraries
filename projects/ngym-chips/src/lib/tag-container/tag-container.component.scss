@@ -3,3 +3,14 @@
     display: flex;
     align-items: center;
 }
+
+.onDrag {
+    border-left: 2px solid blue;
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}

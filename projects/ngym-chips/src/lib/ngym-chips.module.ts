@@ -6,13 +6,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TagInputAutocompleteComponent } from './tag-input-autocomplete/tag-input-autocomplete.component';
+import { InitialsPipe } from './pipe/initials.pipe';
 
 @NgModule({
   declarations: [
     TagComponent,
     TagInputComponent,
     TagContainerComponent,
-    TagInputAutocompleteComponent
+    TagInputAutocompleteComponent,
+    InitialsPipe
   ],
   imports: [
     BrowserModule,

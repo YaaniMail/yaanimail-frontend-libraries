@@ -12,6 +12,7 @@ export class TagContainerComponent {
   selectedTagId: number = -1;
   startingTagIndex!: number;
   droppingTagIndex!: number;
+  onDrag!: boolean;
   draggingTag!: Tag;
   tags: Tag[] = [];
   @Input() editAllowed!: boolean;
@@ -109,6 +110,7 @@ export class TagContainerComponent {
    */
   onDragOver(event: DragEvent, index: number): void {
     event.preventDefault();
+    this.onDrag = true;
     this.droppingTagIndex = index;
   }
 
@@ -116,6 +118,7 @@ export class TagContainerComponent {
    * Drag event finishes. Removing item first and then inserting it at desired index.
    */
   onDrop(event: DragEvent): void {
+    this.onDrag = false;
     if (this.startingTagIndex === this.droppingTagIndex) {
       return;
     }

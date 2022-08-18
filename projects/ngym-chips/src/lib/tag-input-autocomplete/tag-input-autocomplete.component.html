@@ -1,7 +1,7 @@
 <div class="dropdown">
     <div class="item" (click)="onSelectItem(item)" *ngFor="let item of autoCompleteItems">
         <div class="initials">
-            {{ item.initials }}
+            {{ item.name | initials }}
         </div>
         <div class="info">
             <div>{{ item.name }}</div>

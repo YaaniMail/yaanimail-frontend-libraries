@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
 import { Tag } from '../model/tag';
 
 @Component({
@@ -11,35 +11,37 @@ export class TagComponent implements OnInit {
   isEditable: boolean = false;
   regex!: RegExp
   @Input() selectedTagId!: number;
+  @Input() dragAllowed!: boolean;
   @Input() pattern!: RegExp;
   @Input() tag!: Tag;
   @Output() onSelectEmitter = new EventEmitter<Tag>();
   @Output() onRemoveEmitter = new EventEmitter<number>();
   @Output() onEditEmitter = new EventEmitter<Tag>();
 
-  constructor() { }
+  constructor(private renderer: Renderer2, private el: ElementRef) { }
 
   ngOnInit(): void {
     this.validateValue();
+    this.isDragDropAllowed();
   }
 
   /**
-   *  Selecting tag and parent communication
+   *  Selecting tag and parent communication.
    */
   selectTag(tag: Tag): void {
-    // Communication to Parent Component(TagContainer) to select tag with object itself
+    // Communication to Parent Component(TagContainer) to select tag with object itself.
     this.onSelectEmitter.emit(tag);
   }
 
   /**
-   *  Editing tag and parent communication if editAllowed is set to true
+   *  Editing tag and parent communication if editAllowed is set to true.
    */
   editTag(tag: Tag): void {
     this.onEditEmitter.emit(tag);
   }
 
   /**
-   * Communication to Parent Component(TagContainer) to remove tag with id @params id
+   * Communication to Parent Component(TagContainer) to remove tag with id @params id.
    */
   removeTag(id: number): void {
     this.onRemoveEmitter.emit(id);
@@ -50,5 +52,16 @@ export class TagComponent implements OnInit {
    */
   validateValue(): void {
     this.valid = this.pattern.test(this.tag.value);
+  }
+
+  /**
+   *  Allowing users to drag and drop by parameter. Default is false.
+   */
+  isDragDropAllowed(): void {
+    if (!this.dragAllowed) {
+      this.renderer.setAttribute(this.el.nativeElement, 'draggable', 'false');
+    } else {
+      this.renderer.setAttribute(this.el.nativeElement, 'draggable', 'true');
+    }
   }
 }
