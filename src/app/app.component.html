@@ -1,7 +1,23 @@
 <div class="section-header">Chips Test</div>
-<div class="section-desc">Duplicate NOT allowed [duplicateAllowed], Valid email [pattern]</div>
+<div class="section-desc">Duplicate NOT allowed [duplicateAllowed], Valid email [pattern], Auto complete is ON.</div>
 <div class="section">
+    <div>To:</div>
     <ngym-tag-container (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false"
-        [pattern]="pattern" [dragAllowed]="true" [autoCompleteItems]="autoCompleteItems">
+        [splitChars]="[',', ';']" [pattern]="pattern" [dragAllowed]="true" [autoCompleteItems]="autoCompleteItems">
     </ngym-tag-container>
+</div>
+<div class="section">
+    <div>Cc:</div>
+    <ngym-tag-container (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false"
+        [splitChars]="[',', ';']" [pattern]="pattern" [dragAllowed]="true" [autoCompleteItems]="autoCompleteItems">
+    </ngym-tag-container>
+</div>
+<div class="section">
+    <div>Bcc:</div>
+    <ngym-tag-container (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false"
+        [splitChars]="[',', ';']" [pattern]="pattern" [dragAllowed]="true" [autoCompleteItems]="autoCompleteItems">
+    </ngym-tag-container>
+</div>
+<div class="section">
+    <button type="button" (click)="logFinal()">Send</button>
 </div>

@@ -12,10 +12,13 @@ export class TagInputComponent implements OnInit {
   autoCompleteTags!: string[];
   id: number = 0;
   autoCompleteVisible!: boolean;
+  pastedTagArray: Tag[] = [];
   form!: FormGroup;
+  @Input() splitChars!: string[];
   @Input() autoCompleteItems!: AutoComplete[];
   @Output() onKeyPressedEmitter = new EventEmitter<string>();
   @Output() onEnterEmitter = new EventEmitter<Tag>();
+  @Output() onPasteEmitter = new EventEmitter<Tag[]>();
   @Output() onAutoCompleteSelectEmitter = new EventEmitter<Tag>();
 
   constructor(private fb: FormBuilder) { }
@@ -105,6 +108,34 @@ export class TagInputComponent implements OnInit {
     this.id++;
     this.form.reset();
     this.checkAutoCompleteVisible();
+  }
+
+  /**
+   * Getting on paste value. If there are keys[',', ';'], seperate tags.
+   */
+  onPaste(pastedText: string): void {
+    console.log(this.splitChars[0]);
+    // const commaSplitArray = pastedText.split(',');
+    const puntoSplitArray = pastedText.split(';');
+
+    // remove duplicates
+    // const mergeArray = commaSplitArray.concat(puntoSplitArray);
+    // const finalArray = mergeArray.filter((item, pos) => mergeArray.indexOf(item) === pos);
+
+    for (let i = 0; i < puntoSplitArray.length; i++) {
+      const tag = this.createTagObject(this.id, puntoSplitArray[i].trim());
+      this.id++;
+
+      this.pastedTagArray.push(tag);
+    }
+
+    this.onPasteEmitter.emit(this.pastedTagArray);
+
+    // This timeout is a workaround. ALternative is asych function calls
+    setTimeout(() => {
+      this.form.reset();
+      this.checkAutoCompleteVisible();
+    }, 0);
   }
 
   /**

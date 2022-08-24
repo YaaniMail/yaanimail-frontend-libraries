@@ -15,6 +15,7 @@ export class TagContainerComponent {
   onDrag!: boolean;
   draggingTag!: Tag;
   tags: Tag[] = [];
+  @Input() splitChars!: string[];
   @Input() editAllowed!: boolean;
   @Input() duplicateAllowed!: boolean;
   @Input() dragAllowed!: boolean;
@@ -22,6 +23,7 @@ export class TagContainerComponent {
   @Input() autoCompleteItems!: AutoComplete[];
   @Output() onSelectEmitter = new EventEmitter<Tag>();
   @Output() onKeyPressedEmitter = new EventEmitter<KeyboardEvent>();
+  @Output() onPasteEmitter = new EventEmitter<Tag[]>();
   @ViewChild(TagInputComponent) tagInputComponent!: TagInputComponent;
   @HostListener('document:keydown', ['$event'])
   // Deleting a selected tag if a keyboard event of Bacspace is clicked globally.
@@ -46,6 +48,16 @@ export class TagContainerComponent {
     }
 
     this.tags.push(tag);
+  }
+
+  /**
+   * Add multiple tags. Events like paste items use this method.
+   * Seperate multiple tags
+   */
+  pasteTags(tags: Tag[]): void {
+    tags.forEach(tag => {
+      this.addTag(tag);
+    });
   }
 
   /**

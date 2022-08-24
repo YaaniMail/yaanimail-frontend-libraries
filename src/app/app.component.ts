@@ -25,4 +25,8 @@ export class AppComponent {
       { 'name': 'Osman Hamdi', 'email': 'yagiz5@yposta.net' },
       { 'name': 'Büyük Atatürk', 'email': 'yagiz6@yposta.net' }];
   }
+
+  logFinal(): void {
+
+  }
 }
