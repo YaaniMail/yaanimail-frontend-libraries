@@ -1,6 +1,7 @@
 <div class="ym-tag-container">
     <div class="ym-tag-drag-zone" (drop)="onDrop($event)">
-        <ngym-tag *ngFor="let t of tags; let i = index" [ngClass]="{'onDrag': onDrag && droppingTagIndex == i }"
+        <!-- Tags -->
+        <ngym-tag *ngFor="let t of tags; let i = index" [ngClass]="{'onDrag': onDrag && droppingTagIndex == i}"
             [tag]="t" [pattern]="pattern" [selectedTagId]="selectedTagId" [dragAllowed]="dragAllowed"
             (onRemoveEmitter)="removeTag($event)" (onSelectEmitter)="selectTag($event)"
             (onEditEmitter)="assignTagToEdit($event)" draggable="false" (dragstart)="onDragStart($event, t, i)"
@@ -8,6 +9,7 @@
         </ngym-tag>
     </div>
     <div>
+        <!-- Add New Tag -->
         <ngym-tag-input [autoCompleteItems]="autoCompleteItems" [splitChars]="splitChars"
             (onEnterEmitter)="addTag($event)" (onKeyPressedEmitter)="getAutoCompleteItems($event)"
             (onPasteEmitter)="pasteTags($event)" (onAutoCompleteSelectEmitter)="selectAutoCompleteItem($event)">

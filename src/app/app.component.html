@@ -2,14 +2,16 @@
 <div class="section-desc">Duplicate NOT allowed [duplicateAllowed], Valid email [pattern], Auto complete is ON.</div>
 <div class="section">
     <div>To:</div>
-    <ngym-tag-container (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false"
-        [splitChars]="[',', ';']" [pattern]="pattern" [dragAllowed]="true" [autoCompleteItems]="autoCompleteItems">
+    <ngym-tag-container (tagsEmitter)="getTags($event, 'zone1')" (onKeyPressedEmitter)="changeAutoCompleteItems($event)"
+        [duplicateAllowed]="false" [splitChars]="[',', ';']" [pattern]="pattern" [dragAllowed]="true"
+        [dragZone]="'zone1'" [autoCompleteItems]="autoCompleteItems">
     </ngym-tag-container>
 </div>
 <div class="section">
     <div>Cc:</div>
-    <ngym-tag-container (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false"
-        [splitChars]="[',', ';']" [pattern]="pattern" [dragAllowed]="true" [autoCompleteItems]="autoCompleteItems">
+    <ngym-tag-container (tagsEmitter)="getTags($event, 'zone2')" (onKeyPressedEmitter)="changeAutoCompleteItems($event)"
+        [duplicateAllowed]="false" [splitChars]="[',', ';']" [pattern]="pattern" [dragAllowed]="true"
+        [dragZone]="'zone1'" [autoCompleteItems]="autoCompleteItems">
     </ngym-tag-container>
 </div>
 <div class="section">

@@ -19,8 +19,10 @@ export class TagContainerComponent {
   @Input() editAllowed!: boolean;
   @Input() duplicateAllowed!: boolean;
   @Input() dragAllowed!: boolean;
+  @Input() dragZone!: string;
   @Input() pattern!: RegExp;
   @Input() autoCompleteItems!: AutoComplete[];
+  @Output() tagsEmitter = new EventEmitter<Tag[]>();
   @Output() onSelectEmitter = new EventEmitter<Tag>();
   @Output() onKeyPressedEmitter = new EventEmitter<KeyboardEvent>();
   @Output() onPasteEmitter = new EventEmitter<Tag[]>();
@@ -48,6 +50,7 @@ export class TagContainerComponent {
     }
 
     this.tags.push(tag);
+    this.tagsEmitter.emit(this.tags);
   }
 
   /**
@@ -65,6 +68,7 @@ export class TagContainerComponent {
    */
   removeTag(id: number): void {
     this.tags = this.tags.filter(tag => tag.id !== id);
+    this.tagsEmitter.emit(this.tags);
   }
 
   /**
@@ -126,11 +130,18 @@ export class TagContainerComponent {
     this.droppingTagIndex = index;
   }
 
+  onDragEnd(event: DragEvent): void {
+    this.onDrag = false;
+  }
+
+  dragTest(): void {
+    console.log('test');
+  }
+
   /**
    * Drag event finishes. Removing item first and then inserting it at desired index.
    */
   onDrop(event: DragEvent): void {
-    this.onDrag = false;
     if (this.startingTagIndex === this.droppingTagIndex) {
       return;
     }

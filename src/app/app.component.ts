@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AutoComplete } from 'projects/ngym-chips/src/lib/model/autoComplete';
+import { Tag } from 'projects/ngym-chips/src/lib/model/tag';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent {
   title = 'yaanimail-frontend-libraries';
   pattern: RegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   autoCompleteItems!: AutoComplete[];
-  i: number = 0;
+  zone1Tags!: Tag[];
 
   constructor() {
 
@@ -18,15 +19,21 @@ export class AppComponent {
 
   changeAutoCompleteItems(event: any): void {
     this.autoCompleteItems = [
-      { 'name': 'Yağız Öztürk', 'email': 'yagiz1@yposta.net' },
-      { 'name': 'Damla Özdemir', 'email': 'yagiz2@yposta.net' },
-      { 'name': 'Michael Jordan', 'email': 'yagiz3@yposta.net' },
-      { 'name': 'Che Guevera', 'email': 'yagiz4@yposta.net' },
-      { 'name': 'Osman Hamdi', 'email': 'yagiz5@yposta.net' },
-      { 'name': 'Büyük Atatürk', 'email': 'yagiz6@yposta.net' }];
+      { 'name': 'Yağız Öztürk', 'email': 'yagiz@yposta.net' },
+      { 'name': 'Damla Özdemir', 'email': 'damla@yposta.net' },
+      { 'name': 'Michael Jordan', 'email': 'jordan@yposta.net' },
+      { 'name': 'Che Guevera', 'email': 'cheguewvera@yposta.net' },
+      { 'name': 'Osman Hamdi', 'email': 'osmanhamdi@yposta.net' },
+      { 'name': 'Büyük Atatürk', 'email': 'ataturk@yposta.net' }];
+  }
+
+  getTags(tags: Tag[], dragZone: string): void {
+    console.log(tags);
+    console.log(dragZone);
+    this.zone1Tags = tags;
   }
 
   logFinal(): void {
-
+    console.log(this.zone1Tags);
   }
 }
