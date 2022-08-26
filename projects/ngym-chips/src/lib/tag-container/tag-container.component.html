@@ -5,7 +5,7 @@
             [tag]="t" [pattern]="pattern" [selectedTagId]="selectedTagId" [dragAllowed]="dragAllowed"
             (onRemoveEmitter)="removeTag($event)" (onSelectEmitter)="selectTag($event)"
             (onEditEmitter)="assignTagToEdit($event)" draggable="false" (dragstart)="onDragStart($event, t, i)"
-            (dragover)="onDragOver($event, i)">
+            (dragend)="onDragEnd($event)" (dragover)="onDragOver($event, i)">
         </ngym-tag>
     </div>
     <div>
