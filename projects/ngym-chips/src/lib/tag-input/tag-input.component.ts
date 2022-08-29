@@ -69,9 +69,14 @@ export class TagInputComponent implements OnInit {
 
   /**
    * Getting auto complete suggestion tags for dropdown use
+   * Start from at least 2 charachters
    */
   onKeyPressed(): void {
     const draft = this.form.value.newTag;
+    if (draft.length < 2) {
+      return;
+    }
+
     this.checkAutoCompleteVisible();
     this.onKeyPressedEmitter.emit(draft);
   }
