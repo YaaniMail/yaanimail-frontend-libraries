@@ -114,16 +114,15 @@ export class TagInputComponent implements OnInit {
    * Getting on paste value. If there are keys[',', ';'], seperate tags.
    */
   onPaste(pastedText: string): void {
-    console.log(this.splitChars[0]);
-    // const commaSplitArray = pastedText.split(',');
-    const puntoSplitArray = pastedText.split(';');
+    const splitArray = pastedText.trim().split(this.createSplitRegex());
 
-    // remove duplicates
-    // const mergeArray = commaSplitArray.concat(puntoSplitArray);
-    // const finalArray = mergeArray.filter((item, pos) => mergeArray.indexOf(item) === pos);
+    // Removing possible empty elements
+    var filtered = splitArray.filter(function (el) {
+      return el != '';
+    });
 
-    for (let i = 0; i < puntoSplitArray.length; i++) {
-      const tag = this.createTagObject(this.id, puntoSplitArray[i].trim());
+    for (let i = 0; i < filtered.length; i++) {
+      const tag = this.createTagObject(this.id, splitArray[i].trim());
       this.id++;
 
       this.pastedTagArray.push(tag);
@@ -131,11 +130,27 @@ export class TagInputComponent implements OnInit {
 
     this.onPasteEmitter.emit(this.pastedTagArray);
 
-    // This timeout is a workaround. ALternative is asych function calls
+    // This timeout is a workaround. ALternative is promise functions. Clearing field. Closing auto complete.
     setTimeout(() => {
       this.form.reset();
       this.checkAutoCompleteVisible();
     }, 0);
+  }
+
+  /**
+   * Creating a split pattern regex based on user input
+   */
+  createSplitRegex(): RegExp {
+    let splitRegex!: RegExp;
+    if (this.splitChars.includes(',') && this.splitChars.includes(';')) {
+      splitRegex = /,|;/;
+    } else if (this.splitChars.includes(',')) {
+      splitRegex = /,/;
+    } else if (this.splitChars.includes(';')) {
+      splitRegex = /;/;
+    }
+
+    return splitRegex;
   }
 
   /**

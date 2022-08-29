@@ -32,7 +32,7 @@ export class TagContainerComponent {
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.key === 'Backspace' && this.selectedTagId !== -1) {
       this.removeTag(this.selectedTagId);
-      this.selectedTagId = -1;
+      this.selectedTagId = -1; // so no new tag is selected
     }
   }
 
@@ -130,16 +130,15 @@ export class TagContainerComponent {
     this.droppingTagIndex = index;
   }
 
+  /**
+   * Drag event ends. Removing cursor from the screen by setting onDrag to false.
+   */
   onDragEnd(event: DragEvent): void {
     this.onDrag = false;
   }
 
-  dragTest(): void {
-    console.log('test');
-  }
-
   /**
-   * Drag event finishes. Removing item first and then inserting it at desired index.
+   * Drag event drops. Removing item first and then inserting it at desired index.
    */
   onDrop(event: DragEvent): void {
     if (this.startingTagIndex === this.droppingTagIndex) {
