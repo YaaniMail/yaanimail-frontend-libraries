@@ -19,12 +19,12 @@ export class AppComponent {
 
   changeAutoCompleteItems(event: any): void {
     this.autoCompleteItems = [
-      { 'name': 'Yağız Öztürk', 'email': 'yagiz@yposta.net' },
-      { 'name': 'Damla Özdemir', 'email': 'damla@yposta.net' },
-      { 'name': 'Michael Jordan', 'email': 'jordan@yposta.net' },
-      { 'name': 'Che Guevera', 'email': 'cheguewvera@yposta.net' },
-      { 'name': 'Osman Hamdi', 'email': 'osmanhamdi@yposta.net' },
-      { 'name': 'Büyük Atatürk', 'email': 'ataturk@yposta.net' }];
+      { 'name': 'Yağız Öztürk', 'value': 'yagiz@yposta.net' },
+      { 'name': 'Damla Özdemir', 'value': 'damla@yposta.net' },
+      { 'name': 'Michael Jordan', 'value': 'jordan@yposta.net' },
+      { 'name': 'Che Guevera', 'value': 'cheguewvera@yposta.net' },
+      { 'name': 'Osman Hamdi', 'value': 'osmanhamdi@yposta.net' },
+      { 'name': 'Büyük Atatürk', 'value': 'ataturk@yposta.net' }];
   }
 
   getTags(tags: Tag[], dragZone: string): void {

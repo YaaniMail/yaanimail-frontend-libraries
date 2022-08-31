@@ -51,7 +51,7 @@ export class TagInputComponent implements OnInit {
    * Creating a tag object from selected auto complete item and passing it to parent
    */
   selectAutoCompleteItem(item: AutoComplete): void {
-    const _tag = this.createTagObject(this.id, item.email);
+    const _tag = this.createTagObject(this.id, item.value);
     this.onAutoCompleteSelectEmitter.emit(_tag);
     this.form.reset();
 

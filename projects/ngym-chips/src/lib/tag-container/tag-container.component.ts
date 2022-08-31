@@ -100,7 +100,11 @@ export class TagContainerComponent {
    * Parent communication for which tag is selected
    */
   selectTag(tag: Tag): void {
-    this.selectedTagId = tag.id;
+    if (this.selectedTagId !== tag.id) {
+      this.selectedTagId = tag.id;
+    } else {
+      this.selectedTagId = -1;
+    }
     this.onSelectEmitter.emit(tag);
   }
 
@@ -165,9 +169,16 @@ export class TagContainerComponent {
   }
 
   /**
-   *  Removing cursor from the screen by setting onDrag to false after leaving drag zone.
+   * Removing cursor from the screen by setting onDrag to false after leaving drag zone.
    */
   onDragLeave(event: DragEvent): void {
+    this.onDrag = false;
+  }
+
+  /**
+   * Removing cursor from the screen by setting onDrag to false after drag end.
+   */
+  onDragEnd(event: DragEvent): void {
     this.onDrag = false;
   }
 
