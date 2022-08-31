@@ -11,13 +11,14 @@
     <div>Cc:</div>
     <ngym-tag-container (tagsEmitter)="getTags($event, 'zone2')" (onKeyPressedEmitter)="changeAutoCompleteItems($event)"
         [duplicateAllowed]="false" [splitChars]="[',', ';']" [pattern]="pattern" [dragAllowed]="true"
-        [dragZone]="'zone1'" [autoCompleteItems]="autoCompleteItems">
+        [dragZone]="'zone2'" [autoCompleteItems]="autoCompleteItems">
     </ngym-tag-container>
 </div>
 <div class="section">
     <div>Bcc:</div>
-    <ngym-tag-container (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false"
-        [splitChars]="[',', ';']" [pattern]="pattern" [dragAllowed]="true" [autoCompleteItems]="autoCompleteItems">
+    <ngym-tag-container (tagsEmitter)="getTags($event, 'zone3')" (onKeyPressedEmitter)="changeAutoCompleteItems($event)"
+        [duplicateAllowed]="false" [splitChars]="[',', ';']" [pattern]="pattern" [dragAllowed]="true"
+        [dragZone]="'zone3'" [autoCompleteItems]="autoCompleteItems">
     </ngym-tag-container>
 </div>
 <div class="section">

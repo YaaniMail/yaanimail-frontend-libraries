@@ -1,11 +1,12 @@
-<div class="ym-tag-container">
-    <div class="ym-tag-drag-zone" (drop)="onDrop($event)">
+<div class="ym-tag-container" (dragover)="onZoneDragOver($event)" (drop)="onDrop($event)">
+    <div class="ym-tag-drag-zone">
         <!-- Tags -->
-        <ngym-tag *ngFor="let t of tags; let i = index" [ngClass]="{'onDrag': onDrag && droppingTagIndex == i}"
-            [tag]="t" [pattern]="pattern" [selectedTagId]="selectedTagId" [dragAllowed]="dragAllowed"
-            (onRemoveEmitter)="removeTag($event)" (onSelectEmitter)="selectTag($event)"
-            (onEditEmitter)="assignTagToEdit($event)" draggable="false" (dragstart)="onDragStart($event, t, i)"
-            (dragend)="onDragEnd($event)" (dragover)="onDragOver($event, i)">
+        <ngym-tag *ngFor="let t of tags; let i = index"
+            [ngClass]="{'onDrag': onDrag && this.dragDropProvider.droppingIndex == i}" [tag]="t" [pattern]="pattern"
+            [selectedTagId]="selectedTagId" [dragAllowed]="dragAllowed" (onRemoveEmitter)="removeTag($event)"
+            (onSelectEmitter)="selectTag($event)" (onEditEmitter)="assignTagToEdit($event)" draggable="false"
+            (dragstart)="onDragStart($event, t, i)" (dragover)="onDragOver($event, i)" (dragleave)="onDragLeave($event)"
+            (drop)="onDrop($event)">
         </ngym-tag>
     </div>
     <div>

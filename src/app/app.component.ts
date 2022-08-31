@@ -28,8 +28,6 @@ export class AppComponent {
   }
 
   getTags(tags: Tag[], dragZone: string): void {
-    console.log(tags);
-    console.log(dragZone);
     this.zone1Tags = tags;
   }
 

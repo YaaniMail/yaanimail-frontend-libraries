@@ -1,6 +1,7 @@
 import { Component, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
 import { AutoComplete } from '../model/autoComplete';
 import { Tag } from '../model/tag';
+import { DragDropProvider } from '../provider/dragDropProvider';
 import { TagInputComponent } from '../tag-input/tag-input.component';
 
 @Component({
@@ -10,10 +11,7 @@ import { TagInputComponent } from '../tag-input/tag-input.component';
 })
 export class TagContainerComponent {
   selectedTagId: number = -1;
-  startingTagIndex!: number;
-  droppingTagIndex!: number;
   onDrag!: boolean;
-  draggingTag!: Tag;
   tags: Tag[] = [];
   @Input() splitChars!: string[];
   @Input() editAllowed!: boolean;
@@ -36,13 +34,15 @@ export class TagContainerComponent {
     }
   }
 
-  constructor() { }
+  constructor(
+    public dragDropProvider: DragDropProvider
+  ) { }
 
   /**
    * Add a new tag to container. Showing every tag on screen by ngFor.
    */
   addTag(tag: Tag): void {
-    const isDuplicate = this.checkDuplicate(tag.value);
+    const isDuplicate = this.checkDuplicate(this.tags, tag.value);
 
     // If there is duplicate value but duplicate is NOT allowed
     if (!this.duplicateAllowed && isDuplicate) {
@@ -51,6 +51,22 @@ export class TagContainerComponent {
 
     this.tags.push(tag);
     this.tagsEmitter.emit(this.tags);
+  }
+
+  /**
+   * Check duplicate in receving dragZone
+   * Splice to receving dragZone with dragProvider starting and dropping index.
+   */
+  addTagAfterDragDrop(): void {
+    const isDuplicate = this.checkDuplicate(this.dragDropProvider.receiverComponent.tags, this.dragDropProvider.draggingTag.value);
+
+    // If there is duplicate value but duplicate is NOT allowed
+    if (!this.duplicateAllowed && isDuplicate) {
+      return;
+    }
+
+    this.dragDropProvider.receiverComponent.tags.splice(this.dragDropProvider.droppingIndex, 0, this.dragDropProvider.draggingTag);
+    this.tagsEmitter.emit(this.dragDropProvider.receiverComponent.tags);
   }
 
   /**
@@ -64,11 +80,20 @@ export class TagContainerComponent {
   }
 
   /**
-   * Remove a new tag from container.
+   * Remove a new tag from container. Works with (x) anchor.
    */
   removeTag(id: number): void {
     this.tags = this.tags.filter(tag => tag.id !== id);
     this.tagsEmitter.emit(this.tags);
+  }
+
+  /**
+   * Remove a new tag from sender container(starting dragging zone).
+   * Only works after drag and drop operations
+   */
+  removeTagAfterDragDrop(id: number): void {
+    this.dragDropProvider.senderComponent.tags = this.dragDropProvider.senderComponent.tags.filter(tag => tag.id !== id);
+    this.tagsEmitter.emit(this.dragDropProvider.senderComponent.tags);
   }
 
   /**
@@ -105,8 +130,8 @@ export class TagContainerComponent {
   /**
    * Duplicate tag values are configurative. Returns if duplicate value is in the @tags array or not
    */
-  checkDuplicate(value: string): boolean {
-    const _tags = this.tags.map(function (t) { return t.value });
+  checkDuplicate(tags: Tag[], value: string): boolean {
+    const _tags = tags.map(function (t) { return t.value });
     const isDuplicate = _tags.some(t => t === value);
 
     return isDuplicate;
@@ -117,8 +142,9 @@ export class TagContainerComponent {
    */
   onDragStart(event: DragEvent, tag: Tag, index: number): void {
     event.stopPropagation();
-    this.draggingTag = tag;
-    this.startingTagIndex = index;
+    this.dragDropProvider.draggingTag = tag;
+    this.dragDropProvider.startingIndex = index;
+    this.dragDropProvider.senderComponent = this;
   }
 
   /**
@@ -127,13 +153,21 @@ export class TagContainerComponent {
   onDragOver(event: DragEvent, index: number): void {
     event.preventDefault();
     this.onDrag = true;
-    this.droppingTagIndex = index;
+    this.dragDropProvider.droppingIndex = index;
   }
 
   /**
-   * Drag event ends. Removing cursor from the screen by setting onDrag to false.
+   * Setting active dragged zone value. The zone that tag is dragged to.
    */
-  onDragEnd(event: DragEvent): void {
+  onZoneDragOver(event: DragEvent): void {
+    event.preventDefault();
+    this.dragDropProvider.receiverComponent = this;
+  }
+
+  /**
+   *  Removing cursor from the screen by setting onDrag to false after leaving drag zone.
+   */
+  onDragLeave(event: DragEvent): void {
     this.onDrag = false;
   }
 
@@ -141,12 +175,12 @@ export class TagContainerComponent {
    * Drag event drops. Removing item first and then inserting it at desired index.
    */
   onDrop(event: DragEvent): void {
-    if (this.startingTagIndex === this.droppingTagIndex) {
+    if (this.dragDropProvider.senderComponent.dragZone === this.dragDropProvider.receiverComponent.dragZone &&
+      this.dragDropProvider.startingIndex === this.dragDropProvider.droppingIndex) {
       return;
     }
 
-    this.removeTag(this.draggingTag.id);
-    this.tags.splice(this.droppingTagIndex, 0, this.draggingTag);
+    this.removeTagAfterDragDrop(this.dragDropProvider.draggingTag.id);
+    this.addTagAfterDragDrop();
   }
-
 }

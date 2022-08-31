@@ -73,7 +73,7 @@ export class TagInputComponent implements OnInit {
    */
   onKeyPressed(): void {
     const draft = this.form.value.newTag;
-    if (draft.length < 2) {
+    if (draft === null || draft.length < 2) {
       return;
     }
 
