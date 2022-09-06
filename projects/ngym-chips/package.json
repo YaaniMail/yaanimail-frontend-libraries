@@ -1,7 +1,7 @@
 {
   "name": "ngym-chips",
-  "version": "0.0.8",
-  "description": "Paste split with user input pattern",
+  "version": "0.0.10",
+  "description": "Changing auto complete model",
   "peerDependencies": {
     "@angular/common": "^13.3.0",
     "@angular/core": "^13.3.0"

@@ -1,4 +1,6 @@
 .tag {
+    display: flex;
+    flex-direction: row;
     padding: 5px 8px;
     margin: 5px;
     align-items: center;
@@ -8,7 +10,7 @@
     border-radius: 16px;
     font-family: inherit;
     cursor: pointer;
-    span {
+    .value {
         padding-right: 5px;
     }
     &:hover {

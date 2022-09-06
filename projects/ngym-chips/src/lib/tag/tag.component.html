@@ -1,6 +1,6 @@
 <div class="tag" [ngClass]="{'active': selectedTagId === tag.id, 'invalid': !valid}">
-    <span (click)="selectTag(tag)" (dblclick)="editTag(tag)">
+    <div class="value" (click)="selectTag(tag)" (dblclick)="editTag(tag)">
         {{ tag.value }}
-    </span>
-    <a (click)="removeTag(tag.id)">x</a>
+    </div>
+    <div (click)="removeTag(tag.id)">x</div>
 </div>

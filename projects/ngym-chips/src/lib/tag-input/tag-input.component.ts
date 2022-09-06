@@ -51,7 +51,7 @@ export class TagInputComponent implements OnInit {
    * Creating a tag object from selected auto complete item and passing it to parent
    */
   selectAutoCompleteItem(item: AutoComplete): void {
-    const _tag = this.createTagObject(this.id, item.value);
+    const _tag = this.createTagObject(this.id, item.email);
     this.onAutoCompleteSelectEmitter.emit(_tag);
     this.form.reset();
 
@@ -74,6 +74,7 @@ export class TagInputComponent implements OnInit {
   onKeyPressed(): void {
     const draft = this.form.value.newTag;
     if (draft === null || draft.length < 2) {
+      this.checkAutoCompleteVisible();
       return;
     }
 
@@ -169,7 +170,7 @@ export class TagInputComponent implements OnInit {
       return;
     }
 
-    if (draft.length === 0) {
+    if (draft.length < 2) {
       this.autoCompleteVisible = false;
     } else {
       this.autoCompleteVisible = true;
