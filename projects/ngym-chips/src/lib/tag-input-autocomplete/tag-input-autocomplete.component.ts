@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AutoComplete } from '../model/autoComplete';
 
 @Component({
@@ -6,15 +6,11 @@ import { AutoComplete } from '../model/autoComplete';
   templateUrl: './tag-input-autocomplete.component.html',
   styleUrls: ['./tag-input-autocomplete.component.scss']
 })
-export class TagInputAutocompleteComponent implements OnInit {
+export class TagInputAutocompleteComponent {
   @Input() autoCompleteItems!: AutoComplete[];
   @Output() onSelectEmitter = new EventEmitter<AutoComplete>();
 
   constructor() { }
-
-  ngOnInit(): void {
-
-  }
 
   /**
    * Letting tag-input component know which item is selected from autocomplete
