@@ -1,6 +1,7 @@
 .ym-tag-container,
 .ym-tag-drag-zone {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
 }
 

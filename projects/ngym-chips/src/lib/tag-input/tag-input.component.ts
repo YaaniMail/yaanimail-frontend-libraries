@@ -170,6 +170,11 @@ export class TagInputComponent implements OnInit {
       return;
     }
 
+    if (this.autoCompleteItems !== undefined && this.autoCompleteItems.length === 0) {
+      this.autoCompleteVisible = false;
+      return;
+    }
+
     if (draft.length < 2) {
       this.autoCompleteVisible = false;
     } else {
