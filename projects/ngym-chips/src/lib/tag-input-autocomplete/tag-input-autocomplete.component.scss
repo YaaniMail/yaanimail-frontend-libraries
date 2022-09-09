@@ -9,26 +9,39 @@
     right: 0;
     overflow: auto;
     z-index: 99;
-    box-shadow: 0px 0px 22px 5px rgba(0, 0, 0, 0.55);
-    -webkit-box-shadow: 0px 0px 22px 5px rgba(0, 0, 0, 0.55);
-    -moz-box-shadow: 0px 0px 22px 5px rgba(0, 0, 0, 0.55);
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.77);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.77);
 }
 
 .item {
     display: flex;
     align-items: center;
     border-bottom: 1px solid #f5f8fa;
-    padding: 6px;
+    padding: 8px 12px;
     cursor: pointer;
     .initials,
     .info {
         padding: 6px;
+        .name {
+            font-size: 14px;
+            line-height: 20px;
+        }
+        .value {
+            font-size: 12px;
+            line-height: 17px;
+            color: #536f87;
+        }
     }
     .initials {
-        background-color: #edf2f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f5f8fa;
         border-radius: 50%;
+        width: 35px;
+        height: 35px;
     }
     &:hover {
-        background-color: #f5f8fa;
+        background-color: #edf2f5;
     }
 }
