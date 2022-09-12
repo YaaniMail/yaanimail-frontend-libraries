@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { AutoComplete } from '../model/autoComplete';
 
 @Component({
@@ -7,8 +7,19 @@ import { AutoComplete } from '../model/autoComplete';
   styleUrls: ['./tag-input-autocomplete.component.scss']
 })
 export class TagInputAutocompleteComponent {
+  dropDownSelectionIndex: number = 0;
   @Input() autoCompleteItems!: AutoComplete[];
   @Output() onSelectEmitter = new EventEmitter<AutoComplete>();
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'ArrowDown' && this.autoCompleteItems.length > 0 && this.dropDownSelectionIndex <= this.autoCompleteItems.length) {
+      this.dropDownSelectionIndex++;
+    } else if (event.key === 'ArrowUp' && this.autoCompleteItems.length > 0 && this.dropDownSelectionIndex > 0) {
+      this.dropDownSelectionIndex--;
+    } else if (event.key === 'Enter' && this.autoCompleteItems.length > 0 && this.dropDownSelectionIndex <= this.autoCompleteItems.length) {
+      this.onSelectItem(this.autoCompleteItems[this.dropDownSelectionIndex]);
+    }
+  }
 
   constructor() { }
 
@@ -18,5 +29,4 @@ export class TagInputAutocompleteComponent {
   onSelectItem(item: AutoComplete): void {
     this.onSelectEmitter.emit(item);
   }
-
 }

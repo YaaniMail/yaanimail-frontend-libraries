@@ -13,13 +13,13 @@ export class TagContainerComponent {
   selectedTagId: number = -1;
   onDrag!: boolean;
   tags: Tag[] = [];
+  @Input() dragZone!: string;
   @Input() splitChars!: string[];
   @Input() editAllowed!: boolean;
   @Input() duplicateAllowed!: boolean;
   @Input() dragAllowed!: boolean;
-  @Input() dragZone!: string;
-  @Input() pattern!: RegExp;
   @Input() autoCompleteItems!: AutoComplete[];
+  @Input() pattern!: RegExp;
   @Output() tagsEmitter = new EventEmitter<Tag[]>();
   @Output() onSelectEmitter = new EventEmitter<Tag>();
   @Output() onKeyPressedEmitter = new EventEmitter<KeyboardEvent>();

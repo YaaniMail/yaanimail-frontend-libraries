@@ -1,5 +1,6 @@
 <div class="dropdown">
-    <div class="item" (click)="onSelectItem(item)" *ngFor="let item of autoCompleteItems">
+    <div class="item" [ngClass]="{'selected': i === dropDownSelectionIndex}" (click)="onSelectItem(item)"
+        *ngFor="let item of autoCompleteItems; let i = index">
         <div class="initials">
             {{ item.name | initials }}
         </div>
