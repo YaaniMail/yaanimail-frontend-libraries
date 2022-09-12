@@ -7,7 +7,7 @@ import { AutoComplete } from '../model/autoComplete';
   styleUrls: ['./tag-input-autocomplete.component.scss']
 })
 export class TagInputAutocompleteComponent {
-  dropDownSelectionIndex: number = 0;
+  dropDownSelectionIndex: number = -1;
   @Input() autoCompleteItems!: AutoComplete[];
   @Output() onSelectEmitter = new EventEmitter<AutoComplete>();
   @HostListener('document:keydown', ['$event'])
@@ -16,7 +16,7 @@ export class TagInputAutocompleteComponent {
       this.dropDownSelectionIndex++;
     } else if (event.key === 'ArrowUp' && this.autoCompleteItems.length > 0 && this.dropDownSelectionIndex > 0) {
       this.dropDownSelectionIndex--;
-    } else if (event.key === 'Enter' && this.autoCompleteItems.length > 0 && this.dropDownSelectionIndex <= this.autoCompleteItems.length) {
+    } else if (event.key === 'Enter' && this.autoCompleteItems.length > 0 && this.dropDownSelectionIndex <= this.autoCompleteItems.length && this.dropDownSelectionIndex > -1) {
       this.onSelectItem(this.autoCompleteItems[this.dropDownSelectionIndex]);
     }
   }
