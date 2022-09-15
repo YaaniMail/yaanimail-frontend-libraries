@@ -7,12 +7,14 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 This library has basic input elements compatible to Reactive Forms. You can use in your forms with formControlName or you can use with [(ngModel)]. You can also customize css in input.scss file.
 
 ## Input group button
-<ngym-input-group-button formControlName="notes"
+
+<ngym-input-group-button 
+    formControlName="notes"
     [faClass]="'fa-regular fa-circle-minus'"
-    [faRobotClass]="'robot_contactCreate_deleteNote'" [placeholder]="'Enter Notes'"
+    [faRobotClass]="'robot_contactCreate_deleteNote'" 
+    [placeholder]="'Enter Notes'"
     (onClickEmitter)="showNotes()">
 </ngym-input-group-button>
-
 
 ## Code scaffolding
 
