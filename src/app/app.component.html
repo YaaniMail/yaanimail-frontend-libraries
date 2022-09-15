@@ -28,3 +28,28 @@
 <div class="section">
     <button type="button" (click)="logFinal()">Send</button>
 </div>
+
+<div class="section-header">Inputs Test</div>
+<div class="section-desc">Input elements</div>
+<div class="section">
+    <ngym-input-group-button [faClass]="'fa-regular fa-circle-minus'" (onClickEmitter)="inputClick()"
+        [(ngModel)]="testValue">
+    </ngym-input-group-button>
+</div>
+
+<div class="section-header">Reactive Forms</div>
+<div class="section-desc">Input elements with formControlName</div>
+<div class="section">
+    <form [formGroup]="form" (submit)="submitted()">
+        <!-- <ngym-input-text formControlName="firstname"></ngym-input-text>
+        <ngym-input-password formControlName="password"></ngym-input-password> -->
+        <ngym-input-group-button [faClass]="'fa-regular fa-circle-minus'" (onClickEmitter)="inputClick()"
+            formControlName="firstname">
+        </ngym-input-group-button>
+
+        <button type="submit">submit</button>
+    </form>
+
+    <ngym-input-password [(ngModel)]="testValue"></ngym-input-password>
+    <button type="button" (click)="inputClick()">Input</button>
+</div>

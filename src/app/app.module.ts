@@ -1,7 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgymChipsModule } from 'projects/ngym-chips/src/public-api';
 import { NgymHomeModule } from 'projects/ngym-home/src/public-api';
+import { NgymInputModule } from 'projects/ngym-input/src/dist';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -10,8 +13,12 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     NgymHomeModule,
-    NgymChipsModule
+    NgymChipsModule,
+    NgymInputModule,
+    ReactiveFormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

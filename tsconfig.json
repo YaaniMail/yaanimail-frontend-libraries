@@ -12,6 +12,10 @@
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "paths": {
+      "ngym-attachment": [
+        "dist/ngym-attachment/ngym-attachment",
+        "dist/ngym-attachment"
+      ],
       "ngym-chips": [
         "dist/ngym-chips/ngym-chips",
         "dist/ngym-chips"
@@ -19,6 +23,10 @@
       "ngym-home": [
         "dist/ngym-home/ngym-home",
         "dist/ngym-home"
+      ],
+      "ngym-input": [
+        "dist/ngym-input/ngym-input",
+        "dist/ngym-input"
       ]
     },
     "declaration": false,

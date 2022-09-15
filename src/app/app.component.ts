@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutoComplete } from 'projects/ngym-chips/src/lib/model/autoComplete';
 import { Tag } from 'projects/ngym-chips/src/lib/model/tag';
 
@@ -7,14 +8,27 @@ import { Tag } from 'projects/ngym-chips/src/lib/model/tag';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  form!: FormGroup;
+  testValue!: string;
   title = 'yaanimail-frontend-libraries';
   pattern: RegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   autoCompleteItems!: AutoComplete[];
   zone1Tags!: Tag[];
 
-  constructor() {
+  constructor(private fb: FormBuilder) {
 
+  }
+
+  ngOnInit(): void {
+    this.createForm();
+  }
+
+  createForm(): void {
+    this.form = this.fb.group({
+      firstname: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
 
   changeAutoCompleteItems(event: any): void {
@@ -33,5 +47,14 @@ export class AppComponent {
 
   logFinal(): void {
     console.log(this.zone1Tags);
+  }
+
+  inputClick(): void {
+    console.log(this.testValue);
+  }
+
+  submitted(): void {
+    console.log(this.form.value.firstname);
+    console.log(this.form.value.password);
   }
 }

@@ -1,7 +1,6 @@
 {
-  "name": "ngym-chips",
-  "version": "0.0.24",
-  "description": "Browser Module is removed",
+  "name": "ngym-input",
+  "version": "0.0.7",
   "peerDependencies": {
     "@angular/common": "^13.3.0",
     "@angular/core": "^13.3.0"
