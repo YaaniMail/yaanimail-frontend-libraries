@@ -4,17 +4,43 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Description
 
-This library has basic input elements compatible to Reactive Forms. You can use in your forms with formControlName or you can use with [(ngModel)]. You can also customize css in input.scss file.
+This library has basic input elements compatible to Reactive Forms. You can use in your ```<form>``` with ```formControlName``` or you can use with ```[(ngModel)]```. 
 
-## Input group button
+## Examples
+### Input group button
 
-<ngym-input-group-button 
-    formControlName="notes"
-    [faClass]="'fa-regular fa-circle-minus'"
-    [faRobotClass]="'robot_contactCreate_deleteNote'" 
-    [placeholder]="'Enter Notes'"
-    (onClickEmitter)="showNotes()">
-</ngym-input-group-button>
+Example screenshot
+![input-group-button](input-group-button.jpg "Input Group Button")
+
+```html
+    <ngym-input-group-button
+        formControlName="note"
+        [faClass]="'fa-regular fa-circle-minus'"
+        [faRobotClass]="'robot_contactCreate_deleteNote'" 
+        [placeholder]="'Enter Note'"
+        (onClickEmitter)="myFuction()">
+    </ngym-input-group-button>
+```
+
+### Input password
+
+```html
+    <ngym-input-password 
+        [(ngModel)]="inputValue">
+    </ngym-input-password>
+```
+
+### Input text
+
+```html
+    <ngym-input
+        [(ngModel)]="inputValue">
+    </ngym-input>
+```
+
+## CSS
+
+You can always override css classes in ```input.scss```. such as ```.form-control``` and ```.input-group```.for different visual elements file.
 
 ## Code scaffolding
 
