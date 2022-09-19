@@ -1,4 +1,4 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { InputTypeTextAccessor } from '../accessors/typeTextAccessor';
 
@@ -13,6 +13,12 @@ import { InputTypeTextAccessor } from '../accessors/typeTextAccessor';
   }]
 })
 export class InputTextComponent extends InputTypeTextAccessor {
+  @Input() placeholder!: string;
+  @Input() robotClass!: string;
+  @Input() autoComplete!: string;
+  @Input() required!: boolean;
+  @Input() isInvalid!: boolean;
+  @Input() pattern!: RegExp;
 
   constructor() {
     super();

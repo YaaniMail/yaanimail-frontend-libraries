@@ -43,6 +43,9 @@
     <form [formGroup]="form" (submit)="submitted()">
         <!-- <ngym-input-text formControlName="firstname"></ngym-input-text>
         <ngym-input-password formControlName="password"></ngym-input-password> -->
+
+        <ngym-input-text [(ngModel)]="testValue"></ngym-input-text>
+
         <ngym-input-group-button [faClass]="'fa-regular fa-circle-minus'" (onClickEmitter)="inputClick()"
             formControlName="firstname">
         </ngym-input-group-button>
