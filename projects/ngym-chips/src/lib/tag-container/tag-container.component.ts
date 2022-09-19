@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output, TemplateRef, ViewChild } from '@angular/core';
 import { AutoComplete } from '../model/autoComplete';
 import { Tag } from '../model/tag';
 import { DragDropProvider } from '../provider/dragDropProvider';
@@ -20,6 +20,7 @@ export class TagContainerComponent {
   @Input() dragAllowed!: boolean;
   @Input() autoCompleteItems!: AutoComplete[];
   @Input() pattern!: RegExp;
+  @Input() autoCompleteTemplate!: TemplateRef<any>;
   @Output() tagsEmitter = new EventEmitter<Tag[]>();
   @Output() onSelectEmitter = new EventEmitter<Tag>();
   @Output() onKeyPressedEmitter = new EventEmitter<KeyboardEvent>();

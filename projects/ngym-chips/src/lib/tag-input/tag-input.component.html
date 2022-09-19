@@ -4,7 +4,8 @@
         (paste)="onPaste($event.clipboardData.getData('text/plain'))" autofocus />
     <div class="autoComplete" *ngIf="autoCompleteVisible">
         <ngym-tag-input-autocomplete [autoCompleteItems]="autoCompleteItems"
-            (onSelectEmitter)="selectAutoCompleteItem($event); newTag.focus();">
+            (onSelectEmitter)="selectAutoCompleteItem($event); newTag.focus();" [autoCompleteTemplate]="autoCompleteTemplate">
         </ngym-tag-input-autocomplete>
     </div>
 </form>
+

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutoComplete } from '../model/autoComplete';
 import { Tag } from '../model/tag';
@@ -16,6 +16,7 @@ export class TagInputComponent implements OnInit {
   form!: FormGroup;
   @Input() splitChars!: string[];
   @Input() autoCompleteItems!: AutoComplete[];
+  @Input() autoCompleteTemplate!: TemplateRef<any>;
   @Output() onKeyPressedEmitter = new EventEmitter<string>();
   @Output() onEnterEmitter = new EventEmitter<Tag>();
   @Output() onPasteEmitter = new EventEmitter<Tag[]>();
