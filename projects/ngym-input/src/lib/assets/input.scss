@@ -75,3 +75,28 @@ $red: #f05f6d;
         border-bottom: 1px solid $borders !important;
     }
 }
+
+.form-control-select {
+  padding: 0px;
+  border: none;
+  border-bottom: 1px solid $input;
+  font-size: 14px;
+  line-height: 1.5;
+  background: url("../assets/img/chevron-down.png");
+  background-repeat: no-repeat;
+  background-position: right 0 center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  &.focus {
+    border-color: $primary !important;
+    color: $primary-hard;
+  }
+  &.error {
+    border-color: $red !important;
+  }
+  &::-ms-expand {
+    display: none;
+  }
+}
