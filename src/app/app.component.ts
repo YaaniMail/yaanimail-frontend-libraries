@@ -29,7 +29,8 @@ export class AppComponent implements OnInit {
   createForm(): void {
     this.form = this.fb.group({
       firstname: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      type: ['', [Validators.required]],
     });
   }
 
@@ -56,7 +57,10 @@ export class AppComponent implements OnInit {
   }
 
   submitForm(): void {
-    console.log(this.form.value.firstname);
-    console.log(this.form.value.password);
+    console.log(this.form.value);
+  }
+  
+  onSelectChange(e: any): void {
+    console.log(e);
   }
 }
