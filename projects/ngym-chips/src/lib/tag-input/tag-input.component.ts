@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutoComplete } from '../model/autoComplete';
 import { Tag } from '../model/tag';
@@ -17,10 +17,19 @@ export class TagInputComponent implements OnInit {
   @Input() splitChars!: string[];
   @Input() autoCompleteItems!: AutoComplete[];
   @Input() autoCompleteTemplate!: TemplateRef<any>;
+  @Input() isLoading!: boolean;
   @Output() onKeyPressedEmitter = new EventEmitter<string>();
   @Output() onEnterEmitter = new EventEmitter<Tag>();
   @Output() onPasteEmitter = new EventEmitter<Tag[]>();
   @Output() onAutoCompleteSelectEmitter = new EventEmitter<Tag>();
+  @ViewChild('autoComplete') autoComplete!: ElementRef<any>;
+  @HostListener('document:click', ['$event'])
+
+  clickout(event: any) {
+    if (this.autoComplete && !this.autoComplete.nativeElement?.contains(event.target)) {
+      this.autoCompleteVisible = false;
+    }
+  }
 
   constructor(private fb: FormBuilder) { }
 

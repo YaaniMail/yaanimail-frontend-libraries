@@ -14,7 +14,7 @@
         <ngym-tag-input [autoCompleteItems]="autoCompleteItems" [splitChars]="splitChars"
             (onEnterEmitter)="addTag($event)" (onKeyPressedEmitter)="getAutoCompleteItems($event)"
             (onPasteEmitter)="pasteTags($event)" (onAutoCompleteSelectEmitter)="selectAutoCompleteItem($event)"
-            [autoCompleteTemplate]="autoCompleteTemplate">
+            [autoCompleteTemplate]="autoCompleteTemplate" [isLoading]="isLoading">
         </ngym-tag-input>
     </div>
 </div>

@@ -10,6 +10,7 @@ export class TagInputAutocompleteComponent {
   dropDownSelectionIndex: number = -1;
   @Input() autoCompleteItems!: AutoComplete[];
   @Input() autoCompleteTemplate!: TemplateRef<any>;
+  @Input() isLoading!: boolean;
   @Output() onSelectEmitter = new EventEmitter<AutoComplete>();
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
