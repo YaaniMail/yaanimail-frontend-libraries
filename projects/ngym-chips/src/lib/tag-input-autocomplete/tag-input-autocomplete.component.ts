@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output, TemplateRef } from '@angular/core';
 import { AutoComplete } from '../model/autoComplete';
 
 @Component({
@@ -9,6 +9,8 @@ import { AutoComplete } from '../model/autoComplete';
 export class TagInputAutocompleteComponent {
   dropDownSelectionIndex: number = -1;
   @Input() autoCompleteItems!: AutoComplete[];
+  @Input() autoCompleteTemplate!: TemplateRef<any>;
+  @Input() isLoading!: boolean;
   @Output() onSelectEmitter = new EventEmitter<AutoComplete>();
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {

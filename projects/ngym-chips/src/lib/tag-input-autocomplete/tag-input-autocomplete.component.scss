@@ -49,3 +49,54 @@
 .item.selected {
     background-color: #edf2f5;
 }
+
+.dropdown-container {
+    .loader-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        opacity: 0.5;
+        top: 0;
+        .loader {
+            position: absolute;
+            top: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            border: 3px solid white;
+            border-radius: 50%;
+            border-top: 3px solid #00a0df;
+            border-left: 3px solid #00a0df;
+            width: 30px;
+            height: 30px;
+            -webkit-animation: spin 2s linear infinite; /* Safari */
+            animation: spin 2s linear infinite;
+          }
+    }
+}
+
+
+
+
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+

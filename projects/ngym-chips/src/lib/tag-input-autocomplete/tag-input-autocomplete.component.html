@@ -1,12 +1,25 @@
 <div class="dropdown">
-    <div class="item" [ngClass]="{'selected': i === dropDownSelectionIndex}" (click)="onSelectItem(item)"
-        *ngFor="let item of autoCompleteItems; let i = index">
-        <div class="initials">
-            {{ item.name | initials }}
+    <div class="dropdown-container">
+        <div class="item" [ngClass]="{'selected': i === dropDownSelectionIndex}" (click)="onSelectItem(item)"
+            *ngFor="let item of autoCompleteItems; let i = index" [ngSwitch]="!!autoCompleteTemplate">
+            <!-- Custom Template -->
+            <div *ngSwitchCase="true">
+                <ng-template [ngTemplateOutletContext]="{ item: item, index: index }"
+                    [ngTemplateOutlet]="autoCompleteTemplate">
+                </ng-template>
+            </div>
+            <div *ngSwitchCase="false" class="tag-wrapper">
+                <div class="initials">
+                    {{ item.name | initials }}
+                </div>
+                <div class="info">
+                    <div class="name">{{ item.name }}</div>
+                    <div class="value">{{ item.email }}</div>
+                </div>
+            </div>
         </div>
-        <div class="info">
-            <div class="name">{{ item.name }}</div>
-            <div class="value">{{ item.email }}</div>
+        <div class="loader-container" *ngIf="isLoading">
+            <div class="loader"></div>
         </div>
     </div>
 </div>
