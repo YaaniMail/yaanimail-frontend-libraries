@@ -1,6 +1,6 @@
 <div [ngSwitch]="!!tagTemplate">
     <div *ngSwitchCase="true">
-        <ng-template [ngTemplateOutletContext]="{ item: item, index: index }" [ngTemplateOutlet]="tagTemplate">
+        <ng-template [ngTemplateOutletContext]="{ item: tag, index: index }" [ngTemplateOutlet]="tagTemplate">
         </ng-template>
     </div>
     <div *ngSwitchCase="false">
