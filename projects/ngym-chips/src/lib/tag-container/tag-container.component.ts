@@ -21,6 +21,7 @@ export class TagContainerComponent {
   @Input() autoCompleteItems!: AutoComplete[];
   @Input() pattern!: RegExp;
   @Input() autoCompleteTemplate!: TemplateRef<any>;
+  @Input() tagTemplate!: TemplateRef<any>;
   @Input() isLoading!: boolean;
   @Output() tagsEmitter = new EventEmitter<Tag[]>();
   @Output() onSelectEmitter = new EventEmitter<Tag>();

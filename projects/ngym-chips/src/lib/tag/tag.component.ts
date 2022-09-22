@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, TemplateRef } from '@angular/core';
 import { Tag } from '../model/tag';
 
 @Component({
@@ -14,6 +14,7 @@ export class TagComponent implements OnInit {
   @Input() dragAllowed!: boolean;
   @Input() pattern!: RegExp;
   @Input() tag!: Tag;
+  @Input() tagTemplate!: TemplateRef<any>;
   @Output() onSelectEmitter = new EventEmitter<Tag>();
   @Output() onRemoveEmitter = new EventEmitter<number>();
   @Output() onEditEmitter = new EventEmitter<Tag>();
