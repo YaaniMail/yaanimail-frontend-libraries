@@ -9,9 +9,6 @@ This library has basic input elements compatible to Reactive Forms. You can use 
 ## Examples
 ### Input group button
 
-Example screenshot
-![input-group-button](input-group-button.jpg "Input Group Button")
-
 ```html
     <ngym-input-group-button
         formControlName="note"

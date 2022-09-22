@@ -26,30 +26,61 @@
     </ngym-tag-container>
 </div>
 <div class="section">
-    <button type="button" (click)="logFinal()">Send</button>
+    <button type="button" (click)="logTags()">Send</button>
 </div>
 
 <div class="section-header">Inputs Test</div>
-<div class="section-desc">Input elements</div>
+<div class="section-desc">Input elements accessing with <b>[(ngModel)]</b></div>
 <div class="section">
-    <ngym-input-group-button [faClass]="'fa-regular fa-circle-minus'" (onClickEmitter)="inputClick()"
-        [(ngModel)]="testValue">
-    </ngym-input-group-button>
+    <div class="section-element-header">Input Group Button <b>ngym-input-group-button</b></div>
+    <div class="section-element">
+        <ngym-input-group-button [faClass]="'fa-regular fa-circle-minus'" (onClickEmitter)="logInputClick()"
+            [(ngModel)]="inputGroupValue">
+        </ngym-input-group-button>
+    </div>
+</div>
+<div class="section">
+    <div class="section-element-header">Input Text <b>ngym-input-text</b></div>
+    <div class="section-element">
+        <ngym-input-text [(ngModel)]="inputTextValue"></ngym-input-text>
+    </div>
+</div>
+<div class="section">
+    <div class="section-element-header">Input Password Text <b>ngym-input-password</b></div>
+    <div class="section-element">
+        <ngym-input-password [(ngModel)]="inputPasswordValue"></ngym-input-password>
+    </div>
+</div>
+<div class="section-header">Select Dropdown</div>
+<div class="section-desc">Input elements accessing with <b>[(ngModel)]</b></div>
+<div class="section">
+    <div class="section-element-header">Select elements based on array <b>ngym-input-select</b></div>
+    <div class="section-element">
+        <ngym-input-select [options]="['deneme', 'deneme2', 'deneme3']"></ngym-input-select>
+    </div>
 </div>
 
 <div class="section-header">Reactive Forms</div>
-<div class="section-desc">Input elements with formControlName</div>
+<div class="section-desc">Input elements with <b>formControlName</b></div>
 <div class="section">
-    <form [formGroup]="form" (submit)="submitted()">
-        <!-- <ngym-input-text formControlName="firstname"></ngym-input-text>
-        <ngym-input-password formControlName="password"></ngym-input-password> -->
-        <ngym-input-group-button [faClass]="'fa-regular fa-circle-minus'" (onClickEmitter)="inputClick()"
-            formControlName="firstname">
-        </ngym-input-group-button>
-
-        <button type="submit">submit</button>
-    </form>
-
-    <ngym-input-password [(ngModel)]="testValue"></ngym-input-password>
-    <button type="button" (click)="inputClick()">Input</button>
+    <div class="section-element-header">Form example with formControlName entegrated <b>formGroup</b></div>
+    <div class="section-element">
+        <form [formGroup]="form" (submit)="submitForm()">
+            <div class="form-element">
+                <label>Firstname: </label>
+                <ngym-input-text formControlName="firstname"></ngym-input-text>
+            </div>
+            <div class="form-element">
+                <label>Password: </label>
+                <ngym-input-password formControlName="password"></ngym-input-password>
+            </div>
+            <div class="form-element">
+                <label>Type: </label>
+                <ngym-input-select (selectionChange)="onSelectChange($event)" [attr.data-name]="'type'" [formControlName]="'type'" [options]="['Student', 'Trainer', 'Product Owner']"></ngym-input-select>
+            </div>
+            <div class="form-element">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
 </div>

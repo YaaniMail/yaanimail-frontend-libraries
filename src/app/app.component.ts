@@ -10,7 +10,9 @@ import { Tag } from 'projects/ngym-chips/src/lib/model/tag';
 })
 export class AppComponent implements OnInit {
   form!: FormGroup;
-  testValue!: string;
+  inputGroupValue!: string;
+  inputTextValue!: string;
+  inputPasswordValue!: string;
   title = 'yaanimail-frontend-libraries';
   pattern: RegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   autoCompleteItems!: AutoComplete[];
@@ -27,7 +29,8 @@ export class AppComponent implements OnInit {
   createForm(): void {
     this.form = this.fb.group({
       firstname: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      type: ['', [Validators.required]],
     });
   }
 
@@ -45,16 +48,19 @@ export class AppComponent implements OnInit {
     this.zone1Tags = tags;
   }
 
-  logFinal(): void {
-    console.log(this.zone1Tags);
+  logTags(): void {
+
   }
 
-  inputClick(): void {
-    console.log(this.testValue);
+  logInputClick(): void {
+    console.log(this.inputGroupValue);
   }
 
-  submitted(): void {
-    console.log(this.form.value.firstname);
-    console.log(this.form.value.password);
+  submitForm(): void {
+    console.log(this.form.value);
+  }
+  
+  onSelectChange(e: any): void {
+    console.log(e);
   }
 }

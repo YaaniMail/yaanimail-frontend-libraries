@@ -6,10 +6,24 @@
 }
 
 .section-desc {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    font-size: 17px;
+    background-color: darkgrey;
+    padding: 10px;
 }
 
 .section {
     padding-bottom: 20px;
+    .section-element-header {
+        font-size: 14px;
+        background-color: gainsboro;
+        padding: 10px;
+    }
+    .section-element {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+
+.form-element {
+    padding: 10px 0;
 }
