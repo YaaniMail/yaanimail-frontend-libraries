@@ -1,5 +1,6 @@
 import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { TypeSelectAccessor } from '../accessors/typeSelectAccessor';
 
 @Component({
   selector: 'ngym-input-select',
@@ -13,42 +14,20 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class InputSelectComponent implements ControlValueAccessor {
+export class InputSelectComponent extends TypeSelectAccessor {
   @Input() options!: string[];
-  @Output() onChangeEmitter = new EventEmitter();
-  @Output() selectionChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() selectionChange: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() {
+    super();
   }
 
   ngOnInit(): void {
   }
 
   selectionChanged(value: string) {
-    console.log(value);
     this.selectionChange.emit(value);
     this.onChange(value);
     this.onTouched();
   } 
-
-  // ControlValueAccessor Implementation
-  onChange: any = () => { };
-  onTouched: any = () => { };
-
-  registerOnChange(fn: any) {
-    this.onChange = fn;
-  }
-
-  registerOnTouched(fn: any) {
-    this.onTouched = fn;
-  }
-
-  writeValue(value: any) {
-    //this.value = value;
-  }
-
-  setDisabledState(isDisabled: boolean) {
-    //this.disabled = isDisabled;
-  }
-
 }
