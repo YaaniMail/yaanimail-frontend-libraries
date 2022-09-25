@@ -3,12 +3,12 @@
         <div class="item" [ngClass]="{'selected': i === dropDownSelectionIndex}" (click)="onSelectItem(item)"
             *ngFor="let item of autoCompleteItems; let i = index" [ngSwitch]="!!autoCompleteTemplate">
             <!-- Custom Template -->
-            <div *ngSwitchCase="true">
+            <ng-container *ngSwitchCase="true">
                 <ng-template [ngTemplateOutletContext]="{ item: item, index: index }"
                     [ngTemplateOutlet]="autoCompleteTemplate">
                 </ng-template>
-            </div>
-            <div *ngSwitchCase="false" class="tag-wrapper">
+            </ng-container>
+            <ng-container *ngSwitchCase="false">
                 <div class="initials">
                     {{ item.name | initials }}
                 </div>
@@ -16,7 +16,7 @@
                     <div class="name content-overflow">{{ item.name }}</div>
                     <div class="value content-overflow">{{ item.email }}</div>
                 </div>
-            </div>
+            </ng-container>
         </div>
         <div class="loader-container" *ngIf="isLoading">
             <div class="loader"></div>
