@@ -24,7 +24,6 @@ export class TagInputComponent implements OnInit, OnChanges {
   @Output() onAutoCompleteSelectEmitter = new EventEmitter<Tag>();
   @ViewChild('autoComplete') autoComplete!: ElementRef<any>;
   @HostListener('document:click', ['$event'])
-
   clickout(event: any) {
     if (this.autoComplete && !this.autoComplete.nativeElement?.contains(event.target)) {
       this.autoCompleteVisible = false;
@@ -37,7 +36,7 @@ export class TagInputComponent implements OnInit, OnChanges {
     this.createForm();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (changes['autoCompleteItems']?.currentValue?.length === 0) {
       this.autoCompleteVisible = false;
     } else {
