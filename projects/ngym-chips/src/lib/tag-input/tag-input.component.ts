@@ -37,7 +37,7 @@ export class TagInputComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['autoCompleteItems']?.currentValue?.length === 0) {
+    /* if (changes['autoCompleteItems']?.currentValue?.length === 0) {
       this.autoCompleteVisible = false;
     } else {
       this.autoCompleteVisible = true;
@@ -45,7 +45,7 @@ export class TagInputComponent implements OnInit, OnChanges {
 
     if (!this.autoCompleteVisible) {
       this.autoCompleteItems = [];
-    }
+    } */
   }
 
   /**
@@ -186,7 +186,7 @@ export class TagInputComponent implements OnInit, OnChanges {
   checkAutoCompleteVisible(): void {
     const draft = this.form.value.newTag;
 
-    /* if (draft === null) {
+    if (draft === null) {
       this.autoCompleteVisible = false;
       return;
     }
@@ -194,12 +194,12 @@ export class TagInputComponent implements OnInit, OnChanges {
     if (this.autoCompleteItems !== undefined && this.autoCompleteItems.length === 0) {
       this.autoCompleteVisible = false;
       return;
-    } */
+    }
 
-    /*if (draft.length < 2) {
+    if (draft.length < 2) {
       this.autoCompleteVisible = false;
     } else {
       this.autoCompleteVisible = true;
-    }*/
+    }
   }
 }
