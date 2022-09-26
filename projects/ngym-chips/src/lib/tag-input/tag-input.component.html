@@ -2,7 +2,7 @@
     <input #newTag type="text" class="form-control" formControlName="newTag" (keyup)="onKeyPressed()"
         (keyup.enter)="onEnter($event)" (mousedown)="onMouseDown()" (focus)="onFocus()"
         (paste)="onPaste($event.clipboardData.getData('text/plain'))" autofocus />
-    <div class="autoComplete" *ngIf="autoCompleteVisible" #autoComplete>
+    <div class="autoComplete" *ngIf="autoCompleteVisible && autoCompleteItems.length !== 0" #autoComplete>
         <ngym-tag-input-autocomplete [autoCompleteItems]="autoCompleteItems"
             (onSelectEmitter)="selectAutoCompleteItem($event); newTag.focus();"
             [autoCompleteTemplate]="autoCompleteTemplate" [isLoading]="isLoading">

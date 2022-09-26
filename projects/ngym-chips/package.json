@@ -1,7 +1,7 @@
 {
   "name": "ngym-chips",
-  "version": "0.0.32",
-  "description": "Custom tag bug fixed",
+  "version": "0.0.38",
+  "description": "First autocomplete show",
   "peerDependencies": {
     "@angular/common": "^13.3.0",
     "@angular/core": "^13.3.0"

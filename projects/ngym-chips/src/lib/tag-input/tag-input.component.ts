@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutoComplete } from '../model/autoComplete';
 import { Tag } from '../model/tag';
@@ -37,16 +37,16 @@ export class TagInputComponent implements OnInit, OnChanges {
     this.createForm();
   }
 
-  ngOnChanges() {
-    /* if (this.autoCompleteItems.length === 0) {
-       this.autoCompleteVisible = false;
-     } else {
-       this.autoCompleteVisible = true;
-     }
- 
-     if(!this.autoCompleteVisible) {
-       this.autoCompleteItems = [];
-     }*/
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['autoCompleteItems']?.currentValue?.length === 0) {
+      this.autoCompleteVisible = false;
+    } else {
+      this.autoCompleteVisible = true;
+    }
+
+    if (!this.autoCompleteVisible) {
+      this.autoCompleteItems = [];
+    }
   }
 
   /**
@@ -197,10 +197,10 @@ export class TagInputComponent implements OnInit, OnChanges {
       return;
     } */
 
-    if (draft.length < 2) {
+    /*if (draft.length < 2) {
       this.autoCompleteVisible = false;
     } else {
       this.autoCompleteVisible = true;
-    }
+    }*/
   }
 }
