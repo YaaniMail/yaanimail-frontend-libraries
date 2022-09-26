@@ -28,6 +28,27 @@
 <div class="section">
     <button type="button" (click)="logTags()">Send</button>
 </div>
+<div class="section-header">Chips Test</div>
+<div class="section-desc">Custom template on Tag and AutoComplete menu.
+</div>
+<div class="section">
+    <div>Mail</div>
+    <ngym-tag-container (tagsEmitter)="getTags($event, 'zone4')" (onKeyPressedEmitter)="changeAutoCompleteItems($event)"
+        [duplicateAllowed]="false" [splitChars]="[',', ';']" [pattern]="pattern" [dragAllowed]="true"
+        [dragZone]="'zone3'" [autoCompleteItems]="autoCompleteItems" [tagTemplate]="tagTemplate"
+        [autoCompleteTemplate]="autoCompleteTemplate">
+        <ng-template let-item="item" #tagTemplate>
+            <div style="background-color: black; color: white;">
+                {{ item.value }}
+            </div>
+        </ng-template>
+        <ng-template let-item="item" #autoCompleteTemplate>
+            <div style="background-color: gray; color: black;">
+                {{ item.email }}
+            </div>
+        </ng-template>
+    </ngym-tag-container>
+</div>
 
 <div class="section-header">Inputs Test</div>
 <div class="section-desc">Input elements accessing with <b>[(ngModel)]</b></div>
@@ -76,7 +97,8 @@
             </div>
             <div class="form-element">
                 <label>Type: </label>
-                <ngym-input-select (selectionChange)="onSelectChange($event)" [attr.data-name]="'type'" [formControlName]="'type'" [options]="['Student', 'Trainer', 'Product Owner']"></ngym-input-select>
+                <ngym-input-select (selectionChange)="onSelectChange($event)" [attr.data-name]="'type'"
+                    [formControlName]="'type'" [options]="['Student', 'Trainer', 'Product Owner']"></ngym-input-select>
             </div>
             <div class="form-element">
                 <button type="submit">Submit</button>
