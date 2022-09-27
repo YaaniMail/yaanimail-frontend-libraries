@@ -28,6 +28,23 @@
 <div class="section">
     <button type="button" (click)="logTags()">Send</button>
 </div>
+<div class="section-header">Accessor test</div>
+<div class="section-desc">Library test purpose</div>
+<div class="section">
+    <lib-test-bind [(ngModel)]="testBind" [tagTemplate]="tagTemplate" (onAddEmitter)="onAdd($event)">
+        <ng-template let-item="item" #tagTemplate>
+            <div style="background-color: blue; color: white;">
+                {{ item.name }}
+                <span *ngIf="item.isGroup">+</span>
+            </div>
+        </ng-template>
+    </lib-test-bind>
+    <button (click)="finalize()">
+        finelize
+    </button>
+</div>
+
+
 <div class="section-header">Chips Test</div>
 <div class="section-desc">Custom template on Tag and AutoComplete menu.
 </div>

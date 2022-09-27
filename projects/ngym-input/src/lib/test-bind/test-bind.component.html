@@ -1,0 +1,19 @@
+<div>
+    <div *ngFor="let item of tagValues">
+        <div [ngSwitch]="!!tagTemplate">
+            <div *ngSwitchCase="true">
+                <ng-template [ngTemplateOutletContext]="{ item: item, index: index }" [ngTemplateOutlet]="tagTemplate">
+                </ng-template>
+            </div>
+            <div *ngSwitchCase="false">
+                {{ item.name }}
+            </div>
+        </div>
+    </div>
+    <form [formGroup]="form">
+        <input type="text" formControlName="name" />
+    </form>
+    <button (click)="add()">
+        add
+    </button>
+</div>

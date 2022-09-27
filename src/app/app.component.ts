@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   pattern: RegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   autoCompleteItems!: AutoComplete[];
   zone1Tags!: Tag[];
+  testBind: any;
 
   constructor(private fb: FormBuilder) {
 
@@ -49,7 +50,11 @@ export class AppComponent implements OnInit {
   }
 
   logTags(): void {
+    console.log(this.zone1Tags);
+  }
 
+  finalize(): void {
+    console.log(this.testBind);
   }
 
   logInputClick(): void {
@@ -59,8 +64,13 @@ export class AppComponent implements OnInit {
   submitForm(): void {
     console.log(this.form.value);
   }
-  
+
   onSelectChange(e: any): void {
     console.log(e);
+  }
+
+  onAdd(event: any): void {
+    event.isGroup = true; // webservis
+    this.testBind.push(event);
   }
 }

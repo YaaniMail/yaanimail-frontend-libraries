@@ -1,4 +1,4 @@
-<div class="ym-tag-container" (dragover)="onZoneDragOver($event)" (drop)="onDrop($event)">
+<div class="ym-tag-container" (dragover)="onZoneDragOver($event)" (drop)="onDrop($event)" ngDefaultControl>
     <div class="ym-tag-drag-zone">
         <!-- Tags -->
         <ngym-tag *ngFor="let t of tags; let i = index"

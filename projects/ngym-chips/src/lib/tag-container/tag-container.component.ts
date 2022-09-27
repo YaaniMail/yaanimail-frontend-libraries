@@ -1,4 +1,5 @@
 import { Component, EventEmitter, HostListener, Input, Output, TemplateRef, ViewChild } from '@angular/core';
+import { TagsAccessor } from '../accessor/tagAccessor';
 import { AutoComplete } from '../model/autoComplete';
 import { Tag } from '../model/tag';
 import { DragDropProvider } from '../provider/dragDropProvider';
@@ -9,7 +10,7 @@ import { TagInputComponent } from '../tag-input/tag-input.component';
   templateUrl: './tag-container.component.html',
   styleUrls: ['./tag-container.component.scss']
 })
-export class TagContainerComponent {
+export class TagContainerComponent extends TagsAccessor {
   selectedTagId: number = -1;
   onDrag!: boolean;
   tags: Tag[] = [];
@@ -39,7 +40,9 @@ export class TagContainerComponent {
 
   constructor(
     public dragDropProvider: DragDropProvider
-  ) { }
+  ) {
+    super();
+  }
 
   /**
    * Add a new tag to container. Showing every tag on screen by ngFor.
@@ -53,6 +56,7 @@ export class TagContainerComponent {
     }
 
     this.tags.push(tag);
+    this.tagValues = this.tags;
     this.tagsEmitter.emit(this.tags);
   }
 
