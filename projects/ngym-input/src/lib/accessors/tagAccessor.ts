@@ -1,13 +1,13 @@
-import { Directive } from "@angular/core";
 import { ControlValueAccessor } from "@angular/forms";
+import { Tag } from "../test-bind/tag";
 
 export class TagsAccessor implements ControlValueAccessor {
-    private _value!: any;
-    public get tagValues(): any {
+    private _value!: Tag[];
+    public get tagValues(): Tag[] {
         return this._value;
     }
 
-    public set tagValues(v: any) {
+    public set tagValues(v: Tag[]) {
         if (v !== this._value) {
             this._value = v;
             this.onChange(v);
@@ -16,11 +16,11 @@ export class TagsAccessor implements ControlValueAccessor {
 
     constructor() { }
 
-    onChange = (_: any) => { };
+    onChange = (_: Tag[]) => { };
 
     onTouched = () => { };
 
-    writeValue(value: any): void {
+    writeValue(value: Tag[]): void {
         this.tagValues = value;
     }
 

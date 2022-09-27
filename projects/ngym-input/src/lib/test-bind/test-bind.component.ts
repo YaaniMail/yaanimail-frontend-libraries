@@ -1,6 +1,7 @@
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { TagsAccessor } from '../accessors/tagAccessor';
+import { Tag } from './tag';
 
 @Component({
   selector: 'lib-test-bind',
@@ -12,7 +13,7 @@ import { TagsAccessor } from '../accessors/tagAccessor';
   }]
 })
 export class TestBindComponent extends TagsAccessor implements OnInit {
-  items: any = [];
+  _tagValues: Tag[] = [];
   form!: FormGroup;
   @Input() tagTemplate!: TemplateRef<any>;
   @Output() onAddEmitter = new EventEmitter();
@@ -32,7 +33,7 @@ export class TestBindComponent extends TagsAccessor implements OnInit {
   add(): void {
     const _item = { 'name': this.form.value.name };
     // this.items.push(_item);
-    this.tagValues = this.items;
+    this.tagValues = this._tagValues;
     this.onAddEmitter.emit(_item);
   }
 

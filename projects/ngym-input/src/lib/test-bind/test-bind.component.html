@@ -1,5 +1,5 @@
 <div>
-    <div *ngFor="let item of tagValues">
+    <div *ngFor="let item of _tagValues">
         <div [ngSwitch]="!!tagTemplate">
             <div *ngSwitchCase="true">
                 <ng-template [ngTemplateOutletContext]="{ item: item, index: index }" [ngTemplateOutlet]="tagTemplate">
@@ -14,6 +14,6 @@
         <input type="text" formControlName="name" />
     </form>
     <button (click)="add()">
-        add
+        Add
     </button>
 </div>

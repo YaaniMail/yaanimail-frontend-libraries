@@ -69,8 +69,8 @@ export class AppComponent implements OnInit {
     console.log(e);
   }
 
-  onAdd(event: any): void {
-    event.isGroup = true; // webservis
-    this.testBind.push(event);
+  onAdd(tag: any): void {
+    tag.isGroup = true; // webservis
+    this.testBind.push(tag);
   }
 }
