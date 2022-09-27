@@ -1,4 +1,5 @@
-import { Component, EventEmitter, HostListener, Input, Output, TemplateRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, forwardRef, HostListener, Input, Output, TemplateRef, ViewChild } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { TagsAccessor } from '../accessor/tagAccessor';
 import { AutoComplete } from '../model/autoComplete';
 import { Tag } from '../model/tag';
@@ -8,7 +9,12 @@ import { TagInputComponent } from '../tag-input/tag-input.component';
 @Component({
   selector: 'ngym-tag-container',
   templateUrl: './tag-container.component.html',
-  styleUrls: ['./tag-container.component.scss']
+  styleUrls: ['./tag-container.component.scss'],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => TagContainerComponent),
+    multi: true
+  }]
 })
 export class TagContainerComponent extends TagsAccessor {
   selectedTagId: number = -1;
@@ -24,10 +30,10 @@ export class TagContainerComponent extends TagsAccessor {
   @Input() autoCompleteTemplate!: TemplateRef<any>;
   @Input() tagTemplate!: TemplateRef<any>;
   @Input() isLoading!: boolean;
-  @Output() tagsEmitter = new EventEmitter<Tag[]>();
   @Output() onSelectEmitter = new EventEmitter<Tag>();
   @Output() onKeyPressedEmitter = new EventEmitter<KeyboardEvent>();
   @Output() onPasteEmitter = new EventEmitter<Tag[]>();
+  @Output() onAddEmitter = new EventEmitter<Tag[]>();
   @ViewChild(TagInputComponent) tagInputComponent!: TagInputComponent;
   @HostListener('document:keydown', ['$event'])
   // Deleting a selected tag if a keyboard event of Bacspace is clicked globally.
@@ -56,8 +62,7 @@ export class TagContainerComponent extends TagsAccessor {
     }
 
     this.tags.push(tag);
-    this.tagValues = this.tags;
-    this.tagsEmitter.emit(this.tags);
+    this.tagValues = this.tags; // tagValues is defined in tagAccessor. Can be get by [(ngModel)] from components
   }
 
   /**
@@ -73,7 +78,9 @@ export class TagContainerComponent extends TagsAccessor {
     }
 
     this.dragDropProvider.receiverComponent.tags.splice(this.dragDropProvider.droppingIndex, 0, this.dragDropProvider.draggingTag);
-    this.tagsEmitter.emit(this.dragDropProvider.receiverComponent.tags);
+    this.tagValues = this.dragDropProvider.receiverComponent.tags;
+    console.log(this.dragDropProvider.senderComponent.tags);
+    console.log(this.dragDropProvider.receiverComponent.tags);
   }
 
   /**
@@ -91,7 +98,8 @@ export class TagContainerComponent extends TagsAccessor {
    */
   removeTag(id: number): void {
     this.tags = this.tags.filter(tag => tag.id !== id);
-    this.tagsEmitter.emit(this.tags);
+    this.tagValues = this.tags;
+    // this.tagsEmitter.emit(this.tags);
   }
 
   /**
@@ -100,7 +108,10 @@ export class TagContainerComponent extends TagsAccessor {
    */
   removeTagAfterDragDrop(id: number): void {
     this.dragDropProvider.senderComponent.tags = this.dragDropProvider.senderComponent.tags.filter(tag => tag.id !== id);
-    this.tagsEmitter.emit(this.dragDropProvider.senderComponent.tags);
+    // this.tagsEmitter.emit(this.dragDropProvider.senderComponent.tags);
+    this.tagValues = this.dragDropProvider.senderComponent.tags;
+    console.log(this.dragDropProvider.senderComponent.tags);
+    console.log(this.dragDropProvider.receiverComponent.tags);
   }
 
   /**

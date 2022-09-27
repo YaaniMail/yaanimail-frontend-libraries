@@ -1,10 +1,7 @@
-import { Directive } from "@angular/core";
 import { ControlValueAccessor } from "@angular/forms";
 import { Tag } from "../model/tag";
 
-@Directive({
-    selector: 'div'
-})
+
 export class TagsAccessor implements ControlValueAccessor {
     private _value!: Tag[];
     public get tagValues(): Tag[] {
@@ -24,7 +21,7 @@ export class TagsAccessor implements ControlValueAccessor {
 
     onTouched = () => { };
 
-    writeValue(value: any): void {
+    writeValue(value: Tag[]): void {
         this.tagValues = value;
     }
 

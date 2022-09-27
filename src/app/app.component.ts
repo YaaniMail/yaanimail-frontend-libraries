@@ -18,6 +18,10 @@ export class AppComponent implements OnInit {
   autoCompleteItems!: AutoComplete[];
   zone1Tags!: Tag[];
   testBind: any;
+  toTags: any;
+  ccTags: any;
+  bccTags: any;
+  id: number = 0;
 
   constructor(private fb: FormBuilder) {
 
@@ -49,9 +53,7 @@ export class AppComponent implements OnInit {
     this.zone1Tags = tags;
   }
 
-  logTags(): void {
-    console.log(this.zone1Tags);
-  }
+
 
   finalize(): void {
     console.log(this.testBind);
@@ -72,5 +74,27 @@ export class AppComponent implements OnInit {
   onAdd(tag: any): void {
     tag.isGroup = true; // webservis
     this.testBind.push(tag);
+  }
+
+  onTagAdd(tag: any, zone: string) {
+    this.id++;
+    const _tag = { 'id': this.id, 'value': tag }
+
+    if (zone === 'zone1') {
+      this.toTags.push(tag);
+    }
+    if (zone === 'zone2') {
+      this.ccTags.push(tag);
+    }
+    if (zone === 'zone3') {
+      this.bccTags.push(tag);
+    }
+
+  }
+
+  logTags(): void {
+    console.log(this.toTags);
+    console.log(this.ccTags);
+    console.log(this.bccTags);
   }
 }

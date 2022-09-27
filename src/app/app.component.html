@@ -6,23 +6,23 @@
 </div>
 <div class="section">
     <div>To:</div>
-    <ngym-tag-container (tagsEmitter)="getTags($event, 'zone1')" (onKeyPressedEmitter)="changeAutoCompleteItems($event)"
-        [duplicateAllowed]="false" [splitChars]="[',', ';']" [pattern]="pattern" [dragAllowed]="true"
-        [dragZone]="'zone1'" [autoCompleteItems]="autoCompleteItems">
+    <ngym-tag-container [(ngModel)]="toTags" (onAddEmitter)="onTagAdd($event, 'zone1')"
+        (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false" [splitChars]="[',', ';']"
+        [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone1'" [autoCompleteItems]="autoCompleteItems">
     </ngym-tag-container>
 </div>
 <div class="section">
     <div>Cc:</div>
-    <ngym-tag-container (tagsEmitter)="getTags($event, 'zone2')" (onKeyPressedEmitter)="changeAutoCompleteItems($event)"
-        [duplicateAllowed]="false" [splitChars]="[',', ';']" [pattern]="pattern" [dragAllowed]="true"
-        [dragZone]="'zone2'" [autoCompleteItems]="autoCompleteItems">
+    <ngym-tag-container [(ngModel)]="ccTags" (onAddEmitter)="onTagAdd($event, 'zone2')"
+        (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false" [splitChars]="[',', ';']"
+        [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone2'" [autoCompleteItems]="autoCompleteItems">
     </ngym-tag-container>
 </div>
 <div class="section">
     <div>Bcc:</div>
-    <ngym-tag-container (tagsEmitter)="getTags($event, 'zone3')" (onKeyPressedEmitter)="changeAutoCompleteItems($event)"
-        [duplicateAllowed]="false" [splitChars]="[',', ';']" [pattern]="pattern" [dragAllowed]="true"
-        [dragZone]="'zone3'" [autoCompleteItems]="autoCompleteItems">
+    <ngym-tag-container [(ngModel)]="bccTags" (onAddEmitter)="onTagAdd($event, 'zone3')"
+        (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false" [splitChars]="[',', ';']"
+        [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone3'" [autoCompleteItems]="autoCompleteItems">
     </ngym-tag-container>
 </div>
 <div class="section">
