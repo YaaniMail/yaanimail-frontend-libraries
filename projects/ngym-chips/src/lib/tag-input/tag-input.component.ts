@@ -60,9 +60,8 @@ export class TagInputComponent implements OnInit, OnChanges {
   /**
    * Creating a tag object
    */
-  createTagObject(id: number, value: string): Tag {
+  createTagObject(value: string): Tag {
     const tag = new Tag();
-    tag.id = id;
     tag.value = value;
 
     return tag;
@@ -72,11 +71,10 @@ export class TagInputComponent implements OnInit, OnChanges {
    * Creating a tag object from selected auto complete item and passing it to parent
    */
   selectAutoCompleteItem(item: AutoComplete): void {
-    const _tag = this.createTagObject(this.id, item.email);
+    const _tag = this.createTagObject(item.email);
     this.onAutoCompleteSelectEmitter.emit(_tag);
     this.form.reset();
 
-    this.id++;
     this.autoCompleteVisible = false;
   }
 
@@ -129,10 +127,9 @@ export class TagInputComponent implements OnInit, OnChanges {
       return;
     }
 
-    const tag = this.createTagObject(this.id, tagValue);
+    const tag = this.createTagObject(tagValue);
     this.onEnterEmitter.emit(tag);
 
-    this.id++;
     this.form.reset();
     this.checkAutoCompleteVisible();
   }
@@ -149,8 +146,7 @@ export class TagInputComponent implements OnInit, OnChanges {
     });
 
     for (let i = 0; i < filtered.length; i++) {
-      const tag = this.createTagObject(this.id, splitArray[i].trim());
-      this.id++;
+      const tag = this.createTagObject(splitArray[i].trim());
 
       this.pastedTagArray.push(tag);
     }

@@ -33,7 +33,7 @@ export class TagContainerComponent extends TagsAccessor {
   @Output() onSelectEmitter = new EventEmitter<Tag>();
   @Output() onKeyPressedEmitter = new EventEmitter<KeyboardEvent>();
   @Output() onPasteEmitter = new EventEmitter<Tag[]>();
-  @Output() onAddEmitter = new EventEmitter<Tag[]>();
+  @Output() onAddEmitter = new EventEmitter<Tag>();
   @ViewChild(TagInputComponent) tagInputComponent!: TagInputComponent;
   @HostListener('document:keydown', ['$event'])
   // Deleting a selected tag if a keyboard event of Bacspace is clicked globally.
@@ -61,8 +61,9 @@ export class TagContainerComponent extends TagsAccessor {
       return;
     }
 
-    this.tags.push(tag);
+    // this.tags.push(tag);
     this.tagValues = this.tags; // tagValues is defined in tagAccessor. Can be get by [(ngModel)] from components
+    this.onAddEmitter.emit(tag);
   }
 
   /**
@@ -77,10 +78,9 @@ export class TagContainerComponent extends TagsAccessor {
       return;
     }
 
-    this.dragDropProvider.receiverComponent.tags.splice(this.dragDropProvider.droppingIndex, 0, this.dragDropProvider.draggingTag);
-    this.tagValues = this.dragDropProvider.receiverComponent.tags;
-    console.log(this.dragDropProvider.senderComponent.tags);
-    console.log(this.dragDropProvider.receiverComponent.tags);
+    this.tags.splice(this.dragDropProvider.droppingIndex, 0, this.dragDropProvider.draggingTag);
+    // this.tags = this.dragDropProvider.receiverComponent.tags;
+    this.tagValues = this.tags;
   }
 
   /**
@@ -99,7 +99,6 @@ export class TagContainerComponent extends TagsAccessor {
   removeTag(id: number): void {
     this.tags = this.tags.filter(tag => tag.id !== id);
     this.tagValues = this.tags;
-    // this.tagsEmitter.emit(this.tags);
   }
 
   /**
@@ -107,11 +106,8 @@ export class TagContainerComponent extends TagsAccessor {
    * Only works after drag and drop operations
    */
   removeTagAfterDragDrop(id: number): void {
-    this.dragDropProvider.senderComponent.tags = this.dragDropProvider.senderComponent.tags.filter(tag => tag.id !== id);
-    // this.tagsEmitter.emit(this.dragDropProvider.senderComponent.tags);
+    this.tags = this.dragDropProvider.senderComponent.tags
     this.tagValues = this.dragDropProvider.senderComponent.tags;
-    console.log(this.dragDropProvider.senderComponent.tags);
-    console.log(this.dragDropProvider.receiverComponent.tags);
   }
 
   /**
@@ -189,7 +185,7 @@ export class TagContainerComponent extends TagsAccessor {
   /**
    * Removing cursor from the screen by setting onDrag to false after leaving drag zone.
    */
-  onDragLeave(event: DragEvent): void {
+  onDragLeave(event: DragEvent, t: Tag): void {
     this.onDrag = false;
   }
 
@@ -198,6 +194,7 @@ export class TagContainerComponent extends TagsAccessor {
    */
   onDragEnd(event: DragEvent): void {
     this.onDrag = false;
+    this.removeTag(this.dragDropProvider.draggingTag.id);
   }
 
   /**
@@ -209,7 +206,6 @@ export class TagContainerComponent extends TagsAccessor {
       return;
     }
 
-    this.removeTagAfterDragDrop(this.dragDropProvider.draggingTag.id);
     this.addTagAfterDragDrop();
   }
 }

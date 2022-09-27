@@ -77,19 +77,19 @@ export class AppComponent implements OnInit {
   }
 
   onTagAdd(tag: any, zone: string) {
-    this.id++;
-    const _tag = { 'id': this.id, 'value': tag }
+    const _tag = { 'id': this.id, 'value': tag.value }
 
     if (zone === 'zone1') {
-      this.toTags.push(tag);
+      this.toTags.push(_tag);
     }
     if (zone === 'zone2') {
-      this.ccTags.push(tag);
+      this.ccTags.push(_tag);
     }
     if (zone === 'zone3') {
-      this.bccTags.push(tag);
+      this.bccTags.push(_tag);
     }
 
+    this.id++;
   }
 
   logTags(): void {

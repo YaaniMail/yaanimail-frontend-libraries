@@ -5,8 +5,9 @@
             [ngClass]="{'onDrag': onDrag && this.dragDropProvider.droppingIndex == i}" [tag]="t" [pattern]="pattern"
             [selectedTagId]="selectedTagId" [dragAllowed]="dragAllowed" (onRemoveEmitter)="removeTag($event)"
             (onSelectEmitter)="selectTag($event)" (onEditEmitter)="assignTagToEdit($event)" draggable="false"
-            (dragstart)="onDragStart($event, t, i)" (dragover)="onDragOver($event, i)" (dragleave)="onDragLeave($event)"
-            (dragend)="onDragEnd($event)" (drop)="onDrop($event)" [tagTemplate]="tagTemplate">
+            (dragstart)="onDragStart($event, t, i)" (dragover)="onDragOver($event, i)"
+            (dragleave)="onDragLeave($event, t)" (dragend)="onDragEnd($event)" (drop)="onDrop($event)"
+            [tagTemplate]="tagTemplate">
         </ngym-tag>
     </div>
     <div>

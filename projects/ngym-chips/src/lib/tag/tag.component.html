@@ -6,7 +6,7 @@
     <div *ngSwitchCase="false">
         <div class="tag" [ngClass]="{'active': selectedTagId === tag.id, 'invalid': !valid}">
             <div class="value" (click)="selectTag(tag)" (dblclick)="editTag(tag)">
-                {{ tag.value }}
+                {{ tag.id }} - {{ tag.value }}
             </div>
             <div class="cross" (click)="removeTag(tag.id)">X</div>
         </div>
