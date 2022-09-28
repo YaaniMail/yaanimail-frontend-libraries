@@ -8,7 +8,7 @@
     <div>To:</div>
     <ngym-tag-container [(ngModel)]="toTags" (onAddEmitter)="onTagAdd($event, 'zone1')"
         (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false" [splitChars]="[',', ';']"
-        [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone1'" [autoCompleteItems]="autoCompleteItems">
+        [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone1'" [autoCompleteItems]="autoCompleteItems" [tagTemplate]="tagTemplate">
     </ngym-tag-container>
 </div>
 <div class="section">
@@ -32,17 +32,18 @@
 <div class="section-desc">Library test purpose</div>
 <div class="section">
     <lib-test-bind [(ngModel)]="testBind" [tagTemplate]="tagTemplate" (onAddEmitter)="onAdd($event)">
-        <ng-template let-item="item" #tagTemplate>
-            <div style="background-color: blue; color: white;">
-                {{ item.name }}
-                <span *ngIf="item.isGroup">+</span>
-            </div>
-        </ng-template>
+
     </lib-test-bind>
     <button (click)="finalize()">
         finelize
     </button>
 </div>
+<ng-template let-item="item" #tagTemplate>
+    <div style="background-color: blue; color: white;">
+        {{ item.value }}
+        <span *ngIf="item.isGroup">+</span>
+    </div>
+</ng-template>
 
 
 <div class="section-header">Chips Test</div>

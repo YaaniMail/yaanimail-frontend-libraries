@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   pattern: RegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   autoCompleteItems!: AutoComplete[];
   zone1Tags!: Tag[];
-  testBind: any;
+  testBind!: Tag[];
   toTags: any;
   ccTags: any;
   bccTags: any;
@@ -71,12 +71,12 @@ export class AppComponent implements OnInit {
     console.log(e);
   }
 
-  onAdd(tag: any): void {
-    tag.isGroup = true; // webservis
+  onAdd(tag: Tag): void {
+    tag['isGroup'] = true; // webservis
     this.testBind.push(tag);
   }
 
-  onTagAdd(tag: any, zone: string) {
+  onTagAdd(tag: Tag, zone: string) {
     const _tag = { 'id': this.id, 'value': tag.value }
 
     if (zone === 'zone1') {
@@ -88,7 +88,6 @@ export class AppComponent implements OnInit {
     if (zone === 'zone3') {
       this.bccTags.push(_tag);
     }
-
     this.id++;
   }
 
