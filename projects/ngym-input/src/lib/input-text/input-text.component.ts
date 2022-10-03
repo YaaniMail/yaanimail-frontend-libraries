@@ -13,8 +13,9 @@ import { InputTypeTextAccessor } from '../accessors/typeTextAccessor';
   }]
 })
 export class InputTextComponent extends InputTypeTextAccessor {
-  @Input() placeholder!: string;
+  @Input() customClass!: string;
   @Input() robotClass!: string;
+  @Input() placeholder!: string;
   @Input() autoComplete!: string;
   @Input() required!: boolean;
   @Input() isInvalid!: boolean;

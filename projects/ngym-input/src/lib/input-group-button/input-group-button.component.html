@@ -1,17 +1,9 @@
 <div class="input-group">
-    <input
-        type="text"
-        class="form-control"
-        placeholder="{{ placeholder }}"
-        [(ngModel)]="inputValue"
-        (focusout)="onFocusOut()"
-    >
+    <input type="text" class="ngym-text {{ customInputClass }}" placeholder="{{ placeholder }}" [(ngModel)]="inputValue"
+        (focusout)="onFocusOut()">
     <div class="input-group-append">
         <span class="input-group-btn">
-            <a
-                class="{{ faRobotClass }}"
-                (click)="onClick()"
-            >
+            <a class="{{ faRobotClass }}" (click)="onClick()">
                 <i class="{{ faClass }}"></i>
             </a>
         </span>

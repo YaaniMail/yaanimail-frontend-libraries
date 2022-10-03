@@ -15,6 +15,7 @@ import { InputTypeTextAccessor } from '../accessors/typeTextAccessor';
 export class InputGroupButtonComponent extends InputTypeTextAccessor {
   @Input() placeholder!: string;
   @Input() faRobotClass!: string;
+  @Input() customInputClass!: string;
   @Input() faClass!: string;
   @Output() onClickEmitter = new EventEmitter();
   @Output() onFocusOutEmitter = new EventEmitter();

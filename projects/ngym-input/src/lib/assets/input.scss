@@ -6,77 +6,77 @@ $borders: #edf2f5;
 $red: #f05f6d;
 
 .input-group {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  width: 100%;
+  > .ngym-text {
     position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-align: stretch;
-    -ms-flex-align: stretch;
-    align-items: stretch;
-    width: 100%;
-    > .form-control {
-        position: relative;
-        -webkit-box-flex: 1;
-        -ms-flex: 1 1 auto;
-        flex: 1 1 auto;
-        width: 1%;
-        margin-bottom: 0;
-    }
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-bottom: 0;
+  }
 }
 
 .input-group-append,
 .input-group-prepend {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .input-group-btn {
-    display: flex;
-    align-items: center;
-    border: 0;
-    padding: 0.375rem 0px 0.375rem 2px;
-    margin-bottom: 0;
-    border-bottom: 1px solid $input;
-    border-radius: 0px;
-    background-color: transparent;
-    white-space: nowrap;
-    line-height: 1.5;
-    font-size: 14px;
+  display: flex;
+  align-items: center;
+  border: 0;
+  padding: 0.375rem 0px 0.375rem 2px;
+  margin-bottom: 0;
+  border-bottom: 1px solid $input;
+  border-radius: 0px;
+  background-color: transparent;
+  white-space: nowrap;
+  line-height: 1.5;
+  font-size: 14px;
 }
 
-.form-control {
-    display: block;
-    width: 100%;
-    padding: 0;
-    font-size: 14px;
-    line-height: 1.5;
+.ngym-text {
+  display: block;
+  width: 100%;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: $primary-hard;
+  background-color: transparent;
+  background-clip: padding-box;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  border-bottom: 1px solid $input !important;
+  border-radius: 0;
+  box-shadow: 0 0 0 #000 !important;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  &:focus {
+    border-color: $primary;
+    background-color: transparent;
     color: $primary-hard;
-    background-color: transparent;
-    background-clip: padding-box;
-    border-right: none;
-    border-left: none;
-    border-top: none;
-    border-bottom: 1px solid $input !important;
-    border-radius: 0;
-    box-shadow: 0 0 0 #000 !important;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    &:focus {
-        border-color: $primary;
-        background-color: transparent;
-        color: $primary-hard;
-    }
-    &.error {
-        border-color: $red !important;
-    }
-    &.light {
-        border-bottom: 1px solid $borders !important;
-    }
+  }
+  &.error {
+    border-color: $red !important;
+  }
+  &.light {
+    border-bottom: 1px solid $borders !important;
+  }
 }
 
-.form-control-select {
+.ngym-select {
   padding: 0px;
   border: none;
   border-bottom: 1px solid $input;
