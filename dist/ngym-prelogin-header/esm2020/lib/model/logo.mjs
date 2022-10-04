@@ -1,0 +1,7 @@
+export class Logo {
+    constructor(src, url) {
+        this.src = src;
+        this.url = url;
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibG9nby5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL3Byb2plY3RzL25neW0tcHJlbG9naW4taGVhZGVyL3NyYy9saWIvbW9kZWwvbG9nby50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxNQUFNLE9BQU8sSUFBSTtJQUdiLFlBQVksR0FBVyxFQUFFLEdBQVc7UUFDaEMsSUFBSSxDQUFDLEdBQUcsR0FBRyxHQUFHLENBQUM7UUFDZixJQUFJLENBQUMsR0FBRyxHQUFHLEdBQUcsQ0FBQztJQUNuQixDQUFDO0NBQ0oiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgY2xhc3MgTG9nbyB7XG4gICAgc3JjOiBzdHJpbmc7XG4gICAgdXJsOiBzdHJpbmc7XG4gICAgY29uc3RydWN0b3Ioc3JjOiBzdHJpbmcsIHVybDogc3RyaW5nKSB7XG4gICAgICAgIHRoaXMuc3JjID0gc3JjO1xuICAgICAgICB0aGlzLnVybCA9IHVybDtcbiAgICB9XG59Il19
