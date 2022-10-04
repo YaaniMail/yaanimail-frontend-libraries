@@ -34,6 +34,7 @@ export class TagContainerComponent extends TagsAccessor {
   @Output() onKeyPressedEmitter = new EventEmitter<KeyboardEvent>();
   @Output() onPasteEmitter = new EventEmitter<Tag[]>();
   @Output() onAddEmitter = new EventEmitter<Tag>();
+  @Output() onRemoveEmitter = new EventEmitter<Tag>();
   @ViewChild(TagInputComponent) tagInputComponent!: TagInputComponent;
   @HostListener('document:keydown', ['$event'])
   // Deleting a selected tag if a keyboard event of Bacspace is clicked globally.
@@ -97,8 +98,10 @@ export class TagContainerComponent extends TagsAccessor {
    * Remove a new tag from container. Works with (x) anchor.
    */
   removeTag(id: number): void {
+    const removedTag = this.tags.filter(tag => tag.id === id);
     this.tags = this.tags.filter(tag => tag.id !== id);
     this.tagValues = this.tags;
+    this.onRemoveEmitter.emit(removedTag[0]);
   }
 
   /**
