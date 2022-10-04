@@ -27,6 +27,10 @@
       "ngym-input": [
         "dist/ngym-input/ngym-input",
         "dist/ngym-input"
+      ],
+      "ngym-prelogin-header": [
+        "dist/ngym-prelogin-header/ngym-prelogin-header",
+        "dist/ngym-prelogin-header"
       ]
     },
     "declaration": false,

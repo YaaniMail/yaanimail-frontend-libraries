@@ -229,6 +229,37 @@
           }
         }
       }
+    },
+    "ngym-prelogin-header": {
+      "projectType": "library",
+      "root": "projects/ngym-prelogin-header",
+      "sourceRoot": "projects/ngym-prelogin-header/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngym-prelogin-header/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngym-prelogin-header/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngym-prelogin-header/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngym-prelogin-header/src/test.ts",
+            "tsConfig": "projects/ngym-prelogin-header/tsconfig.spec.json",
+            "karmaConfig": "projects/ngym-prelogin-header/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "yaanimail-frontend-libraries"
