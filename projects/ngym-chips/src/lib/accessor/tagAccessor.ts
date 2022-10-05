@@ -3,7 +3,7 @@ import { Tag } from "../model/tag";
 
 
 export class TagsAccessor implements ControlValueAccessor {
-    private _value!: Tag[];
+    private _value: Tag[] = [];
     public get tagValues(): Tag[] {
         return this._value;
     }

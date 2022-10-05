@@ -37,7 +37,7 @@ export class TagInputComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    /* if (changes['autoCompleteItems']?.currentValue?.length === 0) {
+    if (changes['autoCompleteItems']?.currentValue?.length === 0) {
       this.autoCompleteVisible = false;
     } else {
       this.autoCompleteVisible = true;
@@ -45,7 +45,7 @@ export class TagInputComponent implements OnInit, OnChanges {
 
     if (!this.autoCompleteVisible) {
       this.autoCompleteItems = [];
-    } */
+    }
   }
 
   /**
