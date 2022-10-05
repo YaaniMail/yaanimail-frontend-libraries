@@ -76,20 +76,8 @@ export class AppComponent implements OnInit {
     this.testBind.push(tag);
   }
 
-  onTagAdd(tag: Tag, zone: string) {
-    console.log(tag);
-    /*const _tag = { 'id': this.id, 'value': tag.value }
+  onTagAdd(tag: Tag) {
 
-    if (zone === 'zone1') {
-      this.toTags.push(_tag);
-    }
-    if (zone === 'zone2') {
-      this.ccTags.push(_tag);
-    }
-    if (zone === 'zone3') {
-      this.bccTags.push(_tag);
-    }
-    this.id++;*/
   }
 
   logTags(): void {
@@ -98,7 +86,7 @@ export class AppComponent implements OnInit {
     console.log(this.bccTags);
   }
 
-  removeTag(tag: Tag): void {
-    this.toTags = this.toTags.filter(tag => tag.value !== tag.value);
+  removeTag(_tag: Tag): void {
+    this.toTags = this.toTags.filter(tag => tag.id !== _tag.id);
   }
 }
