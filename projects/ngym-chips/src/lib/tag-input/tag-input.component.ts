@@ -63,7 +63,7 @@ export class TagInputComponent implements OnInit, OnChanges {
   createTagObject(value: string): Tag {
     const tag = new Tag();
     tag.value = value;
-
+    tag.id = Math.floor((1 + Math.random()) * 0x10000)
     return tag;
   }
 
