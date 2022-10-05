@@ -1,4 +1,4 @@
-.tag {
+.ngym-tag {
     display: flex;
     flex-direction: row;
     padding: 5px 8px;
@@ -23,11 +23,11 @@
     }
 }
 
-.tag.active {
+.ngym-tag.active {
     background-color: #00a0df;
     color: white;
 }
 
-.tag.invalid {
+.ngym-tag.invalid {
     color: #f05f6d;
 }

@@ -1,10 +1,11 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, TemplateRef } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { Tag } from '../model/tag';
 
 @Component({
   selector: 'ngym-tag',
   templateUrl: './tag.component.html',
-  styleUrls: ['./tag.component.scss']
+  styleUrls: ['./tag.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TagComponent implements OnInit {
   valid!: boolean;

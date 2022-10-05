@@ -1,8 +1,8 @@
 <form [formGroup]="form">
-    <input #newTag type="text" class="form-control" formControlName="newTag" (keyup)="onKeyPressed()"
+    <input #newTag type="text" class="ngym-form-control" formControlName="newTag" (keyup)="onKeyPressed()"
         (keyup.enter)="onEnter($event)" (mousedown)="onMouseDown()" (focus)="onFocus()"
         (paste)="onPaste($event.clipboardData.getData('text/plain'))" autofocus />
-    <div class="autoComplete" *ngIf="autoCompleteVisible && autoCompleteItems && autoCompleteItems.length !== 0"
+    <div class="ngym-auto-complete" *ngIf="autoCompleteVisible && autoCompleteItems && autoCompleteItems.length !== 0"
         #autoComplete>
         <ngym-tag-input-autocomplete [autoCompleteItems]="autoCompleteItems"
             (onSelectEmitter)="selectAutoCompleteItem($event); newTag.focus();"

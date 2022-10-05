@@ -4,11 +4,11 @@
         </ng-template>
     </div>
     <div *ngSwitchCase="false">
-        <div class="tag" [ngClass]="{'active': selectedTagId === tag.id, 'invalid': !valid}">
-            <div class="value" (click)="selectTag(tag)" (dblclick)="editTag(tag)">
+        <div class="ngym-tag" [ngClass]="{'active': selectedTagId === tag.id, 'invalid': !valid}">
+            <div class="ngym-value" (click)="selectTag(tag)" (dblclick)="editTag(tag)">
                 {{ tag.id }} - {{ tag.value }}
             </div>
-            <div class="cross" (click)="removeTag(tag.id)">X</div>
+            <div class="ngym-cross" (click)="removeTag(tag.id)">X</div>
         </div>
     </div>
 </div>

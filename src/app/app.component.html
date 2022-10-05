@@ -38,10 +38,12 @@
         [dragZone]="'zone3'" [autoCompleteItems]="autoCompleteItems" [tagTemplate]="tagTemplate"
         [autoCompleteTemplate]="autoCompleteTemplate">
         <ng-template let-item="item" #tagTemplate>
-            <div style="background-color: black; color: white;">
-                {{ item.value }}
+            <div class="ngym-tag">
+                <div class="ngym-value">
+                   {{ item.value }}
+                </div>
+                <div class="ngym-cross">X</div>
             </div>
-            <span (click)="removeTag(item)">X</span>
         </ng-template>
         <ng-template let-item="item" #autoCompleteTemplate>
             <div style="background-color: gray; color: black;">
