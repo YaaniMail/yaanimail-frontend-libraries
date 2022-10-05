@@ -18,9 +18,9 @@ export class AppComponent implements OnInit {
   autoCompleteItems!: AutoComplete[];
   zone1Tags!: Tag[];
   testBind!: Tag[];
-  toTags: any;
-  ccTags: any;
-  bccTags: any;
+  toTags: Tag[] = [];
+  ccTags: Tag[] = [];
+  bccTags: Tag[] = [];
   id: number = 0;
 
   constructor(private fb: FormBuilder) {
@@ -77,7 +77,8 @@ export class AppComponent implements OnInit {
   }
 
   onTagAdd(tag: Tag, zone: string) {
-    const _tag = { 'id': this.id, 'value': tag.value }
+    console.log(tag);
+    /*const _tag = { 'id': this.id, 'value': tag.value }
 
     if (zone === 'zone1') {
       this.toTags.push(_tag);
@@ -88,12 +89,16 @@ export class AppComponent implements OnInit {
     if (zone === 'zone3') {
       this.bccTags.push(_tag);
     }
-    this.id++;
+    this.id++;*/
   }
 
   logTags(): void {
     console.log(this.toTags);
     console.log(this.ccTags);
     console.log(this.bccTags);
+  }
+
+  removeTag(tag: Tag): void {
+    this.toTags = this.toTags.filter(tag => tag.value !== tag.value);
   }
 }

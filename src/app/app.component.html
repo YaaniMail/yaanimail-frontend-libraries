@@ -6,7 +6,7 @@
 </div>
 <div class="section">
     <div>To:</div>
-    <ngym-tag-container [(ngModel)]="toTags" (onAddEmitter)="onTagAdd($event, 'zone1')"
+    <ngym-tag-container [(ngModel)]="toTags" (onAddEmitter)="onTagAdd($event, 'zone1')" name="toTags"
         (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false" [splitChars]="[',', ';']"
         [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone1'" [autoCompleteItems]="autoCompleteItems"
         [tagTemplate]="tagTemplate">
@@ -14,14 +14,14 @@
 </div>
 <div class="section">
     <div>Cc:</div>
-    <ngym-tag-container [(ngModel)]="ccTags" (onAddEmitter)="onTagAdd($event, 'zone2')"
+    <ngym-tag-container [(ngModel)]="ccTags" (onAddEmitter)="onTagAdd($event, 'zone2')" name="ccTags"
         (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false" [splitChars]="[',', ';']"
         [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone2'" [autoCompleteItems]="autoCompleteItems">
     </ngym-tag-container>
 </div>
 <div class="section">
     <div>Bcc:</div>
-    <ngym-tag-container [(ngModel)]="bccTags" (onAddEmitter)="onTagAdd($event, 'zone3')"
+    <ngym-tag-container [(ngModel)]="bccTags" (onAddEmitter)="onTagAdd($event, 'zone3')" name="bccTags"
         (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false" [splitChars]="[',', ';']"
         [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone3'" [autoCompleteItems]="autoCompleteItems">
     </ngym-tag-container>
@@ -42,6 +42,7 @@
             <div style="background-color: black; color: white;">
                 {{ item.value }}
             </div>
+            <span (click)="removeTag(item)">X</span>
         </ng-template>
         <ng-template let-item="item" #autoCompleteTemplate>
             <div style="background-color: gray; color: black;">

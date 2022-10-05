@@ -19,7 +19,6 @@ import { TagInputComponent } from '../tag-input/tag-input.component';
 export class TagContainerComponent extends TagsAccessor {
   selectedTagId: number = -1;
   onDrag!: boolean;
-  tags: Tag[] = [];
   @Input() dragZone!: string;
   @Input() splitChars!: string[];
   @Input() editAllowed!: boolean;
@@ -55,15 +54,13 @@ export class TagContainerComponent extends TagsAccessor {
    * Add a new tag to container. Showing every tag on screen by ngFor.
    */
   addTag(tag: Tag): void {
-    const isDuplicate = this.checkDuplicate(this.tags, tag.value);
+    const isDuplicate = this.checkDuplicate(this.tagValues, tag.value);
 
     // If there is duplicate value but duplicate is NOT allowed
     if (!this.duplicateAllowed && isDuplicate) {
       return;
     }
-
-    // this.tags.push(tag);
-    this.tagValues = this.tags; // tagValues is defined in tagAccessor. Can be get by [(ngModel)] from components
+    this.tagValues.push(tag)
     this.onAddEmitter.emit(tag);
   }
 
@@ -72,16 +69,14 @@ export class TagContainerComponent extends TagsAccessor {
    * Splice to receving dragZone with dragProvider starting and dropping index.
    */
   addTagAfterDragDrop(): void {
-    const isDuplicate = this.checkDuplicate(this.dragDropProvider.receiverComponent.tags, this.dragDropProvider.draggingTag.value);
+    const isDuplicate = this.checkDuplicate(this.dragDropProvider.receiverComponent.tagValues, this.dragDropProvider.draggingTag.value);
 
     // If there is duplicate value but duplicate is NOT allowed
     if (!this.duplicateAllowed && isDuplicate) {
       return;
     }
 
-    this.tags.splice(this.dragDropProvider.droppingIndex, 0, this.dragDropProvider.draggingTag);
-    // this.tags = this.dragDropProvider.receiverComponent.tags;
-    this.tagValues = this.tags;
+    this.tagValues.splice(this.dragDropProvider.droppingIndex, 0, this.dragDropProvider.draggingTag);
   }
 
   /**
@@ -98,9 +93,8 @@ export class TagContainerComponent extends TagsAccessor {
    * Remove a new tag from container. Works with (x) anchor.
    */
   removeTag(id: number): void {
-    const removedTag = this.tags.filter(tag => tag.id === id);
-    this.tags = this.tags.filter(tag => tag.id !== id);
-    this.tagValues = this.tags;
+    const removedTag = this.tagValues.filter(tag => tag.id === id);
+    this.tagValues = this.tagValues.filter(tag => tag.id !== id);
     this.onRemoveEmitter.emit(removedTag[0]);
   }
 
@@ -109,8 +103,7 @@ export class TagContainerComponent extends TagsAccessor {
    * Only works after drag and drop operations
    */
   removeTagAfterDragDrop(id: number): void {
-    this.tags = this.dragDropProvider.senderComponent.tags
-    this.tagValues = this.dragDropProvider.senderComponent.tags;
+    this.tagValues = this.dragDropProvider.senderComponent.tagValues
   }
 
   /**
@@ -152,6 +145,9 @@ export class TagContainerComponent extends TagsAccessor {
    * Duplicate tag values are configurative. Returns if duplicate value is in the @tags array or not
    */
   checkDuplicate(tags: Tag[], value: string): boolean {
+    if(!tags) {
+      return false;
+    }
     const _tags = tags.map(function (t) { return t.value });
     const isDuplicate = _tags.some(t => t === value);
 

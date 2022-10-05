@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TagInputAutocompleteComponent } from './tag-input-autocomplete/tag-input-autocomplete.component';
 import { InitialsPipe } from './pipe/initials.pipe';
+import { CustomInputComponent } from './custom-input/custom-input.component';
 
 @NgModule({
   declarations: [
@@ -13,17 +14,18 @@ import { InitialsPipe } from './pipe/initials.pipe';
     TagInputComponent,
     TagContainerComponent,
     TagInputAutocompleteComponent,
-    InitialsPipe
+    InitialsPipe,
+    CustomInputComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [
     TagComponent,
     TagInputComponent,
     TagContainerComponent
-  ]
+ ]
 })
 export class NgymChipsModule { }
