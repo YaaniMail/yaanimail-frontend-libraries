@@ -1,0 +1,81 @@
+<div id="add-attendee-modal">
+    <div class="modal-header">
+        <div class="modal-title flex-grow-1">
+            {{ addAttendeeTitle }}
+        </div>
+        <div>
+            <button type="button" class="btn btn-icon" aria-label="Close" (click)="cancel();">
+                <i class="fa-regular fa-xmark fa-gray fa-normal"></i>
+            </button>
+        </div>
+    </div>
+    <div class="modal-body overflow-auto">
+        <div class="d-flex align-items-center form-group">
+            <div class="w-50 pr-1 dropright" dropdown>
+                <div class="d-block form-control-bottom-border pointer curved-dropdown" dropdownToggle>
+                    <span class="center-selected-text pl-2"> {{ contactSearchType.label}} </span>
+                    &nbsp;
+                    <i class="fa-regular fa-chevron-down fa-gray fa-normal mt-2 mr-1 float-right"></i>
+                </div>
+                <ul *dropdownMenu class="dropdown-menu animated fadeIn col-12 top-50" role="menu">
+                    <li *ngFor="let contactSearchType of contactSearchTypeList"
+                        (click)="setSearchType(contactSearchType)">
+                        <a class="dropdown-item">{{ contactSearchType.label }}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="w-50 pl-1">
+                <ngym-input-group-button [(ngModel)]="keyword" [placeholder]="addContactSearchPlaceholder"
+                    [iconTemplateRef]="searchIconTemplate" [showButton]="keyword?.length > 0"
+                    [showIcon]="keyword?.length === 0" (onKeyUpEmitter)="onKeywordChange($event)">
+                </ngym-input-group-button>
+                <ng-template #searchIcon>
+                    <button class="btn btn-outline-secondary icon" type="button">
+                        <i class="fa-regular fa-magnifying-glass fa-primary fa-normal"></i>
+                    </button>
+                </ng-template>
+            </div>
+        </div>
+        <div class="attendee-list bt bb">
+            <div class="justify-content-center" *ngIf="keyword !== '' && contacts.length === 0 && !isLoading">
+                <div class="text-center p-4">
+                    <div>{{ noResultLabel }}</div>
+                </div>
+            </div>
+            <div class="justify-content-center" *ngIf="keyword == ''">
+                <div class="text-center p-4">
+                    <div> {{ searchForListingLabel }} </div>
+                </div>
+            </div>
+            <div>
+                <div class="search-results" infiniteScroll [scrollWindow]="false" (scrolled)="onScrollDown()">
+                    <div *ngFor="let contact of contacts; let i = index;">
+                        <ngym-add-contact-row [contactCountLabel]="contactCountLabel" [contact]="contact"
+                            [roles]="roles" (addContactEvent)="addContact($event)">
+                        </ngym-add-contact-row>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex form-control-bottom-border" *ngFor="let role of attendees ; let i = index">
+            <div class="label-fields">
+                {{ role.title }}:&nbsp;
+            </div>
+            <div class="w-100">
+                <ngym-tag-input class="borderless-tag-input attendee-scrollbar" clearOnBlur="true"
+                    [(ngModel)]="role.list" [displayBy]="'email'" [identifyBy]="'email'" placeholder=""
+                    secondaryPlaceholder="" dragZone="true" #requiredItem [separatorKeys]="[';', ',', ' ']"
+                    (onAdd)="removeFromOthers(i, $event)" [pasteSplitPattern]="splitPattern">
+                </ngym-tag-input>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer border-top-0">
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-small btn-secondary mr-2" (click)="cancel()" type="button">{{ buttonCancelLabel
+                }}</button>
+            <button class="btn btn-small btn-primary" type="button" (click)="save()">{{ addSenderLabel }}</button>
+        </div>
+    </div>
+</div>

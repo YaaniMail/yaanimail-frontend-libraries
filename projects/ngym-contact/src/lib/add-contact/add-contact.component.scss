@@ -1,0 +1,84 @@
+// TODO: NilS @import "../../../styles/app/variables.scss";
+
+#add-attendee-modal {
+    input {
+        border: 1px solid #b7c8d6; // $input
+        border-right: none;
+        &:focus {
+            background-color: #fff; // $secondary
+        }
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    .icon {
+        width: 35px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: none;
+        border: 1px solid #b7c8d6; // $input
+        border-left: 0px !important;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    .curved-dropdown {
+        height: 35px;
+        border: 1px solid #b7c8d6; // $input
+        &:focus {
+            border-left: 0px;
+            background-color: #fff; // $secondary
+        }
+    }
+    .center-selected-text {
+        top: 7px;
+        position: relative;
+    }
+    .top-50 {
+        top: 50% !important;
+    }
+    .attendee-scrollbar {
+        overflow-y: auto;
+        max-height: 80px;
+    }
+    .attendee-list {
+        height: 250px;
+    }
+    .modal-body {
+        max-height: calc(100vh - 160px) !important;
+    }
+    .modal-footer {
+        border-top: none;
+        height: unset !important;
+    }
+    .search-results {
+        max-height: 250px;
+        margin-bottom: 10px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+}
+
+.form-control-bottom-border {
+    border: none;
+    border-bottom: 1px solid #b7c8d6 !important; // $input
+    border-radius: 0px;
+    background-color: transparent;
+    color: #0b3254; // $primary-hard
+    padding: 0px;
+
+    &:focus {
+        border-color: #007bff !important; // $primary
+        color: #0b3254; // $primary-hard
+    }
+
+    &.error {
+        border-color: #f05f6d !important; // $red
+    }
+
+    &.light {
+        border-bottom: 1px solid #edf2f5 !important; // $borders
+    }
+}
