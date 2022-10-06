@@ -8,7 +8,8 @@
     <div>To:</div>
     <ngym-tag-container [(ngModel)]="toTags" (onAddEmitter)="onTagAdd($event, 'zone1')"
         (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false" [splitChars]="[',', ';']"
-        [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone1'" [autoCompleteItems]="autoCompleteItems" [tagTemplate]="tagTemplate">
+        [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone1'" [autoCompleteItems]="autoCompleteItems"
+        [tagTemplate]="tagTemplate">
     </ngym-tag-container>
 </div>
 <div class="section">
@@ -122,5 +123,20 @@
                 <button type="submit">Submit</button>
             </div>
         </form>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-element-header">Add Contact Modal <b>ngym-add-contact</b></div>
+    <div class="section-element">
+        <a class="text-primary robot_calendarpermissions_addPeopleButton" (click)="openAddContactModal()"></a>
+        <ngym-add-contact [(ngModel)]="contacts" [addAttendeeTitle]="'Add Attendee'"
+            [addContactSearchPlaceholder]="'Add Contact'" [noResultLabel]="'No Results Found.'"
+            [searchForListingLabel]="'Search to listing contacts'" [buttonCancelLabel]="'Cancel'"
+            [addSenderLabel]="'Add'" [contactCountLabel]="'x adet bulundu'"
+            [contactSearchTypeList]="[{key: 'GLOBAL_ADDRESS_LIST', label: 'Global Address List'}, {key: 'MY_LABELS', label: 'My Labels'}]"
+            (onSelectEmitter)="addContactOnSelect()" (onSearchEmitter)="addContactOnSearch()"
+            (onSaveEmitter)="addContactOnSave()" (onCancelEmitter)="addContactOnCancel()">
+        </ngym-add-contact>
     </div>
 </div>

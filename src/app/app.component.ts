@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutoComplete } from 'projects/ngym-chips/src/lib/model/autoComplete';
 import { Tag } from 'projects/ngym-chips/src/lib/model/tag';
+import { AddContactComponent } from 'projects/ngym-contact/src/lib/add-contact/add-contact.component';
+import { ContactByRole } from 'projects/ngym-contact/src/lib/model/contact-by-role';
 
 @Component({
   selector: 'app-root',
@@ -22,10 +24,11 @@ export class AppComponent implements OnInit {
   ccTags: any;
   bccTags: any;
   id: number = 0;
+  contacts: ContactByRole[] = [];
 
-  constructor(private fb: FormBuilder) {
-
-  }
+  constructor(
+    private fb: FormBuilder,
+    private modalService: BsModalService) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -95,5 +98,29 @@ export class AppComponent implements OnInit {
     console.log(this.toTags);
     console.log(this.ccTags);
     console.log(this.bccTags);
+  }
+
+  openAddContactModal(): void {
+    /* this.modalService.show(AddContactComponent, { class: 'modal-dialog-centered add-attendee-modal p-0', {}, ignoreBackdropClick: true });
+  const onHideSubscribe = this.modalService.onHide.subscribe((e) => {
+    console.log('closed');
+    onHideSubscribe.unsubscribe();
+  });     */
+  }
+
+  addContactOnSelect(): void {
+    console.log(this.contacts);
+  }
+
+  addContactOnSearch(): void {
+    console.log(this.contacts);
+  }
+
+  addContactOnSave(): void {
+    console.log(this.contacts);
+  }
+
+  addContactOnCancel(): void {
+    console.log(this.contacts);
   }
 }
