@@ -8,6 +8,7 @@ import { Logo } from './model/logo';
   styleUrls: ['./ngym-prelogin-header.component.scss']
 })
 export class NgymPreloginHeaderComponent {
+  test = 'yapız';
   @Input() logo!: Logo;
   @Input() headerHtml!: TemplateRef<any>;
   
