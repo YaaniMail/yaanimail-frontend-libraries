@@ -2,10 +2,14 @@ input:focus {
     outline: none;
 }
 
+.ngym-tag-input-form {
+    margin-top: 2px;
+}
+
 .ngym-form-control {
     border: none;
     border-radius: 0px;
-    background-color: #fcfcfc;
+    background-color: #f4f4f4;
     padding: 6px;
     box-shadow: 0 0 #000;
 }
