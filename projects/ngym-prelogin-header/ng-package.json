@@ -2,7 +2,6 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/ngym-prelogin-header",
   "lib": {
-    "entryFile": "src/public-api.ts",
-    "styleIncludePaths": ["node_modules/bootstrap/scss/bootstrap"]
+    "entryFile": "src/public-api.ts"
   }
 }

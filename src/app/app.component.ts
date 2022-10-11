@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Logo } from 'projects/ngym-prelogin-header/src/lib/model/logo';
 import { AutoComplete } from 'projects/ngym-chips/src/lib/model/autoComplete';
 import { Tag } from 'projects/ngym-chips/src/lib/model/tag';
+import { Logo } from 'projects/ngym-prelogin-header/src/lib/model/logo';
 
 @Component({
   selector: 'app-root',
@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.logo = new Logo('/assets/img/common/yaanimail2x-enterprise.png', '/home')
+    this.logo = new Logo('../assets/yaanimail2x-enterprise.png', '/home')
   }
 
   createForm(): void {
