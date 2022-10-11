@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutoComplete } from 'projects/ngym-chips/src/lib/model/autoComplete';
 import { Tag } from 'projects/ngym-chips/src/lib/model/tag';
+import { WebService } from './service/web.service';
 
 @Component({
   selector: 'app-root',
@@ -16,14 +17,12 @@ export class AppComponent implements OnInit {
   title = 'yaanimail-frontend-libraries';
   pattern: RegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   autoCompleteItems!: AutoComplete[];
-  zone1Tags!: Tag[];
-  testBind!: Tag[];
-  toTags: any;
-  ccTags: any;
-  bccTags: any;
-  id: number = 0;
+  toTags: Tag[] = [];
+  ccTags: Tag[] = [];
+  bccTags: Tag[] = [];
+  customTags: Tag[] = [];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private webService: WebService) {
 
   }
 
@@ -40,55 +39,20 @@ export class AppComponent implements OnInit {
   }
 
   changeAutoCompleteItems(event: any): void {
-    this.autoCompleteItems = [
-      { 'name': 'Yağız Öztürk', 'email': 'yagiz@yposta.net' },
-      { 'name': 'Damla Özdemir', 'email': 'damla@yposta.net' },
-      { 'name': 'Avedis Boyacı', 'email': 'avedis@yposta.net' },
-      { 'name': 'Yunus Emre Bora', 'email': 'yunus@yposta.net' },
-      { 'name': 'Sevcan Kaya', 'email': 'sevcan@yposta.net' },
-      { 'name': 'İbrahim Karagöz', 'email': 'ibrahim@yposta.net' }];
+    this.webService.getMockData().subscribe(
+      data => {
+        this.autoCompleteItems = data;
+      }
+    );
+
   }
 
-  getTags(tags: Tag[], dragZone: string): void {
-    this.zone1Tags = tags;
+  onTagAdd(tag: Tag) {
+    // this.autoCompleteItems = [];
   }
 
-
-
-  finalize(): void {
-    console.log(this.testBind);
-  }
-
-  logInputClick(): void {
-    console.log(this.inputGroupValue);
-  }
-
-  submitForm(): void {
-    console.log(this.form.value);
-  }
-
-  onSelectChange(e: any): void {
-    console.log(e);
-  }
-
-  onAdd(tag: Tag): void {
-    tag['isGroup'] = true; // webservis
-    this.testBind.push(tag);
-  }
-
-  onTagAdd(tag: Tag, zone: string) {
-    const _tag = { 'id': this.id, 'value': tag.value }
-
-    if (zone === 'zone1') {
-      this.toTags.push(_tag);
-    }
-    if (zone === 'zone2') {
-      this.ccTags.push(_tag);
-    }
-    if (zone === 'zone3') {
-      this.bccTags.push(_tag);
-    }
-    this.id++;
+  removeTag(_tag: Tag): void {
+    this.toTags = this.toTags.filter(tag => tag.id !== _tag.id);
   }
 
   logTags(): void {
@@ -96,4 +60,18 @@ export class AppComponent implements OnInit {
     console.log(this.ccTags);
     console.log(this.bccTags);
   }
+
+  groupButtonRemove(): void {
+
+  }
+
+  submitForm(): void {
+    console.log(this.form.value);
+  }
+
+  /** Dropdown select change */
+  onSelectChange(e: any): void {
+    console.log(e);
+  }
+
 }

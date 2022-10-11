@@ -18,12 +18,12 @@ import { InitialsPipe } from './pipe/initials.pipe';
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [
     TagComponent,
     TagInputComponent,
     TagContainerComponent
-  ]
+ ]
 })
 export class NgymChipsModule { }

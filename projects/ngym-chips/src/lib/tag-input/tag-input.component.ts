@@ -11,7 +11,7 @@ import { Tag } from '../model/tag';
 export class TagInputComponent implements OnInit, OnChanges {
   autoCompleteTags!: string[];
   id: number = 0;
-  autoCompleteVisible!: boolean;
+  autoCompleteVisible: boolean = false;
   pastedTagArray: Tag[] = [];
   form!: FormGroup;
   @Input() splitChars!: string[];
@@ -36,16 +36,10 @@ export class TagInputComponent implements OnInit, OnChanges {
     this.createForm();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    /* if (changes['autoCompleteItems']?.currentValue?.length === 0) {
-      this.autoCompleteVisible = false;
-    } else {
-      this.autoCompleteVisible = true;
-    }
-
+  ngOnChanges(): void {
     if (!this.autoCompleteVisible) {
       this.autoCompleteItems = [];
-    } */
+    }
   }
 
   /**
@@ -63,7 +57,7 @@ export class TagInputComponent implements OnInit, OnChanges {
   createTagObject(value: string): Tag {
     const tag = new Tag();
     tag.value = value;
-
+    tag.id = Math.floor((1 + Math.random()) * 0x10000)
     return tag;
   }
 
@@ -90,14 +84,18 @@ export class TagInputComponent implements OnInit, OnChanges {
    * Getting auto complete suggestion tags for dropdown use
    * Start from at least 2 charachters
    */
-  onKeyPressed(): void {
-    const draft = this.form.value.newTag;
-    if (draft === null || draft.length < 2) {
-      this.checkAutoCompleteVisible();
+  onKeyPressed(e: any): void {
+    if (!this.isValidChar(e.keyCode)) {
       return;
     }
 
-    this.checkAutoCompleteVisible();
+    const draft = this.form.value.newTag;
+    if (draft === null || draft.length < 2) {
+      this.autoCompleteVisible = false;
+      return;
+    }
+
+    this.autoCompleteVisible = true;
     this.onKeyPressedEmitter.emit(draft);
   }
 
@@ -112,7 +110,7 @@ export class TagInputComponent implements OnInit, OnChanges {
    * onFocus event for tag-input
    */
   onFocus(): void {
-    this.checkAutoCompleteVisible();
+    this.autoCompleteVisible = false;
   }
 
   /**
@@ -131,7 +129,7 @@ export class TagInputComponent implements OnInit, OnChanges {
     this.onEnterEmitter.emit(tag);
 
     this.form.reset();
-    this.checkAutoCompleteVisible();
+    this.autoCompleteVisible = false;
   }
 
   /**
@@ -156,7 +154,7 @@ export class TagInputComponent implements OnInit, OnChanges {
     // This timeout is a workaround. ALternative is promise functions. Clearing field. Closing auto complete.
     setTimeout(() => {
       this.form.reset();
-      this.checkAutoCompleteVisible();
+      this.autoCompleteVisible = false;
     }, 0);
   }
 
@@ -177,25 +175,15 @@ export class TagInputComponent implements OnInit, OnChanges {
   }
 
   /**
-   * Check if auto complete should be visible or not
+   * Validate chars according to keypress
+   * Service call in autocomplete is not needed in un alpha numeric chars.
    */
-  checkAutoCompleteVisible(): void {
-    const draft = this.form.value.newTag;
-
-    if (draft === null) {
-      this.autoCompleteVisible = false;
-      return;
+  isValidChar(keyCode: number): boolean {
+    if ((keyCode > 36 && keyCode < 41) || // up arrow, down arrow, left arrow, right arrow
+      (keyCode > 15 && keyCode < 21) || // shift, caps, control, option
+      (keyCode === 9 || keyCode === 32 || keyCode === 27)) { // tab, space, esc
+      return false;
     }
-
-    if (this.autoCompleteItems !== undefined && this.autoCompleteItems.length === 0) {
-      this.autoCompleteVisible = false;
-      return;
-    }
-
-    if (draft.length < 2) {
-      this.autoCompleteVisible = false;
-    } else {
-      this.autoCompleteVisible = true;
-    }
-  }
+    return true;
+  };
 }

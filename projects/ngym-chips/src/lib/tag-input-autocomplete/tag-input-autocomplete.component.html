@@ -1,6 +1,6 @@
-<div class="dropdown">
-    <div class="dropdown-container">
-        <div class="item" [ngClass]="{'selected': i === dropDownSelectionIndex}" (click)="onSelectItem(item)"
+<div class="ngym-dropdown">
+    <div class="ngym-dropdown-container">
+        <div class="ngym-item" [ngClass]="{'ngym-selected': i === dropDownSelectionIndex}" (click)="onSelectItem(item)"
             *ngFor="let item of autoCompleteItems; let i = index" [ngSwitch]="!!autoCompleteTemplate">
             <!-- Custom Template -->
             <ng-container *ngSwitchCase="true">
@@ -9,17 +9,17 @@
                 </ng-template>
             </ng-container>
             <ng-container *ngSwitchCase="false">
-                <div class="initials">
+                <div class="ngym-initials">
                     {{ item.name | initials }}
                 </div>
-                <div class="info content-overflow">
-                    <div class="name content-overflow">{{ item.name }}</div>
-                    <div class="value content-overflow">{{ item.email }}</div>
+                <div class="ngym-info ngym-content-overflow">
+                    <div class="ngym-name ngym-content-overflow">{{ item.name }}</div>
+                    <div class="ngym-value ngym-content-overflow">{{ item.email }}</div>
                 </div>
             </ng-container>
         </div>
-        <div class="loader-container" *ngIf="isLoading">
-            <div class="loader"></div>
+        <div class="ngym-loader-container" *ngIf="isLoading">
+            <div class="ngym-loader"></div>
         </div>
     </div>
 </div>

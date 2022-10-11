@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,6 +9,7 @@ import { NgymInputModule } from 'projects/ngym-input/src/dist';
 import { AppComponent } from './app.component';
 import { NgymPreloginHeaderModule } from 'projects/ngym-prelogin-header/src/public-api';
 import { RouterModule } from '@angular/router';
+import { WebService } from './service/web.service';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,10 @@ import { RouterModule } from '@angular/router';
     NgymInputModule,
     NgymPreloginHeaderModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
-  providers: [RouterModule],
+  providers: [RouterModule, WebService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
