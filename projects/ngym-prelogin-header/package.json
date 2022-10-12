@@ -1,13 +1,15 @@
 {
   "name": "ngym-prelogin-header",
-  "version": "0.0.11",
+  "version": "0.0.19",
   "peerDependencies": {
     "@angular/common": "^13.3.0",
     "@angular/core": "^13.3.0",
-    "bootstrap": "5.2.2",
-    "ngym-input": "^0.0.25"
+    "bootstrap": "5.2.2"
   },
   "dependencies": {
     "tslib": "^2.3.0"
+  },
+  "scripts": {
+    "build:sass": "sass styles/styles.scss assets/styles.css"
   }
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Logo } from 'ngym-prelogin-header';
 import { AutoComplete } from 'projects/ngym-chips/src/lib/model/autoComplete';
 import { Tag } from 'projects/ngym-chips/src/lib/model/tag';
-import { Logo } from 'projects/ngym-prelogin-header/src/lib/model/logo';
 
 @Component({
   selector: 'app-root',
