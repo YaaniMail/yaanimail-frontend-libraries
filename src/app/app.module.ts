@@ -8,9 +8,9 @@ import { NgymHomeModule } from 'projects/ngym-home/src/public-api';
 import { NgymInputModule } from 'projects/ngym-input/src/dist';
 import { NgymContactModule } from 'projects/ngym-contact/src/public-api';
 import { AppComponent } from './app.component';
-import { NgymPreloginHeaderModule } from 'projects/ngym-prelogin-header/src/public-api';
 import { RouterModule } from '@angular/router';
 import { WebService } from './service/web.service';
+import { NgymPreloginHeaderModule } from 'ngym-prelogin-header';
 
 @NgModule({
   declarations: [

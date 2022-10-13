@@ -22,7 +22,9 @@ import { CommonModule } from '@angular/common';
     InputGroupButtonComponent,
     InputTextComponent,
     InputPasswordComponent,
-    InputSelectComponent
+    InputSelectComponent,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class NgymInputModule { }

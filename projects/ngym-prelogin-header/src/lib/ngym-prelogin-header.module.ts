@@ -12,7 +12,7 @@ import { NgymPreloginHeaderComponent } from './ngym-prelogin-header.component';
     RouterModule.forRoot([], {
       // preloadingStrategy: PreloadAllModules,
       // onSameUrlNavigation: 'ignore',
-      onSameUrlNavigation: 'reload'
+      onSameUrlNavigation: 'reload',
   }),
   ],
   exports: [
