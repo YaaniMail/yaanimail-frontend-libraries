@@ -3,7 +3,7 @@ import { Tag } from "../model/tag";
 
 
 export class TagsAccessor implements ControlValueAccessor {
-    private _value!: Tag[];
+    private _value: Tag[] = [];
     public get tagValues(): Tag[] {
         return this._value;
     }
@@ -22,7 +22,7 @@ export class TagsAccessor implements ControlValueAccessor {
     onTouched = () => { };
 
     writeValue(value: Tag[]): void {
-        this.tagValues = value;
+        this._value = value;
     }
 
     registerOnChange(fn: any): void {

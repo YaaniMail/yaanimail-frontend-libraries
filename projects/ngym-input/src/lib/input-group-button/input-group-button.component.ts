@@ -15,6 +15,7 @@ import { InputTypeTextAccessor } from '../accessors/typeTextAccessor';
 export class InputGroupButtonComponent extends InputTypeTextAccessor implements AfterViewInit {
   @Input() placeholder!: string;
   @Input() faRobotClass!: string;
+  @Input() customInputClass!: string;
   @Input() faClass!: string;
   @Input() showButton: boolean = true;
   @Input() showIcon: boolean = false;

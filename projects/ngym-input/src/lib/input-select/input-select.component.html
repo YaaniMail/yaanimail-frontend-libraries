@@ -1,11 +1,5 @@
-<select
-    class="form-control-select"
-    (change)="selectionChanged($event.target.value)"
->
-    <option
-        class="robot_phone_numberOption{{i}}"
-        *ngFor="let option of options; let i = index"
-    >
+<select class="ngym-select {{ customClass }}" (change)="selectionChanged($event.target.value)">
+    <option class="{{ optionRobotClass }}{{ i }}" *ngFor="let option of options; let i = index">
         {{ option }}
     </option>
 </select>

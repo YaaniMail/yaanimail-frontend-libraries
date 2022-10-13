@@ -1,5 +1,5 @@
 <div class="input-group">
-    <input type="text" class="form-control" placeholder="{{ placeholder }}" [(ngModel)]="inputValue"
+    <input type="text" class="ngym-text {{ customInputClass }}" placeholder="{{ placeholder }}" [(ngModel)]="inputValue"
         (focusout)="onFocusOut()" (keyup)="onKeyUp($event.target.value)">
     <div *ngIf="showButton" class="input-group-append">
         <span class="input-group-btn">

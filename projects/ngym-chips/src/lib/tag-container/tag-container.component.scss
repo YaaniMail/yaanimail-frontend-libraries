@@ -1,11 +1,9 @@
-.ym-tag-container,
-.ym-tag-drag-zone {
+.ngym-tag-drag-zone {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
 }
 
-.onDrag {
+.ngym-onDrag {
     border-left: 2px solid #0089bf;
     animation: blinker 1s linear infinite;
 }

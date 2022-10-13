@@ -6,59 +6,44 @@
 </div>
 <div class="section">
     <div>To:</div>
-    <ngym-tag-container [(ngModel)]="toTags" (onAddEmitter)="onTagAdd($event, 'zone1')"
+    <ngym-tag-container [(ngModel)]="toTags" (onAddEmitter)="onTagAdd($event)" name="toTags"
         (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false" [splitChars]="[',', ';']"
         [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone1'" [autoCompleteItems]="autoCompleteItems"
         [tagTemplate]="tagTemplate">
     </ngym-tag-container>
 </div>
-<div class="section">
+<!-- <div class="section">
     <div>Cc:</div>
-    <ngym-tag-container [(ngModel)]="ccTags" (onAddEmitter)="onTagAdd($event, 'zone2')"
+    <ngym-tag-container [(ngModel)]="ccTags" (onAddEmitter)="onTagAdd($event)" name="ccTags"
         (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false" [splitChars]="[',', ';']"
         [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone2'" [autoCompleteItems]="autoCompleteItems">
     </ngym-tag-container>
 </div>
 <div class="section">
     <div>Bcc:</div>
-    <ngym-tag-container [(ngModel)]="bccTags" (onAddEmitter)="onTagAdd($event, 'zone3')"
+    <ngym-tag-container [(ngModel)]="bccTags" (onAddEmitter)="onTagAdd($event)" name="bccTags"
         (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false" [splitChars]="[',', ';']"
         [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone3'" [autoCompleteItems]="autoCompleteItems">
     </ngym-tag-container>
-</div>
+</div> -->
 <div class="section">
     <button type="button" (click)="logTags()">Send</button>
 </div>
-<div class="section-header">Accessor test</div>
-<div class="section-desc">Library test purpose</div>
-<div class="section">
-    <lib-test-bind [(ngModel)]="testBind" [tagTemplate]="tagTemplate" (onAddEmitter)="onAdd($event)">
-
-    </lib-test-bind>
-    <button (click)="finalize()">
-        finelize
-    </button>
-</div>
-<ng-template let-item="item" #tagTemplate>
-    <div style="background-color: blue; color: white;">
-        {{ item.value }}
-        <span *ngIf="item.isGroup">+</span>
-    </div>
-</ng-template>
-
-
 <div class="section-header">Chips Test</div>
 <div class="section-desc">Custom template on Tag and AutoComplete menu.
 </div>
 <div class="section">
     <div>Mail</div>
-    <ngym-tag-container (tagsEmitter)="getTags($event, 'zone4')" (onKeyPressedEmitter)="changeAutoCompleteItems($event)"
-        [duplicateAllowed]="false" [splitChars]="[',', ';']" [pattern]="pattern" [dragAllowed]="true"
-        [dragZone]="'zone3'" [autoCompleteItems]="autoCompleteItems" [tagTemplate]="tagTemplate"
-        [autoCompleteTemplate]="autoCompleteTemplate">
+    <ngym-tag-container [(ngModel)]="customTags" (onAddEmitter)="onTagAdd($event)"
+        (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false" [splitChars]="[',', ';']"
+        [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone3'" [autoCompleteItems]="autoCompleteItems"
+        [tagTemplate]="tagTemplate" [autoCompleteTemplate]="autoCompleteTemplate">
         <ng-template let-item="item" #tagTemplate>
-            <div style="background-color: black; color: white;">
-                {{ item.value }}
+            <div class="ngym-tag">
+                <div class="ngym-value">
+                    {{ item.value }}
+                </div>
+                <div class="ngym-cross">X</div>
             </div>
         </ng-template>
         <ng-template let-item="item" #autoCompleteTemplate>
@@ -74,7 +59,7 @@
 <div class="section">
     <div class="section-element-header">Input Group Button <b>ngym-input-group-button</b></div>
     <div class="section-element">
-        <ngym-input-group-button [faClass]="'fa-regular fa-circle-minus'" (onClickEmitter)="logInputClick()"
+        <ngym-input-group-button [faClass]="'fa-regular fa-circle-minus'" (onClickEmitter)="groupButtonRemove()"
             [(ngModel)]="inputGroupValue">
         </ngym-input-group-button>
     </div>
@@ -89,14 +74,6 @@
     <div class="section-element-header">Input Password Text <b>ngym-input-password</b></div>
     <div class="section-element">
         <ngym-input-password [(ngModel)]="inputPasswordValue"></ngym-input-password>
-    </div>
-</div>
-<div class="section-header">Select Dropdown</div>
-<div class="section-desc">Input elements accessing with <b>[(ngModel)]</b></div>
-<div class="section">
-    <div class="section-element-header">Select elements based on array <b>ngym-input-select</b></div>
-    <div class="section-element">
-        <ngym-input-select [options]="['deneme', 'deneme2', 'deneme3']"></ngym-input-select>
     </div>
 </div>
 

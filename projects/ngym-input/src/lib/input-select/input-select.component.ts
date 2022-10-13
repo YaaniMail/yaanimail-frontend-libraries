@@ -16,6 +16,8 @@ import { TypeSelectAccessor } from '../accessors/typeSelectAccessor';
 })
 export class InputSelectComponent extends TypeSelectAccessor {
   @Input() options!: string[];
+  @Input() optionRobotClass!: string;
+  @Input() customClass!: string;
   @Output() selectionChange: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() {
@@ -29,5 +31,5 @@ export class InputSelectComponent extends TypeSelectAccessor {
     this.selectionChange.emit(value);
     this.onChange(value);
     this.onTouched();
-  } 
+  }
 }

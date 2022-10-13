@@ -5,15 +5,13 @@ import { InputTextComponent } from './input-text/input-text.component';
 import { InputPasswordComponent } from './input-password/input-password.component';
 import { InputSelectComponent } from './input-select/input-select.component';
 import { CommonModule } from '@angular/common';
-import { TestBindComponent } from './test-bind/test-bind.component';
 
 @NgModule({
   declarations: [
     InputGroupButtonComponent,
     InputTextComponent,
     InputPasswordComponent,
-    InputSelectComponent,
-    TestBindComponent
+    InputSelectComponent
   ],
   imports: [
     CommonModule,
@@ -24,8 +22,7 @@ import { TestBindComponent } from './test-bind/test-bind.component';
     InputGroupButtonComponent,
     InputTextComponent,
     InputPasswordComponent,
-    InputSelectComponent,
-    TestBindComponent
+    InputSelectComponent
   ]
 })
 export class NgymInputModule { }
