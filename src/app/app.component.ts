@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Logo } from 'ngym-prelogin-header';
 import { AutoComplete } from 'projects/ngym-chips/src/lib/model/autoComplete';
 import { Tag } from 'projects/ngym-chips/src/lib/model/tag';
 import { WebService } from './service/web.service';
@@ -21,6 +22,8 @@ export class AppComponent implements OnInit {
   ccTags: Tag[] = [];
   bccTags: Tag[] = [];
   customTags: Tag[] = [];
+  logo!: Logo;
+
 
   constructor(private fb: FormBuilder, private webService: WebService) {
 
@@ -28,6 +31,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    this.logo = new Logo('../assets/yaanimail2x-enterprise.png', '/home')
   }
 
   createForm(): void {
