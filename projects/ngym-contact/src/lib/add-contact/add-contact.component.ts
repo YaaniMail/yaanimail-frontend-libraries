@@ -1,6 +1,5 @@
-import { Component, EventEmitter, forwardRef, Input, Output, TemplateRef, ViewChild } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { ContactsAccessor } from '../accessor/contactsAccessor';
+import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
+import { AddContactItem } from '../model/add-contact-item';
 import { ContactByRole } from '../model/contact-by-role';
 import { ContactConfig } from '../model/contact-config';
 import { ContactSuggestion } from '../model/contact-suggestion';
@@ -8,23 +7,18 @@ import { ContactSuggestion } from '../model/contact-suggestion';
 @Component({
     selector: 'ngym-add-contact',
     templateUrl: './add-contact.component.html',
-    styleUrls: ['./add-contact.component.scss'],
-    providers: [{
-        provide: NG_VALUE_ACCESSOR,
-        useExisting: forwardRef(() => AddContactComponent),
-        multi: true
-    }]
+    styleUrls: ['./add-contact.component.scss']
 })
-export class AddContactComponent extends ContactsAccessor {
-    contacts: { email: string, fullname: string, firstname: string, other_email: string }[] = [];
+export class AddContactComponent implements OnInit {
     roles: string[] = [];
     keyword: string = '';
-    contactSearchType: { key: string, label: string } = {
+    selectedSearchType: { key: string, label: string } = {
         key: '',
         label: ''
     };
-    attendees: ContactByRole[] = [];
     contactConfig: ContactConfig = new ContactConfig();
+    @Input() searchResult: AddContactItem[] = [];
+    @Input() attendees: ContactByRole[] = [];
     @Input() isLoading!: boolean;
     @Input() addAttendeeTitle: string = '';
     @Input() addContactSearchPlaceholder: string = '';
@@ -35,18 +29,25 @@ export class AddContactComponent extends ContactsAccessor {
     @Input() contactCountLabel: string = '';
     @Input() contactSearchTypeList: { key: string, label: string }[] = [];
     // TODO: NilS
-    @Output() onSelectEmitter = new EventEmitter<Boolean>();
-    @Output() onSearchEmitter = new EventEmitter<String>();
+    @Output() onSearchEmitter = new EventEmitter<{ searchType: string, keyword: string }>();
     @Output() onSaveEmitter = new EventEmitter<Boolean>();
     @Output() onCancelEmitter = new EventEmitter<Boolean>();
     @ViewChild('searchIcon') searchIconTemplate!: TemplateRef<any>;
 
-    constructor() {
-        super();
+    ngOnInit(): void {
+        this.clearConfigs();
+        if (this.contactSearchTypeList && this.contactSearchTypeList.length > 0) {
+            this.selectedSearchType = this.contactSearchTypeList[0];
+        }
+    }
+
+    clearConfigs() {
+        this.contactConfig = new ContactConfig();
+        this.searchResult = [];
     }
 
     setSearchType(type: { key: string, label: string }): void {
-        this.contactSearchType = type;
+        this.selectedSearchType = type;
         this.clearKeyword();
     }
 
@@ -58,12 +59,7 @@ export class AddContactComponent extends ContactsAccessor {
 
     onKeywordChange(keyword: string): void {
         this.clearConfigs();
-        this.onSearchEmitter.emit(keyword);
-    }
-
-    clearConfigs() {
-        this.contactConfig = new ContactConfig();
-        this.contacts = [];
+        this.onSearchEmitter.emit({ searchType: this.selectedSearchType.key, keyword: keyword });
     }
 
     addContact(event: any): void { // add contact to list with index and remove from all other lists
@@ -114,6 +110,6 @@ export class AddContactComponent extends ContactsAccessor {
     onScrollDown() {
         this.contactConfig.setOffset(this.contactConfig.offset + 10);
         this.contactConfig.setPage(this.contactConfig.page + 1);
-        this.onSearchEmitter.emit(this.keyword);
+        this.onSearchEmitter.emit({ searchType: this.selectedSearchType.key, keyword: this.keyword });
     }
 }

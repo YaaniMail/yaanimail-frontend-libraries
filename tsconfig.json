@@ -31,6 +31,10 @@
       "ngym-prelogin-header": [
         "dist/ngym-prelogin-header/ngym-prelogin-header",
         "dist/ngym-prelogin-header"
+      ],
+      "ngym-contact": [
+        "dist/ngym-contact/ngym-contact",
+        "dist/ngym-contact"
       ]
     },
     "declaration": false,

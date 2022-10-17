@@ -1,12 +1,11 @@
 <div class="input-group">
     <input type="text" class="ngym-text {{ customInputClass }}" placeholder="{{ placeholder }}" [(ngModel)]="inputValue"
-        (focusout)="onFocusOut()" (keyup)="onKeyUp($event.target.value)">
-    <div *ngIf="showButton" class="input-group-append">
+        (focusout)="onFocusOut()">
+    <div class="input-group-append">
         <span class="input-group-btn">
             <a class="{{ faRobotClass }}" (click)="onClick()">
                 <i class="{{ faClass }}"></i>
             </a>
         </span>
     </div>
-    <ng-container *ngIf="showIcon && iconTemplate" #iconTemplate></ng-container>
 </div>

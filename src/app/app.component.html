@@ -112,14 +112,7 @@
 <div class="section">
     <div class="section-element-header">Add Contact Modal <b>ngym-add-contact</b></div>
     <div class="section-element">
-        <a class="text-primary robot_calendarpermissions_addPeopleButton" (click)="openAddContactModal()"></a>
-        <ngym-add-contact [(ngModel)]="contacts" [addAttendeeTitle]="'Add Attendee'"
-            [addContactSearchPlaceholder]="'Add Contact'" [noResultLabel]="'No Results Found.'"
-            [searchForListingLabel]="'Search to listing contacts'" [buttonCancelLabel]="'Cancel'"
-            [addSenderLabel]="'Add'" [contactCountLabel]="'x adet bulundu'"
-            [contactSearchTypeList]="[{key: 'GLOBAL_ADDRESS_LIST', label: 'Global Address List'}, {key: 'MY_LABELS', label: 'My Labels'}]"
-            (onSelectEmitter)="addContactOnSelect()" (onSearchEmitter)="addContactOnSearch()"
-            (onSaveEmitter)="addContactOnSave()" (onCancelEmitter)="addContactOnCancel()">
-        </ngym-add-contact>
+        <a class="text-primary robot_calendarpermissions_addPeopleButton" (click)="openAddContactModal()">Open Address
+            Book</a>
     </div>
 </div>

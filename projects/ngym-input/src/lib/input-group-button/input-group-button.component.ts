@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, forwardRef, Input, Output, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { InputTypeTextAccessor } from '../accessors/typeTextAccessor';
 
@@ -12,25 +12,16 @@ import { InputTypeTextAccessor } from '../accessors/typeTextAccessor';
     multi: true
   }]
 })
-export class InputGroupButtonComponent extends InputTypeTextAccessor implements AfterViewInit {
+export class InputGroupButtonComponent extends InputTypeTextAccessor {
   @Input() placeholder!: string;
   @Input() faRobotClass!: string;
   @Input() customInputClass!: string;
   @Input() faClass!: string;
-  @Input() showButton: boolean = true;
-  @Input() showIcon: boolean = false;
-  @Input() iconTemplateRef!: TemplateRef<any>;
   @Output() onClickEmitter = new EventEmitter();
   @Output() onFocusOutEmitter = new EventEmitter();
-  @Output() onKeyUpEmitter = new EventEmitter<string>();
-  @ViewChild('iconTemplate', { read: ViewContainerRef }) iconTemplate!: ViewContainerRef;
 
   constructor() {
     super();
-  }
-
-  ngAfterViewInit(): void {
-    this.iconTemplate.createEmbeddedView(this.iconTemplateRef);
   }
 
   onClick(): void {
@@ -41,7 +32,4 @@ export class InputGroupButtonComponent extends InputTypeTextAccessor implements 
     this.onFocusOutEmitter.emit();
   }
 
-  onKeyUp(value: string): void {
-    this.onKeyUpEmitter.emit(value);
-  }
 }

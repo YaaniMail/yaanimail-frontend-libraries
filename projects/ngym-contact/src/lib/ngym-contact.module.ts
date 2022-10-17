@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-// TODO: NilS
-import { NgymInputModule } from 'projects/ngym-input/src/dist';
+import { NgymChipsModule } from 'ngym-chips';
+import { NgymInputModule } from 'ngym-input';
 import { AddContactRowComponent } from './add-contact-row/add-contact-row.component';
 import { AddContactComponent } from './add-contact/add-contact.component';
 
@@ -18,11 +18,13 @@ import { AddContactComponent } from './add-contact/add-contact.component';
     FormsModule,
     ReactiveFormsModule,
     InfiniteScrollModule,
-    NgymInputModule
+    NgymInputModule,
+    NgymChipsModule
   ],
   exports: [
     InfiniteScrollModule,
     NgymInputModule,
+    NgymChipsModule,
     AddContactComponent
   ]
 })

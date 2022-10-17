@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { WebService } from './service/web.service';
 import { NgymPreloginHeaderModule } from 'ngym-prelogin-header';
+import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -26,9 +27,10 @@ import { NgymPreloginHeaderModule } from 'ngym-prelogin-header';
     NgymContactModule,
     ReactiveFormsModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule.forRoot()
   ],
-  providers: [RouterModule, WebService],
+  providers: [RouterModule, BsModalRef, WebService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,11 +1,17 @@
-// TODO: NilS @import "../../../styles/app/variables.scss";
+// Colors
+$primary: #00a0df;
+$primary-hard: #0b3254;
+$secondary: #fff;
+$input: #b7c8d6;
+$borders: #edf2f5;
+$red: #f05f6d;
 
 #add-attendee-modal {
     input {
-        border: 1px solid #b7c8d6; // $input
+        border: 1px solid #b7c8d6;
         border-right: none;
         &:focus {
-            background-color: #fff; // $secondary
+            background-color: #fff;
         }
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
@@ -17,7 +23,7 @@
         justify-content: center;
         align-items: center;
         box-shadow: none;
-        border: 1px solid #b7c8d6; // $input
+        border: 1px solid $input;
         border-left: 0px !important;
         border-top-left-radius: 0px;
         border-bottom-left-radius: 0px;
@@ -26,18 +32,15 @@
     }
     .curved-dropdown {
         height: 35px;
-        border: 1px solid #b7c8d6; // $input
+        border: 1px solid $input;
         &:focus {
             border-left: 0px;
-            background-color: #fff; // $secondary
+            background-color: $secondary;
         }
     }
     .center-selected-text {
         top: 7px;
         position: relative;
-    }
-    .top-50 {
-        top: 50% !important;
     }
     .attendee-scrollbar {
         overflow-y: auto;
@@ -63,22 +66,22 @@
 
 .form-control-bottom-border {
     border: none;
-    border-bottom: 1px solid #b7c8d6 !important; // $input
+    border-bottom: 1px solid $input !important;
     border-radius: 0px;
     background-color: transparent;
-    color: #0b3254; // $primary-hard
+    color: $primary-hard;
     padding: 0px;
 
     &:focus {
-        border-color: #007bff !important; // $primary
-        color: #0b3254; // $primary-hard
+        border-color: $primary !important;
+        color: $primary-hard;
     }
 
     &.error {
-        border-color: #f05f6d !important; // $red
+        border-color: $red !important;
     }
 
     &.light {
-        border-bottom: 1px solid #edf2f5 !important; // $borders
+        border-bottom: 1px solid $borders !important;
     }
 }

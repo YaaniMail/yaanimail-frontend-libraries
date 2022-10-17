@@ -5,7 +5,8 @@ import { AutoComplete } from 'projects/ngym-chips/src/lib/model/autoComplete';
 import { Tag } from 'projects/ngym-chips/src/lib/model/tag';
 import { WebService } from './service/web.service';
 import { AddContactComponent } from 'projects/ngym-contact/src/lib/add-contact/add-contact.component';
-import { ContactByRole } from 'projects/ngym-contact/src/lib/model/contact-by-role';
+import { AddContactItem } from 'projects/ngym-contact/src/lib/model/add-contact-item';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { ContactByRole } from 'projects/ngym-contact/src/lib/model/contact-by-ro
 })
 export class AppComponent implements OnInit {
   form!: FormGroup;
+  addContactModalRef!: BsModalRef;
   inputGroupValue!: string;
   inputTextValue!: string;
   inputPasswordValue!: string;
@@ -25,10 +27,13 @@ export class AppComponent implements OnInit {
   bccTags: Tag[] = [];
   customTags: Tag[] = [];
   logo!: Logo;
-  contacts: ContactByRole[] = [];
+  contacts: AddContactItem[] = [];
 
-
-  constructor(private fb: FormBuilder, private webService: WebService) {
+  constructor(
+    private fb: FormBuilder,
+    private webService: WebService,
+    private modalService: BsModalService
+  ) {
 
   }
 
@@ -81,12 +86,29 @@ export class AppComponent implements OnInit {
     console.log(e);
   }
 
- openAddContactModal(): void {
-    /* this.modalService.show(AddContactComponent, { class: 'modal-dialog-centered add-attendee-modal p-0', {}, ignoreBackdropClick: true });
-  const onHideSubscribe = this.modalService.onHide.subscribe((e) => {
-    console.log('closed');
-    onHideSubscribe.unsubscribe();
-  });     */
+  openAddContactModal(): void {
+    const initialState = {
+      contacts: this.contacts,
+      addAttendeeTitle: 'Add Attendee',
+      addContactSearchPlaceholder: 'Search to listing contacts',
+      noResultLabel: 'No Results Found.',
+      searchForListingLabel: 'Search to listing contacts',
+      buttonCancelLabel: 'Cancel',
+      addSenderLabel: 'Add',
+      contactCountLabel: 'x adet bulundu',
+      contactSearchTypeList: [{ key: 'GLOBAL_ADDRESS_LIST', label: 'Global Address List' }, { key: 'MY_LABELS', label: 'My Labels' }]
+    };
+    this.addContactModalRef = this.modalService.show(AddContactComponent, { class: 'modal-dialog-centered add-attendee-modal p-0', initialState, ignoreBackdropClick: true });
+
+    const onHideSubscribe = this.modalService.onHide.subscribe((e) => {
+      console.log('closed');
+      onHideSubscribe.unsubscribe();
+    });
+
+    this.addContactModalRef.content.onSelectEmitter.subscribe(() => this.addContactOnSelect());
+    this.addContactModalRef.content.onSearchEmitter.subscribe(() => this.addContactOnSearch());
+    this.addContactModalRef.content.onSelectEmitter.subscribe(() => this.addContactOnSave());
+    this.addContactModalRef.content.onSelectEmitter.subscribe(() => this.addContactOnCancel());
   }
 
   addContactOnSelect(): void {
