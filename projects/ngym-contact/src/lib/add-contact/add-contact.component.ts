@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
+import { Subject } from 'rxjs';
 import { AddContactItem } from '../model/add-contact-item';
 import { ContactByRole } from '../model/contact-by-role';
 import { ContactConfig } from '../model/contact-config';
@@ -10,7 +11,7 @@ import { ContactSuggestion } from '../model/contact-suggestion';
     styleUrls: ['./add-contact.component.scss']
 })
 export class AddContactComponent implements OnInit {
-    roles: string[] = [];
+    roles: { role: string, label: string }[] = [];
     keyword: string = '';
     selectedSearchType: { key: string, label: string } = {
         key: '',
@@ -28,13 +29,17 @@ export class AddContactComponent implements OnInit {
     @Input() addSenderLabel: string = '';
     @Input() contactCountLabel: string = '';
     @Input() contactSearchTypeList: { key: string, label: string }[] = [];
+    @Input() profilePhotoRefresher = new Subject<{ email: string, data: any }>();
+    @Output() onGetProfilePhotoEmitter = new EventEmitter<string>();
     // TODO: NilS
     @Output() onSearchEmitter = new EventEmitter<{ searchType: string, keyword: string }>();
-    @Output() onSaveEmitter = new EventEmitter<Boolean>();
-    @Output() onCancelEmitter = new EventEmitter<Boolean>();
-    @ViewChild('searchIcon') searchIconTemplate!: TemplateRef<any>;
+    @Output() onSaveEmitter = new EventEmitter<boolean>();
+    @Output() onCancelEmitter = new EventEmitter<boolean>();
 
     ngOnInit(): void {
+        this.roles = this.attendees.map(attendee => {
+            return { role: attendee.name, label: attendee.label };
+        });
         this.clearConfigs();
         if (this.contactSearchTypeList && this.contactSearchTypeList.length > 0) {
             this.selectedSearchType = this.contactSearchTypeList[0];
@@ -60,6 +65,7 @@ export class AddContactComponent implements OnInit {
     onKeywordChange(keyword: string): void {
         this.clearConfigs();
         this.onSearchEmitter.emit({ searchType: this.selectedSearchType.key, keyword: keyword });
+        this.getProfilePhoto('nilseri@ymail.com.tr');
     }
 
     addContact(event: any): void { // add contact to list with index and remove from all other lists
@@ -111,5 +117,9 @@ export class AddContactComponent implements OnInit {
         this.contactConfig.setOffset(this.contactConfig.offset + 10);
         this.contactConfig.setPage(this.contactConfig.page + 1);
         this.onSearchEmitter.emit({ searchType: this.selectedSearchType.key, keyword: this.keyword });
+    }
+
+    getProfilePhoto(email: string): void {
+        this.onGetProfilePhotoEmitter.emit(email);
     }
 }

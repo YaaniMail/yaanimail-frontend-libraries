@@ -5,7 +5,7 @@ import { InputTypeTextAccessor } from '../accessors/typeTextAccessor';
 @Component({
   selector: 'ngym-input-group-button-with-icon',
   templateUrl: './input-group-button-with-icon.component.html',
-  styleUrls: ['../assets/input.scss'],
+  styleUrls: ['../assets/input.scss', './input-group-button-with-icon.component.scss'],
   providers: [{
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => InputGroupButtonWithIconComponent),
@@ -15,6 +15,7 @@ import { InputTypeTextAccessor } from '../accessors/typeTextAccessor';
 export class InputGroupButtonWithIconComponent extends InputTypeTextAccessor {
   @Input() placeholder!: string;
   @Input() faRobotClass!: string;
+  @Input() customInputGroupClass!: string;
   @Input() customInputClass!: string;
   @Input() faClass!: string;
   @Input() faIconLinkClass!: string;

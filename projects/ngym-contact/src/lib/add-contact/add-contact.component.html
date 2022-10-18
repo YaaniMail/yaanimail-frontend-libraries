@@ -1,4 +1,4 @@
-<div id="add-attendee-modal">
+<div>
     <div class="modal-header">
         <div class="modal-title flex-grow-1">
             {{ addAttendeeTitle }}
@@ -9,12 +9,12 @@
             </button>
         </div>
     </div>
-    <div class="modal-body overflow-auto">
+    <div class="modal-body ngym-add-contact-modal-body overflow-auto">
         <div class="d-flex align-items-center form-group">
             <div class="w-50 pr-1 dropdown">
-                <div class="d-block form-control-bottom-border pointer curved-dropdown dropdown-toggle"
+                <div class="d-block ngym-add-contact-form-control-bottom-border ngym-add-contact-curved-dropdown dropdown-toggle pointer"
                     data-toggle="dropdown">
-                    <span class="center-selected-text pl-2"> {{ selectedSearchType.label}} </span>
+                    <span class="ngym-add-contact-center-selected-text pl-2"> {{ selectedSearchType.label}} </span>
                     &nbsp;
                     <i class="fa-regular fa-chevron-down fa-gray fa-normal mt-2 mr-1 float-right"></i>
                 </div>
@@ -26,38 +26,39 @@
             </div>
             <div class="w-50 pl-1">
                 <ngym-input-group-button-with-icon [(ngModel)]="keyword" [customInputClass]="'form-control'"
-                    [faClass]="'fa-regular fa-xmark fa-gray fa-normal'"
-                    [faIconLinkClass]="'btn btn-outline-secondary icon'"
+                    [faClass]="'fa-regular fa-xmark fa-gray fa-normal'" [faIconLinkClass]="'btn btn-outline-secondary'"
                     [faIconClass]="'fa-regular fa-magnifying-glass fa-primary fa-normal'"
                     [faRobotClass]="'robot_addContact_searchButton'" [placeholder]="addContactSearchPlaceholder"
-                    [showButton]="(keyword || '').trim().length > 0" (onClickEmitter)="clearKeyword()"
+                    [showButton]="(keyword || '').length > 0" (onClickEmitter)="clearKeyword()"
                     (onKeyUpEmitter)="onKeywordChange($event)">
                 </ngym-input-group-button-with-icon>
             </div>
         </div>
-        <div class="attendee-list bt bb">
+        <div class="ngym-add-contact-attendee-list">
             <div class="justify-content-center" *ngIf="keyword !== '' && searchResult.length === 0 && !isLoading">
                 <div class="text-center p-4">
                     <div>{{ noResultLabel }}</div>
                 </div>
             </div>
-            <div class="justify-content-center" *ngIf="keyword == ''">
+            <div class="justify-content-center" *ngIf="keyword == '' && searchResult.length === 0">
                 <div class="text-center p-4">
                     <div> {{ searchForListingLabel }} </div>
                 </div>
             </div>
             <div>
-                <div class="search-results" infiniteScroll [scrollWindow]="false" (scrolled)="onScrollDown()">
+                <div class="ngym-add-contact-search-results" infiniteScroll [scrollWindow]="false"
+                    (scrolled)="onScrollDown()">
                     <div *ngFor="let item of searchResult; let i = index;">
-                        <ngym-add-contact-row [contactCountLabel]="contactCountLabel" [contact]="item" [roles]="roles"
-                            (addContactEvent)="addContact($event)">
+                        <ngym-add-contact-row [contactCountLabel]="item.count" [contact]="item" [roles]="roles"
+                            [profilePhotoRefresher]="profilePhotoRefresher"
+                            (onGetProfilePhotoEmitter)="getProfilePhoto($event)" (addContactEvent)="addContact($event)">
                         </ngym-add-contact-row>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="d-flex form-control-bottom-border" *ngFor="let role of attendees ; let i = index">
-            <div class="label-fields">
+        <div class="d-flex ngym-add-contact-form-control-bottom-border" *ngFor="let role of attendees ; let i = index">
+            <div class="ngym-add-contact-label-fields">
                 {{ role.label }}:&nbsp;
             </div>
             <div class="w-100">
@@ -67,7 +68,7 @@
 
         </div>
     </div>
-    <div class="modal-footer border-top-0">
+    <div class="modal-footer ngym-add-contact-modal-footer">
         <div class="d-flex justify-content-end">
             <button class="btn btn-small btn-secondary mr-2" (click)="cancel()" type="button">{{ buttonCancelLabel
                 }}</button>

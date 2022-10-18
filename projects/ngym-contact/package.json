@@ -1,12 +1,13 @@
 {
   "name": "ngym-contact",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "peerDependencies": {
     "@angular/common": "^13.3.0",
     "@angular/core": "^13.3.0",
     "bootstrap": "5.2.2",
     "ngx-infinite-scroll": "^13.1.0",
-    "ngym-input": "^0.0.26"
+    "ngym-input": "^0.0.32",
+    "ngym-profile-photo": "^0.0.5"
   },
   "dependencies": {
     "tslib": "^2.3.0"

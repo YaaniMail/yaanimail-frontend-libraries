@@ -1,4 +1,3 @@
-// Colors
 $primary: #00a0df;
 $primary-hard: #0b3254;
 $secondary: #fff;
@@ -6,65 +5,7 @@ $input: #b7c8d6;
 $borders: #edf2f5;
 $red: #f05f6d;
 
-#add-attendee-modal {
-    input {
-        border: 1px solid #b7c8d6;
-        border-right: none;
-        &:focus {
-            background-color: #fff;
-        }
-        border-top-right-radius: 0px;
-        border-bottom-right-radius: 0px;
-    }
-    .icon {
-        width: 35px;
-        height: 35px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: none;
-        border: 1px solid $input;
-        border-left: 0px !important;
-        border-top-left-radius: 0px;
-        border-bottom-left-radius: 0px;
-        border-top-right-radius: 0px;
-        border-bottom-right-radius: 0px;
-    }
-    .curved-dropdown {
-        height: 35px;
-        border: 1px solid $input;
-        &:focus {
-            border-left: 0px;
-            background-color: $secondary;
-        }
-    }
-    .center-selected-text {
-        top: 7px;
-        position: relative;
-    }
-    .attendee-scrollbar {
-        overflow-y: auto;
-        max-height: 80px;
-    }
-    .attendee-list {
-        height: 250px;
-    }
-    .modal-body {
-        max-height: calc(100vh - 160px) !important;
-    }
-    .modal-footer {
-        border-top: none;
-        height: unset !important;
-    }
-    .search-results {
-        max-height: 250px;
-        margin-bottom: 10px;
-        overflow-y: scroll;
-        overflow-x: hidden;
-    }
-}
-
-.form-control-bottom-border {
+.ngym-add-contact-form-control-bottom-border {
     border: none;
     border-bottom: 1px solid $input !important;
     border-radius: 0px;
@@ -83,5 +24,53 @@ $red: #f05f6d;
 
     &.light {
         border-bottom: 1px solid $borders !important;
+    }
+}
+
+.ngym-add-contact-curved-dropdown {
+    height: 35px;
+    border: 1px solid $input !important;
+    &:focus {
+        border-left: 0px;
+        background-color: $secondary !important;
+    }
+}
+
+.ngym-add-contact-center-selected-text {
+    top: 7px;
+    position: relative;
+}
+
+.ngym-add-contact-attendee-list {
+    height: 250px;
+    border-top: 1px solid $borders;
+    border-bottom: 1px solid $borders;
+}
+
+.ngym-add-contact-search-results {
+    max-height: 250px;
+    margin-bottom: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.ngym-add-contact-modal-body {
+    max-height: calc(100vh - 160px) !important;
+}
+
+.ngym-add-contact-modal-footer {
+    border-top: none;
+    height: unset !important;
+}
+
+.ngym-add-contact-label-fields {
+    padding-top: 12.5px;
+}
+
+#add-attendee-modal {
+    // TODO: NilS tag-input'a class?
+    .attendee-scrollbar {
+        overflow-y: auto;
+        max-height: 80px;
     }
 }

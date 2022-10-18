@@ -35,6 +35,10 @@
       "ngym-contact": [
         "dist/ngym-contact/ngym-contact",
         "dist/ngym-contact"
+      ],
+      "ngym-profile-photo": [
+        "dist/ngym-profile-photo/ngym-profile-photo",
+        "dist/ngym-profile-photo"
       ]
     },
     "declaration": false,

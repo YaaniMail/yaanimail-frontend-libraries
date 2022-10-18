@@ -1,16 +1,14 @@
-<div class="input-group">
-    <input type="text" class="ngym-text {{ customInputClass }}" placeholder="{{ placeholder }}" [(ngModel)]="inputValue"
+<div class="input-group ngym-input-group-button-with-icon {{customInputGroupClass}}">
+    <input type="text" class="{{ customInputClass }}" placeholder="{{ placeholder }}" [(ngModel)]="inputValue"
         (focusout)="onFocusOut()" (keyup)="onKeyUp($event.target.value)">
     <div *ngIf="showButton === true; else iconTemplate" class="input-group-append">
-        <span class="input-group-btn {{ faIconLinkClass }}">
-            <a class="{{ faRobotClass }}" (click)="onClick()">
-                <i class="{{ faClass }}"></i>
-            </a>
-        </span>
+        <button type="button" class="ngym-icon-link {{ faIconLinkClass }} {{ faRobotClass }}" (click)="onClick()">
+            <i class="{{ faClass }}"></i>
+        </button>
     </div>
     <ng-template #iconTemplate>
-        <a class="{{ faIconLinkClass }}">
+        <button type="button" class="ngym-icon-link {{ faIconLinkClass }}">
             <i class="{{ faIconClass }}"></i>
-        </a>
+        </button>
     </ng-template>
 </div>
