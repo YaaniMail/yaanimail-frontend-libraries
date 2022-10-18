@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Subject } from 'rxjs';
 import { AddContactItem } from '../model/add-contact-item';
 import { ContactByRole } from '../model/contact-by-role';
@@ -31,10 +32,10 @@ export class AddContactComponent implements OnInit {
     @Input() contactSearchTypeList: { key: string, label: string }[] = [];
     @Input() profilePhotoRefresher = new Subject<{ email: string, data: any }>();
     @Output() onGetProfilePhotoEmitter = new EventEmitter<string>();
-    // TODO: NilS
     @Output() onSearchEmitter = new EventEmitter<{ searchType: string, keyword: string }>();
     @Output() onSaveEmitter = new EventEmitter<boolean>();
-    @Output() onCancelEmitter = new EventEmitter<boolean>();
+
+    constructor(public bsModalRef: BsModalRef) { }
 
     ngOnInit(): void {
         this.roles = this.attendees.map(attendee => {
@@ -106,11 +107,13 @@ export class AddContactComponent implements OnInit {
     }
 
     cancel(): void {
-        this.onCancelEmitter.emit(true);
+        this.bsModalRef.hide();
     }
 
     save(): void {
+        // TODO: NilS
         this.onSaveEmitter.emit(true);
+        this.cancel();
     }
 
     onScrollDown() {

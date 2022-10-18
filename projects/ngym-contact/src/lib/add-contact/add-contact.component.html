@@ -4,7 +4,7 @@
             {{ addAttendeeTitle }}
         </div>
         <div>
-            <button type="button" class="btn btn-icon" aria-label="Close" (click)="cancel();">
+            <button type="button" class="btn btn-icon" aria-label="Close" (click)="cancel()">
                 <i class="fa-regular fa-xmark fa-gray fa-normal"></i>
             </button>
         </div>
@@ -49,7 +49,7 @@
                 <div class="ngym-add-contact-search-results" infiniteScroll [scrollWindow]="false"
                     (scrolled)="onScrollDown()">
                     <div *ngFor="let item of searchResult; let i = index;">
-                        <ngym-add-contact-row [contactCountLabel]="item.count" [contact]="item" [roles]="roles"
+                        <ngym-add-contact-row [contact]="item" [contactCountLabel]="contactCountLabel" [roles]="roles"
                             [profilePhotoRefresher]="profilePhotoRefresher"
                             (onGetProfilePhotoEmitter)="getProfilePhoto($event)" (addContactEvent)="addContact($event)">
                         </ngym-add-contact-row>
