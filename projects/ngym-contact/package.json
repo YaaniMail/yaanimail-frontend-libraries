@@ -5,6 +5,7 @@
     "@angular/common": "^13.3.0",
     "@angular/core": "^13.3.0",
     "bootstrap": "5.2.2",
+    "ngym-chips": "^0.0.50",
     "ngx-infinite-scroll": "^13.1.0",
     "ngym-input": "^0.0.32",
     "ngym-profile-photo": "^0.0.5"

@@ -62,10 +62,11 @@
                 {{ role.label }}:&nbsp;
             </div>
             <div class="w-100">
-                <ngym-tag-input [splitChars]="[';', ',', ' ']" (onEnterEmitter)="addContact(i, $event)">
-                </ngym-tag-input>
+                <ngym-tag-container (onAddEmitter)="addContact(i, $event)" [(ngModel)]="role.tags" name="tags"
+                    [splitChars]="[';', ',', ' ']" [pattern]="emailPattern" [dragAllowed]="false" [dragZone]="zone"
+                    [duplicateAllowed]="false" [tagTemplate]="tagTemplate">
+                </ngym-tag-container>
             </div>
-
         </div>
     </div>
     <div class="modal-footer ngym-add-contact-modal-footer">
@@ -76,3 +77,24 @@
         </div>
     </div>
 </div>
+<ng-template let-item="item" let-index="index" #tagTemplate>
+    <div id="{{ item.id }}">
+        <div class="pr-2">
+            <div class="ngym-tag content-overflow">
+                <div class="ngym-value mr-2">
+                    {{ item.value }}
+                </div>
+                <div class="ngym-cross">
+                    <a (click)="removeTag(item)">
+                        <i class="fa-regular fa-xmark fa-gray fa-normal"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="position-fixed mt-2">
+        <app-contact-info [email]="item.value" (closer)="closePopover()"
+            *ngIf="showPopover && selectedEmail === item.value">
+        </app-contact-info>
+    </div>
+</ng-template>

@@ -1,14 +1,14 @@
-import { ContactSuggestion } from "./contact-suggestion";
+import { Tag } from "ngym-chips";
 
 export class ContactByRole {
     name!: string;
     label!: string;
     title?: string;
-    list: ContactSuggestion[] = [];
+    tags: Tag[] = [];
 
-    constructor(name: string, label: string, list: ContactSuggestion[]) {
+    constructor(name: string, label: string, tags: Tag[]) {
         this.name = name;
         this.label = label;
-        this.list = list;
+        this.tags = tags;
     }
 }

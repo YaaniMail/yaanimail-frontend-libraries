@@ -17,13 +17,14 @@ export class AddContactRowComponent implements OnInit {
     constructor() { }
 
     ngOnInit(): void {
+        // TODO: NilS
         if (this.contact && (this.contactCountLabel || '').trim().length > 0) {
             this.contactCountLabel = this.contactCountLabel.replace('{{count}}', '' + this.contact.count);
         }
     }
 
     addContactToList(index: number, contact: any) {
-        this.addContactEvent.emit({ index, contact });
+        this.addContactEvent.emit({ index: index, contact: contact });
     }
 
     getProfilePhoto(email: string): void {
