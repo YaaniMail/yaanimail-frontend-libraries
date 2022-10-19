@@ -67,10 +67,8 @@ $red: #f05f6d;
     padding-top: 12.5px;
 }
 
-#add-attendee-modal {
-    // TODO: NilS tag-input'a class?
-    .attendee-scrollbar {
-        overflow-y: auto;
-        max-height: 80px;
-    }
+.ngym-tag-container {
+    overflow-y: auto;
+    height: 38px;
+    max-height: 80px;
 }

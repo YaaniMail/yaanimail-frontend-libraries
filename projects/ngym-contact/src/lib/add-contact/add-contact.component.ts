@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Tag } from 'ngym-chips';
 import { Subject } from 'rxjs';
@@ -8,7 +8,8 @@ import { ContactByRole } from '../model/contact-by-role';
 @Component({
     selector: 'ngym-add-contact',
     templateUrl: './add-contact.component.html',
-    styleUrls: ['./add-contact.component.scss']
+    styleUrls: ['./add-contact.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class AddContactComponent implements OnInit {
     roles: { role: string, label: string }[] = [];
@@ -27,7 +28,6 @@ export class AddContactComponent implements OnInit {
     @Input() searchForListingLabel: string = '';
     @Input() buttonCancelLabel: string = '';
     @Input() addSenderLabel: string = '';
-    @Input() contactCountLabel: string = '';
     @Input() contactSearchTypeList: { key: string, label: string }[] = [];
     @Input() profilePhotoRefresher = new Subject<{ email: string, data: any }>();
     @Output() onGetProfilePhotoEmitter = new EventEmitter<string>();

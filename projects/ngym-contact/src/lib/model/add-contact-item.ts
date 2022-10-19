@@ -6,6 +6,7 @@ export class AddContactItem {
     firstname?: string;
     other_email?: string;
     count?: number;
+    countLabel?: string;
 
     constructor(type: ("contact" | "label"), fullname: string) {
         this.type = type;
