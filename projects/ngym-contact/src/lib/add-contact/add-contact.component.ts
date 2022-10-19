@@ -3,7 +3,6 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Subject } from 'rxjs';
 import { AddContactItem } from '../model/add-contact-item';
 import { ContactByRole } from '../model/contact-by-role';
-import { ContactConfig } from '../model/contact-config';
 import { ContactSuggestion } from '../model/contact-suggestion';
 
 @Component({
@@ -18,7 +17,6 @@ export class AddContactComponent implements OnInit {
         key: '',
         label: ''
     };
-    contactConfig: ContactConfig = new ContactConfig();
     @Input() searchResult: AddContactItem[] = [];
     @Input() attendees: ContactByRole[] = [];
     @Input() isLoading!: boolean;
@@ -33,6 +31,7 @@ export class AddContactComponent implements OnInit {
     @Input() profilePhotoRefresher = new Subject<{ email: string, data: any }>();
     @Output() onGetProfilePhotoEmitter = new EventEmitter<string>();
     @Output() onSearchEmitter = new EventEmitter<{ searchType: string, keyword: string }>();
+    @Output() onScrollDownEmitter = new EventEmitter<{ searchType: string, keyword: string }>();
     @Output() onSaveEmitter = new EventEmitter<boolean>();
 
     constructor(public bsModalRef: BsModalRef) { }
@@ -41,15 +40,9 @@ export class AddContactComponent implements OnInit {
         this.roles = this.attendees.map(attendee => {
             return { role: attendee.name, label: attendee.label };
         });
-        this.clearConfigs();
         if (this.contactSearchTypeList && this.contactSearchTypeList.length > 0) {
             this.selectedSearchType = this.contactSearchTypeList[0];
         }
-    }
-
-    clearConfigs() {
-        this.contactConfig = new ContactConfig();
-        this.searchResult = [];
     }
 
     setSearchType(type: { key: string, label: string }): void {
@@ -59,19 +52,14 @@ export class AddContactComponent implements OnInit {
 
     clearKeyword(): void {
         this.keyword = '';
-        this.contactConfig = new ContactConfig();
         this.onKeywordChange(this.keyword);
     }
 
     onKeywordChange(keyword: string): void {
-        this.clearConfigs();
         this.onSearchEmitter.emit({ searchType: this.selectedSearchType.key, keyword: keyword });
-        this.getProfilePhoto('nilseri@ymail.com.tr');
     }
 
-    addContact(event: any): void { // add contact to list with index and remove from all other lists
-        const index = event.index;
-        const contact = event.contact;
+    addContact(index: number, contact: any): void { // add contact to list with index and remove from all other lists
         this.addContactToRoleList(index, contact);
     }
 
@@ -117,9 +105,7 @@ export class AddContactComponent implements OnInit {
     }
 
     onScrollDown() {
-        this.contactConfig.setOffset(this.contactConfig.offset + 10);
-        this.contactConfig.setPage(this.contactConfig.page + 1);
-        this.onSearchEmitter.emit({ searchType: this.selectedSearchType.key, keyword: this.keyword });
+        this.onScrollDownEmitter.emit({ searchType: this.selectedSearchType.key, keyword: this.keyword });
     }
 
     getProfilePhoto(email: string): void {

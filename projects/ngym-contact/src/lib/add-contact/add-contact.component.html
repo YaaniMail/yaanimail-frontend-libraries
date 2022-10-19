@@ -62,7 +62,7 @@
                 {{ role.label }}:&nbsp;
             </div>
             <div class="w-100">
-                <ngym-tag-input [splitChars]="[';', ',', ' ']" (onEnterEmitter)="removeFromOthers(i, $event)">
+                <ngym-tag-input [splitChars]="[';', ',', ' ']" (onEnterEmitter)="addContact(i, $event)">
                 </ngym-tag-input>
             </div>
 
