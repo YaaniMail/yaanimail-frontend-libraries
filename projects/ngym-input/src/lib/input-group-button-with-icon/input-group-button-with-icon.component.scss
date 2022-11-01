@@ -1,0 +1,28 @@
+$secondary: #fff;
+$input: #b7c8d6;
+
+.ngym-input-group-button-with-icon {
+    input {
+        border: 1px solid $input;
+        border-right: none;
+        &:focus {
+            background-color: $secondary;
+        }
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    .ngym-icon-link {
+        width: 35px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: none;
+        border: 1px solid $input;
+        border-left: 0px !important;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+}

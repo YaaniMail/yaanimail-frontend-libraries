@@ -6,10 +6,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgymChipsModule } from 'projects/ngym-chips/src/public-api';
 import { NgymHomeModule } from 'projects/ngym-home/src/public-api';
 import { NgymInputModule } from 'projects/ngym-input/src/dist';
+import { NgymContactModule } from 'projects/ngym-contact/src/public-api';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { WebService } from './service/web.service';
 import { NgymPreloginHeaderModule } from 'ngym-prelogin-header';
+import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,13 @@ import { NgymPreloginHeaderModule } from 'ngym-prelogin-header';
     NgymChipsModule,
     NgymInputModule,
     NgymPreloginHeaderModule,
+    NgymContactModule,
     ReactiveFormsModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule.forRoot()
   ],
-  providers: [RouterModule, WebService],
+  providers: [RouterModule, BsModalRef, WebService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

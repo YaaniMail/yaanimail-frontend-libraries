@@ -27,3 +27,42 @@
 .form-element {
     padding: 10px 0;
 }
+
+$modal-dialog-margin: 0.5rem !default;
+.modal-dialog-centered {
+    display: flex;
+    align-items: center;
+    min-height: calc(100% - #{$modal-dialog-margin * 2});
+
+    // Ensure `modal-dialog-centered` extends the full height of the view (IE10/11)
+    &::before {
+        display: block; // IE10
+        height: calc(100vh - #{$modal-dialog-margin * 2});
+        content: "";
+    }
+
+    // Ensure `.modal-body` shows scrollbar (IE10/11)
+    &.modal-dialog-scrollable {
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+
+        .modal-content {
+            max-height: none;
+        }
+
+        &::before {
+            content: none;
+        }
+    }
+}
+
+.add-attendee-modal {
+    box-shadow: none !important;
+    max-width: 700px !important;
+    .modal-content {
+        .modal-body {
+            overflow-y: inherit;
+        }
+    }
+}

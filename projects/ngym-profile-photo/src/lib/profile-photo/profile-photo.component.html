@@ -1,0 +1,8 @@
+<ng-container *ngIf="!initialsEnabled; else profileContainer">
+    <img src="assets/img/oldIcon/icon-profile-image.svg" class="ngym-rounded-circle" width="{{ size }}" #image />
+</ng-container>
+<ng-template #profileContainer>
+    <div class="ngym-profile-photo-container" [ngStyle]="{'width': size + 'px', 'height': size + 'px' }">
+        {{ name | firstLetters }}
+    </div>
+</ng-template>

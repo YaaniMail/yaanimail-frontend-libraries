@@ -1,0 +1,100 @@
+<div>
+    <div class="modal-header">
+        <div class="modal-title flex-grow-1">
+            {{ addAttendeeTitle }}
+        </div>
+        <div>
+            <button type="button" class="btn btn-icon" aria-label="Close" (click)="cancel()">
+                <i class="fa-regular fa-xmark fa-gray fa-normal"></i>
+            </button>
+        </div>
+    </div>
+    <div class="modal-body ngym-add-contact-modal-body overflow-auto">
+        <div class="d-flex align-items-center form-group">
+            <div class="w-50 pr-1 dropdown">
+                <div class="d-block ngym-add-contact-form-control-bottom-border ngym-add-contact-curved-dropdown dropdown-toggle pointer"
+                    data-toggle="dropdown">
+                    <span class="ngym-add-contact-center-selected-text pl-2"> {{ selectedSearchType.label}} </span>
+                    &nbsp;
+                    <i class="fa-regular fa-chevron-down fa-gray fa-normal mt-2 mr-1 float-right"></i>
+                </div>
+                <ul class="dropdown-menu animated fadeIn col-12" role="menu">
+                    <li *ngFor="let searchType of contactSearchTypeList" (click)="setSearchType(searchType)">
+                        <a class="dropdown-item">{{ searchType.label }} </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="w-50 pl-1">
+                <ngym-input-group-button-with-icon [(ngModel)]="keyword" [customInputClass]="'form-control'"
+                    [faClass]="'fa-regular fa-xmark fa-gray fa-normal'" [faIconLinkClass]="'btn btn-outline-secondary'"
+                    [faIconClass]="'fa-regular fa-magnifying-glass fa-primary fa-normal'"
+                    [faRobotClass]="'robot_addContact_searchButton'" [placeholder]="addContactSearchPlaceholder"
+                    [showButton]="(keyword || '').length > 0" (onClickEmitter)="clearKeyword()"
+                    (onKeyUpEmitter)="onKeywordChange($event)">
+                </ngym-input-group-button-with-icon>
+            </div>
+        </div>
+        <div class="ngym-add-contact-attendee-list">
+            <div class="justify-content-center" *ngIf="keyword !== '' && searchResult.length === 0 && !isLoading">
+                <div class="text-center p-4">
+                    <div>{{ noResultLabel }}</div>
+                </div>
+            </div>
+            <div class="justify-content-center" *ngIf="keyword == '' && searchResult.length === 0">
+                <div class="text-center p-4">
+                    <div> {{ searchForListingLabel }} </div>
+                </div>
+            </div>
+            <div>
+                <div class="ngym-add-contact-search-results" infiniteScroll [scrollWindow]="false"
+                    (scrolled)="onScrollDown()">
+                    <div *ngFor="let item of searchResult; let i = index;">
+                        <ngym-add-contact-row [contact]="item" [contactCountLabel]="contactCountLabel" [roles]="roles"
+                            [profilePhotoRefresher]="profilePhotoRefresher"
+                            (onGetProfilePhotoEmitter)="getProfilePhoto($event)" (addContactEvent)="addContact($event)">
+                        </ngym-add-contact-row>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex ngym-add-contact-form-control-bottom-border" *ngFor="let role of attendees ; let i = index">
+            <div class="ngym-add-contact-label-fields">
+                {{ role.label }}:&nbsp;
+            </div>
+            <div class="w-100">
+                <ngym-tag-container (onAddEmitter)="addContact(i, $event)" [(ngModel)]="role.tags" name="tags"
+                    [splitChars]="[';', ',', ' ']" [pattern]="emailPattern" [dragAllowed]="false" [dragZone]="zone"
+                    [duplicateAllowed]="false" [tagTemplate]="tagTemplate">
+                </ngym-tag-container>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer ngym-add-contact-modal-footer">
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-small btn-secondary mr-2" (click)="cancel()" type="button">{{ buttonCancelLabel
+                }}</button>
+            <button class="btn btn-small btn-primary" type="button" (click)="save()">{{ addSenderLabel }}</button>
+        </div>
+    </div>
+</div>
+<ng-template let-item="item" let-index="index" #tagTemplate>
+    <div id="{{ item.id }}">
+        <div class="pr-2">
+            <div class="ngym-tag content-overflow">
+                <div class="ngym-value mr-2">
+                    {{ item.value }}
+                </div>
+                <div class="ngym-cross">
+                    <a (click)="removeTag(item)">
+                        <i class="fa-regular fa-xmark fa-gray fa-normal"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="position-fixed mt-2">
+        <app-contact-info [email]="item.value" (closer)="closePopover()"
+            *ngIf="showPopover && selectedEmail === item.value">
+        </app-contact-info>
+    </div>
+</ng-template>

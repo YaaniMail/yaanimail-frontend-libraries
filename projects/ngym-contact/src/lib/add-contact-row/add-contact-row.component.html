@@ -1,0 +1,25 @@
+<div class="contact-item bb d-flex align-items-center">
+    <div class="p-2">
+        <ngym-profile-photo *ngIf="contact?.type === 'contact'"
+            [name]="contact.fullname != '' ? contact.fullname : contact.firstname" [email]="contact.email" [size]="33"
+            [showOnlyInitials]="false" [profilePhotoRefresher]="profilePhotoRefresher"
+            (onGetProfilePhotoEmitter)="getProfilePhoto($event)">
+        </ngym-profile-photo>
+        <div *ngIf="contact?.type === 'label'" class="profile-container">
+            <i class="fa-regular fa-user-tag fa-primary fa-normal"></i>
+        </div>
+    </div>
+    <div class="p-2 flex-fill">
+        <div class="content-overflow b1-r">{{ contact.fullname ? contact.fullname : '&nbsp;' }}</div>
+        <div class="content-overflow text-gray b2-r">
+            {{ contact?.type === 'label' ? contact.countLabel : contact.email }}
+        </div>
+    </div>
+    <div class="d-flex p-2">
+        <div class="p-2" *ngFor="let role of roles; let i = index">
+            <button class="btn btn-tertiary" type="button" (click)="addContactToList(i, contact)">
+                {{ role.label }}
+            </button>
+        </div>
+    </div>
+</div>
