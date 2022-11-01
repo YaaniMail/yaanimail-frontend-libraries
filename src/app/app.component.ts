@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.logo = new Logo('../assets/yaanimail2x-enterprise.png', '/home')
+    this.logo = new Logo('../assets/yaanimail2x-enterprise.png')
   }
 
   createForm(): void {
