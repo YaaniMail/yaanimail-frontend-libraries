@@ -1,5 +1,4 @@
-import { Component, Input, TemplateRef, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, Output, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { Logo } from './model/logo';
 
 @Component({
@@ -11,12 +10,11 @@ import { Logo } from './model/logo';
 export class NgymPreloginHeaderComponent {
   @Input() logo!: Logo;
   @Input() headerHtml!: TemplateRef<any>;
+  @Output() imageClickEmitter = new EventEmitter<boolean>();
   
-  constructor(
-    private router: Router
-  ) { }
+  constructor() { }
 
-  navigateTo(route: string): void {
-    this.router.navigate([route]);
+  onImageClick(): void {
+    this.imageClickEmitter.emit(true);
   }
 }
