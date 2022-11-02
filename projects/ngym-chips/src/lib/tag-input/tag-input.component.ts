@@ -135,7 +135,7 @@ export class TagInputComponent implements OnInit, OnChanges {
   /**
    * Getting on paste value. If there are keys[',', ';'], seperate tags.
    */
-  onPaste(pastedText: string): void {
+  onPaste(pastedText: string, event: ClipboardEvent): void {
     const splitArray = pastedText.trim().split(this.createSplitRegex());
 
     // Removing possible empty elements
@@ -149,6 +149,7 @@ export class TagInputComponent implements OnInit, OnChanges {
       this.pastedTagArray.push(tag);
     }
 
+    event.clipboardData?.setData('', '');
     this.onPasteEmitter.emit(this.pastedTagArray);
 
     // This timeout is a workaround. ALternative is promise functions. Clearing field. Closing auto complete.

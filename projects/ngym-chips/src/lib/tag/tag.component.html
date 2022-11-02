@@ -1,11 +1,11 @@
-<div [ngSwitch]="!!tagTemplate">
+<div [ngSwitch]="!!tagTemplate" (dblclick)="editTag(tag)">
     <div *ngSwitchCase="true">
         <ng-template [ngTemplateOutletContext]="{ item: tag, index: index }" [ngTemplateOutlet]="tagTemplate">
         </ng-template>
     </div>
     <div *ngSwitchCase="false">
         <div class="ngym-tag" [ngClass]="{'active': selectedTagId === tag.id, 'invalid': !valid}">
-            <div class="ngym-value" (click)="selectTag(tag)" (dblclick)="editTag(tag)">
+            <div class="ngym-value" (click)="selectTag(tag)">
                 {{ tag.id }} - {{ tag.value }}
             </div>
             <div class="ngym-cross" (click)="removeTag(tag.id)">X</div>
