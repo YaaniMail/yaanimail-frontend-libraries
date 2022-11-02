@@ -145,7 +145,7 @@ export class TagContainerComponent extends TagsAccessor {
    * Duplicate tag values are configurative. Returns if duplicate value is in the @tags array or not
    */
   checkDuplicate(tags: Tag[], value: string): boolean {
-    if(!tags) {
+    if (!tags) {
       return false;
     }
     const _tags = tags.map(function (t) { return t.value });
@@ -182,10 +182,18 @@ export class TagContainerComponent extends TagsAccessor {
   }
 
   /**
-   * Removing cursor from the screen by setting onDrag to false after leaving drag zone.
+   * Removing cursor from the screen by setting onDrag to false after leaving drag zone for ngym-tag.
    */
   onDragLeave(event: DragEvent, t: Tag): void {
     this.onDrag = false;
+  }
+
+  /**
+   * Removing cursor from the screen by setting onDrag to false after leaving drag zone for ngym-tag-container.
+   */
+  onZoneDragLeave(event: DragEvent): void {
+    this.onDrag = false;
+    this.dragDropProvider.receiverComponent = new TagContainerComponent(new DragDropProvider);
   }
 
   /**
@@ -193,6 +201,15 @@ export class TagContainerComponent extends TagsAccessor {
    */
   onDragEnd(event: DragEvent): void {
     this.onDrag = false;
+
+    if (this.dragDropProvider.senderComponent.dragZone === this.dragDropProvider.receiverComponent.dragZone) {
+      return;
+    }
+
+    if (this.dragDropProvider.receiverComponent.dragZone === undefined) {
+      return;
+    }
+
     this.removeTag(this.dragDropProvider.draggingTag.id);
   }
 
@@ -200,6 +217,8 @@ export class TagContainerComponent extends TagsAccessor {
    * Drag event drops. Removing item first and then inserting it at desired index.
    */
   onDrop(event: DragEvent): void {
+    this.onDrag = false;
+
     if (this.dragDropProvider.senderComponent.dragZone === this.dragDropProvider.receiverComponent.dragZone &&
       this.dragDropProvider.startingIndex === this.dragDropProvider.droppingIndex) {
       return;

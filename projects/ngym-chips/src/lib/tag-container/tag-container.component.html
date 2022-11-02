@@ -1,4 +1,5 @@
-<div class="ngym-tag-container" (dragover)="onZoneDragOver($event)" (drop)="onDrop($event)">
+<div class="ngym-tag-container" (dragover)="onZoneDragOver($event)" (drop)="onDrop($event)"
+    (dragleave)="onZoneDragLeave($event)">
     <div class="ngym-tag-drag-zone">
         <!-- Tags -->
         <ngym-tag *ngFor="let t of tagValues; let i = index"
