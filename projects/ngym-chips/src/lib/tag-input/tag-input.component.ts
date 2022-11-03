@@ -12,7 +12,6 @@ export class TagInputComponent implements OnInit, OnChanges {
   autoCompleteTags!: string[];
   id: number = 0;
   autoCompleteVisible: boolean = false;
-  pastedTagArray: Tag[] = [];
   form!: FormGroup;
   @Input() splitChars!: string[];
   @Input() autoCompleteItems!: AutoComplete[];
@@ -136,7 +135,7 @@ export class TagInputComponent implements OnInit, OnChanges {
    * Getting on paste value. If there are keys[',', ';'], seperate tags.
    */
   onPaste(pastedText: string): void {
-    console.log(pastedText);
+    const pastedTagArray: Tag[] = [];
     const splitArray = pastedText.trim().split(this.createSplitRegex());
 
     // Removing possible empty elements
@@ -147,10 +146,10 @@ export class TagInputComponent implements OnInit, OnChanges {
     for (let i = 0; i < filtered.length; i++) {
       const tag = this.createTagObject(splitArray[i].trim());
 
-      this.pastedTagArray.push(tag);
+      pastedTagArray.push(tag);
     }
 
-    this.onPasteEmitter.emit(this.pastedTagArray);
+    this.onPasteEmitter.emit(pastedTagArray);
 
     // This timeout is a workaround. ALternative is promise functions. Clearing field. Closing auto complete.
     setTimeout(() => {
