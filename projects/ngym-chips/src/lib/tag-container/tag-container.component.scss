@@ -8,6 +8,10 @@
     animation: blinker 1s linear infinite;
 }
 
+.ngym-tag-wrapper {
+    background-color: transparent;
+}
+
 @keyframes blinker {
     50% {
         opacity: 0;

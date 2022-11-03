@@ -2,7 +2,7 @@
     (dragleave)="onZoneDragLeave($event)">
     <div class="ngym-tag-drag-zone">
         <!-- Tags -->
-        <ngym-tag *ngFor="let t of tagValues; let i = index"
+        <ngym-tag *ngFor="let t of tagValues; let i = index" class="ngym-tag-wrapper"
             [ngClass]="{'ngym-onDrag': onDrag && this.dragDropProvider.droppingIndex == i}" [tag]="t"
             [pattern]="pattern" [selectedTagId]="selectedTagId" [dragAllowed]="dragAllowed"
             (onRemoveEmitter)="removeTag($event)" (onSelectEmitter)="selectTag($event)"
