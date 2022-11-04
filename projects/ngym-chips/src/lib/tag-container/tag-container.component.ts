@@ -122,6 +122,13 @@ export class TagContainerComponent extends TagsAccessor {
    * Remove tag from list and edit in tag input component for a new tag
    */
   assignTagToEdit(tag: Tag): void {
+    const newTag = this.tagInputComponent.form.controls['newTag'].value;
+    if (newTag != null && newTag.length > 0) {
+      // This solved the problem to remove all tags by doubleclicking
+      // If any newTag value is active, you cannot edit.
+      return;
+    }
+
     this.removeTag(tag.id);
     this.tagInputComponent.changeInputToEdit(tag);
   }
