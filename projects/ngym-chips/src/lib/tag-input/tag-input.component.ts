@@ -21,6 +21,7 @@ export class TagInputComponent implements OnInit, OnChanges {
   @Output() onEnterEmitter = new EventEmitter<Tag>();
   @Output() onPasteEmitter = new EventEmitter<Tag[]>();
   @Output() onAutoCompleteSelectEmitter = new EventEmitter<Tag>();
+  @ViewChild('newTag') tagInput!: ElementRef;
   @ViewChild('autoComplete') autoComplete!: ElementRef<any>;
   @HostListener('document:click', ['$event'])
   clickout(event: any) {
@@ -77,6 +78,9 @@ export class TagInputComponent implements OnInit, OnChanges {
   changeInputToEdit(tag: Tag): void {
     this.form.reset();
     this.form.controls['newTag'].setValue(tag.value);
+    setTimeout(() => { // this will make the execution after the above boolean has changed
+      this.tagInput.nativeElement.focus();
+    }, 0);
   }
 
   /**
@@ -94,6 +98,7 @@ export class TagInputComponent implements OnInit, OnChanges {
       return;
     }
 
+    e.stopPropagation();
     this.autoCompleteVisible = true;
     this.onKeyPressedEmitter.emit(draft);
   }

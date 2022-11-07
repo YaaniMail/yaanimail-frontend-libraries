@@ -219,17 +219,25 @@ export class TagContainerComponent extends TagsAccessor {
     }
 
     this.removeTag(this.dragDropProvider.draggingTag.id);
-    this.onDragEndEmitter.emit(this.tagValues);
+    this.onDragEndEmitter.emit(this.tagValues); // It is called after onZoneDrop event
+  }
+
+  /**
+   * Drop event on own zone. Just changing index by removing and adding again
+   */
+  onDrop(event: DragEvent): void {
+    this.removeTag(this.dragDropProvider.draggingTag.id);
+    this.addTagAfterDragDrop();
+    this.onDragEndEmitter.emit(this.tagValues); // It is called after onZoneDrop event
   }
 
   /**
    * Drag event drops. Removing item first and then inserting it at desired index.
    */
-  onDrop(event: DragEvent): void {
+  onZoneDrop(event: DragEvent): void {
     this.onDrag = false;
 
-    if (this.dragDropProvider.senderComponent.dragZone === this.dragDropProvider.receiverComponent.dragZone &&
-      this.dragDropProvider.startingIndex === this.dragDropProvider.droppingIndex) {
+    if (this.dragDropProvider.senderComponent.dragZone === this.dragDropProvider.receiverComponent.dragZone) {
       return;
     }
 
