@@ -6,9 +6,9 @@
     <div *ngSwitchCase="false">
         <div class="ngym-tag" [ngClass]="{'active': selectedTagId === tag.id, 'invalid': !valid}">
             <div class="ngym-value" (click)="selectTag(tag)">
-                {{ tag.id }} - {{ tag.value }}
+                {{ tag.value }}
             </div>
-            <div class="ngym-cross" (click)="removeTag(tag.id)">X</div>
+            <div class="ngym-cross" (click)="removeTag(tag.id)">x</div>
         </div>
     </div>
 </div>
