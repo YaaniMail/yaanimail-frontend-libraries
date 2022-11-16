@@ -3,15 +3,11 @@ input:focus {
     width: 300px;
 }
 
-.ngym-tag-input-form {
-    margin-top: 2px;
-}
-
-.ngym-form-control {
+.ngym-new-tag {
     border: none;
     border-radius: 0px;
-    padding: 6px;
     box-shadow: 0 0 #000;
+    height: 40px;
 }
 
 .ngym-auto-complete {

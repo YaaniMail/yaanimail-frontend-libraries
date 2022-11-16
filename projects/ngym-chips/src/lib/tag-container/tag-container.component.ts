@@ -21,6 +21,7 @@ export class TagContainerComponent extends TagsAccessor {
   onDrag!: boolean;
   @Input() dragZone!: string;
   @Input() splitChars!: string[];
+  @Input() placeholder!: string[];
   @Input() editAllowed!: boolean;
   @Input() duplicateAllowed!: boolean;
   @Input() dragAllowed!: boolean;
@@ -100,11 +101,18 @@ export class TagContainerComponent extends TagsAccessor {
   }
 
   /**
-   * Remove a new tag from sender container(starting dragging zone).
-   * Only works after drag and drop operations
+   * changing index of same zone array element in drag and drop
    */
-  removeTagAfterDragDrop(id: number): void {
-    this.tagValues = this.dragDropProvider.senderComponent.tagValues
+  changeIndex() {
+    var target = this.tagValues[this.dragDropProvider.startingIndex];
+    var increment = this.dragDropProvider.droppingIndex < this.dragDropProvider.startingIndex ? -1 : 1;
+
+    for (var k = this.dragDropProvider.startingIndex; k != this.dragDropProvider.droppingIndex; k += increment) {
+      this.tagValues[k] = this.tagValues[k + increment];
+    }
+    this.tagValues[this.dragDropProvider.droppingIndex] = target;
+    this.onDragEndEmitter.emit(this.tagValues); // It is called after onZoneDrop event
+    return this.tagValues;
   }
 
   /**
@@ -123,6 +131,10 @@ export class TagContainerComponent extends TagsAccessor {
    * Remove tag from list and edit in tag input component for a new tag
    */
   assignTagToEdit(tag: Tag): void {
+    if (!this.editAllowed) {
+      return;
+    }
+
     const newTag = this.tagInputComponent.form.controls['newTag'].value;
     if (newTag != null && newTag.length > 0) {
       // This solved the problem to remove all tags by doubleclicking
@@ -223,18 +235,18 @@ export class TagContainerComponent extends TagsAccessor {
   }
 
   /**
-   * Drop event on own zone. Just changing index by removing and adding again
+   * Drop event on own zone. Just changing index of the element
    */
   onDrop(event: DragEvent): void {
-    this.removeTag(this.dragDropProvider.draggingTag.id);
-    this.addTagAfterDragDrop();
-    this.onDragEndEmitter.emit(this.tagValues); // It is called after onZoneDrop event
+    event.preventDefault();
+    this.changeIndex();
   }
 
   /**
    * Drag event drops. Removing item first and then inserting it at desired index.
    */
   onZoneDrop(event: DragEvent): void {
+    event.preventDefault();
     this.onDrag = false;
 
     if (this.dragDropProvider.senderComponent.dragZone === this.dragDropProvider.receiverComponent.dragZone) {

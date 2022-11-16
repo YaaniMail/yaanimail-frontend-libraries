@@ -13,6 +13,7 @@ export class TagInputComponent implements OnInit, OnChanges {
   id: number = 0;
   autoCompleteVisible: boolean = false;
   form!: FormGroup;
+  @Input() placeholder!: string;
   @Input() splitChars!: string[];
   @Input() autoCompleteItems!: AutoComplete[];
   @Input() autoCompleteTemplate!: TemplateRef<any>;
@@ -27,6 +28,10 @@ export class TagInputComponent implements OnInit, OnChanges {
   clickout(event: any) {
     if (this.autoComplete && !this.autoComplete.nativeElement?.contains(event.target)) {
       this.autoCompleteVisible = false;
+    }
+
+    if (!this.tagInput.nativeElement.contains(event.target)) {
+      this.onEnter();
     }
   }
 
@@ -98,7 +103,6 @@ export class TagInputComponent implements OnInit, OnChanges {
       return;
     }
 
-    e.stopPropagation();
     this.autoCompleteVisible = true;
     this.onKeyPressedEmitter.emit(draft);
   }
@@ -122,10 +126,10 @@ export class TagInputComponent implements OnInit, OnChanges {
    * Form reseting for reuse input element
    * Increasing id for next element
    */
-  onEnter(event: KeyboardEvent): void {
-    const tagValue = (event.target as HTMLInputElement).value;
+  onEnter(): void {
+    const tagValue = this.form.value.newTag;
 
-    if (tagValue === '') {
+    if (tagValue === '' || tagValue === null) {
       return;
     }
 

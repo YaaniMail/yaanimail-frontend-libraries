@@ -5,11 +5,13 @@
 
 .ngym-onDrag {
     border-left: 2px solid #0089bf;
-    animation: blinker 1s linear infinite;
+    // animation: blinker 1s linear infinite;
 }
 
 .ngym-tag-wrapper {
     background-color: transparent;
+    opacity: 0.99; // bugfix for non transparent background while drag and drop
+    padding: 4px;
 }
 
 @keyframes blinker {

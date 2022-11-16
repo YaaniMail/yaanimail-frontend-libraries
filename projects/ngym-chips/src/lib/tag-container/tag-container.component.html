@@ -11,7 +11,7 @@
             (drop)="onDrop($event)" [tagTemplate]="tagTemplate">
         </ngym-tag>
         <!-- Add New Tag -->
-        <ngym-tag-input [autoCompleteItems]="autoCompleteItems" [splitChars]="splitChars"
+        <ngym-tag-input [autoCompleteItems]="autoCompleteItems" [placeholder]="placeholder" [splitChars]="splitChars"
             (onEnterEmitter)="addTag($event)" (onKeyPressedEmitter)="getAutoCompleteItems($event)"
             (onPasteEmitter)="pasteTags($event)" (onAutoCompleteSelectEmitter)="selectAutoCompleteItem($event)"
             [autoCompleteTemplate]="autoCompleteTemplate" [isLoading]="isLoading">

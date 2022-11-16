@@ -7,8 +7,9 @@
 <div class="section">
     <div>To:</div>
     <ngym-tag-container [(ngModel)]="toTags" (onAddEmitter)="onTagAdd($event)" name="toTags"
-        (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false" [splitChars]="[',', ';']"
-        [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone1'" [autoCompleteItems]="autoCompleteItems">
+        [placeholder]="'Katılımcı ekle'" (onKeyPressedEmitter)="changeAutoCompleteItems($event)"
+        [duplicateAllowed]="false" [splitChars]="[',', ';']" [pattern]="pattern" [dragAllowed]="true"
+        [dragZone]="'zone1'" [autoCompleteItems]="autoCompleteItems">
     </ngym-tag-container>
 </div>
 <div class="section">

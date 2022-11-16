@@ -9,7 +9,6 @@ import { Tag } from '../model/tag';
 })
 export class TagComponent implements OnInit {
   valid!: boolean;
-  isEditable: boolean = false;
   regex!: RegExp
   @Input() selectedTagId!: number;
   @Input() dragAllowed!: boolean;
