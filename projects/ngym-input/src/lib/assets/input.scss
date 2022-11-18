@@ -5,6 +5,10 @@ $input: #b7c8d6;
 $borders: #edf2f5;
 $red: #f05f6d;
 
+input {
+  outline: 0;
+}
+
 .input-group {
   position: relative;
   display: -webkit-box;
@@ -50,7 +54,7 @@ $red: #f05f6d;
 .ngym-text {
   display: block;
   width: 100%;
-  padding: 0;
+  padding: 5px 0px;
   font-size: 14px;
   line-height: 1.5;
   color: $primary-hard;

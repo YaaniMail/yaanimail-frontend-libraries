@@ -220,6 +220,8 @@ export class TagContainerComponent extends TagsAccessor {
    * Removing cursor from the screen by setting onDrag to false after drag end.
    */
   onDragEnd(event: DragEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
     this.onDrag = false;
 
     if (this.dragDropProvider.senderComponent.dragZone === this.dragDropProvider.receiverComponent.dragZone) {
@@ -239,6 +241,7 @@ export class TagContainerComponent extends TagsAccessor {
    */
   onDrop(event: DragEvent): void {
     event.preventDefault();
+    event.stopPropagation();
     this.changeIndex();
   }
 
@@ -247,6 +250,7 @@ export class TagContainerComponent extends TagsAccessor {
    */
   onZoneDrop(event: DragEvent): void {
     event.preventDefault();
+    event.stopPropagation();
     this.onDrag = false;
 
     if (this.dragDropProvider.senderComponent.dragZone === this.dragDropProvider.receiverComponent.dragZone) {
