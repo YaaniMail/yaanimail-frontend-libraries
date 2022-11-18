@@ -5,7 +5,7 @@
     </div>
     <div *ngSwitchCase="false">
         <div class="ngym-tag" [ngClass]="{'active': selectedTagId === tag.id, 'invalid': !valid}">
-            <div class="ngym-value" (click)="selectTag(tag)">
+            <div class="ngym-value ngym-content-overflow" (click)="selectTag(tag)">
                 {{ tag.value }}
             </div>
             <div class="ngym-cross" (click)="removeTag(tag.id)">x</div>

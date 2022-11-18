@@ -1,4 +1,4 @@
-import { Component, EventEmitter, forwardRef, HostListener, Input, Output, TemplateRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, forwardRef, HostListener, Input, Output, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { TagsAccessor } from '../accessor/tagAccessor';
 import { AutoComplete } from '../model/autoComplete';
@@ -10,6 +10,7 @@ import { TagInputComponent } from '../tag-input/tag-input.component';
   selector: 'ngym-tag-container',
   templateUrl: './tag-container.component.html',
   styleUrls: ['./tag-container.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   providers: [{
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => TagContainerComponent),
