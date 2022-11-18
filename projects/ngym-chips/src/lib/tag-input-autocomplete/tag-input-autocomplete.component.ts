@@ -1,10 +1,11 @@
-import { Component, EventEmitter, HostListener, Input, Output, TemplateRef } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { AutoComplete } from '../model/autoComplete';
 
 @Component({
   selector: 'ngym-tag-input-autocomplete',
   templateUrl: './tag-input-autocomplete.component.html',
-  styleUrls: ['./tag-input-autocomplete.component.scss']
+  styleUrls: ['./tag-input-autocomplete.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TagInputAutocompleteComponent {
   dropDownSelectionIndex: number = -1;

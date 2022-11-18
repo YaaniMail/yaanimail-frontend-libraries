@@ -9,6 +9,7 @@
 }
 
 .ngym-tag-wrapper {
+    overflow: hidden;
     background-color: transparent;
     opacity: 0.99; // bugfix for non transparent background while drag and drop
     padding: 4px;

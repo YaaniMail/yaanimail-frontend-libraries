@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges, TemplateRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutoComplete } from '../model/autoComplete';
 import { Tag } from '../model/tag';
@@ -6,7 +6,8 @@ import { Tag } from '../model/tag';
 @Component({
   selector: 'ngym-tag-input',
   templateUrl: './tag-input.component.html',
-  styleUrls: ['./tag-input.component.scss']
+  styleUrls: ['./tag-input.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TagInputComponent implements OnInit, OnChanges {
   autoCompleteTags!: string[];
