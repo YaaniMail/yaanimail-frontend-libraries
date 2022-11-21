@@ -12,7 +12,7 @@
 }
 
 .section {
-    padding-bottom: 20px;
+    padding: 10px 10px 20px 10px;
     .section-element-header {
         font-size: 14px;
         background-color: gainsboro;
@@ -21,6 +21,12 @@
     .section-element {
         padding-top: 10px;
         padding-bottom: 10px;
+    }
+    .section-content-title {
+        border-bottom: 1px solid dodgerblue;
+    }
+    .section-content-body {
+        padding: 4px 0px;
     }
 }
 

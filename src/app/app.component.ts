@@ -15,6 +15,8 @@ export class AppComponent implements OnInit {
   inputGroupValue!: string;
   inputTextValue!: string;
   inputPasswordValue!: string;
+  textAfterDrag: string = '';
+  hoppa: boolean = true;
   title = 'yaanimail-frontend-libraries';
   pattern: RegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   autoCompleteItems!: AutoComplete[];
@@ -23,7 +25,6 @@ export class AppComponent implements OnInit {
   bccTags: Tag[] = [];
   customTags: Tag[] = [];
   logo!: Logo;
-
 
   constructor(private fb: FormBuilder, private webService: WebService) {
 
@@ -48,7 +49,6 @@ export class AppComponent implements OnInit {
         this.autoCompleteItems = data;
       }
     );
-
   }
 
   onTagAdd(tag: Tag) {
@@ -65,10 +65,6 @@ export class AppComponent implements OnInit {
     console.log(this.bccTags);
   }
 
-  groupButtonRemove(): void {
-
-  }
-
   submitForm(): void {
     console.log(this.form.value);
   }
@@ -76,6 +72,23 @@ export class AppComponent implements OnInit {
   /** Dropdown select change */
   onSelectChange(e: any): void {
     console.log(e);
+  }
+
+  groupButtonRemove(): void {
+
+  }
+
+  allowDrop(ev: any) {
+    ev.preventDefault();
+  }
+
+  drag(ev: any) {
+    this.textAfterDrag = 'dragging';
+  }
+
+  drop(ev: any) {
+    ev.preventDefault();
+    this.textAfterDrag = 'BJK';
   }
 
 }

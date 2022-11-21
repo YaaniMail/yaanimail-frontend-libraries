@@ -105,6 +105,14 @@ export class TagContainerComponent extends TagsAccessor {
   }
 
   /**
+   * Remove the last element in tags array
+   */
+  removeLastTag(): void {
+    let poppedTag = this.tagValues.pop();
+    this.onRemoveEmitter.emit(poppedTag);
+  }
+
+  /**
    * changing index of same zone array element in drag and drop. First removing and then adding.
    */
   changeIndex(): void {
@@ -180,7 +188,6 @@ export class TagContainerComponent extends TagsAccessor {
   }
 
   disableZone(event: any): void {
-
     if (this.isDisabled) {
       event.stopPropagation();
       console.log(event);
@@ -191,7 +198,6 @@ export class TagContainerComponent extends TagsAccessor {
    * Starting event of dragging single tag
    */
   onDragStart(event: DragEvent, tag: Tag, index: number): void {
-    event.stopPropagation();
     this.dragDropProvider.draggingTag = tag;
     this.dragDropProvider.startingIndex = index;
     this.dragDropProvider.senderComponent = this;
@@ -234,7 +240,7 @@ export class TagContainerComponent extends TagsAccessor {
    */
   onDragEnd(event: DragEvent): void {
     event.preventDefault();
-    event.stopPropagation();
+
     this.onDrag = false;
 
     if (this.dragDropProvider.senderComponent.dragZone === this.dragDropProvider.receiverComponent.dragZone) {
@@ -254,7 +260,6 @@ export class TagContainerComponent extends TagsAccessor {
    */
   onDrop(event: DragEvent): void {
     event.preventDefault();
-    event.stopPropagation();
     this.changeIndex();
   }
 
@@ -263,7 +268,7 @@ export class TagContainerComponent extends TagsAccessor {
    */
   onZoneDrop(event: DragEvent): void {
     event.preventDefault();
-    event.stopPropagation();
+
     this.onDrag = false;
 
     if (this.dragDropProvider.senderComponent.dragZone === this.dragDropProvider.receiverComponent.dragZone) {

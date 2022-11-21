@@ -1,7 +1,8 @@
 <form [formGroup]="form" class="ngym-tag-input-form">
     <input #newTag type="text" class="ngym-new-tag" formControlName="newTag" placeholder="{{ placeholder }}"
-        (keyup)="onKeyPressed($event)" (keyup.enter)="onEnter()" (keydown.tab)="onEnter()" (mousedown)="onMouseDown()"
-        (focus)="onFocus()" (paste)="onPaste($event.clipboardData.getData('text/plain'))" autofocus />
+        (keyup)="onKeyPressed($event)" (keydown.enter)="onEnter()" (keydown.tab)="onEnter()"
+        (keydown.backspace)="onBackspace()" (mousedown)="onMouseDown()" (focus)="onFocus()"
+        (paste)="onPaste($event.clipboardData.getData('text/plain'))" autofocus />
     <div class="ngym-auto-complete" *ngIf="autoCompleteVisible && autoCompleteItems && autoCompleteItems.length !== 0"
         #autoComplete>
         <ngym-tag-input-autocomplete [autoCompleteItems]="autoCompleteItems"

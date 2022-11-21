@@ -21,6 +21,7 @@ export class TagInputComponent implements OnInit, OnChanges {
   @Input() isLoading!: boolean;
   @Output() onKeyPressedEmitter = new EventEmitter<string>();
   @Output() onEnterEmitter = new EventEmitter<Tag>();
+  @Output() onBackspaceEmitter = new EventEmitter();
   @Output() onPasteEmitter = new EventEmitter<Tag[]>();
   @Output() onAutoCompleteSelectEmitter = new EventEmitter<Tag>();
   @ViewChild('newTag') tagInput!: ElementRef;
@@ -139,6 +140,17 @@ export class TagInputComponent implements OnInit, OnChanges {
 
     this.form.reset();
     this.autoCompleteVisible = false;
+  }
+
+  /**
+   * Emitter for deleting the last element in the tags array
+   */
+  onBackspace(): void {
+    const tagValue = this.form.value.newTag;
+
+    if (tagValue === '' || tagValue === null) {
+      this.onBackspaceEmitter.emit();
+    }
   }
 
   /**
