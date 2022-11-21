@@ -9,7 +9,7 @@
     <ngym-tag-container [(ngModel)]="toTags" (onAddEmitter)="onTagAdd($event)" name="toTags"
         [placeholder]="'Katılımcı ekle'" (onKeyPressedEmitter)="changeAutoCompleteItems($event)"
         [duplicateAllowed]="false" [splitChars]="[',', ';']" [pattern]="pattern" [dragAllowed]="true"
-        [dragZone]="'zone1'" [autoCompleteItems]="autoCompleteItems">
+        [dragZone]="'zone1'" [autoCompleteItems]="autoCompleteItems" [isDisabled]="true">
     </ngym-tag-container>
 </div>
 <div class="section">

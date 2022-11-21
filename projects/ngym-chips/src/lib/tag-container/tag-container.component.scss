@@ -3,6 +3,11 @@
     flex-wrap: wrap;
 }
 
+.ngym-tag-drag-zone-disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
 .ngym-onDrag {
     border-left: 2px solid #0089bf;
     // animation: blinker 1s linear infinite;

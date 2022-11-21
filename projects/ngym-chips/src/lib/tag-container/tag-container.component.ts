@@ -26,11 +26,12 @@ export class TagContainerComponent extends TagsAccessor {
   @Input() editAllowed!: boolean;
   @Input() duplicateAllowed!: boolean;
   @Input() dragAllowed!: boolean;
+  @Input() isDisabled!: boolean;
+  @Input() isLoading!: boolean;
   @Input() autoCompleteItems!: AutoComplete[];
   @Input() pattern!: RegExp;
   @Input() autoCompleteTemplate!: TemplateRef<any>;
   @Input() tagTemplate!: TemplateRef<any>;
-  @Input() isLoading!: boolean;
   @Output() onSelectEmitter = new EventEmitter<Tag>();
   @Output() onKeyPressedEmitter = new EventEmitter<KeyboardEvent>();
   @Output() onPasteEmitter = new EventEmitter<Tag[]>();
@@ -79,7 +80,9 @@ export class TagContainerComponent extends TagsAccessor {
       return;
     }
 
-    this.tagValues.splice(this.dragDropProvider.droppingIndex, 0, this.dragDropProvider.draggingTag);
+    let increment = this.dragDropProvider.droppingIndex < this.dragDropProvider.startingIndex ? 0 : -1;
+    this.tagValues.splice(this.dragDropProvider.droppingIndex + increment, 0, this.dragDropProvider.draggingTag);
+    this.clearIndex();
   }
 
   /**
@@ -102,18 +105,19 @@ export class TagContainerComponent extends TagsAccessor {
   }
 
   /**
-   * changing index of same zone array element in drag and drop
+   * changing index of same zone array element in drag and drop. First removing and then adding.
    */
-  changeIndex() {
-    var target = this.tagValues[this.dragDropProvider.startingIndex];
-    var increment = this.dragDropProvider.droppingIndex < this.dragDropProvider.startingIndex ? -1 : 1;
+  changeIndex(): void {
+    this.removeTag(this.dragDropProvider.draggingTag.id);
+    this.addTagAfterDragDrop();
+  }
 
-    for (var k = this.dragDropProvider.startingIndex; k != this.dragDropProvider.droppingIndex; k += increment) {
-      this.tagValues[k] = this.tagValues[k + increment];
-    }
-    this.tagValues[this.dragDropProvider.droppingIndex] = target;
-    this.onDragEndEmitter.emit(this.tagValues); // It is called after onZoneDrop event
-    return this.tagValues;
+  /**
+   * Clearing starting and dropping indexes
+   */
+  clearIndex(): void {
+    this.dragDropProvider.startingIndex = -1;
+    this.dragDropProvider.droppingIndex = -1;
   }
 
   /**
@@ -173,6 +177,14 @@ export class TagContainerComponent extends TagsAccessor {
     const isDuplicate = _tags.some(t => t === value);
 
     return isDuplicate;
+  }
+
+  disableZone(event: any): void {
+
+    if (this.isDisabled) {
+      event.stopPropagation();
+      console.log(event);
+    }
   }
 
   /**
