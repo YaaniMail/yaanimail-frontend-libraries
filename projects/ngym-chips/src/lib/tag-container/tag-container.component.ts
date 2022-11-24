@@ -80,7 +80,13 @@ export class TagContainerComponent extends TagsAccessor {
       return;
     }
 
-    let increment = this.dragDropProvider.droppingIndex < this.dragDropProvider.startingIndex ? 0 : -1;
+    let increment;
+    if (this.dragDropProvider.senderComponent === this.dragDropProvider.receiverComponent) {
+      increment = this.dragDropProvider.droppingIndex < this.dragDropProvider.startingIndex ? 0 : -1;
+    } else {
+      increment = 0;
+    }
+
     this.tagValues.splice(this.dragDropProvider.droppingIndex + increment, 0, this.dragDropProvider.draggingTag);
     this.clearIndex();
   }
@@ -187,17 +193,11 @@ export class TagContainerComponent extends TagsAccessor {
     return isDuplicate;
   }
 
-  disableZone(event: any): void {
-    if (this.isDisabled) {
-      event.stopPropagation();
-      console.log(event);
-    }
-  }
-
   /**
    * Starting event of dragging single tag
    */
   onDragStart(event: DragEvent, tag: Tag, index: number): void {
+    event.stopPropagation();
     this.dragDropProvider.draggingTag = tag;
     this.dragDropProvider.startingIndex = index;
     this.dragDropProvider.senderComponent = this;
