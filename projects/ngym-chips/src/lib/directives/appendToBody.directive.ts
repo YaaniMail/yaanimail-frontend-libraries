@@ -10,10 +10,13 @@ export class AppendToBodyDirective implements AfterViewInit {
   public ngAfterViewInit() {
     if (this.appendToBody) {
         const inputElement = document.getElementsByClassName('ngym-new-tag')[0] as HTMLElement;
-        const tagTop = inputElement.getBoundingClientRect().top;
-        document.body.appendChild(this.el.nativeElement);
+        const tagInputTop = inputElement.getBoundingClientRect().top;
+        const tagInputLeft = inputElement.getBoundingClientRect().left;
         this.el.nativeElement.style.position = 'absolute';
-        this.el.nativeElement.style.top = tagTop + inputElement.offsetHeight + 'px';
+        this.el.nativeElement.style.zIndex = '999999';
+        this.el.nativeElement.style.top = tagInputTop + inputElement.offsetHeight + 'px';
+        this.el.nativeElement.style.left = tagInputLeft + 'px';
+        document.body.appendChild(this.el.nativeElement);
     }
   }
 }
