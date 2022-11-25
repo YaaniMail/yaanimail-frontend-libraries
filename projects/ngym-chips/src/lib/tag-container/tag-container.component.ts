@@ -31,6 +31,7 @@ export class TagContainerComponent extends TagsAccessor {
   @Input() autoCompleteTemplate!: TemplateRef<any>;
   @Input() tagTemplate!: TemplateRef<any>;
   @Input() isLoading!: boolean;
+  @Input() appendToBody!: boolean;
   @Output() onSelectEmitter = new EventEmitter<Tag>();
   @Output() onKeyPressedEmitter = new EventEmitter<KeyboardEvent>();
   @Output() onPasteEmitter = new EventEmitter<Tag[]>();
