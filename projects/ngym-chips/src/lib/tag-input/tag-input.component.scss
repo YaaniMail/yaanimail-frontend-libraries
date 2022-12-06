@@ -1,13 +1,12 @@
-input:focus {
-    outline: none;
-    width: 300px;
-}
-
 .ngym-new-tag {
     border: none;
     border-radius: 0px;
     box-shadow: 0 0 #000;
     height: 40px;
+    width: 300px;
+    &:focus {
+        outline: none;
+    }
 }
 
 .ngym-auto-complete {
