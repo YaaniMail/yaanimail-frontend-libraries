@@ -20,6 +20,14 @@
         "dist/ngym-chips/ngym-chips",
         "dist/ngym-chips"
       ],
+      "ngym-contacts": [
+        "dist/ngym-contacts/ngym-contacts",
+        "dist/ngym-contacts"
+      ],
+      "ngym-create-contact": [
+        "dist/ngym-create-contact/ngym-create-contact",
+        "dist/ngym-create-contact"
+      ],
       "ngym-home": [
         "dist/ngym-home/ngym-home",
         "dist/ngym-home"

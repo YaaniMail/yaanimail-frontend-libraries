@@ -1,8 +1,10 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Logo } from 'ngym-prelogin-header';
 import { AutoComplete } from 'projects/ngym-chips/src/lib/model/autoComplete';
 import { Tag } from 'projects/ngym-chips/src/lib/model/tag';
+import { ContactConfig } from 'projects/ngym-contacts/src/public-api';
 import { WebService } from './service/web.service';
 
 @Component({
@@ -25,6 +27,7 @@ export class AppComponent implements OnInit {
   bccTags: Tag[] = [];
   customTags: Tag[] = [];
   logo!: Logo;
+  contactConfig!: ContactConfig;
 
   constructor(private fb: FormBuilder, private webService: WebService) {
 
@@ -32,7 +35,33 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.logo = new Logo('../assets/yaanimail2x-enterprise.png')
+    this.logo = new Logo('../assets/yaanimail2x-enterprise.png');
+
+    this.contactConfig = {
+      apiUrl: 'test',
+      headers: this.getV2Headers(),
+      pageHeader: 'test',
+      namePlaceholder: 'test',
+      surnamePlaceholder: 'test',
+      companyPlaceholder: 'test',
+      jobtitlePlaceholder: 'test',
+      emailPlaceholder: 'test',
+      phonePlaceholder: 'test',
+      phoneTypeArray: ['Mobile', 'home'],
+      addressTypeArray: ['Mobile', 'home', 'ETST'],
+      countryPlaceholder: 'test',
+      cityPlaceholder: 'test',
+      postalCodePlaceholder: 'test',
+      statePlaceholder: 'test',
+      streetPlaceholder: 'test',
+      notePlaceholder: 'test',
+      addNoteButtonText: 'test',
+      cancelButtonText: 'test',
+      saveButtonText: 'test',
+      addEmailButtonText: 'test',
+      addAddressButtonText: 'test',
+      addPhoneButtonText: 'test'
+    }
   }
 
   createForm(): void {
@@ -89,6 +118,13 @@ export class AppComponent implements OnInit {
   drop(ev: any) {
     ev.preventDefault();
     this.textAfterDrag = 'BJK';
+  }
+
+  getV2Headers(): HttpHeaders {
+    const headers: HttpHeaders = new HttpHeaders({
+      'Accept': 'application/x.yaanimail.v2+json'
+    });
+    return headers;
   }
 
 }

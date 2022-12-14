@@ -5,11 +5,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgymChipsModule } from 'projects/ngym-chips/src/public-api';
 import { NgymHomeModule } from 'projects/ngym-home/src/public-api';
-import { NgymInputModule } from 'projects/ngym-input/src/dist';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { WebService } from './service/web.service';
 import { NgymPreloginHeaderModule } from 'ngym-prelogin-header';
+import { NgymContactsModule } from 'projects/ngym-contacts/src/lib/ngym-contacts.module';
+import { NgymInputModule } from 'ngym-input';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { NgymPreloginHeaderModule } from 'ngym-prelogin-header';
     NgymChipsModule,
     NgymInputModule,
     NgymPreloginHeaderModule,
+    NgymContactsModule,
     ReactiveFormsModule,
     CommonModule,
     HttpClientModule
