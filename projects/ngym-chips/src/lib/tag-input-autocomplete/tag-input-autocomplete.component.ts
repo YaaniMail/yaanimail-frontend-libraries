@@ -13,16 +13,6 @@ export class TagInputAutocompleteComponent {
   @Input() autoCompleteTemplate!: TemplateRef<any>;
   @Input() isLoading!: boolean;
   @Output() onSelectEmitter = new EventEmitter<AutoComplete>();
-  @HostListener('document:keydown', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.key === 'ArrowDown' && this.autoCompleteItems.length > 0 && this.dropDownSelectionIndex <= this.autoCompleteItems.length) {
-      this.dropDownSelectionIndex++;
-    } else if (event.key === 'ArrowUp' && this.autoCompleteItems.length > 0 && this.dropDownSelectionIndex > 0) {
-      this.dropDownSelectionIndex--;
-    } else if (event.key === 'Enter' && this.autoCompleteItems.length > 0 && this.dropDownSelectionIndex <= this.autoCompleteItems.length && this.dropDownSelectionIndex > -1) {
-      this.onSelectItem(this.autoCompleteItems[this.dropDownSelectionIndex]);
-    }
-  }
 
   constructor() { }
 
