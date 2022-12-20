@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactConfig } from '../model/config';
 import { ContactService } from '../service/contact.service';
@@ -13,7 +13,6 @@ export class CreateContactComponent implements OnInit {
   showNotes: boolean = false;
   form!: FormGroup;
   @Input() contactConfig!: ContactConfig;
-  @Input() labelTemplate!: TemplateRef<any>;
   @Output() onAddEmitter = new EventEmitter<number>();
   @Output() onAddErrorEmitter = new EventEmitter<string>();
 
@@ -30,13 +29,13 @@ export class CreateContactComponent implements OnInit {
   createForm(): void {
     this.form = this.fb.group({
       name: ['', Validators.required],
-      surname: ['', Validators.required],
+      surname: [''],
       company: [''],
       jobtitle: [''],
-      notes: [''],
       email: this.fb.array([]),
       phone: this.fb.array([]),
-      addresses: this.fb.array([])
+      addresses: this.fb.array([]),
+      notes: ['']
     });
   }
 
@@ -111,9 +110,4 @@ export class CreateContactComponent implements OnInit {
       this.showNotes = true;
     }
   }
-
-  leaveOnHolder(): void {
-
-  }
-
 }

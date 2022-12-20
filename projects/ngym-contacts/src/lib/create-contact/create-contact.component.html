@@ -1,12 +1,8 @@
 <div class="p-3">
-    <div class="h7-r" (mouseleave)="leaveOnHolder()">
+    <div class="h7-r">
         <div class="d-flex">
             <div class="py-2 flex-grow-1">
                 {{ contactConfig.pageHeader }}
-            </div>
-            <div class="p-2">
-                <ng-template [ngTemplateOutlet]="labelTemplate">
-                </ng-template>
             </div>
         </div>
     </div>
@@ -16,12 +12,12 @@
             <div class="d-flex form-group">
                 <div class="pr-2 flex-fill">
                     <ngym-input-text formControlName="name" [robotClass]="'robot_contactCreate_name'"
-                        [placeholder]="contactConfig.namePlaceholder" [autoComplete]="'off'" [required]="true">
+                        [placeholder]="contactConfig.namePlaceholder" [autoComplete]="'off'">
                     </ngym-input-text>
                 </div>
                 <div class="pl-2 flex-fill">
                     <ngym-input-text formControlName="surname" [robotClass]="'robot_contactCreate_surname'"
-                        [placeholder]="contactConfig.surnamePlaceholder" [autoComplete]="'off'" [required]="true">
+                        [placeholder]="contactConfig.surnamePlaceholder" [autoComplete]="'off'">
                     </ngym-input-text>
                 </div>
             </div>
@@ -29,12 +25,12 @@
             <div class="d-flex form-group">
                 <div class="pr-2 flex-fill">
                     <ngym-input-text formControlName="company" [robotClass]="'robot_contactCreate_company'"
-                        [placeholder]="contactConfig.companyPlaceholder" [autoComplete]="'off'" [required]="false">
+                        [placeholder]="contactConfig.companyPlaceholder" [autoComplete]="'off'">
                     </ngym-input-text>
                 </div>
                 <div class="pl-2 flex-fill">
                     <ngym-input-text formControlName="jobtitle" [robotClass]="'robot_contactCreate_jobtitle'"
-                        [placeholder]="contactConfig.jobtitlePlaceholder" [autoComplete]="'off'" [required]="false">
+                        [placeholder]="contactConfig.jobtitlePlaceholder" [autoComplete]="'off'">
                     </ngym-input-text>
                 </div>
             </div>

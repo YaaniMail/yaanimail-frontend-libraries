@@ -45,8 +45,9 @@ export class AppComponent implements OnInit {
       surnamePlaceholder: 'test',
       companyPlaceholder: 'test',
       jobtitlePlaceholder: 'test',
-      emailPlaceholder: 'test',
-      phonePlaceholder: 'test',
+      emailPlaceholder: 'email',
+      phonePlaceholder: 'telefon',
+      tagArray: ['arkadaşlar', 'testerler', 'developerlar'],
       phoneTypeArray: ['Mobile', 'home'],
       addressTypeArray: ['Mobile', 'home', 'ETST'],
       countryPlaceholder: 'test',
@@ -58,9 +59,9 @@ export class AppComponent implements OnInit {
       addNoteButtonText: 'test',
       cancelButtonText: 'test',
       saveButtonText: 'test',
-      addEmailButtonText: 'test',
-      addAddressButtonText: 'test',
-      addPhoneButtonText: 'test'
+      addEmailButtonText: 'email ekle',
+      addAddressButtonText: 'adres ekle',
+      addPhoneButtonText: 'telefon ekle'
     }
   }
 

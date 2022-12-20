@@ -9,6 +9,7 @@ export interface ContactConfig {
     companyPlaceholder: string;
     emailPlaceholder: string;
     phonePlaceholder: string;
+    tagArray: string[];
     phoneTypeArray: string[];
     addressTypeArray: string[];
     countryPlaceholder: string;
