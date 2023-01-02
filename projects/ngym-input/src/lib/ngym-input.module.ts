@@ -5,7 +5,7 @@ import { InputTextComponent } from './input-text/input-text.component';
 import { InputPasswordComponent } from './input-password/input-password.component';
 import { InputSelectComponent } from './input-select/input-select.component';
 import { CommonModule } from '@angular/common';
-import { InputMultipleCheckboxComponent } from './input-multiple-checkbox/input-multiple-checkbox.component';
+import { TagSelectComponent } from './tag-select/tag-select.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,7 @@ import { InputMultipleCheckboxComponent } from './input-multiple-checkbox/input-
     InputTextComponent,
     InputPasswordComponent,
     InputSelectComponent,
-    InputMultipleCheckboxComponent
+    TagSelectComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +25,7 @@ import { InputMultipleCheckboxComponent } from './input-multiple-checkbox/input-
     InputTextComponent,
     InputPasswordComponent,
     InputSelectComponent,
-    InputMultipleCheckboxComponent,
+    TagSelectComponent,
     FormsModule,
     ReactiveFormsModule
   ]

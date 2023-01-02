@@ -1,13 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'ngym-input-multiple-checkbox',
-  templateUrl: './input-multiple-checkbox.component.html',
-  styleUrls: ['./input-multiple-checkbox.component.scss']
+  selector: 'ngym-tag-select',
+  templateUrl: './tag-select.component.html',
+  styleUrls: ['./tag-select.component.scss']
 })
-export class InputMultipleCheckboxComponent {
+export class TagSelectComponent {
   tags: string[] = [];
-  isLoading!: boolean;
   showTags: boolean = false;
   @Input() items!: string[];
   @Input() addTagPlaceholder!: string;

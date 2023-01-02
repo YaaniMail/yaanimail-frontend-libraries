@@ -151,9 +151,9 @@
             <!-- Tag Fields -->
             <div class="form-group">
                 <div class="mb-2">
-                    <ngym-input-multiple-checkbox [items]="contactConfig.tagOptions"
+                    <ngym-tag-select [items]="contactConfig.tagOptions"
                         [addTagPlaceholder]="contactConfig.addTagButtonText"
-                        (tagsEmitter)="assignTags($event)"></ngym-input-multiple-checkbox>
+                        (tagsEmitter)="assignTags($event)"></ngym-tag-select>
                 </div>
             </div>
         </form>

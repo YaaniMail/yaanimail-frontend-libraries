@@ -1,8 +1,8 @@
-<div class="ngym-tag-container">
+<div class="ngym-tag-select-container">
     <div>
         <!-- Tags -->
-        <div class="ngym-tag-wrapper mb-2" *ngIf="tags.length > 0">
-            <div class="ngym-tag" *ngFor="let t of tags; let i = index">{{ t }}&nbsp;<a (click)="removeTag(t)"><i
+        <div class="ngym-tag-select-wrapper mb-2" *ngIf="tags.length > 0">
+            <div class="ngym-tag-select" *ngFor="let t of tags; let i = index">{{ t }}&nbsp;<a (click)="removeTag(t)"><i
                         class="fa-regular fa-xmark fa-gray fa-normal"></i></a>
             </div>
         </div>
@@ -20,9 +20,6 @@
                         <div class="ngym-info ngym-content-overflow">
                             <div class="ngym-name ngym-content-overflow">{{ item }}</div>
                         </div>
-                    </div>
-                    <div class="ngym-loader-container" *ngIf="isLoading">
-                        <div class="ngym-loader"></div>
                     </div>
                 </div>
             </div>
