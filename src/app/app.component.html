@@ -121,7 +121,12 @@
 </div>
 
 <div>
-    <ngym-create-contact [contactConfig]="contactConfig">
+    <ngym-create-contact [contactConfig]="contactConfig" (onAddEmitter)="onAdd($event)" (onCancelEmitter)="onCancel()"
+        (onAddErrorEmitter)="onError($event)">
     </ngym-create-contact>
 
+</div>
+
+<div>
+    <ngym-input-multiple-checkbox [items]="['test', 'hopp']"></ngym-input-multiple-checkbox>
 </div>

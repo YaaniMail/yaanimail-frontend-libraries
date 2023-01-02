@@ -35,6 +35,7 @@ export class CreateContactComponent implements OnInit {
       email: this.fb.array([]),
       phone: this.fb.array([]),
       addresses: this.fb.array([]),
+      tag_names: this.fb.array([]),
       notes: ['']
     });
   }
@@ -101,6 +102,10 @@ export class CreateContactComponent implements OnInit {
 
   deletePhoneNumber(i: number): void {
     this.phonesArray.removeAt(i);
+  }
+
+  assignTags(tags: string[]): void {
+    this.form.value.tag_names = tags;
   }
 
   controlNoteInput(note: string): void {

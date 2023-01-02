@@ -47,19 +47,21 @@ export class AppComponent implements OnInit {
       jobtitlePlaceholder: 'test',
       emailPlaceholder: 'email',
       phonePlaceholder: 'telefon',
-      tagArray: ['arkadaşlar', 'testerler', 'developerlar'],
+      tagPlaceholder: 'etiketler',
+      tagOptions: ['arkadaşlar', 'testerler', 'developerlar'],
       phoneTypeArray: ['Mobile', 'home'],
       addressTypeArray: ['Mobile', 'home', 'ETST'],
-      countryPlaceholder: 'test',
-      cityPlaceholder: 'test',
-      postalCodePlaceholder: 'test',
-      statePlaceholder: 'test',
-      streetPlaceholder: 'test',
-      notePlaceholder: 'test',
-      addNoteButtonText: 'test',
-      cancelButtonText: 'test',
-      saveButtonText: 'test',
+      countryPlaceholder: 'ülke',
+      cityPlaceholder: 'şehir',
+      postalCodePlaceholder: 'posta kodu',
+      statePlaceholder: 'state',
+      streetPlaceholder: 'sokak',
+      notePlaceholder: 'not',
+      addNoteButtonText: 'note ekle',
+      cancelButtonText: 'cancel',
+      saveButtonText: 'save',
       addEmailButtonText: 'email ekle',
+      addTagButtonText: 'etiket ekle',
       addAddressButtonText: 'adres ekle',
       addPhoneButtonText: 'telefon ekle'
     }
@@ -126,6 +128,18 @@ export class AppComponent implements OnInit {
       'Accept': 'application/x.yaanimail.v2+json'
     });
     return headers;
+  }
+
+  onAdd(e: any): void {
+    console.log(e);
+  }
+
+  onCancel(): void {
+
+  }
+
+  onError(e: any): void {
+    console.log(e);
   }
 
 }

@@ -148,6 +148,14 @@
                     </div>
                 </ng-template>
             </div>
+            <!-- Tag Fields -->
+            <div class="form-group">
+                <div class="mb-2">
+                    <ngym-input-multiple-checkbox [items]="contactConfig.tagOptions"
+                        [addTagPlaceholder]="contactConfig.addTagButtonText"
+                        (tagsEmitter)="assignTags($event)"></ngym-input-multiple-checkbox>
+                </div>
+            </div>
         </form>
     </div>
     <div class="d-flex justify-content-end">

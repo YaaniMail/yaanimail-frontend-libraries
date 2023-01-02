@@ -1,0 +1,31 @@
+<div class="ngym-tag-container">
+    <div>
+        <!-- Tags -->
+        <div class="ngym-tag-wrapper mb-2" *ngIf="tags.length > 0">
+            <div class="ngym-tag" *ngFor="let t of tags; let i = index">{{ t }}&nbsp;<a (click)="removeTag(t)"><i
+                        class="fa-regular fa-xmark fa-gray fa-normal"></i></a>
+            </div>
+        </div>
+        <!-- Add New Tag -->
+        <div>
+            <a class="anchor-primary robot_contactCreate_addTag" (click)="openTags()">
+                <i class="fa-regular fa-plus fa-primary fa-normal"></i>
+                <span class="pl-2">{{ addTagPlaceholder }}</span>
+            </a>
+        </div>
+        <div class="ngym-dropdown-wrapper" *ngIf="showTags">
+            <div class="ngym-dropdown">
+                <div class="ngym-dropdown-container">
+                    <div class="ngym-item" (click)="selectTag(item)" *ngFor="let item of items; let i = index">
+                        <div class="ngym-info ngym-content-overflow">
+                            <div class="ngym-name ngym-content-overflow">{{ item }}</div>
+                        </div>
+                    </div>
+                    <div class="ngym-loader-container" *ngIf="isLoading">
+                        <div class="ngym-loader"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,7 +10,8 @@ import { RouterModule } from '@angular/router';
 import { WebService } from './service/web.service';
 import { NgymPreloginHeaderModule } from 'ngym-prelogin-header';
 import { NgymContactsModule } from 'projects/ngym-contacts/src/lib/ngym-contacts.module';
-import { NgymInputModule } from 'ngym-input';
+import { NgymInputModule } from 'projects/ngym-input/src/dist';
+
 
 @NgModule({
   declarations: [

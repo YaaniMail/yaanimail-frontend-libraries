@@ -1,7 +1,7 @@
 {
   "name": "ngym-contacts",
-  "version": "0.0.8",
-  "description": "template for select label is addded",
+  "version": "0.0.15",
+  "description": "changes made with tag select",
   "peerDependencies": {
     "@angular/common": "^13.3.0",
     "@angular/core": "^13.3.0",

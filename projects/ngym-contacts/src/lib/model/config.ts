@@ -9,7 +9,8 @@ export interface ContactConfig {
     companyPlaceholder: string;
     emailPlaceholder: string;
     phonePlaceholder: string;
-    tagArray: string[];
+    tagPlaceholder: string;
+    tagOptions: string[];
     phoneTypeArray: string[];
     addressTypeArray: string[];
     countryPlaceholder: string;
@@ -23,6 +24,7 @@ export interface ContactConfig {
     saveButtonText: string;
     jobtitlePlaceholder: string;
     addEmailButtonText: string;
+    addTagButtonText: string;
     addAddressButtonText: string;
     addPhoneButtonText: string;
 }

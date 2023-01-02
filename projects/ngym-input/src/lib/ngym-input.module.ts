@@ -5,13 +5,15 @@ import { InputTextComponent } from './input-text/input-text.component';
 import { InputPasswordComponent } from './input-password/input-password.component';
 import { InputSelectComponent } from './input-select/input-select.component';
 import { CommonModule } from '@angular/common';
+import { InputMultipleCheckboxComponent } from './input-multiple-checkbox/input-multiple-checkbox.component';
 
 @NgModule({
   declarations: [
     InputGroupButtonComponent,
     InputTextComponent,
     InputPasswordComponent,
-    InputSelectComponent
+    InputSelectComponent,
+    InputMultipleCheckboxComponent
   ],
   imports: [
     CommonModule,
@@ -23,6 +25,7 @@ import { CommonModule } from '@angular/common';
     InputTextComponent,
     InputPasswordComponent,
     InputSelectComponent,
+    InputMultipleCheckboxComponent,
     FormsModule,
     ReactiveFormsModule
   ]
