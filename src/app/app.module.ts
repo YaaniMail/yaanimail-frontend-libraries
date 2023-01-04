@@ -12,7 +12,6 @@ import { NgymPreloginHeaderModule } from 'ngym-prelogin-header';
 import { NgymContactsModule } from 'projects/ngym-contacts/src/lib/ngym-contacts.module';
 import { NgymInputModule } from 'projects/ngym-input/src/dist';
 import { SidebarComponent } from './pages/sidebar/sidebar.component';
-import { ContentComponent } from './pages/content/content.component';
 import { LayoutModule } from './layout/layout.module';
 import { ChipsComponent } from './pages/chips/chips.component';
 import { InputsComponent } from './pages/inputs/inputs.component';
@@ -24,7 +23,6 @@ import { FormsComponent } from './pages/forms/forms.component';
   declarations: [
     AppComponent,
     SidebarComponent,
-    ContentComponent,
     ChipsComponent,
     InputsComponent,
     NewContactComponent,

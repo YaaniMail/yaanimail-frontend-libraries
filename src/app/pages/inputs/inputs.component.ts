@@ -19,4 +19,8 @@ export class InputsComponent implements OnInit {
 
   }
 
+  assignTags(e: any) {
+
+  }
+
 }
