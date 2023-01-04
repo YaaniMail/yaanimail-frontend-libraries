@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'ngym-tag-select',
@@ -11,6 +11,16 @@ export class TagSelectComponent {
   @Input() items!: string[];
   @Input() addTagPlaceholder!: string;
   @Output() tagsEmitter = new EventEmitter<string[]>();
+  @HostListener('document:click', ['$event'])
+  clickout(event: any) {
+    if (this.elementRef.nativeElement.contains(event.target)) {
+      this.showTags = true;
+    } else {
+      this.showTags = false;
+    }
+  }
+
+  constructor(private elementRef: ElementRef) { }
 
   openTags(): void {
     this.showTags = !this.showTags;

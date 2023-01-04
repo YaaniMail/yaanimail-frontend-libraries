@@ -1,0 +1,66 @@
+<div class="section-header" style="margin-top: 60px">Chips Test</div>
+<div class="section-desc">Duplicate <b>NOT</b> allowed [duplicateAllowed], Valid email [pattern] <b>ON</b>, Auto
+    complete is <b>ON</b>. Paste is
+    <b>ON</b> [';', ',']. Edit <b>ON</b> with double click. Drag and Drop is <b>ON</b>. Backspace delete after selection
+    and last tag
+    is <b>ON</b>.
+</div>
+<div class="section">
+    <div class="section-content-title">To:</div>
+    <div class="section-content-body">
+        <ngym-tag-container [(ngModel)]="toTags" (onAddEmitter)="onTagAdd($event)" name="toTags"
+            [placeholder]="'Katılımcı ekle'" (onKeyPressedEmitter)="changeAutoCompleteItems($event)"
+            [duplicateAllowed]="false" [splitChars]="[',', ';']" [pattern]="pattern" [dragAllowed]="true"
+            [dragZone]="'zone1'" [autoCompleteItems]="autoCompleteItems" [appendToBody]="true">
+        </ngym-tag-container>
+    </div>
+</div>
+<div class="section">
+    <div class="section-content-title">Cc:</div>
+    <div class="section-content-body">
+        <ngym-tag-container [(ngModel)]="ccTags" (onAddEmitter)="onTagAdd($event)" name="ccTags"
+            (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false" [splitChars]="[',', ';']"
+            [placeholder]="'Katılımcı ekle'" [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone2'"
+            [autoCompleteItems]="autoCompleteItems">
+        </ngym-tag-container>
+    </div>
+</div>
+<div class="section">
+    <div class="section-content-title">Bcc:</div>
+    <div class="section-content-body">
+        <ngym-tag-container [(ngModel)]="bccTags" (onAddEmitter)="onTagAdd($event)" name="bccTags"
+            (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false" [splitChars]="[',', ';']"
+            [placeholder]="'Katılımcı ekle'" [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone3'"
+            [autoCompleteItems]="autoCompleteItems">
+        </ngym-tag-container>
+    </div>
+</div>
+<div class="section">
+    <button type="button" (click)="logTags()">Send</button>
+</div>
+
+
+<div class="section-header">Chips Test</div>
+<div class="section-desc">Custom template on Tag and AutoComplete menu.
+</div>
+<div class="section">
+    <div>Mail</div>
+    <ngym-tag-container [(ngModel)]="customTags" (onAddEmitter)="onTagAdd($event)"
+        (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false" [splitChars]="[',', ';']"
+        [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone3'" [autoCompleteItems]="autoCompleteItems"
+        [tagTemplate]="tagTemplate" [autoCompleteTemplate]="autoCompleteTemplate">
+        <ng-template let-item="item" #tagTemplate>
+            <div class="ngym-tag">
+                <div class="ngym-value">
+                    {{ item.value }}
+                </div>
+                <div class="ngym-cross">X</div>
+            </div>
+        </ng-template>
+        <ng-template let-item="item" #autoCompleteTemplate>
+            <div style="background-color: gray; color: black;">
+                {{ item.email }}
+            </div>
+        </ng-template>
+    </ngym-tag-container>
+</div>

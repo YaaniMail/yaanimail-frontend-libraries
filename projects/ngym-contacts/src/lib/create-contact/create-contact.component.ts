@@ -28,8 +28,9 @@ export class CreateContactComponent implements OnInit {
 
   createForm(): void {
     this.form = this.fb.group({
-      name: ['', Validators.required],
-      surname: [''],
+      firstname: ['', Validators.required],
+      lastname: [''],
+      fullname: [''],
       company: [''],
       jobtitle: [''],
       email: this.fb.array([]),
@@ -61,6 +62,7 @@ export class CreateContactComponent implements OnInit {
   }
 
   addContact(): void {
+    this.assignFullname();
     this.contactService.createContact(this.contactConfig.apiUrl, this.form.value, this.contactConfig.headers).subscribe(
       data => {
         this.onAddEmitter.emit(data.id);
@@ -69,6 +71,10 @@ export class CreateContactComponent implements OnInit {
         this.onAddErrorEmitter.emit(error.error.message);
       }
     );
+  }
+
+  assignFullname(): void {
+    this.form.value.fullname = this.form.value.firstname + ' ' + this.form.value.lastname;
   }
 
   addAddress(): void {
