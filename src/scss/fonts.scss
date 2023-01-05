@@ -1,0 +1,160 @@
+$bold-weight: 700;
+$medium-weight: 500;
+$regular-weight: 400;
+
+$h1-size: 60px;
+$h2-size: 54px;
+$h3-size: 48px;
+$h4-size: 36px;
+$h5-size: 30px;
+$h6-size: 24px;
+$h7-size: 20px;
+$h8-size: 18px;
+$b1-size: 16px;
+$b2-size: 14px;
+$s1-size: 13px;
+$t1-size: 12px;
+$t2-size: 11px;
+
+body {
+    font-family: "Roboto" !important;
+}
+
+.h1-b,
+.h2-b,
+.h3-b,
+.h4-b,
+.h6-b,
+.h7-b,
+.b1-b,
+.b2-b,
+.s1-b,
+.t1-b,
+.t2-b {
+    font-weight: $bold-weight;
+}
+
+.h5-m,
+.h6-m,
+.h7-m,
+.h8-m,
+.b2-m,
+.s1-m,
+.t1-m,
+.t2-m {
+    font-weight: $medium-weight;
+}
+
+.h2-r,
+.h4-r,
+.h5-r,
+.h6-r,
+.h7-r,
+.h8-r,
+.b1-r,
+.b2-r,
+.s1-r,
+.t1-r,
+.t2-r {
+    font-weight: $regular-weight;
+}
+
+// *** Heading ***
+// This style is for headings which aims to convey important and striking messages. It is commonly used in Headings in Landing Pages.
+.h1-b {
+    font-size: $h1-size !important;
+    line-height: 74px;
+}
+
+// This style is for headings which aims to convey important and striking messages. It is commonly used in Headings in Landing Pages.
+.h2-b,
+.h2-r {
+    font-size: $h2-size !important;
+    line-height: 74px;
+}
+
+// This style is for headings which aims to convey important and striking messages. It is commonly used in Headings in Landing Pages.
+.h3-b {
+    font-size: $h3-size !important;
+    line-height: 60px;
+}
+
+// This style is for headings which aims to convey important and striking messages. It is commonly used in Headings in Landing Pages.
+.h4-b,
+.h4-r {
+    font-size: $h4-size !important;
+    line-height: normal;
+}
+
+// This heading style is can be used for medium size headings as well as large body texts.
+.h5-m,
+.h5-r {
+    font-size: $h5-size !important;
+    line-height: normal;
+}
+
+// This heading style is can be used for medium size headings as well as large body texts.
+.h6-b,
+.h6-m,
+.h6-r {
+    font-size: $h6-size !important;
+    line-height: 34px;
+}
+
+// This heading style is can be used for small headings such as; headings in In-page Modals. It can also be used for large body texts.
+.h7-b,
+.h7-m,
+.h7-r {
+    font-size: $h7-size !important;
+    line-height: 30px;
+}
+
+// This heading style is can be used for small heading texts such as; headings in pop-ups and pop-overs, page headings. It can also be used for large body texts.
+.h8-m,
+.h8-r {
+    font-size: $h8-size !important;
+    line-height: 26px;
+}
+
+// *** Body ***
+// B-1-B: This is commonly used in hierarchically important body texts such as; unread sender/receiver informations in listing views, highlighted body texts, short body texts and small headings.
+// B-1-R: This is commonly used in hierarchically important body texts such as; e-mail bodies, sender/receiver informations in listing views, input texts, modal modal bodies, long paragraphs, etc.
+.b1-b,
+.b1-r {
+    font-size: $b1-size !important;
+    line-height: 24px;
+}
+
+// B-2: This is commonly used in important body texts such as; subject informations in listing views, highlighted body texts, short body texts, small headings, buttons, etc.
+.b2-b,
+.b2-m,
+.b2-r {
+    font-size: $b2-size !important;
+    line-height: 20px;
+}
+
+// *** SubTexts ***
+// S-1: This subtext is commonly for explanatory helper texts, (below input fields & other components), body contents which have low importance and very small titles.
+.s1-b,
+.s1-m,
+.s1-r {
+    font-size: $s1-size !important;
+    line-height: 19px;
+}
+
+// *** Timestamps(smaller than subtext) ***
+// T-1: This style is for contents which have very low importance such as; time & date informations, paginations and so on.
+.t1-b,
+.t1-m,
+.t1-r {
+    font-size: $t1-size !important;
+    line-height: 17px;
+}
+
+// T-2: This style is for contents which have very low importance such as; time & date informations, paginations and so on. However, this style should not been preferred very often,  it should only be used if there isn’t enough space for T1 family.
+.t2-b,
+.t2-m,
+.t2-r {
+    font-size: $t2-size !important;
+    line-height: 16px;
+}

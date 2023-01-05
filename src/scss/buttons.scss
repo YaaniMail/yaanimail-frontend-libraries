@@ -1,0 +1,333 @@
+/* ========================================================================
+  Read Me
+ ========================================================================== */
+/* Types
+1.  Primary
+2.  Primary Destructive
+3.  Primary Green
+4.  Primary Gray
+5.  Seconadry
+6.  Secondary Destructive
+7.  Secondary Ghost
+8.  Tertiary
+*/
+
+/* Sizes
+1. .btn-small
+2. .btn-medium
+3. .btn-large
+4. .btn-full
+*/
+
+/* Kullanım Şekli
+1. Button tanımlandıysa ilk olarak .btn class'ı almalı
+2. Size almalı ex: .btn-small
+3. Type almalı ex: .btn-primary
+4. İki Button yanyana gelecekse soldaki button sağdakine mr-2 kadar uzaklıkta olmalı
+5. Dropdown olan buttonlar .dropdown classı alırlar
+*/
+
+/* ========================================================================
+  Colors
+ ========================================================================== */
+
+// Primary (#00a0df in variables.scss)
+$primaryHoverBg: #00a6e8;
+$primaryPressedBg: #0089bf;
+$primaryDisabledBg: #bbe6f7;
+
+// Primary Destructive
+$primaryDestructiveBg: #f05f6d;
+$primaryDestructiveHoverBg: #ff6e7c;
+$primaryDestructivePressedBg: #c75d68;
+$primaryDestructiveDisabledBg: #f9bfc4;
+
+// Primary Green
+$primaryGreenBg: #45b25f;
+$primaryGreenBorder: #45b25f;
+
+// Primary Gray
+$primaryGrayFont: #0b3254;
+$primaryGrayBg: #f5f8fa;
+$primaryGrayBorder: #edf2f5;
+
+// Secondary
+$secondaryHoverBg: #f5fbff;
+$secondaryPressedBg: #e8f7ff;
+$secondaryPressedBorder: #008bc2;
+$secondaryDisabledFont: #99b1ba;
+$secondaryDisabledBorder: #cae1eb;
+
+// Third
+$thirdHoverBg: #008bc2;
+$thirdPressedBg: #e8f7ff;
+$thirdPressedBorder: #008bc2;
+$thirdDisabledFont: #99b1ba;
+$thirdDisabledBorder: #cae1eb;
+
+// Secondary Destructive
+$secondaryDestructiveHoverBg: #fff7f8;
+$secondaryDestructivePressedBg: #ffebec;
+$secondaryDestructivePressedFont: #c75d68;
+$secondaryDestructiveDisabledFont: #baa2a4;
+$secondaryDestructiveDisabledBorder: #d9c3c5;
+
+// Secondary Ghost
+$secondaryGhostBorder: #b7c8d6;
+$secondaryGhostFont: #65849e;
+$secondaryGhostHoverBg: #f5f8fa;
+$secondaryGhostPressedBg: #edf2f5;
+$secondaryGhostPressedFont: #65849e;
+$secondaryGhostPressedBorder: #65849e;
+$secondaryGhostDisabledFont: #b7c8d6;
+$secondaryGhostDisabledBorder: #b7c8d6;
+
+// Tertiary
+$tertiaryDestructive: #f05f6d;
+
+/* ========================================================================
+  General
+ ========================================================================== */
+button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.btn {
+  font-size: $b2-size;
+  line-height: 1.43;
+  outline: none !important;
+  -webkit-appearance: none;
+}
+
+.btn-small,
+.btn-medium,
+.btn-large,
+.btn-full,
+.btn-tertiary {
+  padding: 7px 0px;
+  border-radius: 5px;
+}
+
+.btn-primary,
+.btn-primary-green,
+.btn-primary-destructive {
+  font-weight: bold;
+}
+
+.btn-primary:focus,
+.btn-secondary:focus {
+  outline: none !important;
+  box-shadow: none;
+}
+
+.btn-tertiary,
+.btn-tertiary-destructive {
+  text-decoration: none !important;
+}
+
+.btn-icon {
+  padding: 3px;
+  line-height: 1;
+}
+
+.btn-icon:hover {
+  background-color: $soft-gray;
+}
+
+.btn-default {
+  color: default !important;
+}
+
+/* ========================================================================
+  Sizes
+ ========================================================================== */
+.btn-small {
+  width: 110px;
+}
+
+.btn-medium {
+  width: 160px;
+}
+
+.btn-large {
+  width: 265px;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* ========================================================================
+  Primary
+ ========================================================================== */
+.btn-primary {
+  background-color: $primary;
+  border: 1px solid $primary;
+}
+
+.btn-primary:hover {
+  background-color: $primaryHoverBg;
+  border: 1px solid $primaryHoverBg;
+  box-shadow: 0 3px 9px 0 rgba(0, 0, 0, 0.24);
+}
+
+.btn-primary:active {
+  background-color: $primaryPressedBg !important;
+  border-color: $primaryPressedBg !important;
+}
+
+.btn-primary:disabled {
+  color: $secondary !important;
+  background-color: $primaryDisabledBg !important;
+  border-color: $primaryDisabledBg !important;
+}
+
+/* ========================================================================
+  Primary-Destructive
+ ========================================================================== */
+.btn-primary-destructive {
+  color: $secondary !important;
+  background-color: $primaryDestructiveBg !important;
+  border: 1px solid $primaryDestructiveBg !important;
+}
+
+.btn-primary-destructive:hover {
+  background-color: $primaryDestructiveHoverBg;
+  border: 1px solid $primaryDestructiveHoverBg;
+  box-shadow: 0 3px 9px 0 rgba(0, 0, 0, 0.24);
+}
+
+.btn-primary-destructive:active {
+  background-color: $primaryDestructivePressedBg !important;
+  border-color: $primaryDestructivePressedBg !important;
+}
+
+.btn-primary-destructive:disabled {
+  background-color: $primaryDestructiveDisabledBg !important;
+  border-color: $primaryDestructiveDisabledBg !important;
+}
+
+/* ========================================================================
+  Primary-Green
+ ========================================================================== */
+.btn-primary-green {
+  color: $secondary !important;
+  background-color: $primaryGreenBg !important;
+  border: 1px solid $primaryGreenBorder !important;
+}
+
+/* ========================================================================
+  Primary-Gray
+ ========================================================================== */
+.btn-primary-gray {
+  color: $primaryGrayFont !important;
+  background-color: $primaryGrayBg !important;
+  border: 1px solid $primaryGrayBorder !important;
+}
+
+/* ========================================================================
+  Secondary
+ ========================================================================== */
+.btn-secondary {
+  background-color: $secondary;
+  color: $primary;
+  border: 1px solid $primary;
+}
+
+.btn-secondary:hover {
+  color: $primary;
+  background-color: $secondaryHoverBg;
+  border: 1px solid $primary;
+  box-shadow: 0 3px 9px 0 rgba(0, 0, 0, 0.08);
+}
+
+.btn-secondary:active {
+  color: $primary !important;
+  background-color: $secondaryPressedBg !important;
+  border: 1px solid $secondaryPressedBorder !important;
+}
+
+.btn-secondary:disabled {
+  color: $secondaryDisabledFont !important;
+  border-color: $secondaryDisabledBorder !important;
+}
+
+/* ========================================================================
+  Secondary Destructive
+ ========================================================================== */
+.btn-secondary-destructive {
+  background-color: $secondary;
+  color: $primaryDestructiveBg;
+  border: 1px solid $primaryDestructiveBg;
+}
+
+.btn-secondary-destructive:hover {
+  color: $primaryDestructiveBg;
+  background-color: $secondaryDestructiveHoverBg;
+  border: 1px solid $primaryDestructiveBg;
+  box-shadow: 0 3px 9px 0 rgba(0, 0, 0, 0.08);
+}
+
+.btn-secondary-destructive:active {
+  color: $secondaryDestructivePressedFont !important;
+  background-color: $secondaryDestructivePressedBg !important;
+  border: 1px solid $primaryDestructiveBg !important;
+}
+
+.btn-secondary-destructive:disabled {
+  color: $secondaryDestructiveDisabledFont !important;
+  border-color: $secondaryDestructiveDisabledBorder !important;
+}
+
+/* ========================================================================
+  Secondary Ghost
+ ========================================================================== */
+.btn-secondary-ghost {
+  color: $secondaryGhostFont;
+  background-color: $secondary;
+  border: 1px solid $secondaryGhostBorder;
+}
+
+.btn-secondary-ghost:hover {
+  background-color: $secondaryGhostHoverBg;
+  border: 1px solid $secondaryGhostBorder;
+  box-shadow: 0 3px 9px 0 rgba(0, 0, 0, 0.08);
+}
+
+.btn-secondary-ghost:active {
+  color: $secondaryGhostPressedFont !important;
+  background-color: $secondaryGhostPressedBg !important;
+  border: 1px solid $secondaryGhostPressedBorder !important;
+}
+
+.btn-secondary-ghost:disabled {
+  color: $secondaryGhostDisabledFont !important;
+  border-color: $secondaryGhostDisabledBorder !important;
+}
+
+/* ========================================================================
+  Tertiary
+ ========================================================================== */
+.btn-tertiary {
+  color: $primary !important;
+}
+
+.btn-tertiary-destructive {
+  color: $tertiaryDestructive !important;
+}
+
+/* ========================================================================
+  Anchor
+ ========================================================================== */
+.anchor-primary {
+  color: $primary !important;
+}
+
+.anchor-destructive {
+  color: $primaryDestructiveBg !important;
+}
+
+.anchor-gray {
+  color: $primaryGrayBg !important;
+}

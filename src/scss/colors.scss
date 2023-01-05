@@ -1,0 +1,52 @@
+/* ========================================================================
+     Colors
+ ========================================================================== */
+
+// Blues
+$primary-hard: #0b3254;
+$primary-pressed: #0089bf;
+$primary: #00a0df;
+$primary-middle: #bbe6f7;
+
+$black: #020203;
+$secondary: white;
+$subtext: #536f87;
+$unselected: #65849e;
+$placeholder: #8498a9;
+$input: #b7c8d6;
+$borders: #edf2f5;
+$soft-gray: #f5f8fa;
+$green: #28a745;
+$red: #f05f6d;
+$yellow: #ffd200;
+$primary-drag-drop: #007ec7;
+
+$calendarThemeColours: (
+    calendar-blue: #00a0df,
+    calendar-dark-blue: #1667d9,
+    calendar-light-pink: #eb757d,
+    calendar-pink: #d66bb8,
+    calendar-claret-red: #99271f,
+    calendar-dark-orange: #cc5200,
+    calendar-dark-yellow: #eba400,
+    calendar-yellow: #edd100,
+    calendar-light-green: #c1d636,
+    calendar-green: #65cc3f,
+    calendar-dark-green: #29cc98,
+    calendar-light-blue: #2cc9de,
+);
+
+$calendarThemeTitleColours: (
+    calendar-blue-title: #edf2f5,
+    calendar-dark-blue-title: #e1ecfc,
+    calendar-light-pink-title: #fae3e5,
+    calendar-pink-title: #f5e6f1,
+    calendar-claret-red-title: #fae5e3,
+    calendar-dark-orange-title: #fcefe6,
+    calendar-dark-yellow-title: #fcf2e3,
+    calendar-yellow-title: #f7f6d2,
+    calendar-light-green-title: #f7fcd9,
+    calendar-green-title: #e4f7dc,
+    calendar-dark-green-title: #daf7ee,
+    calendar-light-blue-title: #dcf5f7,
+);

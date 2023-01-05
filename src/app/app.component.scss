@@ -1,0 +1,15 @@
+.sidebar-wrapper {
+    flex: 0 1 320px;
+    background-color: #13151c;
+    height: 100vh;
+    border-right: 1px solid black;
+}
+
+.content-wrapper {
+    padding: 16px 48px;
+}
+
+.notes-wrapper {
+    max-width: 16.66667%;
+    flex: 0 0 16.66667%;
+}

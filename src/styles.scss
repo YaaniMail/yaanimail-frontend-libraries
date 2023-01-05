@@ -1,38 +1,120 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import "./scss/colors.scss";
+@import "./scss/fonts.scss";
+@import "./scss/buttons.scss";
+
+body {
+    font-family: "Roboto";
+}
+
+ul {
+    list-style: none;
+}
+
+hr {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: 0;
+    border-top: 1px solid black;
+    overflow: visible;
+    box-sizing: content-box;
+    height: 0;
+    display: block;
+}
 
 .section-header {
-    font-size: 20px;
-    background-color: dodgerblue;
-    color: white;
-    padding: 20px;
+    font-size: 24px;
+    border-left: 4px solid dodgerblue;
+    color: #32325d;
+    padding: 10px 20px;
+    margin-bottom: 20px;
 }
 
 .section-desc {
     font-size: 17px;
-    background-color: darkgrey;
     padding: 10px;
+    font-weight: 400;
+    color: #3b454e;
+    line-height: 1.7;
+    margin-bottom: 30px;
 }
 
-.section {
-    padding: 10px 10px 20px 10px;
-    .section-element-header {
-        font-size: 14px;
-        background-color: gainsboro;
-        padding: 10px;
+.section-content {
+    margin-bottom: 30px;
+    h5 {
+        margin-bottom: 20px;
     }
-    .section-element {
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .section-content-title {
-        border-bottom: 1px solid dodgerblue;
-    }
-    .section-content-body {
-        padding: 4px 0px;
+    .live-example {
+        padding: 20px;
+        background-color: #f4f4f4;
+        border: 1px solid #d8d8d8;
+        .example {
+            margin-bottom: 10px;
+        }
     }
 }
 
 .form-element {
     padding: 10px 0;
+}
+
+table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 16px;
+}
+
+table > thead > tr > th {
+    padding: 16px;
+    vertical-align: top;
+    border: 1px solid #e9ecef;
+}
+
+table > tbody > tr > td {
+    padding: 16px;
+    vertical-align: top;
+    border: 1px solid #e9ecef;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+    font-family: Consolas, Menlo, Monaco, andale mono wt, andale mono, lucida console, lucida sans typewriter,
+        dejavu sans mono, bitstream vera sans mono, liberation mono, nimbus mono l, courier new, Courier, monospace;
+    font-size: 14px;
+    line-height: 1.375;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    hyphens: none;
+    color: #5e6687;
+    border-radius: 4px;
+    background: #f5f7ff;
+    direction: ltr;
+    -ms-hyphens: none;
+}
+
+.token.tag {
+    color: #3d8fd1;
+}
+
+.token.attr-name {
+    color: #c76b29;
+}
+
+.token.attr-value,
+.token.control,
+.token.directive,
+.token.keyword,
+.token.unit {
+    color: #ac9739;
+}
+
+.token.punctuation {
+    color: #5e6687;
 }

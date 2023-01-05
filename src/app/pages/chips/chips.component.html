@@ -1,50 +1,172 @@
-<div class="section-header" style="margin-top: 60px">Chips Test</div>
-<div class="section-desc">Duplicate <b>NOT</b> allowed [duplicateAllowed], Valid email [pattern] <b>ON</b>, Auto
-    complete is <b>ON</b>. Paste is
-    <b>ON</b> [';', ',']. Edit <b>ON</b> with double click. Drag and Drop is <b>ON</b>. Backspace delete after selection
-    and last tag
-    is <b>ON</b>.
+<div class="section-header">ngym-chips</div>
+<div class="section-desc">
+    Chips library built with Angular 13. Download from <a href="https://www.npmjs.com/package/ngym-chips">here</a>.
 </div>
-<div class="section">
-    <div class="section-content-title">To:</div>
-    <div class="section-content-body">
-        <ngym-tag-container [(ngModel)]="toTags" (onAddEmitter)="onTagAdd($event)" name="toTags"
-            [placeholder]="'Katılımcı ekle'" (onKeyPressedEmitter)="changeAutoCompleteItems($event)"
-            [duplicateAllowed]="false" [splitChars]="[',', ';']" [pattern]="pattern" [dragAllowed]="true"
-            [dragZone]="'zone1'" [autoCompleteItems]="autoCompleteItems" [appendToBody]="true">
-        </ngym-tag-container>
-    </div>
+<hr>
+<div class="section-content">
+    <h5>Avaliable Properties</h5>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><code class="highlighter-rouge language-plaintext">[(ngModel)]</code></td>
+                <td><code class="highlighter-rouge language-plaintext">Tag[]</code></td>
+                <td>last value is set to a Tag[]</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><code class="highlighter-rouge language-plaintext">[placeholder]</code></td>
+                <td><code class="highlighter-rouge language-plaintext">string</code></td>
+                <td>Any string ' ' can be used. Ex: 'Add Recepient'</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><code class="highlighter-rouge language-plaintext">[duplicateAllowed]</code></td>
+                <td><code class="highlighter-rouge language-plaintext">boolean</code></td>
+                <td>Duplicate chips or not</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><code class="highlighter-rouge language-plaintext">[dragZone]</code></td>
+                <td><code class="highlighter-rouge language-plaintext">string</code></td>
+                <td>Should be unique for dragging. Ex: 'zone1' and 'zone2'</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td><code class="highlighter-rouge language-plaintext">[splitChars]</code></td>
+                <td><code class="highlighter-rouge language-plaintext">string[]</code></td>
+                <td>[',', ';'] these are supported at the moment</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td><code class="highlighter-rouge language-plaintext">[dragAllowed]</code></td>
+                <td><code class="highlighter-rouge language-plaintext">boolean</code></td>
+                <td>dragging is optional. false or true</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td><code class="highlighter-rouge language-plaintext">[appendToBody]</code></td>
+                <td><code class="highlighter-rouge language-plaintext">boolean</code></td>
+                <td>setting true can correct css issues</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td><code class="highlighter-rouge language-plaintext">[pattern]</code></td>
+                <td><code class="highlighter-rouge language-plaintext">RegExp</code></td>
+                <td>Ex: number regex for chip validation.
+                    /^\d*$/.test(value)</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td><code class="highlighter-rouge language-plaintext">(onAddEmitter)</code></td>
+                <td><code class="highlighter-rouge language-plaintext">event</code></td>
+                <td>event after adding a chip.</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td><code class="highlighter-rouge language-plaintext">(onKeyPressedEmitter)</code></td>
+                <td><code class="highlighter-rouge language-plaintext">event</code>
+                </td>
+                <td>Ex: changeAutoCompleteItems($event)</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td><code class="highlighter-rouge language-plaintext">name</code></td>
+                <td><code class="highlighter-rouge language-plaintext">string</code></td>
+                <td>should be unique</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
-<div class="section">
-    <div class="section-content-title">Cc:</div>
-    <div class="section-content-body">
-        <ngym-tag-container [(ngModel)]="ccTags" (onAddEmitter)="onTagAdd($event)" name="ccTags"
-            (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false" [splitChars]="[',', ';']"
-            [placeholder]="'Katılımcı ekle'" [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone2'"
-            [autoCompleteItems]="autoCompleteItems">
-        </ngym-tag-container>
-    </div>
-</div>
-<div class="section">
-    <div class="section-content-title">Bcc:</div>
-    <div class="section-content-body">
-        <ngym-tag-container [(ngModel)]="bccTags" (onAddEmitter)="onTagAdd($event)" name="bccTags"
-            (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false" [splitChars]="[',', ';']"
-            [placeholder]="'Katılımcı ekle'" [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone3'"
-            [autoCompleteItems]="autoCompleteItems">
-        </ngym-tag-container>
-    </div>
-</div>
-<div class="section">
-    <button type="button" (click)="logTags()">Send</button>
-</div>
+<hr>
+<div class="section-content">
+    <!-- <span class="token attr-name">[appendToBody]</span><span class="token attr-value"><span
+            class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span
+            class="token punctuation">"</span></span> -->
+    <h5>Code Example</h5>
 
 
-<div class="section-header">Chips Test</div>
+
+
+    <div>
+        <pre class="language-html">
+    <code class="language-html" data-lang="html">
+    <span class="token tag"><span class="token-punctuation">&lt;</span>ngym-tag-container</span> <span class="token attr-name">[(ngModel)]</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span
+                        class="token punctuation">"</span>toTags<span class="token punctuation">"</span></span> <span class="token attr-name">(onAddEmitter)</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span
+                                class="token punctuation">"</span>onTagAdd($event)<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span
+                                        class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>toTags<span
+                                        class="token punctuation">"</span></span> 
+        <span class="token attr-name">[placeholder]</span><span class="token attr-value"><span
+                                                class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>'Katılımcı ekle'<span
+                                                class="token punctuation">"</span></span> <span class="token attr-name">(onKeyPressedEmitter)</span><span class="token attr-value"><span
+                                                        class="token punctuation attr-equals">=</span><span
+                                                        class="token punctuation">"</span>changeAutoCompleteItems($event)<span class="token punctuation">"</span></span> 
+        <span class="token attr-name">[duplicateAllowed]</span><span class="token attr-value"><span
+                                                                class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span
+                                                                class="token punctuation">"</span></span> <span class="token attr-name">[splitChars]</span><span class="token attr-value"><span
+                                                                        class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>[',', ';']<span
+                                                                        class="token punctuation">"</span></span> <span class="token attr-name">[pattern]</span><span class="token attr-value"><span
+                                                                                class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pattern<span
+                                                                                class="token punctuation">"</span></span> <span class="token attr-name">[dragAllowed]</span><span class="token attr-value"><span
+                                                                                        class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span
+                                                                                        class="token punctuation">"</span></span> 
+        <span class="token attr-name">[dragZone]</span><span class="token attr-value"><span
+                                                                                                class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>'zone1'<span
+                                                                                                class="token punctuation">"</span></span> <span class="token attr-name">[autoCompleteItems]</span><span class="token attr-value"><span
+                                                                                                        class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>autoCompleteItems<span
+                                                                                                        class="token punctuation">"</span></span> <span class="token attr-name">[appendToBody]</span><span class="token attr-value"><span
+                                                                                                                class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span
+                                                                                                                class="token punctuation">"</span></span>
+    <span class="token tag"><span class="token-punctuation">&lt;</span>/ngym-tag-container></span>
+        </code>
+        </pre>
+    </div>
+</div>
+
+<div class="section-content">
+    <h5>Live Example</h5>
+    <div class="live-example">
+        <div class="example">
+            To: <ngym-tag-container [(ngModel)]="toTags" (onAddEmitter)="onTagAdd($event)" name="toTags"
+                [placeholder]="'Katılımcı ekle'" (onKeyPressedEmitter)="changeAutoCompleteItems($event)"
+                [duplicateAllowed]="false" [splitChars]="[',', ';']" [pattern]="pattern" [dragAllowed]="true"
+                [dragZone]="'zone1'" [autoCompleteItems]="autoCompleteItems" [appendToBody]="true">
+            </ngym-tag-container>
+        </div>
+        <div class="example">
+            Cc: <ngym-tag-container [(ngModel)]="ccTags" (onAddEmitter)="onTagAdd($event)" name="ccTags"
+                (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false"
+                [splitChars]="[',', ';']" [placeholder]="'Katılımcı ekle'" [pattern]="pattern" [dragAllowed]="true"
+                [dragZone]="'zone2'" [autoCompleteItems]="autoCompleteItems">
+            </ngym-tag-container>
+        </div>
+        <div class="example">
+            Bcc: <ngym-tag-container [(ngModel)]="bccTags" (onAddEmitter)="onTagAdd($event)" name="bccTags"
+                (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false"
+                [splitChars]="[',', ';']" [placeholder]="'Katılımcı ekle'" [pattern]="pattern" [dragAllowed]="true"
+                [dragZone]="'zone3'" [autoCompleteItems]="autoCompleteItems">
+            </ngym-tag-container>
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary btn-small" (click)="logTags()">Send</button>
+        </div>
+    </div>
+</div>
+
+<hr>
+<div class="section-header">ngym-chips with custom template</div>
 <div class="section-desc">Custom template on Tag and AutoComplete menu.
 </div>
-<div class="section">
-    <div>Mail</div>
+<div class="section-content">
+    <h5>Code Example</h5>
     <ngym-tag-container [(ngModel)]="customTags" (onAddEmitter)="onTagAdd($event)"
         (onKeyPressedEmitter)="changeAutoCompleteItems($event)" [duplicateAllowed]="false" [splitChars]="[',', ';']"
         [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone3'" [autoCompleteItems]="autoCompleteItems"
