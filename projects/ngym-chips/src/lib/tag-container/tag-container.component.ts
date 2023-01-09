@@ -98,6 +98,8 @@ export class TagContainerComponent extends TagsAccessor {
    */
   pasteTags(tags: Tag[]): void {
     tags.forEach(tag => {
+      tag.value = tag.value.replace('•', '');
+      tag.value = tag.value.trim();
       this.addTag(tag);
     });
   }
