@@ -18,7 +18,8 @@
                 <div class="ngym-dropdown-container">
                     <div class="ngym-item" (click)="selectTag(item)" *ngFor="let item of items; let i = index">
                         <div class="ngym-info ngym-content-overflow">
-                            <div class="ngym-name ngym-content-overflow">{{ item }}</div>
+                            <div class="ngym-name ngym-content-overflow"
+                                [ngClass]="{'ngym-name-disabled' : isDisabled(item)}">{{ item }}</div>
                         </div>
                     </div>
                 </div>

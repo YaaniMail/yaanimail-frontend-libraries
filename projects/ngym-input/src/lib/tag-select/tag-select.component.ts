@@ -42,4 +42,12 @@ export class TagSelectComponent {
       this.tagsEmitter.emit(this.tags);
     }
   }
+
+  isDisabled(tag: string): boolean {
+    const index = this.tags.indexOf(tag);
+    if (index !== -1) {
+      return true;
+    }
+    return false;
+  }
 }
