@@ -1,7 +1,8 @@
 <div class="ngym-dropdown">
     <div class="ngym-dropdown-container">
         <div class="ngym-item" [ngClass]="{'ngym-selected': i === dropDownSelectionIndex}" (click)="onSelectItem(item)"
-            *ngFor="let item of autoCompleteItems; let i = index" [ngSwitch]="!!autoCompleteTemplate">
+            *ngFor="let item of autoCompleteItems; let i = index" [ngSwitch]="!!autoCompleteTemplate"
+            [focused]="i === this.dropDownSelectionIndex">
             <!-- Custom Template -->
             <ng-container *ngSwitchCase="true">
                 <ng-template [ngTemplateOutletContext]="{ item: item, index: index }"

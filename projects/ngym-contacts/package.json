@@ -1,6 +1,6 @@
 {
   "name": "ngym-contacts",
-  "version": "0.0.20",
+  "version": "0.0.22",
   "description": "input element select changed",
   "peerDependencies": {
     "@angular/common": "^13.3.0",

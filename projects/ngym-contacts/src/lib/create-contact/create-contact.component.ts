@@ -13,7 +13,7 @@ export class CreateContactComponent implements OnInit {
   showNotes: boolean = false;
   form!: FormGroup;
   @Input() contactConfig!: ContactConfig;
-  @Output() onAddEmitter = new EventEmitter<number>();
+  @Output() onAddEmitter = new EventEmitter<any>();
   @Output() onAddErrorEmitter = new EventEmitter<string>();
 
   constructor(
@@ -65,7 +65,13 @@ export class CreateContactComponent implements OnInit {
     this.assignFullname();
     this.contactService.createContact(this.contactConfig.apiUrl, this.form.value, this.contactConfig.headers).subscribe(
       data => {
-        this.onAddEmitter.emit(data.id);
+        let contact = { id: '', firstname: '', lastname: '', fullname: '', email: [] };
+        contact.id = data.id;
+        contact.firstname = this.form.value.firstname;
+        contact.lastname = this.form.value.lastname;
+        contact.fullname = this.form.value.fullname;
+        contact.email = this.form.value.email;
+        this.onAddEmitter.emit(contact);
       },
       error => {
         this.onAddErrorEmitter.emit(error.error.message);

@@ -139,7 +139,8 @@ export class TagInputComponent implements OnInit, OnChanges {
     }
 
     // Auto complete dropdown element's enter event is handled here.
-    if (this.autoCompleteVisible = true && this.tagInputAutoCompleteComponent.dropDownSelectionIndex !== -1) {
+    if (this.tagInputAutoCompleteComponent !== undefined && this.autoCompleteVisible === true && this.tagInputAutoCompleteComponent.dropDownSelectionIndex !== -1) {
+      console.log('de');
       this.tagInputAutoCompleteComponent.onEnterSelectItem();
       this.clearForm();
       return;

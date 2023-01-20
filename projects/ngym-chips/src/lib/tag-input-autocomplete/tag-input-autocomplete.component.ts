@@ -15,7 +15,7 @@ export class TagInputAutocompleteComponent {
   @Output() onSelectEmitter = new EventEmitter<AutoComplete>();
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.key === 'ArrowDown' && this.autoCompleteItems.length > 0 && this.dropDownSelectionIndex <= this.autoCompleteItems.length) {
+    if (event.key === 'ArrowDown' && this.autoCompleteItems.length > 0 && this.dropDownSelectionIndex + 1 < this.autoCompleteItems.length) {
       this.dropDownSelectionIndex++;
     } else if (event.key === 'ArrowUp' && this.autoCompleteItems.length > 0 && this.dropDownSelectionIndex > 0) {
       this.dropDownSelectionIndex--;

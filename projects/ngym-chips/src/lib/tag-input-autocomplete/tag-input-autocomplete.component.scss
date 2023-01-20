@@ -1,8 +1,8 @@
 .ngym-dropdown {
-  width: 320px;
-  height: 280px;
+  width: 250px;
+  height: 290px;
   background-color: white;
-  border-radius: 2px;
+  border-radius: 8px;
   position: absolute;
   top: 100%;
   left: 0;
@@ -16,7 +16,7 @@
 .ngym-item {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #f5f8fa;
+  border-bottom: 1px solid #edf2f5;
   padding: 8px 12px;
   cursor: pointer;
   .ngym-initials,
