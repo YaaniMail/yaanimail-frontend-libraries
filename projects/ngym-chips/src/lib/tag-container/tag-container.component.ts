@@ -193,6 +193,9 @@ export class TagContainerComponent extends TagsAccessor {
    * Adding tag from selected auto complete item
    */
   selectAutoCompleteItem(tag: Tag): void {
+    if (tag.value.indexOf(',') !== -1 || tag.value.indexOf(';') !== -1) {
+
+    }
     this.addTag(tag);
   }
 

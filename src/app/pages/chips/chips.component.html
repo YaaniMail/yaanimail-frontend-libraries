@@ -100,8 +100,9 @@
         <div class="example">
             To: <ngym-tag-container [(ngModel)]="toTags" (onAddEmitter)="onTagAdd($event)" name="toTags"
                 [placeholder]="'Katılımcı ekle'" (onKeyPressedEmitter)="changeAutoCompleteItems($event)"
-                [duplicateAllowed]="false" [splitChars]="[',', ';']" [pattern]="pattern" [dragAllowed]="true"
-                [dragZone]="'zone1'" [autoCompleteItems]="autoCompleteItems" [appendToBody]="false">
+                (onSelectEmitter)="onSelect($event)" [duplicateAllowed]="false" [splitChars]="[',', ';']"
+                [pattern]="pattern" [dragAllowed]="true" [dragZone]="'zone1'" [autoCompleteItems]="autoCompleteItems"
+                [appendToBody]="false">
             </ngym-tag-container>
         </div>
         <div class="example">

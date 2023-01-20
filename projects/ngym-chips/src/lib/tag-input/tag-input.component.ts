@@ -73,12 +73,16 @@ export class TagInputComponent implements OnInit, OnChanges {
 
   /**
    * Creating a tag object from selected auto complete item and passing it to parent
+   * Controlling if selected item email has any split chars. If so seperate them. If not just create a single tag object
    */
   selectAutoCompleteItem(item: AutoComplete): void {
-    const _tag = this.createTagObject(item.email);
-    this.onAutoCompleteSelectEmitter.emit(_tag);
+    if (item.email.indexOf(',') !== -1 || item.email.indexOf(';') !== -1) {
+      this.onPaste(item.email);
+    } else {
+      const _tag = this.createTagObject(item.email);
+      this.onAutoCompleteSelectEmitter.emit(_tag);
+    }
     this.form.reset();
-
     this.autoCompleteVisible = false;
   }
 
@@ -140,7 +144,6 @@ export class TagInputComponent implements OnInit, OnChanges {
 
     // Auto complete dropdown element's enter event is handled here.
     if (this.tagInputAutoCompleteComponent !== undefined && this.autoCompleteVisible === true && this.tagInputAutoCompleteComponent.dropDownSelectionIndex !== -1) {
-      console.log('de');
       this.tagInputAutoCompleteComponent.onEnterSelectItem();
       this.clearForm();
       return;

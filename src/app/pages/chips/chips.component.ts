@@ -40,6 +40,9 @@ export class ChipsComponent implements OnInit {
     // this.autoCompleteItems = [];
   }
 
+  onSelect(e: any): void {
+    console.log(e);
+  }
 
   logTags(): void {
     console.log(this.toTags);
