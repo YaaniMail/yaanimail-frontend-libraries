@@ -5,12 +5,14 @@ import { NgymInputModule } from 'ngym-input';
 import { CreateContactComponent } from './create-contact/create-contact.component';
 import { EditContactComponent } from './edit-contact/edit-contact.component';
 import { ViewContactComponent } from './view-contact/view-contact.component';
+import { ContactCardComponent } from './contact-card/contact-card.component';
 
 @NgModule({
   declarations: [
     CreateContactComponent,
     EditContactComponent,
-    ViewContactComponent
+    ViewContactComponent,
+    ContactCardComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { ViewContactComponent } from './view-contact/view-contact.component';
     NgymInputModule
   ],
   exports: [
-    CreateContactComponent
+    CreateContactComponent,
+    ContactCardComponent
   ]
 })
 export class NgymContactsModule { }

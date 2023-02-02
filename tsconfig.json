@@ -39,6 +39,14 @@
       "ngym-prelogin-header": [
         "dist/ngym-prelogin-header/ngym-prelogin-header",
         "dist/ngym-prelogin-header"
+      ],
+      "ngym-profile-photo": [
+        "dist/ngym-profile-photo/ngym-profile-photo",
+        "dist/ngym-profile-photo"
+      ],
+      "profile-photo": [
+        "dist/profile-photo/profile-photo",
+        "dist/profile-photo"
       ]
     },
     "declaration": false,
