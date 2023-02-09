@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Contact } from 'ngym-contacts';
+import { ContactConfig } from '../model/config';
+import { ContactService } from '../service/contact.service';
 
 @Component({
   selector: 'ngym-view-contact',
@@ -6,10 +9,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-contact.component.scss']
 })
 export class ViewContactComponent implements OnInit {
+  contact!: Contact;
+  config!: ContactConfig;
+  @Output() onGetErrorEmitter = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(
+    private contactService: ContactService
+  ) { }
 
   ngOnInit(): void {
+    this.getContact();
+  }
+
+  getContact(): void {
+    this.contactService.getContact(this.config.apiUrl, this.config.headers).subscribe(
+      data => {
+
+      },
+      error => {
+        this.onGetErrorEmitter.emit(error.error.message);
+
+      }
+    );
   }
 
 }
