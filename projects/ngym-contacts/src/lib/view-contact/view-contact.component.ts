@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Contact } from 'ngym-contacts';
+import { Contact } from '../model/contact';
 import { ContactConfig } from '../model/config';
 import { ContactService } from '../service/contact.service';
 
