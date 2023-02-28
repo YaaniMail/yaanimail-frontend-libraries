@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output, TemplateRef, ViewEncapsulation } from '@angular/core';
-import { Logo } from './model/logo';
 
 @Component({
   selector: 'ngym-prelogin-header',
@@ -8,7 +7,7 @@ import { Logo } from './model/logo';
   encapsulation: ViewEncapsulation.None
 })
 export class NgymPreloginHeaderComponent {
-  @Input() logo!: Logo;
+  @Input() logo!: string;
   @Input() headerHtml!: TemplateRef<any>;
   @Output() imageClickEmitter = new EventEmitter<boolean>();
   

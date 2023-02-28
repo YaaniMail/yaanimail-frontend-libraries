@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   ccTags: Tag[] = [];
   bccTags: Tag[] = [];
   customTags: Tag[] = [];
-  logo!: Logo;
+  logo!: string;
   contactConfig!: ContactConfig;
 
   constructor(private fb: FormBuilder, private webService: WebService) {
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.logo = new Logo('../assets/yaanimail2x-enterprise.png');
+    this.logo = '../assets/yaanimail2x-enterprise.png';
 
     this.contactConfig = {
       apiUrl: 'test',
