@@ -40,6 +40,7 @@ export class TagContainerComponent extends TagsAccessor {
   @Output() onRemoveEmitter = new EventEmitter<Tag>();
   @Output() onDragEndEmitter = new EventEmitter<Tag[]>();
   @ViewChild(TagInputComponent) tagInputComponent!: TagInputComponent;
+  /** CREATES A BUG WHILE DELETING LAST ELEMENT OF ARRAY WITH BACKSPACE. DELETES BEFORE SELECT
   @HostListener('document:keydown', ['$event'])
   // Deleting a selected tag if a keyboard event of Bacspace is clicked globally.
   handleKeyboardEvent(event: KeyboardEvent) {
@@ -48,6 +49,7 @@ export class TagContainerComponent extends TagsAccessor {
       this.selectedTagId = -1; // so no new tag is selected
     }
   }
+  */
 
   constructor(
     public dragDropProvider: DragDropProvider
@@ -98,6 +100,8 @@ export class TagContainerComponent extends TagsAccessor {
    */
   pasteTags(tags: Tag[]): void {
     tags.forEach(tag => {
+      tag.value = tag.value.replace('•', '');
+      tag.value = tag.value.trim();
       this.addTag(tag);
     });
   }
@@ -111,11 +115,22 @@ export class TagContainerComponent extends TagsAccessor {
     this.onRemoveEmitter.emit(removedTag[0]);
   }
 
+  selectLastTagBeforeRemove(): void {
+    if (this.selectedTagId === -1) {
+      let lastTag = this.tagValues[this.tagValues.length - 1];
+      this.selectTag(lastTag);
+    } else {
+      // If already selected, then delete
+      this.removeLastTag();
+    }
+  }
+
   /**
    * Remove the last element in tags array
    */
   removeLastTag(): void {
     let poppedTag = this.tagValues.pop();
+    this.selectedTagId = -1;
     this.onRemoveEmitter.emit(poppedTag);
   }
 
@@ -178,6 +193,9 @@ export class TagContainerComponent extends TagsAccessor {
    * Adding tag from selected auto complete item
    */
   selectAutoCompleteItem(tag: Tag): void {
+    if (tag.value.indexOf(',') !== -1 || tag.value.indexOf(';') !== -1) {
+
+    }
     this.addTag(tag);
   }
 

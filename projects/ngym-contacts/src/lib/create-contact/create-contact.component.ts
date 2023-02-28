@@ -13,7 +13,7 @@ export class CreateContactComponent implements OnInit {
   showNotes: boolean = false;
   form!: FormGroup;
   @Input() contactConfig!: ContactConfig;
-  @Output() onAddEmitter = new EventEmitter<number>();
+  @Output() onAddEmitter = new EventEmitter<any>();
   @Output() onAddErrorEmitter = new EventEmitter<string>();
 
   constructor(
@@ -28,13 +28,15 @@ export class CreateContactComponent implements OnInit {
 
   createForm(): void {
     this.form = this.fb.group({
-      name: ['', Validators.required],
-      surname: [''],
+      firstname: ['', Validators.required],
+      lastname: [''],
+      fullname: [''],
       company: [''],
       jobtitle: [''],
       email: this.fb.array([]),
       phone: this.fb.array([]),
       addresses: this.fb.array([]),
+      tag_names: this.fb.array([]),
       notes: ['']
     });
   }
@@ -60,14 +62,25 @@ export class CreateContactComponent implements OnInit {
   }
 
   addContact(): void {
+    this.assignFullname();
     this.contactService.createContact(this.contactConfig.apiUrl, this.form.value, this.contactConfig.headers).subscribe(
       data => {
-        this.onAddEmitter.emit(data.id);
+        let contact = { id: '', firstname: '', lastname: '', fullname: '', email: [] };
+        contact.id = data.id;
+        contact.firstname = this.form.value.firstname;
+        contact.lastname = this.form.value.lastname;
+        contact.fullname = this.form.value.fullname;
+        contact.email = this.form.value.email;
+        this.onAddEmitter.emit(contact);
       },
       error => {
         this.onAddErrorEmitter.emit(error.error.message);
       }
     );
+  }
+
+  assignFullname(): void {
+    this.form.value.fullname = this.form.value.firstname + ' ' + this.form.value.lastname;
   }
 
   addAddress(): void {
@@ -101,6 +114,10 @@ export class CreateContactComponent implements OnInit {
 
   deletePhoneNumber(i: number): void {
     this.phonesArray.removeAt(i);
+  }
+
+  assignTags(tags: string[]): void {
+    this.form.value.tag_names = tags;
   }
 
   controlNoteInput(note: string): void {

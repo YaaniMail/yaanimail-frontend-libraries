@@ -10,14 +10,27 @@ import { RouterModule } from '@angular/router';
 import { WebService } from './service/web.service';
 import { NgymPreloginHeaderModule } from 'ngym-prelogin-header';
 import { NgymContactsModule } from 'projects/ngym-contacts/src/lib/ngym-contacts.module';
-import { NgymInputModule } from 'ngym-input';
+import { NgymInputModule } from 'projects/ngym-input/src/public-api';
+import { SidebarComponent } from './pages/sidebar/sidebar.component';
+import { LayoutModule } from './layout/layout.module';
+import { ChipsComponent } from './pages/chips/chips.component';
+import { InputsComponent } from './pages/inputs/inputs.component';
+import { NewContactComponent } from './pages/new-contact/new-contact.component';
+import { FormsComponent } from './pages/forms/forms.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SidebarComponent,
+    ChipsComponent,
+    InputsComponent,
+    NewContactComponent,
+    FormsComponent
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot([]),
     FormsModule,
     NgymHomeModule,
     NgymChipsModule,
@@ -26,7 +39,8 @@ import { NgymInputModule } from 'ngym-input';
     NgymContactsModule,
     ReactiveFormsModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    LayoutModule
   ],
   providers: [RouterModule, WebService],
   bootstrap: [AppComponent]

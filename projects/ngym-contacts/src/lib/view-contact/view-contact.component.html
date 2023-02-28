@@ -1,0 +1,82 @@
+<div class="p-3" *ngIf="contact">
+    <div class="h7-r">
+        <div class="d-flex align-self-center">
+            <div class="p-2">
+
+            </div>
+            <div class="p-2 flex-grow-1 align-self-center overflow-hidden">
+                <div class="h7-m robot_contactView_fullname">{{ contact.firstname }} {{
+                    contact.lastname }}</div>
+                <div class="b2-r text-gray content-overflow robot_contactView_jobTitle">{{ contact.jobtitle }}</div>
+                <div class="b2-r text-placeholder content-overflow robot_contactView_jobTitle">{{ contact.company }}
+                </div>
+            </div>
+        </div>
+        <div class="bb m-2"></div>
+    </div>
+    <!-- Body -->
+    <div class="py-2">
+        <div class="form-group p-2 h8-r text-primary">
+            'CONTACT_DETAILS'
+        </div>
+        <!-- Email Fields -->
+        <div class="form-group d-flex" *ngIf="contact.email">
+            <div class="contact-view-label b2-r p-2 text-placeholder">'EMAIL'</div>
+            <div class="p-2 flex-grow-1 b2-r text-break">
+                <div class="mb-1 robot_contactView_email{{i}}"
+                    *ngFor="let email of contact.email; let i = index; let first = first;">
+                    {{ email }}
+                </div>
+            </div>
+        </div>
+        <!-- Phone Fields -->
+        <div class="form-group d-flex" *ngIf="contact.phone">
+            <div class="contact-view-label b2-r p-2 text-placeholder">'PHONE'</div>
+            <div class="p-2 flex-grow-1 b2-r text-break">
+                <div class="mb-1" *ngFor="let phone of contact.phone.home;">
+                    {{ phone | msisdn }} <span class="text-placeholder">&#183;'HOME'</span>
+                </div>
+                <div class="mb-1" *ngFor="let phone of contact.phone.mobile;">
+                    {{ phone | msisdn }} <span class="text-placeholder">&#183;'MOBILE'</span>
+                </div>
+                <div class="mb-1" *ngFor="let phone of contact.phone.work;">
+                    {{ phone | msisdn }} <span class="text-placeholder">&#183;'WORK'</span>
+                </div>
+                <div class="mb-1" *ngFor="let phone of contact.phone.other;">
+                    {{ phone }} <span class="text-placeholder">&#183;'OTHER'</span>
+                </div>
+            </div>
+        </div>
+        <!-- Adress Fields -->
+        <div class="form-group d-flex" *ngIf="contact.addresses">
+            <div class="contact-view-label b2-r p-2 text-placeholder">'ADDRESS'</div>
+            <div class="p-2 flex-grow-1 b2-r text-break">
+                <div class="mb-1" *ngFor="let address of contact.addresses.home">
+                    {{ address.street }} {{ address.state }} {{ address.postalcode}} {{ address.city }} {{
+                    address.country }} <span class="text-placeholder">&#183;'HOME'</span>
+                </div>
+                <div class="mb-1" *ngFor="let address of contact.addresses.work">
+                    {{ address.street }} {{ address.state }} {{ address.postalcode}} {{ address.city }} {{
+                    address.country }} <span class="text-placeholder">&#183;'WORK'</span>
+                </div>
+                <div class="mb-1" *ngFor="let address of contact.addresses.other">
+                    {{ address.street }} {{ address.state }} {{ address.postalcode}} {{ address.city }} {{
+                    address.country }}<span class="text-placeholder">&#183;'OTHER'</span>
+                </div>
+            </div>
+        </div>
+        <!-- Notes Fields -->
+        <div class="form-group d-flex b2-r" *ngIf="contact.notes">
+            <div class="contact-view-label b2-r p-2 text-placeholder">'NOTES'</div>
+            <div class="p-2 flex-grow-1">
+                {{ contact.notes }}
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="py-2 text-right">
+        <button class="btn btn-small btn-secondary robot_contactView_editButton" type="button" (click)="routeToEdit()">
+            'BUTTON_EDIT'
+        </button>
+    </div>
+</div>

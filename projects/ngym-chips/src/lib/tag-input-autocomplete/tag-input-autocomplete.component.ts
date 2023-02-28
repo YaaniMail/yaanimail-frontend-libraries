@@ -13,6 +13,14 @@ export class TagInputAutocompleteComponent {
   @Input() autoCompleteTemplate!: TemplateRef<any>;
   @Input() isLoading!: boolean;
   @Output() onSelectEmitter = new EventEmitter<AutoComplete>();
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'ArrowDown' && this.autoCompleteItems.length > 0 && this.dropDownSelectionIndex + 1 < this.autoCompleteItems.length) {
+      this.dropDownSelectionIndex++;
+    } else if (event.key === 'ArrowUp' && this.autoCompleteItems.length > 0 && this.dropDownSelectionIndex > 0) {
+      this.dropDownSelectionIndex--;
+    }
+  }
 
   constructor() { }
 
@@ -21,5 +29,14 @@ export class TagInputAutocompleteComponent {
    */
   onSelectItem(item: AutoComplete): void {
     this.onSelectEmitter.emit(item);
+    this.dropDownSelectionIndex = -1;
+  }
+
+  /**
+   * Parent component is responsible for enter event. Because it is input elements event.
+   * So enter event communicates with child, gets the index in dropdown element and selects it.
+   */
+  onEnterSelectItem(): void {
+    this.onSelectItem(this.autoCompleteItems[this.dropDownSelectionIndex]);
   }
 }

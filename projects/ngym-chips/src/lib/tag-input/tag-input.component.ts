@@ -1,7 +1,8 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutoComplete } from '../model/autoComplete';
 import { Tag } from '../model/tag';
+import { TagInputAutocompleteComponent } from '../tag-input-autocomplete/tag-input-autocomplete.component';
 
 @Component({
   selector: 'ngym-tag-input',
@@ -27,6 +28,7 @@ export class TagInputComponent implements OnInit, OnChanges {
   @Output() onAutoCompleteSelectEmitter = new EventEmitter<Tag>();
   @ViewChild('newTag') tagInput!: ElementRef;
   @ViewChild('autoComplete') autoComplete!: ElementRef<any>;
+  @ViewChild(TagInputAutocompleteComponent) tagInputAutoCompleteComponent!: TagInputAutocompleteComponent;
   @HostListener('document:click', ['$event'])
   clickout(event: any) {
     if (this.autoComplete && !this.autoComplete.nativeElement?.contains(event.target)) {
@@ -71,12 +73,16 @@ export class TagInputComponent implements OnInit, OnChanges {
 
   /**
    * Creating a tag object from selected auto complete item and passing it to parent
+   * Controlling if selected item email has any split chars. If so seperate them. If not just create a single tag object
    */
   selectAutoCompleteItem(item: AutoComplete): void {
-    const _tag = this.createTagObject(item.email);
-    this.onAutoCompleteSelectEmitter.emit(_tag);
+    if (item.email.indexOf(',') !== -1 || item.email.indexOf(';') !== -1) {
+      this.onPaste(item.email);
+    } else {
+      const _tag = this.createTagObject(item.email);
+      this.onAutoCompleteSelectEmitter.emit(_tag);
+    }
     this.form.reset();
-
     this.autoCompleteVisible = false;
   }
 
@@ -136,9 +142,20 @@ export class TagInputComponent implements OnInit, OnChanges {
       return;
     }
 
+    // Auto complete dropdown element's enter event is handled here.
+    if (this.tagInputAutoCompleteComponent !== undefined && this.autoCompleteVisible === true && this.tagInputAutoCompleteComponent.dropDownSelectionIndex !== -1) {
+      this.tagInputAutoCompleteComponent.onEnterSelectItem();
+      this.clearForm();
+      return;
+    }
+
     const tag = this.createTagObject(tagValue);
     this.onEnterEmitter.emit(tag);
 
+    this.clearForm();
+  }
+
+  clearForm(): void {
     this.form.reset();
     this.autoCompleteVisible = false;
   }

@@ -1,0 +1,28 @@
+<div class="flex-grow-1">
+    <div class="section-header">Inputs Test</div>
+    <div class="section-desc">Input elements accessing with <b>[(ngModel)]</b></div>
+    <div class="section">
+        <div class="section-element-header">Input Group Button <b>ngym-input-group-button</b></div>
+        <div class="section-element">
+            <ngym-input-group-button [faClass]="'fa-regular fa-circle-minus'" (onClickEmitter)="groupButtonRemove()"
+                [(ngModel)]="inputGroupValue">
+            </ngym-input-group-button>
+        </div>
+    </div>
+    <div class="section">
+        <div class="section-element-header">Input Text <b>ngym-input-text</b></div>
+        <div class="section-element">
+            <ngym-input-text [(ngModel)]="inputTextValue"></ngym-input-text>
+        </div>
+    </div>
+    <div class="section">
+        <div class="section-element-header">Input Password Text <b>ngym-input-password</b></div>
+        <div class="section-element">
+            <ngym-input-password [(ngModel)]="inputPasswordValue"></ngym-input-password>
+        </div>
+    </div>
+
+    <div>
+        <ngym-tag-select [items]="['test', 'hopp']" (tagsEmitter)="assignTags($event)"></ngym-tag-select>
+    </div>
+</div>

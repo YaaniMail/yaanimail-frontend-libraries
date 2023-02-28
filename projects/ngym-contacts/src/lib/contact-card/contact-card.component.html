@@ -1,0 +1,21 @@
+<div class="contact-item d-flex">
+    <div class="p-3">
+        <div class="select-box d-none">
+            <label class="checkbox-container m-0 robot_contact_checkbox">
+                <input type="checkbox" id="{{ contact.id }}" />
+                <span class="checkmark robot_contact_checkboxCheckmark"></span>
+            </label>
+        </div>
+    </div>
+    <div class="flex-grow-1 py-3 overflow-hidden">
+        <ng-container *ngIf="contact.fullname !== ''; else contactName">
+            <div class="content-overflow b1-r robot_contact_name">{{ contact.fullname }}</div>
+        </ng-container>
+        <ng-template #contactName>
+            <div class="content-overflow b1-r robot_contact_name">{{ contact.firstname }}</div>
+        </ng-template>
+        <ng-container *ngIf="contact.email">
+            <div class="content-overflow b2-r robot_contact_email">{{ contact.email }}</div>
+        </ng-container>
+    </div>
+</div>

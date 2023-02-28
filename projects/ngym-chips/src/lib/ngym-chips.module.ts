@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TagInputAutocompleteComponent } from './tag-input-autocomplete/tag-input-autocomplete.component';
 import { InitialsPipe } from './pipe/initials.pipe';
 import { AppendToBodyDirective } from './directives/appendToBody.directive';
+import { FocusedDirective } from './directives/focused.directive';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AppendToBodyDirective } from './directives/appendToBody.directive';
     TagContainerComponent,
     TagInputAutocompleteComponent,
     InitialsPipe,
-    AppendToBodyDirective
+    AppendToBodyDirective,
+    FocusedDirective
   ],
   imports: [
     CommonModule,
@@ -26,6 +28,6 @@ import { AppendToBodyDirective } from './directives/appendToBody.directive';
     TagComponent,
     TagInputComponent,
     TagContainerComponent
- ]
+  ]
 })
 export class NgymChipsModule { }

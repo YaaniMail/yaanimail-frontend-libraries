@@ -1,0 +1,120 @@
+.ngym-tag-select-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #b7c8d6;
+}
+
+.ngym-tag-select {
+    display: flex;
+    flex-direction: row;
+    padding: 5px 8px;
+    align-items: center;
+    border: 1px solid #edf2f5;
+    background-color: #edf2f5;
+    margin-right: 4px;
+    margin-bottom: 8px;
+    color: #0b3254;
+    border-radius: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    .value {
+        padding-right: 5px;
+    }
+    .cross {
+        &:hover {
+            color: #00a0df;
+        }
+    }
+    &:hover {
+        border: 1px solid #0089bf;
+    }
+}
+
+.ngym-add-tag {
+    color: #00a0df;
+}
+
+.ngym-dropdown-wrapper {
+    position: relative;
+}
+
+.ngym-dropdown {
+    width: 320px;
+    height: 280px;
+    background-color: white;
+    border-radius: 2px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    overflow: auto;
+    z-index: 99;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.77);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.77);
+}
+
+.ngym-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f5f8fa;
+    padding: 8px 12px;
+    cursor: pointer;
+    .ngym-initials,
+    .ngym-info {
+        padding: 6px;
+        .ngym-name {
+            font-size: 14px;
+            line-height: 20px;
+        }
+        .ngym-name-disabled {
+            color: #8498a9;
+        }
+        .ngym-value {
+            font-size: 12px;
+            line-height: 17px;
+            color: #536f87;
+        }
+    }
+    .ngym-initials {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f5f8fa;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+    }
+    &:hover {
+        background-color: #edf2f5;
+    }
+}
+
+.ngym-item.ngym-selected {
+    background-color: #edf2f5;
+}
+
+.ngym-content-overflow {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
