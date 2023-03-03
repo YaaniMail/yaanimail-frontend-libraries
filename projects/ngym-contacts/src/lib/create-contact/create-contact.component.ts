@@ -14,6 +14,7 @@ export class CreateContactComponent implements OnInit {
   form!: FormGroup;
   @Input() contactConfig!: ContactConfig;
   @Output() onAddEmitter = new EventEmitter<any>();
+  @Output() onCancelEmitter = new EventEmitter();
   @Output() onAddErrorEmitter = new EventEmitter<string>();
 
   constructor(
@@ -65,12 +66,13 @@ export class CreateContactComponent implements OnInit {
     this.assignFullname();
     this.contactService.createContact(this.contactConfig.apiUrl, this.form.value, this.contactConfig.headers).subscribe(
       data => {
-        let contact = { id: '', firstname: '', lastname: '', fullname: '', email: [] };
+        let contact = { id: '', firstname: '', lastname: '', fullname: '', email: [], tag_values: [] };
         contact.id = data.id;
         contact.firstname = this.form.value.firstname;
         contact.lastname = this.form.value.lastname;
         contact.fullname = this.form.value.fullname;
         contact.email = this.form.value.email;
+        contact.tag_values = this.form.value.tag_values;
         this.onAddEmitter.emit(contact);
       },
       error => {
@@ -126,5 +128,9 @@ export class CreateContactComponent implements OnInit {
     } else {
       this.showNotes = true;
     }
+  }
+
+  onCancel(): void {
+    this.onCancelEmitter.emit();
   }
 }
