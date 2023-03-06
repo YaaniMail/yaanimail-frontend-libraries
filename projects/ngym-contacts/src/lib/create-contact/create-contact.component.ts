@@ -66,13 +66,13 @@ export class CreateContactComponent implements OnInit {
     this.assignFullname();
     this.contactService.createContact(this.contactConfig.apiUrl, this.form.value, this.contactConfig.headers).subscribe(
       data => {
-        let contact = { id: '', firstname: '', lastname: '', fullname: '', email: [], tag_values: [] };
+        let contact = { id: '', firstname: '', lastname: '', fullname: '', email: [], tag_names: [] };
         contact.id = data.id;
         contact.firstname = this.form.value.firstname;
         contact.lastname = this.form.value.lastname;
         contact.fullname = this.form.value.fullname;
         contact.email = this.form.value.email;
-        contact.tag_values = this.form.value.tag_values;
+        contact.tag_names = this.form.value.tag_names;
         this.onAddEmitter.emit(contact);
       },
       error => {

@@ -1,11 +1,11 @@
 {
   "name": "ngym-contacts",
-  "version": "0.0.24",
-  "description": "contact-card component is added",
+  "version": "0.0.27",
+  "description": "wording updated",
   "peerDependencies": {
     "@angular/common": "^13.3.0",
     "@angular/core": "^13.3.0",
-    "ngym-input": "^0.0.34",
+    "ngym-input": "^0.0.42",
     "bootstrap": "5.2.2"
   },
   "dependencies": {
