@@ -17,14 +17,17 @@
     border-radius: 16px;
     font-family: inherit;
     cursor: pointer;
+
     .value {
         padding-right: 5px;
     }
+
     .cross {
         &:hover {
             color: #00a0df;
         }
     }
+
     &:hover {
         border: 1px solid #0089bf;
     }
@@ -39,10 +42,10 @@
 }
 
 .ngym-dropdown {
-    width: 320px;
-    height: 280px;
+    width: 250px;
+    height: 290px;
     background-color: white;
-    border-radius: 2px;
+    border-radius: 8px;
     position: absolute;
     top: 100%;
     left: 0;
@@ -59,22 +62,27 @@
     border-bottom: 1px solid #f5f8fa;
     padding: 8px 12px;
     cursor: pointer;
+
     .ngym-initials,
     .ngym-info {
         padding: 6px;
+
         .ngym-name {
             font-size: 14px;
             line-height: 20px;
         }
+
         .ngym-name-disabled {
             color: #8498a9;
         }
+
         .ngym-value {
             font-size: 12px;
             line-height: 17px;
             color: #536f87;
         }
     }
+
     .ngym-initials {
         display: flex;
         justify-content: center;
@@ -84,6 +92,7 @@
         width: 35px;
         height: 35px;
     }
+
     &:hover {
         background-color: #edf2f5;
     }
@@ -105,6 +114,7 @@
     0% {
         -webkit-transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(360deg);
     }
@@ -114,6 +124,7 @@
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }

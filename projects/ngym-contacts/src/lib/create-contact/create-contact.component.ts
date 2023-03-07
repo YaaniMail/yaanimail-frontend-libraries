@@ -10,6 +10,7 @@ import { ContactService } from '../service/contact.service';
 })
 export class CreateContactComponent implements OnInit {
   emails: string[] = [];
+  tags: string[] = [];
   showNotes: boolean = false;
   form!: FormGroup;
   @Input() contactConfig!: ContactConfig;
@@ -63,16 +64,17 @@ export class CreateContactComponent implements OnInit {
   }
 
   addContact(): void {
+    console.log(this.tags);
     this.assignFullname();
     this.contactService.createContact(this.contactConfig.apiUrl, this.form.value, this.contactConfig.headers).subscribe(
       data => {
-        let contact = { id: '', firstname: '', lastname: '', fullname: '', email: [], tag_names: [] };
+        let contact = { id: '', firstname: '', lastname: '', fullname: '', email: [], tag_names: [''] };
         contact.id = data.id;
         contact.firstname = this.form.value.firstname;
         contact.lastname = this.form.value.lastname;
         contact.fullname = this.form.value.fullname;
         contact.email = this.form.value.email;
-        contact.tag_names = this.form.value.tag_names;
+        contact.tag_names = this.tags;
         this.onAddEmitter.emit(contact);
       },
       error => {
@@ -119,7 +121,7 @@ export class CreateContactComponent implements OnInit {
   }
 
   assignTags(tags: string[]): void {
-    this.form.value.tag_names = tags;
+    this.tags = tags;
   }
 
   controlNoteInput(note: string): void {
