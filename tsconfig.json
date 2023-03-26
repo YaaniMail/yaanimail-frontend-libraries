@@ -12,10 +12,6 @@
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "paths": {
-      "ngym-attachment": [
-        "dist/ngym-attachment/ngym-attachment",
-        "dist/ngym-attachment"
-      ],
       "ngym-chips": [
         "dist/ngym-chips/ngym-chips",
         "dist/ngym-chips"

@@ -199,37 +199,6 @@
         }
       }
     },
-    "ngym-attachment": {
-      "projectType": "library",
-      "root": "projects/ngym-attachment",
-      "sourceRoot": "projects/ngym-attachment/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/ngym-attachment/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/ngym-attachment/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/ngym-attachment/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/ngym-attachment/src/test.ts",
-            "tsConfig": "projects/ngym-attachment/tsconfig.spec.json",
-            "karmaConfig": "projects/ngym-attachment/karma.conf.js"
-          }
-        }
-      }
-    },
     "ngym-prelogin-header": {
       "projectType": "library",
       "root": "projects/ngym-prelogin-header",
