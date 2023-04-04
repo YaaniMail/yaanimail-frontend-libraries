@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 
 @Component({
@@ -6,17 +6,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
     templateUrl: './view-field.component.html',
     styleUrls: ['./view-field.component.scss']
 })
-export class ViewFieldComponent implements OnInit {
+export class ViewFieldComponent {
     @Input() title!: string;
     @Input() type!: string;
     @Input() element!: string;
-    @Input() array!: [];
-
-    constructor(
-
-    ) { }
-
-    ngOnInit(): void {
-    }
-
+    @Input() array!: []
 }

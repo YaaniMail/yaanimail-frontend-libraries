@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ContactConfig } from '../model/config';
+import { CreateContactConfig } from '../model/config';
 import { ContactService } from '../service/contact.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class CreateContactComponent implements OnInit {
   tags: string[] = [];
   showNotes: boolean = false;
   form!: FormGroup;
-  @Input() contactConfig!: ContactConfig;
+  @Input() config!: CreateContactConfig;
   @Output() onAddEmitter = new EventEmitter<any>();
   @Output() onCancelEmitter = new EventEmitter();
   @Output() onAddErrorEmitter = new EventEmitter<string>();
@@ -66,7 +66,7 @@ export class CreateContactComponent implements OnInit {
   addContact(): void {
     this.assignFullname();
     this.form.value.tag_names = this.tags;
-    this.contactService.createContact(this.contactConfig.apiUrl, this.form.value, this.contactConfig.headers).subscribe(
+    this.contactService.createContact(this.config.apiUrl, this.form.value, this.config.headers).subscribe(
       data => {
         let contact = { id: '', firstname: '', lastname: '', fullname: '', email: [] };
         contact.id = data.id;
@@ -88,7 +88,7 @@ export class CreateContactComponent implements OnInit {
 
   addAddress(): void {
     this.addressesArray.push(this.fb.group({
-      type: this.contactConfig.addressTypeArray[0],
+      type: this.config.addressTypeArray[0],
       address: this.fb.group({
         type: '',
         country: '',
@@ -102,7 +102,7 @@ export class CreateContactComponent implements OnInit {
 
   addPhoneNumber(): void {
     this.phonesArray.push(this.fb.group({
-      type: this.contactConfig.phoneTypeArray[0],
+      type: this.config.phoneTypeArray[0],
       data: '',
     }));
   }

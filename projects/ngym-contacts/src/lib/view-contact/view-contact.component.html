@@ -17,7 +17,7 @@
     <!-- Body -->
     <div class="py-2">
         <div class="form-group p-2 h8-r text-primary">
-            'CONTACT_DETAILS'
+            {{ config.pageHeader }}
         </div>
         <!-- Email Fields -->
         <ngym-view-field [title]="'Email'" [type]="'email'" [array]="contact.email"></ngym-view-field>
@@ -32,8 +32,8 @@
     </div>
     <!-- Footer -->
     <div class="py-2 text-right">
-        <button class="btn btn-small btn-secondary robot_contactView_editButton" type="button" (click)="routeToEdit()">
-            'BUTTON_EDIT'
+        <button class="btn btn-small btn-secondary robot_contactView_editButton" type="button" (click)="onEdit()">
+            {{ config.editButtonText }}
         </button>
     </div>
 </div>

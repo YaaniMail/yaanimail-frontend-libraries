@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Contact } from '../model/contact';
-import { ContactConfig } from '../model/config';
+import { ViewContactConfig } from '../model/config';
 import { ContactService } from '../service/contact.service';
 
 @Component({
@@ -10,8 +10,9 @@ import { ContactService } from '../service/contact.service';
 })
 export class ViewContactComponent implements OnInit {
   contact!: Contact;
-  @Input() contactConfig!: ContactConfig;
+  @Input() config!: ViewContactConfig;
   @Output() onGetErrorEmitter = new EventEmitter<string>();
+  @Output() onEditEmitter = new EventEmitter();
 
   constructor(
     private contactService: ContactService
@@ -22,15 +23,18 @@ export class ViewContactComponent implements OnInit {
   }
 
   getContact(): void {
-    this.contactService.getContact(this.contactConfig.apiUrl, this.contactConfig.headers).subscribe(
+    this.contactService.getContact(this.config.apiUrl, this.config.headers).subscribe(
       data => {
         this.contact = data;
       },
       error => {
         this.onGetErrorEmitter.emit(error.error.message);
-
       }
     );
+  }
+
+  onEdit(): void {
+    this.onEditEmitter.emit();
   }
 
 }

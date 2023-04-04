@@ -1,6 +1,6 @@
 import { HttpHeaders } from "@angular/common/http";
 
-export interface ContactConfig {
+export interface CreateContactConfig {
     apiUrl: string;
     headers: HttpHeaders;
     pageHeader: string;
@@ -27,4 +27,11 @@ export interface ContactConfig {
     addTagButtonText: string;
     addAddressButtonText: string;
     addPhoneButtonText: string;
+}
+
+export interface ViewContactConfig {
+    apiUrl: string;
+    headers: HttpHeaders;
+    pageHeader: string;
+    editButtonText: string;
 }

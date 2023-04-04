@@ -10,12 +10,12 @@
 </div>
 
 <div>
-    <ngym-create-contact [contactConfig]="contactConfig" (onAddEmitter)="onAdd($event)" (onCancelEmitter)="onCancel()"
+    <ngym-create-contact [config]="contactConfig" (onAddEmitter)="onAdd($event)" (onCancelEmitter)="onCancel()"
         (onAddErrorEmitter)="onError($event)">
     </ngym-create-contact>
 </div>
 
 view
 <div>
-    <ngym-view-contact [contactConfig]="contactConfig2"></ngym-view-contact>
+    <ngym-view-contact [config]="viewContactConfig"></ngym-view-contact>
 </div>
