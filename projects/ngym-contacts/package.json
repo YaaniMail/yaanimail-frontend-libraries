@@ -1,11 +1,11 @@
 {
   "name": "ngym-contacts",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "description": "update",
   "peerDependencies": {
     "@angular/common": "^13.3.0",
     "@angular/core": "^13.3.0",
-    "ngym-input": "^0.0.44",
+    "ngym-input": "^0.0.45",
     "bootstrap": "5.2.2"
   },
   "dependencies": {

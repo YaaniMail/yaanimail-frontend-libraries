@@ -1,0 +1,17 @@
+<div class="form-group d-flex">
+    <div class="contact-view-label b2-r p-2 text-placeholder">{{ title }}</div>
+    <div class="p-2 flex-grow-1 b2-r text-break">
+        <div class="mb-1" *ngFor="let e of array;">
+            <ng-container *ngIf="type === 'email'">{{ e }}</ng-container>
+            <ng-container *ngIf="type === 'phone'">{{ e.data }}</ng-container>
+            <ng-container *ngIf="type === 'address'">{{ e.address.street }} {{ e.address.state }} {{
+                e.address.postalcode}} {{
+                e.address.city }} {{ e.address.country }}</ng-container>
+            <ng-container *ngIf="type === 'tags'">{{ e }}</ng-container>
+            <ng-container *ngIf="type !== 'email'" class="text-placeholder">&#183;{{ e.type }}</ng-container>
+        </div>
+        <div>
+            <ng-container *ngIf="type === 'notes'">{{ element }}</ng-container>
+        </div>
+    </div>
+</div>

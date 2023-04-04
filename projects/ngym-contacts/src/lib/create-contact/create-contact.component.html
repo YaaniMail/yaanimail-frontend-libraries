@@ -43,7 +43,7 @@
                         [placeholder]="contactConfig.emailPlaceholder" (onClickEmitter)="deleteEmail(i)">
                     </ngym-input-group-button>
                 </div>
-                <div>
+                <div *ngIf="emailsArray.controls[0].status === 'VALID' && emailsArray.controls[0].value !== null">
                     <a type="button" class="anchor-primary robot_contactCreate_addEmail" (click)="addEmail()">
                         <i class="fa-regular fa-plus fa-primary fa-normal"></i>
                         <span class="pl-2">{{ contactConfig.addEmailButtonText }}</span>

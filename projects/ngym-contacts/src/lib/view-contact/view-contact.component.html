@@ -20,58 +20,15 @@
             'CONTACT_DETAILS'
         </div>
         <!-- Email Fields -->
-        <div class="form-group d-flex" *ngIf="contact.email">
-            <div class="contact-view-label b2-r p-2 text-placeholder">'EMAIL'</div>
-            <div class="p-2 flex-grow-1 b2-r text-break">
-                <div class="mb-1 robot_contactView_email{{i}}"
-                    *ngFor="let email of contact.email; let i = index; let first = first;">
-                    {{ email }}
-                </div>
-            </div>
-        </div>
+        <ngym-view-field [title]="'Email'" [type]="'email'" [array]="contact.email"></ngym-view-field>
         <!-- Phone Fields -->
-        <div class="form-group d-flex" *ngIf="contact.phone">
-            <div class="contact-view-label b2-r p-2 text-placeholder">'PHONE'</div>
-            <div class="p-2 flex-grow-1 b2-r text-break">
-                <div class="mb-1" *ngFor="let phone of contact.phone.home;">
-                    {{ phone | msisdn }} <span class="text-placeholder">&#183;'HOME'</span>
-                </div>
-                <div class="mb-1" *ngFor="let phone of contact.phone.mobile;">
-                    {{ phone | msisdn }} <span class="text-placeholder">&#183;'MOBILE'</span>
-                </div>
-                <div class="mb-1" *ngFor="let phone of contact.phone.work;">
-                    {{ phone | msisdn }} <span class="text-placeholder">&#183;'WORK'</span>
-                </div>
-                <div class="mb-1" *ngFor="let phone of contact.phone.other;">
-                    {{ phone }} <span class="text-placeholder">&#183;'OTHER'</span>
-                </div>
-            </div>
-        </div>
+        <ngym-view-field [title]="'Phone'" [type]="'phone'" [array]="contact.phone"></ngym-view-field>
         <!-- Adress Fields -->
-        <div class="form-group d-flex" *ngIf="contact.addresses">
-            <div class="contact-view-label b2-r p-2 text-placeholder">'ADDRESS'</div>
-            <div class="p-2 flex-grow-1 b2-r text-break">
-                <div class="mb-1" *ngFor="let address of contact.addresses.home">
-                    {{ address.street }} {{ address.state }} {{ address.postalcode}} {{ address.city }} {{
-                    address.country }} <span class="text-placeholder">&#183;'HOME'</span>
-                </div>
-                <div class="mb-1" *ngFor="let address of contact.addresses.work">
-                    {{ address.street }} {{ address.state }} {{ address.postalcode}} {{ address.city }} {{
-                    address.country }} <span class="text-placeholder">&#183;'WORK'</span>
-                </div>
-                <div class="mb-1" *ngFor="let address of contact.addresses.other">
-                    {{ address.street }} {{ address.state }} {{ address.postalcode}} {{ address.city }} {{
-                    address.country }}<span class="text-placeholder">&#183;'OTHER'</span>
-                </div>
-            </div>
-        </div>
+        <ngym-view-field [title]="'Address'" [type]="'address'" [array]="contact.addresses"></ngym-view-field>
         <!-- Notes Fields -->
-        <div class="form-group d-flex b2-r" *ngIf="contact.notes">
-            <div class="contact-view-label b2-r p-2 text-placeholder">'NOTES'</div>
-            <div class="p-2 flex-grow-1">
-                {{ contact.notes }}
-            </div>
-        </div>
+        <ngym-view-field [title]="'Notes'" [type]="'notes'" [element]="contact.notes"></ngym-view-field>
+        <!-- Tags -->
+        <ngym-view-field [title]="'Tags'" [type]="'tags'" [array]="contact.tag_names"></ngym-view-field>
     </div>
     <!-- Footer -->
     <div class="py-2 text-right">
