@@ -30,8 +30,13 @@ export interface CreateContactConfig {
 }
 
 export interface ViewContactConfig {
-    apiUrl: string;
-    headers: HttpHeaders;
     pageHeader: string;
     editButtonText: string;
+    sendEmailText: string;
+    emailPlaceholder: string;
+    phonePlaceholder: string;
+    addressPlaceholder: string;
+    managerPlaceholder: string;
+    registerNoPlaceholder: string;
+    notesPlaceholder: string;
 }

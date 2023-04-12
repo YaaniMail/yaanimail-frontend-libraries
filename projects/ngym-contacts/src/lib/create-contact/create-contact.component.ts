@@ -59,7 +59,7 @@ export class CreateContactComponent implements OnInit {
   addEmail(value?: string): void {
     const emails = this.emailsArray;
     if (!emails.value.includes(value)) {
-      emails.push(this.fb.control(value, Validators.email));
+      emails.push(this.fb.control(value));
     }
   }
 
@@ -129,6 +129,15 @@ export class CreateContactComponent implements OnInit {
     } else {
       this.showNotes = true;
     }
+  }
+
+  isValidEmail(email: string) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const valid = re.test(String(email).toLowerCase());
+    if (!valid) {
+      return false;
+    }
+    return true;
   }
 
   onCancel(): void {

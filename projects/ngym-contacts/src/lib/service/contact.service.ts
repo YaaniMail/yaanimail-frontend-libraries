@@ -11,10 +11,6 @@ export class ContactService {
         private http: HttpClient
     ) { }
 
-    getContact(url: string, headers: HttpHeaders): Observable<Contact> {
-        return this.http.get<Contact>(url, { headers: headers });
-    }
-
     createContact(url: string, formData: FormData, headers: HttpHeaders): Observable<any> {
         return this.http.post(url, formData, { headers: headers });
     }

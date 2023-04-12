@@ -1,7 +1,7 @@
 <div class="input-group">
     <input type="text" class="ngym-text {{ customInputClass }}" placeholder="{{ placeholder }}" [(ngModel)]="inputValue"
-        (focusout)="onFocusOut()">
-    <div class="input-group-append">
+        [ngClass]="{ 'error': isInvalid }" (focusout)="onFocusOut()">
+    <div class="input-group-append" *ngIf="isRemoveButtonVisible">
         <span class="input-group-btn">
             <a class="{{ faRobotClass }}" (click)="onClick()">
                 <i class="{{ faClass }}"></i>

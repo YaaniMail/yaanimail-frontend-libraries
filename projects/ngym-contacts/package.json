@@ -1,7 +1,7 @@
 {
   "name": "ngym-contacts",
-  "version": "0.0.33",
-  "description": "update",
+  "version": "0.0.46",
+  "description": "fix on view fields",
   "peerDependencies": {
     "@angular/common": "^13.3.0",
     "@angular/core": "^13.3.0",

@@ -10,5 +10,5 @@ export class ViewFieldComponent {
     @Input() title!: string;
     @Input() type!: string;
     @Input() element!: string;
-    @Input() array!: []
+    @Input() elements!: []
 }

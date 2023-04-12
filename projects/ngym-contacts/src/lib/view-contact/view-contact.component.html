@@ -2,7 +2,7 @@
     <div class="h7-r">
         <div class="d-flex align-self-center">
             <div class="p-2">
-
+                <ng-template [ngTemplateOutlet]="profileTemplate"></ng-template>
             </div>
             <div class="p-2 flex-grow-1 align-self-center overflow-hidden">
                 <div class="h7-m robot_contactView_fullname">{{ contact.firstname }} {{
@@ -10,25 +10,39 @@
                 <div class="b2-r text-gray content-overflow robot_contactView_jobTitle">{{ contact.jobtitle }}</div>
                 <div class="b2-r text-placeholder content-overflow robot_contactView_jobTitle">{{ contact.company }}
                 </div>
+                <div class="s1-r text-primary mt-2" *ngIf="contact.email?.length > 0">
+                    <a (click)="onCompose(contact.email)">
+                        <i class="fa-regular fa-envelope fa-primary fa-normal"></i>
+                        <span> {{ config.sendEmailText }} </span>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="bb m-2"></div>
     </div>
     <!-- Body -->
     <div class="py-2">
-        <div class="form-group p-2 h8-r text-primary">
+        <div class="p-2 h8-r text-primary">
             {{ config.pageHeader }}
         </div>
         <!-- Email Fields -->
-        <ngym-view-field [title]="'Email'" [type]="'email'" [array]="contact.email"></ngym-view-field>
+        <ngym-view-field [title]="config.emailPlaceholder" [type]="'array'"
+            [elements]="contact.email"></ngym-view-field>
         <!-- Phone Fields -->
-        <ngym-view-field [title]="'Phone'" [type]="'phone'" [array]="contact.phone"></ngym-view-field>
+        <ngym-view-field [title]="config.phonePlaceholder" [type]="'objectArray'"
+            [elements]="contact.phone"></ngym-view-field>
         <!-- Adress Fields -->
-        <ngym-view-field [title]="'Address'" [type]="'address'" [array]="contact.addresses"></ngym-view-field>
+        <ngym-view-field [title]="config.addressPlaceholder" [type]="'nestedObjectArray'"
+            [elements]="contact.addresses"></ngym-view-field>
         <!-- Notes Fields -->
-        <ngym-view-field [title]="'Notes'" [type]="'notes'" [element]="contact.notes"></ngym-view-field>
-        <!-- Tags -->
-        <ngym-view-field [title]="'Tags'" [type]="'tags'" [array]="contact.tag_names"></ngym-view-field>
+        <ngym-view-field [title]="config.notesPlaceholder" [type]="'single'"
+            [element]="contact.notes"></ngym-view-field>
+        <!-- Manager -->
+        <ngym-view-field [title]="config.managerPlaceholder" [type]="'single'" [element]="contact.manager"
+            *ngIf="contact.manager"></ngym-view-field>
+        <!-- Register No -->
+        <ngym-view-field [title]="config.registerNoPlaceholder" [type]="'single'" [elements]="contact.register_no"
+            *ngIf="contact.register_no"></ngym-view-field>
     </div>
     <!-- Footer -->
     <div class="py-2 text-right">

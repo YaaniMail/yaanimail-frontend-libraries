@@ -10,6 +10,8 @@ import { CreateContactConfig, ViewContactConfig } from 'projects/ngym-contacts/s
 export class NewContactComponent implements OnInit {
   contactConfig!: CreateContactConfig;
   viewContactConfig!: ViewContactConfig;
+  name!: string;
+  contact: any;
 
   constructor() { }
 
@@ -44,11 +46,18 @@ export class NewContactComponent implements OnInit {
     }
 
     this.viewContactConfig = {
-      apiUrl: 'https://amock.io/api/yagizozturk/view-contact',
-      headers: this.getV2Headers(),
       pageHeader: 'Add New Contact',
       editButtonText: 'Edit',
+      sendEmailText: 'Send Email',
+      emailPlaceholder: 'ddd',
+      phonePlaceholder: 'ddd',
+      addressPlaceholder: 'ddd',
+      managerPlaceholder: 'ddd',
+      registerNoPlaceholder: 'ddd',
+      notesPlaceholder: 'ddd'
     }
+
+    this.contact = { "manager": "Avedis", "fullname": "Amock Test", "firstname": "Amock", "lastname": "Test", "email": ["yagiz@cpm.com", "yagiz@yaani.com"], "addresses": [{ "type": "other", "data": { "city": "istanbul", "country": "tr", "postalcode": "4434", "state": "amas", "street": "bilim" } }], "phone": [{ "type": "other", "data": "2163630988" }], "notes": "BU B\u0130R NOT", "jobtitle": "Mr", "company": "Turkcell", "id": "6805", "create_date": "1680618794000", "tag_names": ["a"] };
   }
 
   getV2Headers(): HttpHeaders {
@@ -68,6 +77,11 @@ export class NewContactComponent implements OnInit {
 
   onError(e: any): void {
     console.log(e);
+  }
+
+  test(e: any): void {
+    debugger;
+    this.name = e.firstname;
   }
 
 }

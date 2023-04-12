@@ -17,6 +17,8 @@ export class InputGroupButtonComponent extends InputTypeTextAccessor {
   @Input() faRobotClass!: string;
   @Input() customInputClass!: string;
   @Input() faClass!: string;
+  @Input() isInvalid!: boolean;
+  @Input() isRemoveButtonVisible: boolean = true;
   @Output() onClickEmitter = new EventEmitter();
   @Output() onFocusOutEmitter = new EventEmitter();
 
