@@ -24,6 +24,10 @@
         "dist/ngym-create-contact/ngym-create-contact",
         "dist/ngym-create-contact"
       ],
+      "ngym-dropdown": [
+        "dist/ngym-dropdown/ngym-dropdown",
+        "dist/ngym-dropdown"
+      ],
       "ngym-home": [
         "dist/ngym-home/ngym-home",
         "dist/ngym-home"

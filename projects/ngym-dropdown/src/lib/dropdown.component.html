@@ -1,0 +1,21 @@
+<div class="{{ classes }}" dropdown [dropup]="isDropup" container="{{ container }}" placement="{{ placement }}"
+    #dropdown="bs-dropdown">
+    <span *ngIf="(selectedValue || '') !== ''">
+        {{ selectedValue }}
+    </span>
+    <button type="button" class="{{ buttonClasses }}" dropdownToggle>
+        <i class="{{ iconClasses }}"></i>
+    </button>
+    <div *dropdownMenu class="dropdown-menu animated fadeIn"
+        [ngClass]="(dropdownClasses || '') !== '' ? dropdownClasses : ''" role="menu">
+        <ng-container *ngFor="let item of items">
+            <a class="dropdown-item {{ item.linkClasses }}" (click)="actionEmitter.emit(item.action)">
+                <ng-container *ngIf="item.isChecked">
+                    <ng-template [ngTemplateOutlet]="checkedIconHtml">
+                    </ng-template>
+                </ng-container>
+                {{ item.label }}
+            </a>
+        </ng-container>
+    </div>
+</div>
