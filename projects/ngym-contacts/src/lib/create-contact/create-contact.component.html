@@ -41,7 +41,8 @@
                         [faClass]="'fa-regular fa-circle-minus fa-red fa-normal'"
                         [faRobotClass]="'robot_contactCreate_deleteEmail{{i}}'" [placeholder]="config.emailPlaceholder"
                         [isInvalid]="!isValidEmail(emailsArray.controls[i].value) && emailsArray.controls[i].value"
-                        (onClickEmitter)="deleteEmail(i)" [isRemoveButtonVisible]="i === 0 ? false : true">
+                        (onClickEmitter)="deleteEmail(i)"
+                        [isRemoveButtonVisible]="i === emailsArray.controls.length - 1 ? false : true">
                     </ngym-input-group-button>
                 </div>
                 <div

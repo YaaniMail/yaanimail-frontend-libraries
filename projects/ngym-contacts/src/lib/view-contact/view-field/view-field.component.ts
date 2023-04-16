@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ViewContactConfig } from '../../model/config';
 
 
 @Component({
@@ -11,4 +12,5 @@ export class ViewFieldComponent {
     @Input() type!: string;
     @Input() element!: string;
     @Input() elements!: []
+    @Input() config!: ViewContactConfig;
 }

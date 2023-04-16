@@ -14,4 +14,8 @@ export class ContactService {
     createContact(url: string, formData: FormData, headers: HttpHeaders): Observable<any> {
         return this.http.post(url, formData, { headers: headers });
     }
+
+    updateContact(url: string, formData: FormData, headers: HttpHeaders): Observable<any> {
+        return this.http.put(url, formData, { headers: headers });
+    }
 }

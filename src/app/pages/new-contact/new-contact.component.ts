@@ -11,13 +11,13 @@ export class NewContactComponent implements OnInit {
   contactConfig!: CreateContactConfig;
   viewContactConfig!: ViewContactConfig;
   name!: string;
-  contact: any;
+  contact!: any;
 
   constructor() { }
 
   ngOnInit(): void {
     this.contactConfig = {
-      apiUrl: 'test',
+      apiUrl: 'https://amock.io/api/yagizozturk/view-contact',
       headers: this.getV2Headers(),
       pageHeader: 'Add New Contact',
       namePlaceholder: 'Name',
@@ -27,9 +27,9 @@ export class NewContactComponent implements OnInit {
       emailPlaceholder: 'Email',
       phonePlaceholder: 'Phone',
       tagPlaceholder: 'Tag',
-      tagOptions: ['friends', 'testers', 'developers'],
-      phoneTypeArray: ['Mobile', 'home'],
-      addressTypeArray: ['Mobile', 'home', 'ETST'],
+      tagOptions: ['friends', 'testers', 'developers', 'ddd', 'dsffsdfd', 'dsa', 'dasfsf', 'dadfdsfsdf', 'dada'],
+      phoneTypeArray: ['other', 'home'],
+      addressTypeArray: ['Mobile', 'home', 'work'],
       countryPlaceholder: 'Country',
       cityPlaceholder: 'County',
       postalCodePlaceholder: 'posta kodu',
@@ -49,15 +49,40 @@ export class NewContactComponent implements OnInit {
       pageHeader: 'Add New Contact',
       editButtonText: 'Edit',
       sendEmailText: 'Send Email',
-      emailPlaceholder: 'ddd',
-      phonePlaceholder: 'ddd',
-      addressPlaceholder: 'ddd',
-      managerPlaceholder: 'ddd',
-      registerNoPlaceholder: 'ddd',
-      notesPlaceholder: 'ddd'
+      emailPlaceholder: 'Email',
+      phonePlaceholder: 'Telefon',
+      addressPlaceholder: 'Adres',
+      managerPlaceholder: 'Manager',
+      registerNoPlaceholder: 'Register',
+      notesPlaceholder: 'Notes',
+      otherTypePlaceholder: 'Other',
+      homeTypePlaceholder: 'Home',
+      phoneTypePlaceholder: 'Phone',
+      mobileTypePlaceholder: 'Mobile',
+      workTypePlaceholder: 'Work'
+
     }
 
-    this.contact = { "manager": "Avedis", "fullname": "Amock Test", "firstname": "Amock", "lastname": "Test", "email": ["yagiz@cpm.com", "yagiz@yaani.com"], "addresses": [{ "type": "other", "data": { "city": "istanbul", "country": "tr", "postalcode": "4434", "state": "amas", "street": "bilim" } }], "phone": [{ "type": "other", "data": "2163630988" }], "notes": "BU B\u0130R NOT", "jobtitle": "Mr", "company": "Turkcell", "id": "6805", "create_date": "1680618794000", "tag_names": ["a"] };
+    this.viewContact();
+  }
+
+  viewContact(): void {
+    this.contact = {
+      "manager": "Avedis",
+      "fullname": "Amock Test",
+      "firstname": "Amock",
+      "lastname": "Test",
+      "email": ["yagiz@cpm.com", "yagiz@yaani.com"],
+      "addresses": [{ "type": "work", "data": { "city": "istanbul", "country": "tr", "postalcode": "4434", "state": "amas", "street": "bilim" } }],
+      "phone": [{ "type": "other", "data": "2163630988" }, { "type": "home", "data": "33333333" }],
+      "notes": "BU B\u0130R NOT",
+      "jobtitle": "Mr",
+      "company": "Turkcell",
+      "id": "6805",
+      "create_date": "1680618794000",
+      "tag_names": ["a"]
+    };
+
   }
 
   getV2Headers(): HttpHeaders {

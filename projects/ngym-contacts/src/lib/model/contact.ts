@@ -1,9 +1,14 @@
 export interface Contact {
-    addresses: {
-        home: string;
-        other: string;
-        work: string;
-    };
+    addresses: [{
+        type: string,
+        data: {
+            country: string;
+            city: string;
+            postalcode: string;
+            state: string;
+            street: string;
+        }
+    }];
     company: string;
     create_date: string;
     fileas: string;
@@ -14,12 +19,10 @@ export interface Contact {
     lastname: string;
     notes: string;
     email: string[];
-    phone: {
-        home: string[];
-        mobile: string[];
-        other: string[];
-        work: string[];
-    };
+    phone: [{
+        type: string;
+        data: string
+    }];
     tag_names?: string[];
     checked?: boolean;
 }

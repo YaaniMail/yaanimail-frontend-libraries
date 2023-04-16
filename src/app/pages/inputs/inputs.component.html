@@ -21,6 +21,11 @@
             <ngym-input-password [(ngModel)]="inputPasswordValue"></ngym-input-password>
         </div>
     </div>
+    <div>
+        input select
+        <ngym-input-select [customClass]="'form-control'" [options]="['s1', 's2']" [selectedValue]="'s2'"
+            [optionRobotClass]="'robot_phone_numberOption'"></ngym-input-select>
+    </div>
 
     <div>
         <ngym-tag-select [items]="['test', 'hopp']" (tagsEmitter)="assignTags($event)"></ngym-tag-select>

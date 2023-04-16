@@ -18,6 +18,7 @@ export class InputSelectComponent extends TypeSelectAccessor {
   @Input() options!: string[];
   @Input() optionRobotClass!: string;
   @Input() customClass!: string;
+  @Input() selectedValue!: string;
   @Output() selectionChange: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() {

@@ -18,6 +18,8 @@ export class CreateContactComponent implements OnInit {
   @Output() onCancelEmitter = new EventEmitter();
   @Output() onAddErrorEmitter = new EventEmitter<string>();
 
+  // TODO: DElete socket event
+
   constructor(
     private fb: FormBuilder,
     private contactService: ContactService

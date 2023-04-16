@@ -24,6 +24,7 @@ import { ViewFieldComponent } from '../public-api';
   ],
   exports: [
     CreateContactComponent,
+    EditContactComponent,
     ContactCardComponent,
     ViewContactComponent,
     ViewFieldComponent

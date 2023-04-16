@@ -39,4 +39,9 @@ export interface ViewContactConfig {
     managerPlaceholder: string;
     registerNoPlaceholder: string;
     notesPlaceholder: string;
+    otherTypePlaceholder: string;
+    homeTypePlaceholder: string;
+    phoneTypePlaceholder: string;
+    mobileTypePlaceholder: string;
+    workTypePlaceholder: string;
 }

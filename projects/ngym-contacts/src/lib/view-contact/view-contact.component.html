@@ -26,23 +26,23 @@
             {{ config.pageHeader }}
         </div>
         <!-- Email Fields -->
-        <ngym-view-field [title]="config.emailPlaceholder" [type]="'array'"
-            [elements]="contact.email"></ngym-view-field>
+        <ngym-view-field [title]="config.emailPlaceholder" [type]="'array'" [elements]="contact.email"
+            [config]="config"></ngym-view-field>
         <!-- Phone Fields -->
-        <ngym-view-field [title]="config.phonePlaceholder" [type]="'objectArray'"
-            [elements]="contact.phone"></ngym-view-field>
+        <ngym-view-field [title]="config.phonePlaceholder" [type]="'objectArray'" [elements]="contact.phone"
+            [config]="config"></ngym-view-field>
         <!-- Adress Fields -->
-        <ngym-view-field [title]="config.addressPlaceholder" [type]="'nestedObjectArray'"
-            [elements]="contact.addresses"></ngym-view-field>
+        <ngym-view-field [title]="config.addressPlaceholder" [type]="'nestedObjectArray'" [elements]="contact.addresses"
+            [config]="config"></ngym-view-field>
         <!-- Notes Fields -->
-        <ngym-view-field [title]="config.notesPlaceholder" [type]="'single'"
-            [element]="contact.notes"></ngym-view-field>
+        <ngym-view-field [title]="config.notesPlaceholder" [type]="'single'" [element]="contact.notes"
+            [config]="config"></ngym-view-field>
         <!-- Manager -->
         <ngym-view-field [title]="config.managerPlaceholder" [type]="'single'" [element]="contact.manager"
-            *ngIf="contact.manager"></ngym-view-field>
+            *ngIf="contact.manager" [config]="config"></ngym-view-field>
         <!-- Register No -->
         <ngym-view-field [title]="config.registerNoPlaceholder" [type]="'single'" [elements]="contact.register_no"
-            *ngIf="contact.register_no"></ngym-view-field>
+            *ngIf="contact.register_no" [config]="config"></ngym-view-field>
     </div>
     <!-- Footer -->
     <div class="py-2 text-right">

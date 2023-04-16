@@ -3,12 +3,31 @@
     <div class="p-2 flex-grow-1 b2-r text-break">
         <div class="mb-1" *ngFor="let e of elements;">
             <div *ngIf="type === 'array'">{{ e }}</div>
-            <div *ngIf="type === 'objectArray'">{{ e.data }} <span class="text-placeholder">&#183; {{ e.type
-                    }}</span></div>
+            <div *ngIf="type === 'objectArray'">{{ e.data }}
+                <ng-container [ngSwitch]="e.type">
+                    <span class="text-placeholder" *ngSwitchCase="'other'">&#183; {{ config.otherTypePlaceholder
+                        }}</span>
+                    <span class="text-placeholder" *ngSwitchCase="'mobile'">&#183; {{ config.mobileTypePlaceholder
+                        }}</span>
+                    <span class="text-placeholder" *ngSwitchCase="'home'">&#183; {{ config.homeTypePlaceholder
+                        }}</span>
+                    <span class="text-placeholder" *ngSwitchCase="'work'">&#183; {{ config.workTypePlaceholder
+                        }}</span>
+                </ng-container>
+            </div>
             <div *ngIf="type === 'nestedObjectArray'">{{ e.data.street }} {{ e.data.state }} {{
                 e.data.postalcode}} {{
-                e.data.city }} {{ e.data.country }} <span class="text-placeholder">&#183; {{ e.type
-                    }}</span>
+                e.data.city }} {{ e.data.country }}
+                <ng-container [ngSwitch]="e.type">
+                    <span class="text-placeholder" *ngSwitchCase="'other'">&#183; {{ config.otherTypePlaceholder
+                        }}</span>
+                    <span class="text-placeholder" *ngSwitchCase="'mobile'">&#183; {{ config.mobileTypePlaceholder
+                        }}</span>
+                    <span class="text-placeholder" *ngSwitchCase="'home'">&#183; {{ config.homeTypePlaceholder
+                        }}</span>
+                    <span class="text-placeholder" *ngSwitchCase="'work'">&#183; {{ config.workTypePlaceholder
+                        }}</span>
+                </ng-container>
             </div>
         </div>
         <div>
