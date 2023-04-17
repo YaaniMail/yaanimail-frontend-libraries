@@ -90,9 +90,8 @@ export class CreateContactComponent implements OnInit {
 
   addAddress(): void {
     this.addressesArray.push(this.fb.group({
-      type: this.config.addressTypeArray[0],
+      type: this.config.addressTypeArray[0].value,
       address: this.fb.group({
-        type: '',
         country: '',
         city: '',
         postalcode: '',
@@ -104,7 +103,7 @@ export class CreateContactComponent implements OnInit {
 
   addPhoneNumber(): void {
     this.phonesArray.push(this.fb.group({
-      type: this.config.phoneTypeArray[0],
+      type: this.config.phoneTypeArray[0].value,
       data: '',
     }));
   }

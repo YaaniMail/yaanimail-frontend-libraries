@@ -5,7 +5,7 @@
 </div>
 <hr>
 <div class="section-content">
-    <h5>Config Properties</h5>
+    <h5>Create Contact</h5>
 
 </div>
 
@@ -13,20 +13,4 @@
     <ngym-create-contact [config]="contactConfig" (onAddEmitter)="onAdd($event)" (onCancelEmitter)="onCancel()"
         (onAddErrorEmitter)="onError($event)">
     </ngym-create-contact>
-</div>
-
-view
-<div>
-    <ngym-view-contact [contact]="contact" [config]="viewContactConfig" [profileTemplate]="profileTemplate">
-        <ng-template #profileTemplate>{{name}}</ng-template>
-    </ngym-view-contact>
-</div>
-
-Edit Contact
-------------
-<div *ngIf="contact">
-    <ngym-edit-contact [contact]="contact" [config]="contactConfig" (onAddEmitter)="onAdd($event)"
-        (onCancelEmitter)="onCancel()" (onAddErrorEmitter)="onError($event)">
-    </ngym-edit-contact>
-
 </div>

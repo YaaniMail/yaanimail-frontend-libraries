@@ -11,7 +11,6 @@ import { Contact } from '../model/contact';
 })
 export class EditContactComponent implements OnInit {
   emails: string[] = [];
-  tags: string[] = [];
   showNotes: boolean = false;
   form!: FormGroup;
   @Input() contact!: Contact;
@@ -58,13 +57,6 @@ export class EditContactComponent implements OnInit {
     return this.form.get('phone') as FormArray;
   }
 
-  addEmail(value?: string): void {
-    const emails = this.emailsArray;
-    if (!emails.value.includes(value)) {
-      emails.push(this.fb.control(value));
-    }
-  }
-
   appendPhones(): void {
     for (let i = 0; i < this.contact.phone.length; i++) {
       this.phonesArray.push(this.fb.group({
@@ -90,27 +82,32 @@ export class EditContactComponent implements OnInit {
   }
 
   updateContact(): void {
-    console.log(this.form.value);
-    // this.assignFullname();
-    // this.form.value.tag_names = this.tags;
-    /*     this.contactService.updateContact(this.config.apiUrl, this.form.value, this.config.headers).subscribe(
-          data => {
-            let contact = { id: '', firstname: '', lastname: '', fullname: '', email: [] };
-            contact.id = data.id;
-            contact.firstname = this.form.value.firstname;
-            contact.lastname = this.form.value.lastname;
-            contact.fullname = this.form.value.fullname;
-            contact.email = this.form.value.email;
-            this.onUpdateEmitter.emit(contact);
-          },
-          error => {
-            this.onUpdateErrorEmitter.emit(error.error.message);
-          }
-        ); */
+    this.assignFullname();
+    this.contactService.updateContact(this.config.apiUrl, this.form.value, this.config.headers).subscribe(
+      data => {
+        let contact = { id: '', firstname: '', lastname: '', fullname: '', email: [] };
+        contact.id = data.id;
+        contact.firstname = this.form.value.firstname;
+        contact.lastname = this.form.value.lastname;
+        contact.fullname = this.form.value.fullname;
+        contact.email = this.form.value.email;
+        this.onUpdateEmitter.emit(contact);
+      },
+      error => {
+        this.onUpdateErrorEmitter.emit(error.error.message);
+      }
+    );
   }
 
   assignFullname(): void {
     this.form.value.fullname = this.form.value.firstname + ' ' + this.form.value.lastname;
+  }
+
+  addEmail(value?: string): void {
+    const emails = this.emailsArray;
+    if (!emails.value.includes(value)) {
+      emails.push(this.fb.control(value));
+    }
   }
 
   addAddress(): void {
@@ -129,7 +126,7 @@ export class EditContactComponent implements OnInit {
 
   addPhoneNumber(): void {
     this.phonesArray.push(this.fb.group({
-      type: this.config.phoneTypeArray[0],
+      type: this.config.phoneTypeArray,
       data: '',
     }));
   }
@@ -144,10 +141,6 @@ export class EditContactComponent implements OnInit {
 
   deletePhoneNumber(i: number): void {
     this.phonesArray.removeAt(i);
-  }
-
-  assignTags(tags: string[]): void {
-    this.tags = tags;
   }
 
   controlNoteInput(note: string): void {

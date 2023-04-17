@@ -1,0 +1,5 @@
+<div *ngIf="contact">
+    <ngym-edit-contact [contact]="contact" [config]="contactConfig" (onUpdateEmitter)="onUpdate($event)"
+        (onCancelEmitter)="onCancel()" (onUpdateErrorEmitter)="onError($event)">
+    </ngym-edit-contact>
+</div>

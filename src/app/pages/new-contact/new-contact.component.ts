@@ -17,7 +17,7 @@ export class NewContactComponent implements OnInit {
 
   ngOnInit(): void {
     this.contactConfig = {
-      apiUrl: 'https://amock.io/api/yagizozturk/view-contact',
+      apiUrl: 'test',
       headers: this.getV2Headers(),
       pageHeader: 'Add New Contact',
       namePlaceholder: 'Name',
@@ -28,8 +28,8 @@ export class NewContactComponent implements OnInit {
       phonePlaceholder: 'Phone',
       tagPlaceholder: 'Tag',
       tagOptions: ['friends', 'testers', 'developers', 'ddd', 'dsffsdfd', 'dsa', 'dasfsf', 'dadfdsfsdf', 'dada'],
-      phoneTypeArray: ['other', 'home'],
-      addressTypeArray: ['Mobile', 'home', 'work'],
+      phoneTypeArray: [{ name: "Ev", value: 'Home' }, { name: "İş", value: 'Work' }],
+      addressTypeArray: [{ name: "Ev", value: 'Home' }, { name: "İş", value: 'Work' }],
       countryPlaceholder: 'Country',
       cityPlaceholder: 'County',
       postalCodePlaceholder: 'posta kodu',
@@ -60,7 +60,6 @@ export class NewContactComponent implements OnInit {
       phoneTypePlaceholder: 'Phone',
       mobileTypePlaceholder: 'Mobile',
       workTypePlaceholder: 'Work'
-
     }
 
     this.viewContact();
@@ -93,6 +92,10 @@ export class NewContactComponent implements OnInit {
   }
 
   onAdd(e: any): void {
+    console.log(e);
+  }
+
+  onUpdate(e: any): void {
     console.log(e);
   }
 

@@ -14,9 +14,12 @@ import { NgymInputModule } from 'projects/ngym-input/src/public-api';
 import { SidebarComponent } from './pages/sidebar/sidebar.component';
 import { LayoutModule } from './layout/layout.module';
 import { ChipsComponent } from './pages/chips/chips.component';
-import { InputsComponent } from './pages/inputs/inputs.component';
+
 import { NewContactComponent } from './pages/new-contact/new-contact.component';
 import { FormsComponent } from './pages/forms/forms.component';
+import { InputSelectComponent } from './pages/inputs/input-select/input-select.component';
+import { EditContactComponent } from './pages/edit-contact/edit-contact.component';
+
 
 
 @NgModule({
@@ -24,8 +27,9 @@ import { FormsComponent } from './pages/forms/forms.component';
     AppComponent,
     SidebarComponent,
     ChipsComponent,
-    InputsComponent,
+    InputSelectComponent,
     NewContactComponent,
+    EditContactComponent,
     FormsComponent
   ],
   imports: [

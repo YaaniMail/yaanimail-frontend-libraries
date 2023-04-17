@@ -1,4 +1,5 @@
 import { HttpHeaders } from "@angular/common/http";
+import { SelectInputType } from "./select-input-type";
 
 export interface CreateContactConfig {
     apiUrl: string;
@@ -11,8 +12,8 @@ export interface CreateContactConfig {
     phonePlaceholder: string;
     tagPlaceholder: string;
     tagOptions: string[];
-    phoneTypeArray: string[];
-    addressTypeArray: string[];
+    phoneTypeArray: SelectInputType[];
+    addressTypeArray: SelectInputType[];
     countryPlaceholder: string;
     cityPlaceholder: string;
     postalCodePlaceholder: string;

@@ -1,6 +1,6 @@
 <select class="ngym-select {{ customClass }}" (change)="selectionChanged($event.target.value)">
     <option class="{{ optionRobotClass }}{{ i }}" *ngFor="let option of options; let i = index"
-        [selected]="option === selectedValue">
-        {{ option }}
+        [selected]="option.value === selectedValue" [value]="option.value">
+        {{ option.name }}
     </option>
-</select>
+</select>sss
