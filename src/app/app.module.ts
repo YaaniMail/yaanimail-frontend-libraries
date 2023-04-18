@@ -19,8 +19,7 @@ import { NewContactComponent } from './pages/new-contact/new-contact.component';
 import { FormsComponent } from './pages/forms/forms.component';
 import { InputSelectComponent } from './pages/inputs/input-select/input-select.component';
 import { EditContactComponent } from './pages/edit-contact/edit-contact.component';
-
-
+import { ViewContactComponent } from './pages/view-contact/view-contact.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +29,7 @@ import { EditContactComponent } from './pages/edit-contact/edit-contact.componen
     InputSelectComponent,
     NewContactComponent,
     EditContactComponent,
+    ViewContactComponent,
     FormsComponent
   ],
   imports: [

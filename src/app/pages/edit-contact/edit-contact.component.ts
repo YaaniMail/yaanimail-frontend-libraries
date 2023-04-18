@@ -46,21 +46,10 @@ export class EditContactComponent implements OnInit {
     }
 
     viewContact(): void {
-        this.contact = {
-            "manager": "Avedis",
-            "fullname": "Amock Test",
-            "firstname": "Amock",
-            "lastname": "Test",
-            "email": [],
-            "addresses": [{ "type": "work", "data": { "city": "istanbul", "country": "tr", "postalcode": "4434", "state": "amas", "street": "bilim" } }],
-            "phone": [{ "type": "other", "data": "2163630988" }, { "type": "home", "data": "33333333" }],
-            "notes": "BU B\u0130R NOT",
-            "jobtitle": "Mr",
-            "company": "Turkcell",
-            "id": "6805",
-            "create_date": "1680618794000",
-            "tag_names": ["a"]
-        };
+        this.contact =
+        {
+            "fullname": 'Arkada1 Soyad', "firstname": "Arkada\u015f1", "lastname": "Soyad\u0131", "email": ["arkadas1@gmail.com", "arkadas2@gmail.com", "arkadas3@gmail.com", "arkadas4@gmail.com"], "addresses": [{ "type": "home", "data": { "city": "1", "country": "1", "postalcode": "1", "state": "1" } }, { "type": "other", "data": { "city": "3", "country": "3", "postalcode": "3", "state": "3", "street": "3" } }, { "type": "work", "data": { "city": "2", "country": "2", "postalcode": "2", "state": "2", "street": "2" } }], "phone": [{ "type": "home", "data": "222222" }, { "type": "mobile", "data": "111111" }, { "type": "other", "data": "444444" }, { "type": "work", "data": "333333" }], "notes": "not", "jobtitle": "\u00dcnvan\u0131", "company": "\u015eirketi", "id": "6485", "create_date": "1681827158000", "tag_names": []
+        }
 
     }
 

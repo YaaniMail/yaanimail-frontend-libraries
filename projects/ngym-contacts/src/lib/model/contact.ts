@@ -17,6 +17,7 @@ export interface Contact {
     id: string;
     jobtitle: string;
     lastname: string;
+    manager: string;
     notes: string;
     email: string[];
     phone: [{

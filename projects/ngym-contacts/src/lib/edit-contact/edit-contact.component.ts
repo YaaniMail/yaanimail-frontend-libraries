@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CreateContactConfig } from '../model/config';
 import { ContactService } from '../service/contact.service';
@@ -15,6 +15,7 @@ export class EditContactComponent implements OnInit {
   form!: FormGroup;
   @Input() contact!: Contact;
   @Input() config!: CreateContactConfig;
+  @Input() alternativeAction!: TemplateRef<any>;
   @Output() onUpdateEmitter = new EventEmitter<any>();
   @Output() onCancelEmitter = new EventEmitter();
   @Output() onUpdateErrorEmitter = new EventEmitter<string>();
@@ -26,6 +27,7 @@ export class EditContactComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    this.appendEmails();
     this.appendPhones();
     this.appendAddresses();
   }
@@ -37,7 +39,7 @@ export class EditContactComponent implements OnInit {
       fullname: [this.contact.firstname + ' ' + this.contact.fullname],
       company: [this.contact.company],
       jobtitle: [this.contact.jobtitle],
-      email: this.fb.array(this.contact.email),
+      email: this.fb.array([]),
       phone: this.fb.array([]),
       addresses: this.fb.array([]),
       notes: [this.contact.notes]
@@ -55,6 +57,18 @@ export class EditContactComponent implements OnInit {
 
   get phonesArray(): FormArray {
     return this.form.get('phone') as FormArray;
+  }
+
+  appendEmails() {
+    for (let i = 0; i < this.contact.email.length; i++) {
+      this.emails.push();
+      this.emailsArray.push(this.fb.control(this.contact.email[i]));
+    }
+
+    // If there is no email, append one by default
+    if (this.emailsArray.length === 0) {
+      this.addEmail();
+    }
   }
 
   appendPhones(): void {

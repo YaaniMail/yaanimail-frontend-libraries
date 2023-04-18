@@ -3,7 +3,7 @@
     <div class="p-2 flex-grow-1 b2-r text-break">
         <div class="mb-1" *ngFor="let e of elements;">
             <div *ngIf="type === 'array'">{{ e }}</div>
-            <div *ngIf="type === 'objectArray'">{{ e.data }}
+            <div *ngIf="type === 'objectArray' && e.data !== ''">{{ e.data }}
                 <ng-container [ngSwitch]="e.type">
                     <span class="text-placeholder" *ngSwitchCase="'other'">&#183; {{ config.otherTypePlaceholder
                         }}</span>
@@ -15,7 +15,9 @@
                         }}</span>
                 </ng-container>
             </div>
-            <div *ngIf="type === 'nestedObjectArray'">{{ e.data.street }} {{ e.data.state }} {{
+            <div
+                *ngIf="type === 'nestedObjectArray' && (e.data.street !== '' || e.data.country !== '' || e.data.city !== '' || e.data.postalcode !== '' || e.data.state !== '')">
+                {{ e.data.street }} {{ e.data.state }} {{
                 e.data.postalcode}} {{
                 e.data.city }} {{ e.data.country }}
                 <ng-container [ngSwitch]="e.type">
