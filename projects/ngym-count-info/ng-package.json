@@ -1,0 +1,7 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/ngym-count-info",
+  "lib": {
+    "entryFile": "src/public-api.ts"
+  }
+}

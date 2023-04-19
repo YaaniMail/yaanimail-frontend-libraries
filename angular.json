@@ -374,6 +374,37 @@
           }
         }
       }
+    },
+    "ngym-count-info": {
+      "projectType": "library",
+      "root": "projects/ngym-count-info",
+      "sourceRoot": "projects/ngym-count-info/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngym-count-info/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngym-count-info/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngym-count-info/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngym-count-info/src/test.ts",
+            "tsConfig": "projects/ngym-count-info/tsconfig.spec.json",
+            "karmaConfig": "projects/ngym-count-info/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "yaanimail-frontend-libraries"

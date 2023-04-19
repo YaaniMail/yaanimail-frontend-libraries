@@ -20,6 +20,10 @@
         "dist/ngym-contacts/ngym-contacts",
         "dist/ngym-contacts"
       ],
+      "ngym-count-info": [
+        "dist/ngym-count-info/ngym-count-info",
+        "dist/ngym-count-info"
+      ],
       "ngym-create-contact": [
         "dist/ngym-create-contact/ngym-create-contact",
         "dist/ngym-create-contact"
