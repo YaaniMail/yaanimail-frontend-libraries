@@ -10,6 +10,7 @@ import { DropDownItem } from './model/drop-down-item';
 })
 export class DropdownComponent implements OnInit, OnDestroy {
   scrollEventsSubscription!: Subscription;
+  @Input() isLoading: boolean = false;
   @Input() isDropup: boolean = false;
   @Input() selectedValue: string = '';
   @Input() classes: string = '';

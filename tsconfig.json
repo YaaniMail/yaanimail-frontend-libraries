@@ -39,6 +39,10 @@
       "ngym-prelogin-header": [
         "dist/ngym-prelogin-header/ngym-prelogin-header",
         "dist/ngym-prelogin-header"
+      ],
+      "ngym-quick-actions": [
+        "dist/ngym-quick-actions/ngym-quick-actions",
+        "dist/ngym-quick-actions"
       ]
     },
     "declaration": false,
