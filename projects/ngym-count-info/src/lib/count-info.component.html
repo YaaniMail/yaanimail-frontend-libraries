@@ -1,0 +1,8 @@
+<span class="{{ classes }}" *ngIf="(count || 0) != 0">
+    <ng-container *ngIf="count <= maxCountValue; else showMaxCountValue">
+        {{ count }}
+    </ng-container>
+    <ng-template #showMaxCountValue>
+        +{{maxCountValue}}
+    </ng-template>
+</span>
