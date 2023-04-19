@@ -1,6 +1,6 @@
 export class DropDownItem {
-    linkClasses: string = '';
-    isLoadingClasses: string = '';
+    linkClasses?: string = '';
+    isLoadingClasses?: string = '';
     robotClass: string = '';
     label: string = '';
     action: any = '';

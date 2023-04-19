@@ -12,9 +12,9 @@
         </button>
     </ng-container>
     <div *ngIf="dropDownActions.length > 0">
-        <ngym-dropdown [classes]="'{{ dropdownContainerClasses }}'" [buttonClasses]="'{{ dropdownButtonClasses }}'"
-            [iconClasses]="'{{ dropdownIconClasses }} {{ iconStdClasses.primary }}'"
-            [dropdownClasses]="'{{ dropdownClasses }}'" [items]="dropDownItems"
+        <ngym-dropdown [classes]="dropdownContainerClasses" [buttonClasses]="dropdownButtonClasses"
+            [iconClasses]="dropdownIconClasses + ' ' + iconStdClasses.primary" [dropdownClasses]="dropdownClasses"
+            [placement]="dropdownPlacement" [container]="dropdownContainer" [items]="dropDownItems"
             (actionEmitter)="performDropdownAction($event)"></ngym-dropdown>
     </div>
 </div>

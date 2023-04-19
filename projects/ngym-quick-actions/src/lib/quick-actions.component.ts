@@ -1,10 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ViewIconQuickAction, ViewDropDownQuickAction } from './model/view-quick-action';
+import { ViewDropDownQuickAction } from './model/view-dropdown-quick-action';
+import { ViewIconQuickAction } from './model/view-icon-quick-action';
 import { DropDownItem } from 'ngym-dropdown';
 
 @Component({
-  selector: 'lib-ngym-quick-actions',
-  templateUrl: './quick-actions.component.html'
+  selector: 'ngym-quick-actions',
+  templateUrl: './quick-actions.component.html',
+  styleUrls: ['./quick-actions.component.scss']
 })
 export class QuickActionsComponent implements OnInit {
   iconActions: (ViewIconQuickAction | ViewDropDownQuickAction)[] = [];
@@ -17,6 +19,8 @@ export class QuickActionsComponent implements OnInit {
   @Input() dropdownClasses: string = '';
   @Input() dropdownIconClasses: string = '';
   @Input() dropdownButtonClasses: string = '';
+  @Input() dropdownPlacement: string = '';
+  @Input() dropdownContainer: string = '';
   @Input() actions: (ViewIconQuickAction | ViewDropDownQuickAction)[] = [];
   @Input() iconStdClasses!: { primary: string, disabled: string };
   @Input() textStdClasses!: { primary: string, disabled: string };
@@ -27,6 +31,7 @@ export class QuickActionsComponent implements OnInit {
   ngOnInit() {
     this.iconActions = this.actions.filter(action => action instanceof ViewIconQuickAction);
     this.dropDownActions = this.actions.filter(action => action instanceof ViewDropDownQuickAction);
+    this.prepareDropdownActions();
   }
 
   prepareDropdownActions(): void {
