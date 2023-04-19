@@ -4,17 +4,17 @@
             (click)="action.isActionAllowed && (!action.checkIsLoading || (action.checkIsLoading && !isLoading)) && actionEmitter.emit(action.actionType)"
             tooltip="{{ !isTooltipDisabled ? action.label : '' }}" placement="bottom" container="body">
             <i class="{{ action.iconClasses }}"
-                [ngClass]="action.isActionAllowed && (!action.checkIsLoading || (action.checkIsLoading && !isLoading)) ? iconStdClasses.primary : iconStdClasses.disabled"></i>
+                [ngClass]="action.isActionAllowed && (!action.checkIsLoading || (action.checkIsLoading && !isLoading)) ? (iconStdClasses.primary || '') : (iconStdClasses.disabled || '')"></i>
             <span *ngIf="!action.isOnlyIcon" class="pl-1"
-                [ngClass]="action.isActionAllowed && (!action.checkIsLoading || (action.checkIsLoading && !isLoading)) ? textStdClasses.primary : textStdClasses.disabled">
+                [ngClass]="action.isActionAllowed && (!action.checkIsLoading || (action.checkIsLoading && !isLoading)) ? (textStdClasses.primary || '') : (textStdClasses.disabled || '')">
                 {{ action.label }}
             </span>
         </button>
     </ng-container>
     <div *ngIf="dropDownActions.length > 0">
         <ngym-dropdown [classes]="dropdownContainerClasses" [buttonClasses]="dropdownButtonClasses"
-            [iconClasses]="dropdownIconClasses + ' ' + iconStdClasses.primary" [dropdownClasses]="dropdownClasses"
-            [placement]="dropdownPlacement" [container]="dropdownContainer" [items]="dropDownItems"
-            (actionEmitter)="performDropdownAction($event)"></ngym-dropdown>
+            [iconClasses]="dropdownIconClasses + ' ' + (iconStdClasses.primary || '')"
+            [dropdownClasses]="dropdownClasses" [placement]="dropdownPlacement" [container]="dropdownContainer"
+            [items]="dropDownItems" (actionEmitter)="performDropdownAction($event)"></ngym-dropdown>
     </div>
 </div>
