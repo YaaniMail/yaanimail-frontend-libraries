@@ -1,0 +1,16 @@
+<div class="section-header">ngym-quick-actions</div>
+<div class="section-desc">
+    Custom quick actions menu.
+</div>
+<div class="section-content">
+    <h5>Code Example</h5>
+    <div *ngIf="actions">
+        <ngym-quick-actions [classes]="'d-flex'" [dropdownContainerClasses]="'dropleft'"
+            [dropdownClasses]="'dropdown-menu-left'"
+            [dropdownIconClasses]="'fa-regular fa-circle-ellipsis fa-normal robot_view_menuIcon'"
+            [dropdownButtonClasses]="'btn btn-icon'" [dropdownPlacement]="'bottom right'" [dropdownContainer]="'body'"
+            [iconStdClasses]="{ primary: 'fa-primary', disabled: 'fa-gray unclickable' }"
+            [textStdClasses]="{ primary: 'text-primary', disabled: 'text-gray unclickable' }" [isLoading]="isLoading"
+            [actions]="actions" (actionEmitter)="performAction($event, 'hello')"></ngym-quick-actions>
+    </div>
+</div>
