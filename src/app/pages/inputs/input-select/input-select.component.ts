@@ -11,7 +11,7 @@ export class InputSelectComponent implements OnInit {
     inputTextValue!: string;
     inputPasswordValue!: string;
     form!: FormGroup;
-    phoneTypeArray: SelectInputType[] = [{ name: 'Ev', value: 'Home' }, { name: 'İş', value: 'Work' }, { name: 'Cep', value: 'Mobile' }];
+    phoneTypeArray: SelectInputType[] = [{ name: 'Ev', value: 'Home' }, { name: 'Diğer', value: 'Other' }, { name: 'İş', value: 'Work' }, { name: 'Cep', value: 'Mobile' }];
     contact: any;
 
     constructor(private fb: FormBuilder) { }

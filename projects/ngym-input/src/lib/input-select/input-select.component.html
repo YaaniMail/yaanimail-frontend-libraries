@@ -1,6 +1,6 @@
 <select class="ngym-select {{ customClass }}" (change)="selectionChanged($event.target.value)">
     <option class="{{ optionRobotClass }}{{ i }}" *ngFor="let option of options; let i = index"
-        [selected]="option.value.toLowerCase() === selectedValue.toLowerCase()">
+        [selected]="(option.value | lowercase) === (selectedValue | lowercase)" [value]="(option.value | lowercase)">
         {{ option.name }}
     </option>
 </select>
