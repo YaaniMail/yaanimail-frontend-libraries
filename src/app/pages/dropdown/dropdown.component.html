@@ -1,0 +1,18 @@
+<div class="section-header">ngym-dropdown</div>
+<div class="section-desc">
+    Custom dropdown menu.
+</div>
+<div class="section-content">
+    <h5>Code Example</h5>
+    <div *ngIf="dropdownMenuActions">
+        <ngym-dropdown [classes]="'btn-group align-items-center text-primary pr-2'"
+            [dropdownClasses]="'dropdown-menu-dropup'" [buttonClasses]="'btn btn-icon'"
+            [iconClasses]="'fa-regular fa-chevron-down fa-primary fa-normal'" [placement]="'bottom left'"
+            [isDropup]="false" [container]="'body'" [items]="dropdownMenuActions" [selectedValue]="selectedValue"
+            [checkedIconHtml]="checkedIconHtml" (actionEmitter)="performAction('HELLO', $event)">
+            <ng-template #checkedIconHtml>
+                <i class="fa-regular fa-check fa-gray fa-normal"></i>
+            </ng-template>
+        </ngym-dropdown>
+    </div>
+</div>

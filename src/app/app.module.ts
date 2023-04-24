@@ -20,6 +20,14 @@ import { FormsComponent } from './pages/forms/forms.component';
 import { InputSelectComponent } from './pages/inputs/input-select/input-select.component';
 import { EditContactComponent } from './pages/edit-contact/edit-contact.component';
 import { ViewContactComponent } from './pages/view-contact/view-contact.component';
+import { NgymDropdownModule } from 'ngym-dropdown';
+import { NgymQuickActionsModule } from 'ngym-quick-actions';
+import { NgymCountInfoModule } from 'ngym-count-info';
+import { DropdownComponent } from './pages/dropdown/dropdown.component';
+import { QuickActionsComponent } from './pages/quick-actions/quick-actions.component';
+import { CountInfoComponent } from './pages/count-info/count-info.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +38,9 @@ import { ViewContactComponent } from './pages/view-contact/view-contact.componen
     NewContactComponent,
     EditContactComponent,
     ViewContactComponent,
+    DropdownComponent,
+    QuickActionsComponent,
+    CountInfoComponent,
     FormsComponent
   ],
   imports: [
@@ -41,10 +52,14 @@ import { ViewContactComponent } from './pages/view-contact/view-contact.componen
     NgymInputModule,
     NgymPreloginHeaderModule,
     NgymContactsModule,
+    NgymDropdownModule,
+    NgymQuickActionsModule,
+    NgymCountInfoModule,
     ReactiveFormsModule,
     CommonModule,
     HttpClientModule,
-    LayoutModule
+    LayoutModule,
+    BrowserAnimationsModule
   ],
   providers: [RouterModule, WebService],
   bootstrap: [AppComponent]
