@@ -4,7 +4,7 @@
     <div>
         <form [formGroup]="form">
             <div class="form-group">
-                <div formArrayName="phone">
+                <!-- <div formArrayName="phone">
                     <div *ngFor="let p of phonesArray.controls; let i=index">
                         <div [formGroupName]="i">
                             <div class="d-flex mb-2">
@@ -16,7 +16,29 @@
                             </div>
                         </div>
                     </div>
+                </div> -->
+
+                <div formArrayName="phone">
+                    <div *ngFor="let p of phonesArray.controls; let i=index">
+                        <div [formGroupName]="i">
+                            <div class="d-flex mb-2">
+                                <div class="phone-type">
+                                    <ngym-input-select formControlName="type" [customClass]="'form-control'"
+                                        [options]="phoneTypeArray" [selectedValue]="p.value.type"
+                                        [optionRobotClass]="'robot_phone_numberOption'"></ngym-input-select>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <ngym-input-group-button formControlName="data" [customInputClass]="'form-control'"
+                                        [faClass]="'fa-regular fa-circle-minus fa-red fa-normal'"
+                                        [faRobotClass]="'robot_contactCreate_deleteEmail'"
+                                        [placeholder]="phonePlaceholder">
+                                    </ngym-input-group-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
                 <div>
                     <a class="anchor-primary robot_contactCreate_addPhone" (click)="addPhoneNumber()">
                         <i class="fa-regular fa-plus fa-primary fa-normal"></i>

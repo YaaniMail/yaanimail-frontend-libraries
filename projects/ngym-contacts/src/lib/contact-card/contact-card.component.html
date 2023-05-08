@@ -18,4 +18,10 @@
             <div class="content-overflow b2-r robot_contact_email">{{ contact.email }}</div>
         </ng-container>
     </div>
+    <div class="py-3 px-1">
+        <ng-template [ngTemplateOutlet]="alternativeAction"></ng-template>
+    </div>
+    <div class="py-3 px-1 pr-3">
+        <ng-template [ngTemplateOutlet]="quickAction"></ng-template>
+    </div>
 </div>

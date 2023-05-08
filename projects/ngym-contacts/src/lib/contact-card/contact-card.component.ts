@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { Contact } from '../model/contact';
 
 @Component({
@@ -8,6 +8,8 @@ import { Contact } from '../model/contact';
 })
 export class ContactCardComponent implements OnInit {
   @Input() contact!: Contact;
+  @Input() quickAction!: TemplateRef<any>;
+  @Input() alternativeAction!: TemplateRef<any>;
 
   constructor() { }
 

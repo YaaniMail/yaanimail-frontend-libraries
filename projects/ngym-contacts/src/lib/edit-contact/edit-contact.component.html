@@ -62,7 +62,8 @@
                                 <div class="phone-type">
                                     <ngym-input-select formControlName="type" [customClass]="'form-control'"
                                         [options]="config.phoneTypeArray" [selectedValue]="p.value.type"
-                                        [optionRobotClass]="'robot_phone_numberOption'"></ngym-input-select>
+                                        [optionRobotClass]="'robot_phone_numberOption'"
+                                        [defaultValue]="'home'"></ngym-input-select>
                                 </div>
                                 <div class="flex-grow-1">
                                     <ngym-input-group-button formControlName="data" [customInputClass]="'form-control'"
@@ -89,7 +90,8 @@
                         <div class="d-flex mb-2" [formGroupName]="i">
                             <div class="address-item">
                                 <ngym-input-select formControlName="type" [customClass]="'form-control'"
-                                    [options]="config.addressTypeArray" [selectedValue]="a.value.type">
+                                    [options]="config.addressTypeArray" [selectedValue]="a.value.type"
+                                    [defaultValue]="'home'">
                                 </ngym-input-select>
                             </div>
                             <ng-container formGroupName="address">

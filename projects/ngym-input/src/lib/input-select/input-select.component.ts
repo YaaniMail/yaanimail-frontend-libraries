@@ -18,6 +18,7 @@ export class InputSelectComponent extends TypeSelectAccessor {
   @Input() options!: string[];
   @Input() optionRobotClass!: string;
   @Input() customClass!: string;
+  @Input() defaultValue!: string;
   @Input() selectedValue!: string;
   @Output() selectionChange: EventEmitter<string> = new EventEmitter<string>();
 
@@ -32,5 +33,12 @@ export class InputSelectComponent extends TypeSelectAccessor {
     this.selectionChange.emit(value);
     this.onChange(value);
     this.onTouched();
+  }
+
+  lowerCase(value: any): string {
+    if (typeof value === 'object') {
+      return this.defaultValue;
+    }
+    return value.toLowerCase();
   }
 }
