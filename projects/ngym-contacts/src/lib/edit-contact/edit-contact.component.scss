@@ -1,3 +1,9 @@
+// Colors
+$primary-hard: #0b3254;
+$primary: #00a0df;
+$input: #b7c8d6;
+$red: #f05f6d;
+
 .phone-type {
     flex-basis: 140px;
     padding-right: 1rem;
@@ -6,4 +12,33 @@
 .address-item {
     flex: 1 1 0;
     padding-right: 1rem;
+}
+
+.ngym-select {
+    padding: 0px;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid $input;
+    font-size: 14px;
+    line-height: 1.5;
+    background: url("../assets/img/chevron-down.png");
+    background-repeat: no-repeat;
+    background-position: right 0 center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+
+    &.focus {
+        border-color: $primary !important;
+        color: $primary-hard;
+    }
+
+    &.error {
+        border-color: $red !important;
+    }
+
+    &::-ms-expand {
+        display: none;
+    }
 }

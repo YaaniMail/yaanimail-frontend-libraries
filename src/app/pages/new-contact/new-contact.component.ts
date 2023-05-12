@@ -108,7 +108,6 @@ export class NewContactComponent implements OnInit {
   }
 
   test(e: any): void {
-    debugger;
     this.name = e.firstname;
   }
 

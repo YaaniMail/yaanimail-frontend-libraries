@@ -61,10 +61,13 @@
                         <div [formGroupName]="i">
                             <div class="d-flex mb-2">
                                 <div class="phone-type">
-                                    <ngym-input-select formControlName="type" [customClass]="'form-control'"
-                                        [options]="config.phoneTypeArray"
-                                        [optionRobotClass]="'robot_phone_numberOption'"
-                                        [defaultValue]="'home'"></ngym-input-select>
+                                    <select class="ngym-select form-control" formControlName="type">
+                                        <option class="robot_phone_numberOption{{ i }}"
+                                            *ngFor="let option of config.phoneTypeArray; let i = index"
+                                            [selected]="option.value === selectedValue" [value]="option.value">
+                                            {{ option.name }}
+                                        </option>
+                                    </select>
                                 </div>
                                 <div class="flex-grow-1">
                                     <ngym-input-group-button formControlName="data" [customInputClass]="'form-control'"
@@ -90,9 +93,14 @@
                     <div *ngFor="let a of addressesArray.controls; let i=index">
                         <div class="d-flex mb-2" [formGroupName]="i">
                             <div class="address-item">
-                                <ngym-input-select formControlName="type" [customClass]="'form-control'"
-                                    [options]="config.addressTypeArray" [defaultValue]="'home'">
-                                </ngym-input-select>
+                                <select class="ngym-select form-control" formControlName="type">
+                                    <option class="robot_phone_numberOption{{ i }}"
+                                        *ngFor="let option of config.addressTypeArray; let i = index"
+                                        [selected]="option.value === selectedValue" [value]="option.value">
+                                        {{ option.name }}
+                                    </option>
+                                </select>
+
                             </div>
                             <ng-container formGroupName="address">
                                 <div class="address-item">

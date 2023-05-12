@@ -126,7 +126,7 @@ export class EditContactComponent implements OnInit {
 
   addAddress(): void {
     this.addressesArray.push(this.fb.group({
-      type: this.config.addressTypeArray[0],
+      type: this.config.addressTypeArray[0].value,
       address: this.fb.group({
         type: '',
         country: '',
@@ -140,7 +140,7 @@ export class EditContactComponent implements OnInit {
 
   addPhoneNumber(): void {
     this.phonesArray.push(this.fb.group({
-      type: this.config.phoneTypeArray,
+      type: this.config.phoneTypeArray[0].value,
       data: '',
     }));
   }
