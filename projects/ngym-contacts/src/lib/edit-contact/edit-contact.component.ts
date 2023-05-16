@@ -30,6 +30,7 @@ export class EditContactComponent implements OnInit {
     this.appendEmails();
     this.appendPhones();
     this.appendAddresses();
+    this.controlNoteInput();
   }
 
   createForm(): void {
@@ -157,8 +158,12 @@ export class EditContactComponent implements OnInit {
     this.phonesArray.removeAt(i);
   }
 
-  controlNoteInput(note: string): void {
-    if (note.length === 0) {
+  deleteNotes(): void {
+    this.contact.notes = '';
+  }
+
+  controlNoteInput(): void {
+    if (this.contact.notes.length === 0) {
       this.showNotes = false;
     } else {
       this.showNotes = true;

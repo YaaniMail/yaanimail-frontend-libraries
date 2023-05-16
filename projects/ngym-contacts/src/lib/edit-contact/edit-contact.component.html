@@ -138,7 +138,7 @@
                     <ngym-input-group-button formControlName="notes"
                         [faClass]="'fa-regular fa-circle-minus fa-red fa-normal'"
                         [faRobotClass]="'robot_contactCreate_deleteNote'" [placeholder]="config.notePlaceholder"
-                        (onClickEmitter)="showNotes = false">
+                        (onClickEmitter)="deleteNotes()">
                     </ngym-input-group-button>
                 </ng-container>
                 <ng-template #addNotesButton>

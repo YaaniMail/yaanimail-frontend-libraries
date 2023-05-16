@@ -7,6 +7,8 @@ import { ViewContactComponent } from './view-contact/view-contact.component';
 import { ContactCardComponent } from './contact-card/contact-card.component';
 import { NgymInputModule } from 'ngym-input';
 import { ViewFieldComponent } from '../public-api';
+import { HomeNumberPipe } from './pipe/home-number.pipe';
+import { MsisdnPipe } from './pipe/msisdn.pipe';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { ViewFieldComponent } from '../public-api';
     EditContactComponent,
     ViewContactComponent,
     ContactCardComponent,
-    ViewFieldComponent
+    ViewFieldComponent,
+    HomeNumberPipe,
+    MsisdnPipe
   ],
   imports: [
     CommonModule,
