@@ -9,6 +9,8 @@ import { NgymInputModule } from 'ngym-input';
 import { ViewFieldComponent } from '../public-api';
 import { HomeNumberPipe } from './pipe/home-number.pipe';
 import { MsisdnPipe } from './pipe/msisdn.pipe';
+import {MaskPipe, NgxMaskModule} from "ngx-mask";
+import { PhoneFormatterPipe } from './pipe/phone-formatter.pipe';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import { MsisdnPipe } from './pipe/msisdn.pipe';
     ContactCardComponent,
     ViewFieldComponent,
     HomeNumberPipe,
-    MsisdnPipe
+    MsisdnPipe,
+    PhoneFormatterPipe
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NgymInputModule
+    NgymInputModule,
+    NgxMaskModule.forRoot(),
   ],
   exports: [
     CreateContactComponent,
@@ -32,6 +36,7 @@ import { MsisdnPipe } from './pipe/msisdn.pipe';
     ContactCardComponent,
     ViewContactComponent,
     ViewFieldComponent
-  ]
+  ],
+  providers: [MaskPipe]
 })
 export class NgymContactsModule { }

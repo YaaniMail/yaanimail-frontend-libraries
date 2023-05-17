@@ -1,9 +1,10 @@
 <div class="d-flex">
     <div class="contact-view-label b2-r p-2 text-secondary-light" title="{{ title }}">{{ title }}</div>
     <div class="p-2 flex-grow-1 b2-r text-break">
+
         <div class="mb-1" *ngFor="let e of elements;">
             <div *ngIf="type === 'array'">{{ e }}</div>
-            <div *ngIf="type === 'objectArray' && e.data !== ''">{{ e.data }}
+            <div *ngIf="type === 'objectArray' && e.data !== ''">{{ e.data | phoneFormatter }}
                 <ng-container [ngSwitch]="e.type">
                     <span class="text-secondary-light" *ngSwitchCase="'other'">&#183; {{ config.otherTypePlaceholder
                         }}</span>

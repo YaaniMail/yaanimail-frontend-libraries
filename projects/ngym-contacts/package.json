@@ -5,10 +5,12 @@
   "peerDependencies": {
     "@angular/common": "^13.3.0",
     "@angular/core": "^13.3.0",
-    "ngym-input": "^0.0.57",
-    "bootstrap": "5.2.2"
+    "bootstrap": "5.2.2",
+    "ngym-input": "^0.0.57"
   },
   "dependencies": {
+    "libphonenumber-js": "^1.10.30",
+    "ngx-mask": "13.1.15",
     "tslib": "^2.3.0"
   }
 }
