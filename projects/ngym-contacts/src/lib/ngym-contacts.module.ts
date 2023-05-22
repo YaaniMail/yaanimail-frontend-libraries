@@ -7,9 +7,7 @@ import { ViewContactComponent } from './view-contact/view-contact.component';
 import { ContactCardComponent } from './contact-card/contact-card.component';
 import { NgymInputModule } from 'ngym-input';
 import { ViewFieldComponent } from '../public-api';
-import { HomeNumberPipe } from './pipe/home-number.pipe';
-import { MsisdnPipe } from './pipe/msisdn.pipe';
-import {MaskPipe, NgxMaskModule} from "ngx-mask";
+import { MaskPipe, NgxMaskModule } from 'ngx-mask';
 import { PhoneFormatterPipe } from './pipe/phone-formatter.pipe';
 
 @NgModule({
@@ -19,8 +17,6 @@ import { PhoneFormatterPipe } from './pipe/phone-formatter.pipe';
     ViewContactComponent,
     ContactCardComponent,
     ViewFieldComponent,
-    HomeNumberPipe,
-    MsisdnPipe,
     PhoneFormatterPipe
   ],
   imports: [
