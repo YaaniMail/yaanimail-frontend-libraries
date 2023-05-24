@@ -3,5 +3,6 @@
   "dest": "../../dist/ngym-contacts",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "allowedNonPeerDependencies": ["libphonenumber-js","ngx-mask"]
 }
