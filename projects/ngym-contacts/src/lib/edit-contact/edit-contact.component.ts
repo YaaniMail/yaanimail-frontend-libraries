@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CreateContactConfig } from '../model/config';
 import { ContactService } from '../service/contact.service';
 import { Contact } from '../model/contact';
@@ -9,11 +9,32 @@ import { Contact } from '../model/contact';
   templateUrl: './edit-contact.component.html',
   styleUrls: ['./edit-contact.component.scss']
 })
-export class EditContactComponent implements OnInit {
+export class EditContactComponent {
   emails: string[] = [];
   showNotes: boolean = false;
-  form!: FormGroup;
-  @Input() contact!: Contact;
+  form: FormGroup = new FormGroup({
+    firstname:  new FormControl(null , [Validators.required]),
+    lastname: new FormControl(),
+    fullname: new FormControl(),
+    company: new FormControl(),
+    jobtitle: new FormControl(),
+    email: this.fb.array([]),
+    phone: this.fb.array([]),
+    addresses: this.fb.array([]),
+    notes: new FormControl()
+  });
+  contactData!: Contact;
+
+  @Input() set contact(data:Contact) {
+    if (data){
+      this.contactData = data;
+      this.updateForm(data);
+      this.appendEmails();
+      this.appendPhones();
+      this.appendAddresses();
+      this.controlNoteInput();
+    }
+  }
   @Input() config!: CreateContactConfig;
   @Input() alternativeAction!: TemplateRef<any>;
   @Output() onUpdateEmitter = new EventEmitter<any>();
@@ -25,25 +46,17 @@ export class EditContactComponent implements OnInit {
     private contactService: ContactService
   ) { }
 
-  ngOnInit(): void {
-    this.createForm();
-    this.appendEmails();
-    this.appendPhones();
-    this.appendAddresses();
-    this.controlNoteInput();
-  }
-
-  createForm(): void {
-    this.form = this.fb.group({
-      firstname: [this.contact.firstname, Validators.required],
-      lastname: [this.contact.lastname],
-      fullname: [this.contact.firstname + ' ' + this.contact.fullname],
-      company: [this.contact.company],
-      jobtitle: [this.contact.jobtitle],
-      email: this.fb.array([]),
-      phone: this.fb.array([]),
-      addresses: this.fb.array([]),
-      notes: [this.contact.notes]
+  updateForm(contact:Contact): void {
+    this.form.patchValue({
+      firstname: contact.firstname,
+      lastname: contact.lastname,
+      fullname: `${contact.firstname} ${contact.fullname}`,
+      company: contact.company,
+      jobtitle: contact.jobtitle,
+      email: [],
+      phone: [],
+      addresses: [],
+      notes: contact.notes
     });
   }
 
@@ -60,10 +73,10 @@ export class EditContactComponent implements OnInit {
     return this.form.get('phone') as FormArray;
   }
 
-  appendEmails() {
-    for (let i = 0; i < this.contact.email.length; i++) {
+  appendEmails(): void {
+    for (let i = 0; i < this.contactData.email.length; i++) {
       this.emails.push();
-      this.emailsArray.push(this.fb.control(this.contact.email[i]));
+      this.emailsArray.push(this.fb.control(this.contactData.email[i]));
     }
 
     // If there is no email, append one by default
@@ -73,24 +86,24 @@ export class EditContactComponent implements OnInit {
   }
 
   appendPhones(): void {
-    for (let i = 0; i < this.contact.phone.length; i++) {
+    for (let i = 0; i < this.contactData.phone.length; i++) {
       this.phonesArray.push(this.fb.group({
-        type: this.contact.phone[i].type,
-        data: this.contact.phone[i].data,
+        type: this.contactData.phone[i].type,
+        data: this.contactData.phone[i].data,
       }));
     }
   }
 
   appendAddresses(): void {
-    for (let i = 0; i < this.contact.addresses.length; i++) {
+    for (let i = 0; i < this.contactData.addresses.length; i++) {
       this.addressesArray.push(this.fb.group({
-        type: this.contact.addresses[i].type,
+        type: this.contactData.addresses[i].type,
         address: this.fb.group({
-          country: this.contact.addresses[i].data.country,
-          city: this.contact.addresses[i].data.city,
-          postalcode: this.contact.addresses[i].data.postalcode,
-          state: this.contact.addresses[i].data.state,
-          street: this.contact.addresses[i].data.street
+          country: this.contactData.addresses[i].data.country,
+          city: this.contactData.addresses[i].data.city,
+          postalcode: this.contactData.addresses[i].data.postalcode,
+          state: this.contactData.addresses[i].data.state,
+          street: this.contactData.addresses[i].data.street
         })
       }));
     }
@@ -100,13 +113,13 @@ export class EditContactComponent implements OnInit {
     this.assignFullname();
     this.contactService.updateContact(this.config.apiUrl, this.form.value, this.config.headers).subscribe(
       data => {
-        let contact = { id: '', firstname: '', lastname: '', fullname: '', email: [] };
-        contact.id = data.id;
-        contact.firstname = this.form.value.firstname;
-        contact.lastname = this.form.value.lastname;
-        contact.fullname = this.form.value.fullname;
-        contact.email = this.form.value.email;
-        this.onUpdateEmitter.emit(contact);
+        let contactData = { id: '', firstname: '', lastname: '', fullname: '', email: [] };
+        contactData.id = data.id;
+        contactData.firstname = this.form.value.firstname;
+        contactData.lastname = this.form.value.lastname;
+        contactData.fullname = this.form.value.fullname;
+        contactData.email = this.form.value.email;
+        this.onUpdateEmitter.emit(contactData);
       },
       error => {
         this.onUpdateErrorEmitter.emit(error.error.message);
@@ -159,11 +172,11 @@ export class EditContactComponent implements OnInit {
   }
 
   deleteNotes(): void {
-    this.contact.notes = '';
+    this.contactData.notes = '';
   }
 
   controlNoteInput(): void {
-    if (this.contact.notes.length === 0) {
+    if (this.contactData.notes.length === 0) {
       this.showNotes = false;
     } else {
       this.showNotes = true;

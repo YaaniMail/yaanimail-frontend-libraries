@@ -1,6 +1,6 @@
 {
   "name": "ngym-home",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "model folder removed",
   "peerDependencies": {
     "@angular/common": "^13.3.0",

@@ -1,4 +1,17 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+  TemplateRef,
+  ViewChild,
+  ViewEncapsulation
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutoComplete } from '../model/autoComplete';
 import { Tag } from '../model/tag';
@@ -10,7 +23,7 @@ import { TagInputAutocompleteComponent } from '../tag-input-autocomplete/tag-inp
   styleUrls: ['./tag-input.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class TagInputComponent implements OnInit, OnChanges {
+export class TagInputComponent implements OnInit, OnChanges, OnDestroy {
   autoCompleteTags!: string[];
   id: number = 0;
   autoCompleteVisible: boolean = false;
@@ -31,7 +44,7 @@ export class TagInputComponent implements OnInit, OnChanges {
   @ViewChild(TagInputAutocompleteComponent) tagInputAutoCompleteComponent!: TagInputAutocompleteComponent;
   @HostListener('document:click', ['$event'])
   clickout(event: any) {
-    if (this.autoComplete && !this.autoComplete.nativeElement?.contains(event.target)) {
+    if (!this.autoComplete?.nativeElement?.contains(event.target)) {
       this.autoCompleteVisible = false;
     }
 
@@ -50,6 +63,10 @@ export class TagInputComponent implements OnInit, OnChanges {
     if (!this.autoCompleteVisible) {
       this.autoCompleteItems = [];
     }
+  }
+
+  ngOnDestroy(): void {
+    this.autoComplete?.nativeElement.remove();
   }
 
   /**
