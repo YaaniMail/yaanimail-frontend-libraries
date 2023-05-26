@@ -7,8 +7,9 @@
             <div class="p-2 flex-grow-1 align-self-center overflow-hidden">
                 <div class="h7-m robot_contactView_fullname">{{ contact.firstname }} {{
                     contact.lastname }}</div>
-                <div class="b2-r text-gray content-overflow robot_contactView_jobTitle">{{ contact.jobtitle }}</div>
-                <div class="b2-r text-placeholder content-overflow robot_contactView_jobTitle">{{ contact.company }}
+                <div class="b2-r text-secondary content-overflow robot_contactView_jobTitle">{{ contact.jobtitle }}
+                </div>
+                <div class="b2-r text-secondary-light content-overflow robot_contactView_jobTitle">{{ contact.company }}
                 </div>
                 <div class="s1-r text-primary mt-2" *ngIf="contact.email?.length > 0">
                     <a (click)="onCompose(contact.email)">
@@ -22,7 +23,7 @@
     </div>
     <!-- Body -->
     <div class="py-2">
-        <div class="p-2 h8-r text-primary">
+        <div class="p-2 h8-r">
             {{ config.pageHeader }}
         </div>
         <!-- Email Fields -->

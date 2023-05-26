@@ -2,7 +2,7 @@ import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { Contact } from '../model/contact';
 
 @Component({
-  selector: 'lib-contact-card',
+  selector: 'ngym-contact-card',
   templateUrl: './contact-card.component.html',
   styleUrls: ['./contact-card.component.scss']
 })
