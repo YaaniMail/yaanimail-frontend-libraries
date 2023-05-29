@@ -16,7 +16,6 @@ import { LayoutModule } from './layout/layout.module';
 import { ChipsComponent } from './pages/chips/chips.component';
 import { NewContactComponent } from './pages/new-contact/new-contact.component';
 import { FormsComponent } from './pages/forms/forms.component';
-import { InputSelectComponent } from './pages/inputs/input-select/input-select.component';
 import { EditContactComponent } from './pages/edit-contact/edit-contact.component';
 import { ViewContactComponent } from './pages/view-contact/view-contact.component';
 import { NgymDropdownModule } from 'ngym-dropdown';
@@ -33,7 +32,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     SidebarComponent,
     ChipsComponent,
-    InputSelectComponent,
     NewContactComponent,
     EditContactComponent,
     ViewContactComponent,
@@ -48,7 +46,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     NgymHomeModule,
     NgymChipsModule,
-    NgymInputModule,
     NgymPreloginHeaderModule,
     NgymContactsModule,
     NgymDropdownModule,

@@ -1,8 +1,7 @@
 // Colors
-$primary-hard: #0b3254;
-$primary: #00a0df;
-$input: #b7c8d6;
-$borders: #edf2f5;
+$primary-hard: #0a3254;
+$input: #8498a9;
+$borders: #E7EBEE;
 $red: #f05f6d;
 
 input {
@@ -20,7 +19,8 @@ input {
   -ms-flex-align: stretch;
   align-items: stretch;
   width: 100%;
-  > .ngym-text {
+
+  >.ngym-text {
     position: relative;
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
@@ -67,14 +67,17 @@ input {
   border-radius: 0;
   box-shadow: 0 0 0 #000 !important;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
   &:focus {
-    border-color: $primary;
+    border-color: $primary-hard;
     background-color: transparent;
     color: $primary-hard;
   }
+
   &.error {
     border-color: $red !important;
   }
+
   &.light {
     border-bottom: 1px solid $borders !important;
   }
@@ -93,13 +96,16 @@ input {
   -moz-appearance: none;
   -ms-user-select: none;
   -o-user-select: none;
+
   &.focus {
-    border-color: $primary !important;
+    border-color: $primary-hard !important;
     color: $primary-hard;
   }
+
   &.error {
     border-color: $red !important;
   }
+
   &::-ms-expand {
     display: none;
   }

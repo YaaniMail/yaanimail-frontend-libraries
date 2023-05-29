@@ -4,19 +4,8 @@
     <div class="section-element-header">Form example with formControlName entegrated <b>formGroup</b></div>
     <div class="section-element">
         <form [formGroup]="form" (submit)="submitForm()">
-            <div class="form-element">
-                <label>Firstname: </label>
-                <ngym-input-text formControlName="firstname"></ngym-input-text>
-            </div>
-            <div class="form-element">
-                <label>Password: </label>
-                <ngym-input-password formControlName="password"></ngym-input-password>
-            </div>
-            <div class="form-element">
-                <label>Type: </label>
-                <ngym-input-select (selectionChange)="onSelectChange($event)" [attr.data-name]="'type'"
-                    [formControlName]="'type'" [options]="['Student', 'Trainer', 'Product Owner']"></ngym-input-select>
-            </div>
+
+
             <div class="form-element">
                 <button type="submit">Submit</button>
             </div>

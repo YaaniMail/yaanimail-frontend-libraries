@@ -11,39 +11,40 @@
             <!-- Name Surname Fields -->
             <div class="d-flex form-group">
                 <div class="pr-2 flex-fill">
-                    <ngym-input-text formControlName="firstname" [robotClass]="'robot_contactCreate_firstname'"
-                        [placeholder]="config.namePlaceholder" [autoComplete]="'off'">
-                    </ngym-input-text>
+                    <input formControlName="firstname" placeholder="{{ config.namePlaceholder }}" autocomplete="off"
+                        class="form-control form-control-bottom-border robot_contactCreate_firstname" />
                 </div>
                 <div class="pl-2 flex-fill">
-                    <ngym-input-text formControlName="lastname" [robotClass]="'robot_contactCreate_lastname'"
-                        [placeholder]="config.surnamePlaceholder" [autoComplete]="'off'">
-                    </ngym-input-text>
+                    <input formControlName="lastname" placeholder="{{ config.surnamePlaceholder }}" autocomplete="off"
+                        class="form-control form-control-bottom-border robot_contactCreate_lastname" />
                 </div>
             </div>
             <!-- Company & Display Name Fields -->
             <div class="d-flex form-group">
                 <div class="pr-2 flex-fill">
-                    <ngym-input-text formControlName="company" [robotClass]="'robot_contactCreate_company'"
-                        [placeholder]="config.companyPlaceholder" [autoComplete]="'off'">
-                    </ngym-input-text>
+                    <input formControlName="company" placeholder="{{ config.companyPlaceholder }}" autocomplete="off"
+                        class="form-control form-control-bottom-border robot_contactCreate_company" />
                 </div>
                 <div class="pl-2 flex-fill">
-                    <ngym-input-text formControlName="jobtitle" [robotClass]="'robot_contactCreate_jobtitle'"
-                        [placeholder]="config.jobtitlePlaceholder" [autoComplete]="'off'">
-                    </ngym-input-text>
+                    <input formControlName="jobtitle" placeholder="{{ config.jobtitlePlaceholder }}" autocomplete="off"
+                        class="form-control form-control-bottom-border robot_contactCreate_jobtitle" />
                 </div>
             </div>
             <!-- Email Fields -->
             <div class="form-group">
                 <div class="mb-2" formArrayName="email" *ngFor="let e of emailsArray.controls; let i = index;">
-                    <ngym-input-group-button formControlName="{{i}}"
-                        [faClass]="'fa-regular fa-circle-minus fa-red fa-normal'"
-                        [faRobotClass]="'robot_contactCreate_deleteEmail{{i}}'" [placeholder]="config.emailPlaceholder"
-                        [isInvalid]="!isValidEmail(emailsArray.controls[i].value) && emailsArray.controls[i].value"
-                        (onClickEmitter)="deleteEmail(i)"
-                        [isRemoveButtonVisible]="i === emailsArray.controls.length - 1 ? false : true">
-                    </ngym-input-group-button>
+                    <div class="input-group">
+                        <input type="text" formControlName="{{i}}" class="form-control form-control-bottom-border"
+                            placeholder="{{ config.emailPlaceholder }}"
+                            [ngClass]="{ 'error': !isValidEmail(emailsArray.controls[i].value) && emailsArray.controls[i].value }">
+                        <div class="input-group-append" *ngIf="i === emailsArray.controls.length - 1 ? false : true">
+                            <span class="input-group-btn">
+                                <a class="robot_contactCreate_deleteEmail{{i}}" (click)="deleteEmail(i)">
+                                    <i class="fa-regular fa-circle-minus fa-red fa-normal"></i>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
                 </div>
                 <div
                     *ngIf="isValidEmail(emailsArray.controls[emailsArray.controls.length - 1].value) && emailsArray.controls[emailsArray.controls.length - 1].value !== null">
@@ -61,7 +62,7 @@
                         <div [formGroupName]="i">
                             <div class="d-flex mb-2">
                                 <div class="phone-type">
-                                    <select class="ngym-select form-control" formControlName="type">
+                                    <select class="form-control form-control-select" formControlName="type">
                                         <option class="robot_phone_numberOption{{ i }}"
                                             *ngFor="let option of config.phoneTypeArray; let i = index"
                                             [selected]="option.value === selectedValue" [value]="option.value">
@@ -70,11 +71,19 @@
                                     </select>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <ngym-input-group-button formControlName="data" [customInputClass]="'form-control'"
-                                        [faClass]="'fa-regular fa-circle-minus fa-red fa-normal'"
-                                        [faRobotClass]="'robot_contactCreate_deleteEmail'"
-                                        [placeholder]="config.phonePlaceholder" (onClickEmitter)="deletePhoneNumber(i)">
-                                    </ngym-input-group-button>
+                                    <div class="input-group">
+                                        <input type="text" formControlName="data"
+                                            class="form-control form-control-bottom-border"
+                                            placeholder="{{ config.phonePlaceholder }}">
+                                        <div class="input-group-append">
+                                            <span class="input-group-btn">
+                                                <a class="robot_contactCreate_deletePhone{{i}}"
+                                                    (click)="deletePhoneNumber(i)">
+                                                    <i class="fa-regular fa-circle-minus fa-red fa-normal"></i>
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -93,41 +102,49 @@
                     <div *ngFor="let a of addressesArray.controls; let i=index">
                         <div class="d-flex mb-2" [formGroupName]="i">
                             <div class="address-item">
-                                <select class="ngym-select form-control" formControlName="type">
+                                <select class="form-control form-control-select" formControlName="type">
                                     <option class="robot_phone_numberOption{{ i }}"
                                         *ngFor="let option of config.addressTypeArray; let i = index"
                                         [selected]="option.value === selectedValue" [value]="option.value">
                                         {{ option.name }}
                                     </option>
                                 </select>
-
                             </div>
                             <ng-container formGroupName="address">
                                 <div class="address-item">
-                                    <ngym-input-text formControlName="country" [customClass]="'form-control'"
-                                        [placeholder]="config.countryPlaceholder">
-                                    </ngym-input-text>
+                                    <input formControlName="country"
+                                        class="form-control form-control-bottom-border robot_contactCreate_country"
+                                        placeholder="{{ config.countryPlaceholder }}" />
                                 </div>
                                 <div class="address-item">
-                                    <ngym-input-text formControlName="city" [customClass]="'form-control'"
-                                        [placeholder]="config.cityPlaceholder">
-                                    </ngym-input-text>
+                                    <input formControlName="city"
+                                        class="form-control form-control-bottom-border robot_contactCreate_city"
+                                        placeholder="{{ config.cityPlaceholder }}" />
                                 </div>
                                 <div class="address-item">
-                                    <ngym-input-text formControlName="postalcode" [customClass]="'form-control'"
-                                        [placeholder]="config.postalCodePlaceholder"></ngym-input-text>
+                                    <input formControlName="postalcode"
+                                        class="form-control form-control-bottom-border robot_contactCreate_postalcode"
+                                        placeholder="{{ config.postalCodePlaceholder }}" />
                                 </div>
                                 <div class="address-item">
-                                    <ngym-input-text formControlName="state" [customClass]="'form-control'"
-                                        [placeholder]="config.statePlaceholder">
-                                    </ngym-input-text>
+                                    <input formControlName="state"
+                                        class="form-control form-control-bottom-border robot_contactCreate_state"
+                                        placeholder="{{ config.statePlaceholder }}" />
                                 </div>
                                 <div class="address-item p-0">
-                                    <ngym-input-group-button formControlName="street"
-                                        [faClass]="'fa-regular fa-circle-minus fa-red fa-normal'"
-                                        [faRobotClass]="'robot_contactCreate_deleteEmail'"
-                                        [placeholder]="config.streetPlaceholder" (onClickEmitter)="deleteAddress(i)">
-                                    </ngym-input-group-button>
+                                    <div class="input-group">
+                                        <input type="text" formControlName="street"
+                                            class="form-control form-control-bottom-border"
+                                            placeholder="{{ config.streetPlaceholder }}">
+                                        <div class="input-group-append">
+                                            <span class="input-group-btn">
+                                                <a class="robot_contactCreate_deleteAddress{{i}}"
+                                                    (click)="deleteAddress(i)">
+                                                    <i class="fa-regular fa-circle-minus fa-red fa-normal"></i>
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </ng-container>
                         </div>
@@ -143,11 +160,17 @@
             <!-- Notes Fields -->
             <div class="form-group">
                 <ng-container *ngIf="showNotes; else addNotesButton">
-                    <ngym-input-group-button formControlName="notes"
-                        [faClass]="'fa-regular fa-circle-minus fa-red fa-normal'"
-                        [faRobotClass]="'robot_contactCreate_deleteNote'" [placeholder]="config.notePlaceholder"
-                        (onClickEmitter)="showNotes = false">
-                    </ngym-input-group-button>
+                    <div class="input-group">
+                        <input type="text" formControlName="notes" class="form-control form-control-bottom-border"
+                            placeholder="{{ config.notePlaceholder }}">
+                        <div class="input-group-append">
+                            <span class="input-group-btn">
+                                <a class="robot_contactCreate_deleteNote" (click)="showNotes = false">
+                                    <i class="fa-regular fa-circle-minus fa-red fa-normal"></i>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
                 </ng-container>
                 <ng-template #addNotesButton>
                     <div>
