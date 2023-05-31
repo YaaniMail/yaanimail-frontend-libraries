@@ -113,12 +113,13 @@ export class EditContactComponent {
     this.assignFullname();
     this.contactService.updateContact(this.config.apiUrl, this.form.value, this.config.headers).subscribe(
       data => {
-        let contactData = { id: '', firstname: '', lastname: '', fullname: '', email: [] };
+        let contactData = { id: '', firstname: '', lastname: '', fullname: '', email: [], notes: '' };
         contactData.id = data.id;
         contactData.firstname = this.form.value.firstname;
         contactData.lastname = this.form.value.lastname;
         contactData.fullname = this.form.value.fullname;
         contactData.email = this.form.value.email;
+        contactData.notes = this.form.value.notes;
         this.onUpdateEmitter.emit(contactData);
       },
       error => {
@@ -176,23 +177,21 @@ export class EditContactComponent {
   }
 
   controlNoteInput(): void {
-    if (this.contactData.notes.length === 0) {
-      this.showNotes = false;
-    } else {
-      this.showNotes = true;
-    }
+    this.showNotes = this.contactData.notes.length !== 0;
   }
 
-  isValidEmail(email: string) {
+  isValidEmail(email: string): boolean {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const valid = re.test(String(email).toLowerCase());
-    if (!valid) {
-      return false;
-    }
-    return true;
+    return re.test(String(email).toLowerCase());
+
   }
 
   onCancel(): void {
     this.onCancelEmitter.emit();
+  }
+
+  clearNotes(): void {
+    this.showNotes = false;
+    this.form.patchValue({notes:''});
   }
 }
