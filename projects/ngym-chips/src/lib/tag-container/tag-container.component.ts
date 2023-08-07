@@ -57,6 +57,10 @@ export class TagContainerComponent extends TagsAccessor {
     super();
   }
 
+  override setDisabledState(isDisabled: boolean) {
+    this.isDisabled = isDisabled;
+  }
+
   /**
    * Add a new tag to container. Showing every tag on screen by ngFor.
    */
