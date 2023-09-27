@@ -37,6 +37,6 @@ export class InputTypeTextAccessor implements ControlValueAccessor {
     }
 
     setDisabledState?(isDisabled: boolean): void {
-        throw new Error("Method not implemented.");
+        // throw new Error("Method not implemented.");
     }
 }
