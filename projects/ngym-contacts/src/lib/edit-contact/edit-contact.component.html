@@ -48,8 +48,8 @@
                 </div>
                 <div
                     *ngIf="isValidEmail(emailsArray.controls[emailsArray.controls.length - 1]?.value) && emailsArray.controls[emailsArray.controls.length - 1]?.value !== null">
-                    <a type="button" class="anchor-primary robot_contactCreate_addEmail" (click)="addEmail()">
-                        <i class="fa-regular fa-plus fa-primary fa-normal"></i>
+                    <a type="button" class="text-primary-anchor robot_contactCreate_addEmail" (click)="addEmail()">
+                        <i class="fa-regular fa-plus fa-primary-anchor fa-normal"></i>
                         <span class="pl-2">{{ config.addEmailButtonText }}</span>
                         <!-- TODO: Max eklenecek email sayısı olmalı -->
                     </a>
@@ -90,8 +90,8 @@
                     </div>
                 </div>
                 <div>
-                    <a class="anchor-primary robot_contactCreate_addPhone" (click)="addPhoneNumber()">
-                        <i class="fa-regular fa-plus fa-primary fa-normal"></i>
+                    <a class="text-primary-anchor robot_contactCreate_addPhone" (click)="addPhoneNumber()">
+                        <i class="fa-regular fa-plus fa-primary-anchor fa-normal"></i>
                         <span class="pl-2">{{ config.addPhoneButtonText }}</span>
                     </a>
                 </div>
@@ -151,8 +151,8 @@
                     </div>
                 </div>
                 <div>
-                    <a class="anchor-primary robot_contactCreate_addPhone" (click)="addAddress()">
-                        <i class="fa-regular fa-plus fa-primary fa-normal"></i>
+                    <a class="text-primary-anchor robot_contactCreate_addPhone" (click)="addAddress()">
+                        <i class="fa-regular fa-plus fa-primary-anchor fa-normal"></i>
                         <span class="pl-2">{{ config.addAddressButtonText }}</span>
                     </a>
                 </div>
@@ -174,8 +174,8 @@
                 </ng-container>
                 <ng-template #addNotesButton>
                     <div>
-                        <a class="anchor-primary robot_contactCreate_addNote" (click)="showNotes = true">
-                            <i class="fa-regular fa-plus fa-primary fa-normal"></i>
+                        <a class="text-primary-anchor robot_contactCreate_addNote" (click)="showNotes = true">
+                            <i class="fa-regular fa-plus fa-primary-anchor fa-normal"></i>
                             <span class="pl-2">{{ config.addNoteButtonText }}</span>
                         </a>
                     </div>
