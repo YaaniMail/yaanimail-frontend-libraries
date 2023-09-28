@@ -1,6 +1,6 @@
 {
   "name": "ngym-contacts",
-  "version": "0.0.94",
+  "version": "0.0.95",
   "description": "class names are changed",
   "peerDependencies": {
     "@angular/common": "^13.3.0",
