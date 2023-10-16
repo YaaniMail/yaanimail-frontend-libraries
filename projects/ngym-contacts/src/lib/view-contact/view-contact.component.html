@@ -12,9 +12,9 @@
                 <div class="b2-r text-secondary-light content-overflow robot_contactView_jobTitle">{{ contact.company }}
                 </div>
                 <div class="s1-r text-primary mt-2" *ngIf="contact.email?.length > 0">
-                    <a (click)="onCompose(contact.email)">
-                        <i class="fa-regular fa-envelope fa-primary fa-normal"></i>
-                        <span> {{ config.sendEmailText }} </span>
+                    <a class="text-primary-anchor" (click)="onCompose(contact.email)">
+                        <i class="fa-regular fa-envelope fa-primary-anchor fa-normal"></i>
+                        {{ config.sendEmailText }}
                     </a>
                 </div>
             </div>

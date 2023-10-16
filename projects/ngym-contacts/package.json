@@ -1,12 +1,12 @@
 {
   "name": "ngym-contacts",
-  "version": "0.0.95",
+  "version": "0.0.97",
   "description": "class names are changed",
   "peerDependencies": {
     "@angular/common": "^13.3.0",
     "@angular/core": "^13.3.0",
     "bootstrap": "5.2.2",
-    "ngym-input": "^0.0.72"
+    "ngym-input": "^0.0.74"
   },
   "dependencies": {
     "libphonenumber-js": "^1.10.30",
