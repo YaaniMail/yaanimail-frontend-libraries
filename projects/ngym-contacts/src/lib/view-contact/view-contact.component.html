@@ -9,7 +9,7 @@
                     contact.lastname }}</div>
                 <div class="b2-r text-secondary content-overflow robot_contactView_jobTitle">{{ contact.jobtitle }}
                 </div>
-                <div class="b2-r text-secondary-light content-overflow robot_contactView_jobTitle">{{ contact.company }}
+                <div class="b2-r text-secondary content-overflow robot_contactView_jobTitle">{{ contact.company }}
                 </div>
                 <div class="s1-r text-primary mt-2" *ngIf="contact.email?.length > 0">
                     <a class="text-primary-anchor" (click)="onCompose(contact.email)">
