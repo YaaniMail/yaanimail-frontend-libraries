@@ -70,12 +70,13 @@ export class CreateContactComponent implements OnInit {
     this.form.value.tag_names = this.tags;
     this.contactService.createContact(this.config.apiUrl, this.form.value, this.config.headers).subscribe(
       data => {
-        let contact = { id: '', firstname: '', lastname: '', fullname: '', email: [] };
+        let contact = { id: '', firstname: '', lastname: '', fullname: '', email: [], tag_names: [] };
         contact.id = data.id;
         contact.firstname = this.form.value.firstname;
         contact.lastname = this.form.value.lastname;
         contact.fullname = this.form.value.fullname;
         contact.email = this.form.value.email;
+        contact.tag_names = this.form.value.tag_names;
         this.onAddEmitter.emit(contact);
       },
       error => {

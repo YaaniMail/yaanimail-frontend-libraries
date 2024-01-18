@@ -1,7 +1,7 @@
 {
   "name": "ngym-contacts",
-  "version": "0.0.97",
-  "description": "class names are changed",
+  "version": "0.0.99",
+  "description": "fix on add return element",
   "peerDependencies": {
     "@angular/common": "^13.3.0",
     "@angular/core": "^13.3.0",
