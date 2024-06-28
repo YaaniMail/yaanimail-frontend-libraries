@@ -220,37 +220,6 @@
         }
       }
     },
-    "ngym-create-contact": {
-      "projectType": "library",
-      "root": "projects/ngym-create-contact",
-      "sourceRoot": "projects/ngym-create-contact/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/ngym-create-contact/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/ngym-create-contact/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/ngym-create-contact/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/ngym-create-contact/src/test.ts",
-            "tsConfig": "projects/ngym-create-contact/tsconfig.spec.json",
-            "karmaConfig": "projects/ngym-create-contact/karma.conf.js"
-          }
-        }
-      }
-    },
     "ngym-contacts": {
       "projectType": "library",
       "root": "projects/ngym-contacts",
@@ -278,37 +247,6 @@
             "main": "projects/ngym-contacts/src/test.ts",
             "tsConfig": "projects/ngym-contacts/tsconfig.spec.json",
             "karmaConfig": "projects/ngym-contacts/karma.conf.js"
-          }
-        }
-      }
-    },
-    "profile-photo": {
-      "projectType": "library",
-      "root": "projects/profile-photo",
-      "sourceRoot": "projects/profile-photo/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/profile-photo/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/profile-photo/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/profile-photo/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/profile-photo/src/test.ts",
-            "tsConfig": "projects/profile-photo/tsconfig.spec.json",
-            "karmaConfig": "projects/profile-photo/karma.conf.js"
           }
         }
       }
@@ -406,6 +344,5 @@
         }
       }
     }
-  },
-  "defaultProject": "yaanimail-frontend-libraries"
+  }
 }

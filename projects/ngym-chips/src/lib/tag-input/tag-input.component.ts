@@ -12,7 +12,7 @@ import {
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { AutoComplete } from '../model/autoComplete';
 import { Tag } from '../model/tag';
 import { TagInputAutocompleteComponent } from '../tag-input-autocomplete/tag-input-autocomplete.component';
@@ -27,7 +27,7 @@ export class TagInputComponent implements OnInit, OnChanges, OnDestroy {
   autoCompleteTags!: string[];
   id: number = 0;
   autoCompleteVisible: boolean = false;
-  form!: FormGroup;
+  form!: UntypedFormGroup;
   @Input() placeholder!: string;
   @Input() splitChars!: string[];
   @Input() autoCompleteItems!: AutoComplete[];
@@ -53,7 +53,7 @@ export class TagInputComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: UntypedFormBuilder) { }
 
   ngOnInit(): void {
     this.createForm();
