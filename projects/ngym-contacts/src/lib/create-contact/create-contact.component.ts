@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { CreateContactConfig } from '../model/config';
 import { ContactService } from '../service/contact.service';
 
@@ -12,7 +12,7 @@ export class CreateContactComponent implements OnInit {
   emails: string[] = [];
   tags: string[] = [];
   showNotes: boolean = false;
-  form!: FormGroup;
+  form!: UntypedFormGroup;
   @Input() config!: CreateContactConfig;
   @Output() onAddEmitter = new EventEmitter<any>();
   @Output() onCancelEmitter = new EventEmitter();
@@ -21,7 +21,7 @@ export class CreateContactComponent implements OnInit {
   // TODO: DElete socket event
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private contactService: ContactService
   ) { }
 
@@ -46,16 +46,16 @@ export class CreateContactComponent implements OnInit {
   }
 
   // Getters
-  get emailsArray(): FormArray {
-    return this.form.get('email') as FormArray;
+  get emailsArray(): UntypedFormArray {
+    return this.form.get('email') as UntypedFormArray;
   }
 
-  get addressesArray(): FormArray {
-    return this.form.get('addresses') as FormArray;
+  get addressesArray(): UntypedFormArray {
+    return this.form.get('addresses') as UntypedFormArray;
   }
 
-  get phonesArray(): FormArray {
-    return this.form.get('phone') as FormArray;
+  get phonesArray(): UntypedFormArray {
+    return this.form.get('phone') as UntypedFormArray;
   }
 
   addEmail(value?: string): void {

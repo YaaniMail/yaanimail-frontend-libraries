@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { CreateContactConfig } from '../model/config';
 import { ContactService } from '../service/contact.service';
 import { Contact } from '../model/contact';
@@ -12,21 +12,21 @@ import { Contact } from '../model/contact';
 export class EditContactComponent {
   emails: string[] = [];
   showNotes: boolean = false;
-  form: FormGroup = new FormGroup({
-    firstname:  new FormControl(null , [Validators.required]),
-    lastname: new FormControl(),
-    fullname: new FormControl(),
-    company: new FormControl(),
-    jobtitle: new FormControl(),
+  form: UntypedFormGroup = new UntypedFormGroup({
+    firstname: new UntypedFormControl(null, [Validators.required]),
+    lastname: new UntypedFormControl(),
+    fullname: new UntypedFormControl(),
+    company: new UntypedFormControl(),
+    jobtitle: new UntypedFormControl(),
     email: this.fb.array([]),
     phone: this.fb.array([]),
     addresses: this.fb.array([]),
-    notes: new FormControl()
+    notes: new UntypedFormControl()
   });
   contactData!: Contact;
 
-  @Input() set contact(data:Contact) {
-    if (data){
+  @Input() set contact(data: Contact) {
+    if (data) {
       this.contactData = data;
       this.updateForm(data);
       this.appendEmails();
@@ -42,11 +42,11 @@ export class EditContactComponent {
   @Output() onUpdateErrorEmitter = new EventEmitter<string>();
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private contactService: ContactService
   ) { }
 
-  updateForm(contact:Contact): void {
+  updateForm(contact: Contact): void {
     this.form.patchValue({
       firstname: contact.firstname,
       lastname: contact.lastname,
@@ -61,16 +61,16 @@ export class EditContactComponent {
   }
 
   // Getters
-  get emailsArray(): FormArray {
-    return this.form.get('email') as FormArray;
+  get emailsArray(): UntypedFormArray {
+    return this.form.get('email') as UntypedFormArray;
   }
 
-  get addressesArray(): FormArray {
-    return this.form.get('addresses') as FormArray;
+  get addressesArray(): UntypedFormArray {
+    return this.form.get('addresses') as UntypedFormArray;
   }
 
-  get phonesArray(): FormArray {
-    return this.form.get('phone') as FormArray;
+  get phonesArray(): UntypedFormArray {
+    return this.form.get('phone') as UntypedFormArray;
   }
 
   appendEmails(): void {
@@ -192,6 +192,6 @@ export class EditContactComponent {
 
   clearNotes(): void {
     this.showNotes = false;
-    this.form.patchValue({notes:''});
+    this.form.patchValue({ notes: '' });
   }
 }

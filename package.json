@@ -21,7 +21,7 @@
     "bootstrap": "^4.4.1",
     "ngx-bootstrap": "^8.0.0",
     "ngym-contacts": "^0.0.75",
-    "ngym-count-info": "0.0.1",
+    "ngym-count-info": "0.0.2",
     "ngym-dropdown": "0.0.10",
     "ngym-input": "^0.0.67",
     "ngym-prelogin-header": "^0.0.23",

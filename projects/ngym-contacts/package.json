@@ -1,12 +1,12 @@
 {
   "name": "ngym-contacts",
-  "version": "0.0.99",
+  "version": "0.0.100",
   "description": "fix on add return element",
   "peerDependencies": {
-    "@angular/common": "^13.3.0",
-    "@angular/core": "^13.3.0",
+    "@angular/common": "^14.3.0",
+    "@angular/core": "^14.3.0",
     "bootstrap": "5.2.2",
-    "ngym-input": "^0.0.74"
+    "ngym-input": "^0.0.75"
   },
   "dependencies": {
     "libphonenumber-js": "^1.10.30",
