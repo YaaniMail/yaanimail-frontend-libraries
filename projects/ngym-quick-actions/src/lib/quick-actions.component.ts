@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { ViewDropDownQuickAction } from './model/view-dropdown-quick-action';
 import { ViewIconQuickAction } from './model/view-icon-quick-action';
 import { DropDownItem } from 'ngym-dropdown';
@@ -8,7 +8,7 @@ import { DropDownItem } from 'ngym-dropdown';
   templateUrl: './quick-actions.component.html',
   styleUrls: ['./quick-actions.component.scss']
 })
-export class QuickActionsComponent implements OnInit {
+export class QuickActionsComponent implements OnChanges {
   iconActions: (ViewIconQuickAction | ViewDropDownQuickAction)[] = [];
   dropDownActions: (ViewIconQuickAction | ViewDropDownQuickAction)[] = [];
   dropDownItems: DropDownItem[] = [];
@@ -28,7 +28,11 @@ export class QuickActionsComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges): void {
+    this.prepareActions();
+  }
+
+  prepareActions(): void {
     this.iconActions = this.actions.filter(action => action instanceof ViewIconQuickAction);
     this.dropDownActions = this.actions.filter(action => action instanceof ViewDropDownQuickAction);
     this.prepareDropdownActions();
