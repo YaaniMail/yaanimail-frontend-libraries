@@ -13,6 +13,7 @@ export class CreateContactComponent implements OnInit {
   tags: string[] = [];
   showNotes: boolean = false;
   form!: UntypedFormGroup;
+  emailPattern: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   @Input() config!: CreateContactConfig;
   @Output() onAddEmitter = new EventEmitter<any>();
   @Output() onCancelEmitter = new EventEmitter();
@@ -61,7 +62,7 @@ export class CreateContactComponent implements OnInit {
   addEmail(value?: string): void {
     const emails = this.emailsArray;
     if (!emails.value.includes(value)) {
-      emails.push(this.fb.control(value));
+      emails.push(this.fb.control(value, Validators.pattern(this.emailPattern)));
     }
   }
 
@@ -125,12 +126,10 @@ export class CreateContactComponent implements OnInit {
     this.tags = tags;
   }
 
-  controlNoteInput(note: string): void {
-    if (note.length === 0) {
-      this.showNotes = false;
-    } else {
-      this.showNotes = true;
-    }
+  deleteNote(): void {
+    this.form.patchValue({
+      notes: ''
+    });
   }
 
   isValidEmail(email: string) {

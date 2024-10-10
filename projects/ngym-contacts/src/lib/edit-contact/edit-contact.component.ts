@@ -12,6 +12,7 @@ import { Contact } from '../model/contact';
 export class EditContactComponent {
   emails: string[] = [];
   showNotes: boolean = false;
+  emailPattern: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   form: UntypedFormGroup = new UntypedFormGroup({
     firstname: new UntypedFormControl(null, [Validators.required]),
     lastname: new UntypedFormControl(),
@@ -76,7 +77,7 @@ export class EditContactComponent {
   appendEmails(): void {
     for (let i = 0; i < this.contactData.email.length; i++) {
       this.emails.push();
-      this.emailsArray.push(this.fb.control(this.contactData.email[i]));
+      this.emailsArray.push(this.fb.control(this.contactData.email[i], Validators.pattern(this.emailPattern)));
     }
 
     // If there is no email, append one by default
