@@ -34,7 +34,8 @@
             <div class="form-group">
                 <div class="mb-2" formArrayName="email" *ngFor="let e of emailsArray.controls; let i = index;">
                     <div class="input-group">
-                        <input type="text" formControlName="{{i}}" class="form-control form-control-bottom-border"
+                        <input type="text" formControlName="{{i}}"
+                            class="form-control form-control-bottom-border robot_contactCreate_email{{i}}"
                             placeholder="{{ config.emailPlaceholder }}"
                             [ngClass]="{ 'error': !isValidEmail(emailsArray.controls[i].value) && emailsArray.controls[i].value }">
                         <div class="input-group-append" *ngIf="i === emailsArray.controls.length - 1 ? false : true">
@@ -63,7 +64,7 @@
                             <div class="d-flex mb-2">
                                 <div class="phone-type">
                                     <select class="form-control form-control-select" formControlName="type">
-                                        <option class="robot_phone_numberOption{{ i }}"
+                                        <option class="robot_phone_number_typeOption{{ i }}"
                                             *ngFor="let option of config.phoneTypeArray; let i = index"
                                             [selected]="option.value === selectedValue" [value]="option.value">
                                             {{ option.name }}
@@ -73,7 +74,7 @@
                                 <div class="flex-grow-1">
                                     <div class="input-group">
                                         <input type="text" formControlName="data"
-                                            class="form-control form-control-bottom-border"
+                                            class="form-control form-control-bottom-border robot_phone_number{{i}}"
                                             placeholder="{{ config.phonePlaceholder }}">
                                         <div class="input-group-append">
                                             <span class="input-group-btn">
@@ -103,7 +104,7 @@
                         <div class="d-flex mb-2" [formGroupName]="i">
                             <div class="address-item">
                                 <select class="form-control form-control-select" formControlName="type">
-                                    <option class="robot_phone_numberOption{{ i }}"
+                                    <option class="robot_adress_typeOption{{ i }}"
                                         *ngFor="let option of config.addressTypeArray; let i = index"
                                         [selected]="option.value === selectedValue" [value]="option.value">
                                         {{ option.name }}
@@ -134,7 +135,7 @@
                                 <div class="address-item p-0">
                                     <div class="input-group">
                                         <input type="text" formControlName="street"
-                                            class="form-control form-control-bottom-border"
+                                            class="form-control form-control-bottom-border robot_contactCreate_street"
                                             placeholder="{{ config.streetPlaceholder }}">
                                         <div class="input-group-append">
                                             <span class="input-group-btn">
@@ -151,7 +152,7 @@
                     </div>
                 </div>
                 <div>
-                    <a class="text-primary-anchor robot_contactCreate_addPhone" (click)="addAddress()">
+                    <a class="text-primary-anchor robot_contactCreate_addAddress" (click)="addAddress()">
                         <i class="fa-regular fa-plus fa-primary-anchor fa-normal"></i>
                         <span class="pl-2">{{ config.addAddressButtonText }}</span>
                     </a>

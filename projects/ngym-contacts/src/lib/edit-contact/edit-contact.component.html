@@ -12,34 +12,35 @@
             <div class="d-flex form-group">
                 <div class="pr-2 flex-fill">
                     <input formControlName="firstname" placeholder="{{ config.namePlaceholder }}" autocomplete="off"
-                        class="form-control form-control-bottom-border robot_contactCreate_firstname" />
+                        class="form-control form-control-bottom-border robot_contactEdit_firstname" />
                 </div>
                 <div class="pl-2 flex-fill">
                     <input formControlName="lastname" placeholder="{{ config.surnamePlaceholder }}" autocomplete="off"
-                        class="form-control form-control-bottom-border robot_contactCreate_lastname" />
+                        class="form-control form-control-bottom-border robot_contactEdit_lastname" />
                 </div>
             </div>
             <!-- Company & Display Name Fields -->
             <div class="d-flex form-group">
                 <div class="pr-2 flex-fill">
                     <input formControlName="company" placeholder="{{ config.companyPlaceholder }}" autocomplete="off"
-                        class="form-control form-control-bottom-border robot_contactCreate_company" />
+                        class="form-control form-control-bottom-border robot_contactEdit_company" />
                 </div>
                 <div class="pl-2 flex-fill">
                     <input formControlName="jobtitle" placeholder="{{ config.jobtitlePlaceholder }}" autocomplete="off"
-                        class="form-control form-control-bottom-border robot_contactCreate_jobtitle" />
+                        class="form-control form-control-bottom-border robot_contactEdit_jobtitle" />
                 </div>
             </div>
             <!-- Email Fields -->
             <div class="form-group">
                 <div class="mb-2" formArrayName="email" *ngFor="let e of emailsArray.controls; let i = index;">
                     <div class="input-group">
-                        <input type="text" formControlName="{{i}}" class="form-control form-control-bottom-border"
+                        <input type="text" formControlName="{{i}}"
+                            class="form-control form-control-bottom-border robot_contactEdit_email{{i}}"
                             placeholder="{{ config.emailPlaceholder }}"
                             [ngClass]="{ 'error': !isValidEmail(emailsArray.controls[i].value) && emailsArray.controls[i].value }">
                         <div class="input-group-append" *ngIf="i === emailsArray.controls.length - 1 ? false : true">
                             <span class="input-group-btn">
-                                <a class="robot_contactCreate_deleteEmail{{i}}" (click)="deleteEmail(i)">
+                                <a class="robot_contactEdit_deleteEmail{{i}}" (click)="deleteEmail(i)">
                                     <i class="fa-regular fa-circle-minus fa-red fa-normal"></i>
                                 </a>
                             </span>
@@ -48,7 +49,7 @@
                 </div>
                 <div
                     *ngIf="isValidEmail(emailsArray.controls[emailsArray.controls.length - 1]?.value) && emailsArray.controls[emailsArray.controls.length - 1]?.value !== null">
-                    <a type="button" class="text-primary-anchor robot_contactCreate_addEmail" (click)="addEmail()">
+                    <a type="button" class="text-primary-anchor robot_contactEdit_addEmail" (click)="addEmail()">
                         <i class="fa-regular fa-plus fa-primary-anchor fa-normal"></i>
                         <span class="pl-2">{{ config.addEmailButtonText }}</span>
                         <!-- TODO: Max eklenecek email sayısı olmalı -->
@@ -73,11 +74,11 @@
                                 <div class="flex-grow-1">
                                     <div class="input-group">
                                         <input type="text" formControlName="data"
-                                            class="form-control form-control-bottom-border"
+                                            class="form-control form-control-bottom-border robot_contactEdit_phone{{i}}"
                                             placeholder="{{ config.phonePlaceholder }}">
                                         <div class="input-group-append">
                                             <span class="input-group-btn">
-                                                <a class="robot_contactCreate_deletePhone{{i}}"
+                                                <a class="robot_contactEdit_deletePhone{{i}}"
                                                     (click)="deletePhoneNumber(i)">
                                                     <i class="fa-regular fa-circle-minus fa-red fa-normal"></i>
                                                 </a>
@@ -90,7 +91,7 @@
                     </div>
                 </div>
                 <div>
-                    <a class="text-primary-anchor robot_contactCreate_addPhone" (click)="addPhoneNumber()">
+                    <a class="text-primary-anchor robot_contactEdit_addPhone" (click)="addPhoneNumber()">
                         <i class="fa-regular fa-plus fa-primary-anchor fa-normal"></i>
                         <span class="pl-2">{{ config.addPhoneButtonText }}</span>
                     </a>
@@ -103,7 +104,7 @@
                         <div class="d-flex mb-2" [formGroupName]="i">
                             <div class="address-item">
                                 <select class="form-control form-control-select" formControlName="type">
-                                    <option class="robot_phone_numberOption{{ i }}"
+                                    <option class="robot_address_typeOption{{ i }}"
                                         *ngFor="let option of config.addressTypeArray; let i = index"
                                         [selected]="option.value === selectedValue" [value]="option.value">
                                         {{ option.name }}
@@ -113,32 +114,32 @@
                             <ng-container formGroupName="address">
                                 <div class="address-item">
                                     <input formControlName="country"
-                                        class="form-control form-control-bottom-border robot_contactCreate_country"
+                                        class="form-control form-control-bottom-border robot_contactEdit_country"
                                         placeholder="{{ config.countryPlaceholder }}" />
                                 </div>
                                 <div class="address-item">
                                     <input formControlName="city"
-                                        class="form-control form-control-bottom-border robot_contactCreate_city"
+                                        class="form-control form-control-bottom-border robot_contactEdit_city"
                                         placeholder="{{ config.cityPlaceholder }}" />
                                 </div>
                                 <div class="address-item">
                                     <input formControlName="postalcode"
-                                        class="form-control form-control-bottom-border robot_contactCreate_postalcode"
+                                        class="form-control form-control-bottom-border robot_contactEdit_postalcode"
                                         placeholder="{{ config.postalCodePlaceholder }}" />
                                 </div>
                                 <div class="address-item">
                                     <input formControlName="state"
-                                        class="form-control form-control-bottom-border robot_contactCreate_state"
+                                        class="form-control form-control-bottom-border robot_contactEdit_state"
                                         placeholder="{{ config.statePlaceholder }}" />
                                 </div>
                                 <div class="address-item p-0">
                                     <div class="input-group">
                                         <input type="text" formControlName="street"
-                                            class="form-control form-control-bottom-border"
+                                            class="form-control form-control-bottom-border robot_contactEdit_street"
                                             placeholder="{{ config.streetPlaceholder }}">
                                         <div class="input-group-append">
                                             <span class="input-group-btn">
-                                                <a class="robot_contactCreate_deleteAddress{{i}}"
+                                                <a class="robot_contactEdit_deleteAddress{{i}}"
                                                     (click)="deleteAddress(i)">
                                                     <i class="fa-regular fa-circle-minus fa-red fa-normal"></i>
                                                 </a>
@@ -151,7 +152,7 @@
                     </div>
                 </div>
                 <div>
-                    <a class="text-primary-anchor robot_contactCreate_addPhone" (click)="addAddress()">
+                    <a class="text-primary-anchor robot_contactEdit_addAddress" (click)="addAddress()">
                         <i class="fa-regular fa-plus fa-primary-anchor fa-normal"></i>
                         <span class="pl-2">{{ config.addAddressButtonText }}</span>
                     </a>
@@ -165,7 +166,7 @@
                             placeholder="{{ config.notePlaceholder }}">
                         <div class="input-group-append">
                             <span class="input-group-btn">
-                                <a class="robot_contactCreate_deleteNote" (click)="clearNotes()">
+                                <a class="robot_contactEdit_deleteNote" (click)="clearNotes()">
                                     <i class="fa-regular fa-circle-minus fa-red fa-normal"></i>
                                 </a>
                             </span>
@@ -174,7 +175,7 @@
                 </ng-container>
                 <ng-template #addNotesButton>
                     <div>
-                        <a class="text-primary-anchor robot_contactCreate_addNote" (click)="showNotes = true">
+                        <a class="text-primary-anchor robot_contactEdit_addNote" (click)="showNotes = true">
                             <i class="fa-regular fa-plus fa-primary-anchor fa-normal"></i>
                             <span class="pl-2">{{ config.addNoteButtonText }}</span>
                         </a>
@@ -188,12 +189,12 @@
             <ng-template [ngTemplateOutlet]="alternativeAction"></ng-template>
         </div>
         <div>
-            <button type="button" (click)="onCancel()" class="btn btn-small btn-secondary robot_contactCreate_cancel">
+            <button type="button" (click)="onCancel()" class="btn btn-small btn-secondary robot_contactEdit_cancel">
                 {{ config.cancelButtonText }}
             </button>
         </div>
         <div class="p-1">
-            <button type="button" class="btn btn-small btn-primary robot_contactCreate_save" (click)="updateContact()"
+            <button type="button" class="btn btn-small btn-primary robot_contactEdit_save" (click)="updateContact()"
                 [disabled]="!form.valid">
                 {{ config.saveButtonText }}
             </button>
