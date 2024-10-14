@@ -136,7 +136,7 @@ export class EditContactComponent {
   addEmail(value?: string): void {
     const emails = this.emailsArray;
     if (!emails.value.includes(value)) {
-      emails.push(this.fb.control(value));
+      emails.push(this.fb.control(value, Validators.pattern(this.emailPattern)));
     }
   }
 

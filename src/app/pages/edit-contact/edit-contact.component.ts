@@ -51,7 +51,7 @@ export class EditContactComponent implements OnInit {
             "fullname": 'Arkada1 Soyad',
             "firstname": "Arkada\u015f1",
             "lastname": "Soyad\u0131",
-            "email": ["arkadas1@gmail.com", "arkadas2@gmail.com", "arkadas3@gmail.com", "arkadas4@gmail.com"],
+            "email": [],
             "addresses": [{ "type": "home", "data": { "city": "1", "country": "1", "postalcode": "1", "state": "1" } }, { "type": "other", "data": { "city": "3", "country": "3", "postalcode": "3", "state": "3", "street": "3" } }, { "type": "work", "data": { "city": "2", "country": "2", "postalcode": "2", "state": "2", "street": "2" } }],
             "phone": [{ "type": "home", "data": "2" }, { "type": "mobile", "data": "1" }, { "type": "other", "data": "444444" }, { "type": "work", "data": "333333" }], "notes": "not",
             "jobtitle": "\u00dcnvan\u0131", "company": "\u015eirketi",

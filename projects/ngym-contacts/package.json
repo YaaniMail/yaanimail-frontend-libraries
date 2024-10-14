@@ -1,7 +1,7 @@
 {
   "name": "ngym-contacts",
-  "version": "0.0.105",
-  "description": "fix on robot classes",
+  "version": "0.0.106",
+  "description": "fix on email validation on edit screen",
   "peerDependencies": {
     "@angular/common": "^14.3.0",
     "@angular/core": "^14.3.0",
