@@ -13,17 +13,7 @@ export class EditContactComponent {
   emails: string[] = [];
   showNotes: boolean = false;
   emailPattern: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-  form: UntypedFormGroup = new UntypedFormGroup({
-    firstname: new UntypedFormControl(null, [Validators.required]),
-    lastname: new UntypedFormControl(),
-    fullname: new UntypedFormControl(),
-    company: new UntypedFormControl(),
-    jobtitle: new UntypedFormControl(),
-    email: this.fb.array([]),
-    phone: this.fb.array([]),
-    addresses: this.fb.array([]),
-    notes: new UntypedFormControl()
-  });
+  form!: UntypedFormGroup;
   contactData!: Contact;
 
   @Input() set contact(data: Contact) {
@@ -48,16 +38,16 @@ export class EditContactComponent {
   ) { }
 
   updateForm(contact: Contact): void {
-    this.form.patchValue({
-      firstname: contact.firstname,
-      lastname: contact.lastname,
-      fullname: `${contact.firstname} ${contact.fullname}`,
-      company: contact.company,
-      jobtitle: contact.jobtitle,
-      email: [],
-      phone: [],
-      addresses: [],
-      notes: contact.notes
+    this.form = new UntypedFormGroup({
+      firstname: new UntypedFormControl(contact.firstname, [Validators.required]),
+      lastname: new UntypedFormControl(contact.lastname),
+      fullname: new UntypedFormControl(`${contact.firstname} ${contact.fullname}`),
+      company: new UntypedFormControl(contact.company),
+      jobtitle: new UntypedFormControl(contact.jobtitle),
+      email: this.fb.array([]),
+      phone: this.fb.array([]),
+      addresses: this.fb.array([]),
+      notes: new UntypedFormControl(contact.notes)
     });
   }
 

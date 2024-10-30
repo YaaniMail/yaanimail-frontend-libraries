@@ -1,11 +1,11 @@
 {
   "name": "ngym-input",
-  "version": "0.0.75",
+  "version": "0.0.76",
   "peerDependencies": {
-    "@angular/common": "^14.3.0",
-    "@angular/core": "^14.3.0"
+    "@angular/common": "^17.3.12",
+    "@angular/core": "^17.3.12"
   },
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.7.0"
   }
 }

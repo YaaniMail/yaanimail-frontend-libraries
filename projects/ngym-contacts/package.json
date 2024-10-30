@@ -1,16 +1,16 @@
 {
   "name": "ngym-contacts",
-  "version": "0.0.106",
+  "version": "0.0.109",
   "description": "fix on email validation on edit screen",
   "peerDependencies": {
-    "@angular/common": "^14.3.0",
-    "@angular/core": "^14.3.0",
+    "@angular/common": "^17.3.12",
+    "@angular/core": "^17.3.12",
     "bootstrap": "5.2.2",
-    "ngym-input": "^0.0.75"
+    "ngym-input": "^0.0.76"
   },
   "dependencies": {
     "libphonenumber-js": "^1.10.30",
     "ngx-mask": "13.1.15",
-    "tslib": "^2.3.0"
+    "tslib": "^2.7.0"
   }
 }
