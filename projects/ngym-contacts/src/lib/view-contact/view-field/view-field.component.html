@@ -1,40 +1,59 @@
 <div class="d-flex">
-    <div class="contact-view-label b2-r p-2 text-secondary" title="{{ title }}">{{ title }}</div>
-    <div class="p-2 flex-grow-1 b2-r text-break">
-
-        <div class="mb-1" *ngFor="let e of elements;">
-            <div *ngIf="type === 'array'">{{ e }}</div>
-            <div *ngIf="type === 'objectArray' && e.data !== ''">{{ e.data | phoneFormatter }}
-                <ng-container [ngSwitch]="e.type">
-                    <span class="text-secondary" *ngSwitchCase="'other'">&#183; {{ config.otherTypePlaceholder
-                        }}</span>
-                    <span class="text-secondary" *ngSwitchCase="'mobile'">&#183; {{ config.mobileTypePlaceholder
-                        }}</span>
-                    <span class="text-secondary" *ngSwitchCase="'home'">&#183; {{ config.homeTypePlaceholder
-                        }}</span>
-                    <span class="text-secondary" *ngSwitchCase="'work'">&#183; {{ config.workTypePlaceholder
-                        }}</span>
-                </ng-container>
-            </div>
-            <div
-                *ngIf="type === 'nestedObjectArray' && (e.data.street !== '' || e.data.country !== '' || e.data.city !== '' || e.data.postalcode !== '' || e.data.state !== '')">
-                {{ e.data.street }} {{ e.data.state }} {{
-                e.data.postalcode}} {{
-                e.data.city }} {{ e.data.country }}
-                <ng-container [ngSwitch]="e.type">
-                    <span class="text-secondary" *ngSwitchCase="'other'">&#183; {{ config.otherTypePlaceholder
-                        }}</span>
-                    <span class="text-secondary" *ngSwitchCase="'mobile'">&#183; {{ config.mobileTypePlaceholder
-                        }}</span>
-                    <span class="text-secondary" *ngSwitchCase="'home'">&#183; {{ config.homeTypePlaceholder
-                        }}</span>
-                    <span class="text-secondary" *ngSwitchCase="'work'">&#183; {{ config.workTypePlaceholder
-                        }}</span>
-                </ng-container>
-            </div>
-        </div>
-        <div>
-            <div *ngIf="type === 'single'">{{ element }}</div>
-        </div>
+  <div class="contact-view-label b2-r p-2 text-secondary" title="{{ title }}">
+    {{ title }}
+  </div>
+  <div class="p-2 flex-grow-1 b2-r text-break">
+    @for (e of elements; track e) {
+    <div class="mb-1">
+      <div *ngIf="type === 'array'">{{ e }}</div>
+      <div *ngIf="type === 'objectArray' && e.data !== ''">
+        {{ e.data | phoneFormatter }}
+        @switch (e.type) { @case ('other') {
+        <span class="text-secondary"
+          >&#183; {{ config.otherTypePlaceholder }}</span
+        >
+        } @case ('mobile') {
+        <span class="text-secondary"
+          >&#183; {{ config.mobileTypePlaceholder }}</span
+        >
+        } @case('home') {
+        <span class="text-secondary"
+          >&#183; {{ config.homeTypePlaceholder }}</span
+        >
+        } @case('work') {
+        <span class="text-secondary"
+          >&#183; {{ config.workTypePlaceholder }}</span
+        >
+        } }
+      </div>
+      @if(type === 'nestedObjectArray' && (e.data.street !== '' ||
+      e.data.country !== '' || e.data.city !== '' || e.data.postalcode !== '' ||
+      e.data.state !== '')) {
+      <div>
+        {{ e.data.street }} {{ e.data.state }} {{ e.data.postalcode }}
+        {{ e.data.city }} {{ e.data.country }}
+        @switch (e.type) { @case('other') {
+        <span class="text-secondary"
+          >&#183; {{ config.otherTypePlaceholder }}</span
+        >
+        } @case('mobile') {
+        <span class="text-secondary"
+          >&#183; {{ config.mobileTypePlaceholder }}</span
+        >
+        } @case('home') {
+        <span class="text-secondary"
+          >&#183; {{ config.homeTypePlaceholder }}</span
+        >
+        } @case('work') {
+        <span class="text-secondary"
+          >&#183; {{ config.workTypePlaceholder }}</span
+        >
+        } }
+      </div>
+      }
     </div>
+    } @if(type === 'single') {
+    <div>{{ element }}</div>
+    }
+  </div>
 </div>

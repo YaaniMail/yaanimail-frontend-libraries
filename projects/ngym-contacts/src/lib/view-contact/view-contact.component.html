@@ -1,54 +1,97 @@
-<div class="p-3" *ngIf="contact">
-    <div class="h7-r">
-        <div class="d-flex align-self-center">
-            <div class="p-2">
-                <ng-template [ngTemplateOutlet]="profileTemplate"></ng-template>
-            </div>
-            <div class="p-2 flex-grow-1 align-self-center overflow-hidden">
-                <div class="h7-m robot_contactView_fullname">{{ contact.firstname }} {{
-                    contact.lastname }}</div>
-                <div class="b2-r text-secondary content-overflow robot_contactView_jobTitle">{{ contact.jobtitle }}
-                </div>
-                <div class="b2-r text-secondary content-overflow robot_contactView_company">{{ contact.company }}
-                </div>
-                <div class="s1-r text-primary mt-2" *ngIf="contact.email?.length > 0">
-                    <a class="text-primary-anchor" (click)="onCompose(contact.email)">
-                        <i class="fa-regular fa-envelope fa-primary-anchor fa-normal"></i>
-                        {{ config.sendEmailText }}
-                    </a>
-                </div>
-            </div>
+@if(contact) {
+<div class="p-3">
+  <div class="h7-r">
+    <div class="d-flex align-self-center">
+      <div class="p-2">
+        <ng-template [ngTemplateOutlet]="profileTemplate"></ng-template>
+      </div>
+      <div class="p-2 flex-grow-1 align-self-center overflow-hidden">
+        <div class="h7-m robot_contactView_fullname">
+          {{ contact.firstname }} {{ contact.lastname }}
         </div>
-        <div class="bb m-2"></div>
-    </div>
-    <!-- Body -->
-    <div class="py-2">
-        <div class="p-2 h8-r">
-            {{ config.pageHeader }}
+        <div
+          class="b2-r text-secondary content-overflow robot_contactView_jobTitle"
+        >
+          {{ contact.jobtitle }}
         </div>
-        <!-- Email Fields -->
-        <ngym-view-field [title]="config.emailPlaceholder" [type]="'array'" [elements]="contact.email"
-            [config]="config"></ngym-view-field>
-        <!-- Phone Fields -->
-        <ngym-view-field [title]="config.phonePlaceholder" [type]="'objectArray'" [elements]="contact.phone"
-            [config]="config"></ngym-view-field>
-        <!-- Adress Fields -->
-        <ngym-view-field [title]="config.addressPlaceholder" [type]="'nestedObjectArray'" [elements]="contact.addresses"
-            [config]="config"></ngym-view-field>
-        <!-- Notes Fields -->
-        <ngym-view-field [title]="config.notesPlaceholder" [type]="'single'" [element]="contact.notes"
-            [config]="config"></ngym-view-field>
-        <!-- Manager -->
-        <ngym-view-field [title]="config.managerPlaceholder" [type]="'single'" [element]="contact.manager"
-            *ngIf="contact.manager" [config]="config"></ngym-view-field>
-        <!-- Register No -->
-        <ngym-view-field [title]="config.registerNoPlaceholder" [type]="'single'" [elements]="contact.register_no"
-            *ngIf="contact.register_no" [config]="config"></ngym-view-field>
+        <div
+          class="b2-r text-secondary content-overflow robot_contactView_company"
+        >
+          {{ contact.company }}
+        </div>
+        @if(contact.email?.length > 0) {
+        <div class="s1-r text-primary mt-2">
+          <a class="text-primary-anchor" (click)="onCompose(contact.email)">
+            <i class="fa-regular fa-envelope fa-primary-anchor fa-normal"></i>
+            {{ config.sendEmailText }}
+          </a>
+        </div>
+        }
+      </div>
     </div>
-    <!-- Footer -->
-    <div class="py-2 text-right">
-        <button class="btn btn-small btn-secondary robot_contactView_editButton" type="button" (click)="onEdit()">
-            {{ config.editButtonText }}
-        </button>
+    <div class="bb m-2"></div>
+  </div>
+  <!-- Body -->
+  <div class="py-2">
+    <div class="p-2 h8-r">
+      {{ config.pageHeader }}
     </div>
+    <!-- Email Fields -->
+    <ngym-view-field
+      [title]="config.emailPlaceholder"
+      [type]="'array'"
+      [elements]="contact.email"
+      [config]="config"
+    ></ngym-view-field>
+    <!-- Phone Fields -->
+    <ngym-view-field
+      [title]="config.phonePlaceholder"
+      [type]="'objectArray'"
+      [elements]="contact.phone"
+      [config]="config"
+    ></ngym-view-field>
+    <!-- Adress Fields -->
+    <ngym-view-field
+      [title]="config.addressPlaceholder"
+      [type]="'nestedObjectArray'"
+      [elements]="contact.addresses"
+      [config]="config"
+    ></ngym-view-field>
+    <!-- Notes Fields -->
+    <ngym-view-field
+      [title]="config.notesPlaceholder"
+      [type]="'single'"
+      [element]="contact.notes"
+      [config]="config"
+    ></ngym-view-field>
+    <!-- Manager -->
+    @if(contact.manager) {
+    <ngym-view-field
+      [title]="config.managerPlaceholder"
+      [type]="'single'"
+      [element]="contact.manager"
+      [config]="config"
+    ></ngym-view-field>
+    }
+    <!-- Register No -->
+    @if(contact.register_no) {
+    <ngym-view-field
+      [title]="config.registerNoPlaceholder"
+      [type]="'single'"
+      [elements]="contact.register_no"
+      [config]="config"
+    ></ngym-view-field>
+    }
+  </div>
+  <!-- Footer -->
+  <div class="py-2 text-right">
+    <button
+      class="btn btn-small btn-secondary robot_contactView_editButton"
+      type="button"
+      (click)="onEdit()"
+    >
+      {{ config.editButtonText }}
+    </button>
+  </div>
 </div>
+}
