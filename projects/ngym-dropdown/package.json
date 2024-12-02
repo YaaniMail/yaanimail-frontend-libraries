@@ -1,6 +1,6 @@
 {
   "name": "ngym-dropdown",
-  "version": "0.0.12",
+  "version": "0.0.14",
   "peerDependencies": {
     "@angular/common": "^17.3.12",
     "@angular/core": "^17.3.12",

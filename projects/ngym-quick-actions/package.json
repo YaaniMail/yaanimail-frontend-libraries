@@ -1,11 +1,12 @@
 {
   "name": "ngym-quick-actions",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "peerDependencies": {
     "@angular/common": "^17.3.12",
     "@angular/core": "^17.3.12",
     "bootstrap": "^4.4.1",
-    "ngx-bootstrap": "^10.2.0"
+    "ngx-bootstrap": "^10.2.0",
+    "ngym-dropdown": "^0.0.14"
   },
   "dependencies": {
     "tslib": "^2.7.0"

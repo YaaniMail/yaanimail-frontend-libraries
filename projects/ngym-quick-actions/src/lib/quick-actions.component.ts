@@ -14,6 +14,8 @@ export class QuickActionsComponent implements OnChanges {
   dropDownItems: DropDownItem[] = [];
   @Input() isLoading: boolean = false;
   @Input() isTooltipDisabled: boolean = false;
+  @Input() isDropUp: boolean = false;
+  @Input() id: string = '';
   @Input() classes: string = '';
   @Input() dropdownContainerClasses: string = '';
   @Input() dropdownClasses: string = '';

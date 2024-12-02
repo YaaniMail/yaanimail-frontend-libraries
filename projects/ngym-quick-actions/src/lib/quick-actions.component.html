@@ -1,4 +1,4 @@
-<div class="{{ classes }}">
+<div id="{{ id }}" class="{{ classes }}">
     <ng-container *ngFor="let action of iconActions">
         <button type="button" class="{{ action.buttonClasses }} {{ action.robotClass }}"
             (click)="action.isActionAllowed && (!action.checkIsLoading || (action.checkIsLoading && !isLoading)) && actionEmitter.emit(action.actionType)"
@@ -14,7 +14,7 @@
     <div *ngIf="dropDownActions.length > 0">
         <ngym-dropdown [classes]="dropdownContainerClasses" [buttonClasses]="dropdownButtonClasses"
             [iconClasses]="dropdownIconClasses + ' ' + (iconStdClasses.primary || '')"
-            [dropdownClasses]="dropdownClasses" [placement]="dropdownPlacement" [container]="dropdownContainer"
+            [dropdownClasses]="dropdownClasses" [placement]="dropdownPlacement" [isDropup]="isDropUp" [container]="dropdownContainer"
             [items]="dropDownItems" (actionEmitter)="performDropdownAction($event)"></ngym-dropdown>
     </div>
 </div>
