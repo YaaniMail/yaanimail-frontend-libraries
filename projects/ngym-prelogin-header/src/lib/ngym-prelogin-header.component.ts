@@ -10,7 +10,6 @@ export class NgymPreloginHeaderComponent {
   @Input() logo!: string;
   @Input() imgWidth: string = '160';
   @Input() headerHtml!: TemplateRef<any>;
-  @Input() imgWidth: string = '160';
   @Output() imageClickEmitter = new EventEmitter<boolean>();
   
   constructor() { }
