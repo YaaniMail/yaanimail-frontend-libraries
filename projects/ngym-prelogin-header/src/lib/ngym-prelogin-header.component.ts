@@ -9,6 +9,7 @@ import { Component, EventEmitter, Input, Output, TemplateRef, ViewEncapsulation 
 export class NgymPreloginHeaderComponent {
   @Input() logo!: string;
   @Input() headerHtml!: TemplateRef<any>;
+  @Input() imgWidth: string = '160';
   @Output() imageClickEmitter = new EventEmitter<boolean>();
   
   constructor() { }
