@@ -15,6 +15,6 @@
         <ngym-dropdown [classes]="dropdownContainerClasses" [buttonClasses]="dropdownButtonClasses"
             [iconClasses]="dropdownIconClasses + ' ' + (iconStdClasses.primary || '')"
             [dropdownClasses]="dropdownClasses" [placement]="dropdownPlacement" [isDropup]="isDropUp" [container]="dropdownContainer"
-            [items]="dropDownItems" (actionEmitter)="performDropdownAction($event)"></ngym-dropdown>
+            [items]="dropDownItems" [scrollEventsObservable]="scrollEventsObservable" (actionEmitter)="performDropdownAction($event)"></ngym-dropdown>
     </div>
 </div>
