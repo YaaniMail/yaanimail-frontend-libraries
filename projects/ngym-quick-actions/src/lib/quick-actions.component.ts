@@ -33,7 +33,9 @@ export class QuickActionsComponent implements OnChanges {
   constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.prepareActions();
+    if (changes['actions']) {
+      this.prepareActions();
+    }
   }
 
   prepareActions(): void {
