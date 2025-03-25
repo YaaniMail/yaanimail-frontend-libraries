@@ -4,8 +4,8 @@
     height: 70px;
 
     #header-brand-logo {
-        width: 200px;
-        height: 50px;
+        max-width: 200px;
+        max-height: 50px;
         display: flex
 ;       align-items: center;
         overflow: hidden;
