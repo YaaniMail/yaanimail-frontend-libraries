@@ -1,5 +1,17 @@
-import { Component, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  TemplateRef,
+} from '@angular/core';
+import {
+  UntypedFormArray,
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { CreateContactConfig } from '../model/config';
 import { ContactService } from '../service/contact.service';
 import { Contact } from '../model/contact';
@@ -7,11 +19,12 @@ import { Contact } from '../model/contact';
 @Component({
   selector: 'ngym-edit-contact',
   templateUrl: './edit-contact.component.html',
-  styleUrls: ['./edit-contact.component.scss']
+  styleUrls: ['./edit-contact.component.scss'],
 })
 export class EditContactComponent {
   emails: string[] = [];
   showNotes: boolean = false;
+  isLoading: boolean = false;
   emailPattern: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   form!: UntypedFormGroup;
   contactData!: Contact;
@@ -35,19 +48,23 @@ export class EditContactComponent {
   constructor(
     private fb: UntypedFormBuilder,
     private contactService: ContactService
-  ) { }
+  ) {}
 
   updateForm(contact: Contact): void {
     this.form = new UntypedFormGroup({
-      firstname: new UntypedFormControl(contact.firstname, [Validators.required]),
+      firstname: new UntypedFormControl(contact.firstname, [
+        Validators.required,
+      ]),
       lastname: new UntypedFormControl(contact.lastname),
-      fullname: new UntypedFormControl(`${contact.firstname} ${contact.fullname}`),
+      fullname: new UntypedFormControl(
+        `${contact.firstname} ${contact.fullname}`
+      ),
       company: new UntypedFormControl(contact.company),
       jobtitle: new UntypedFormControl(contact.jobtitle),
       email: this.fb.array([]),
       phone: this.fb.array([]),
       addresses: this.fb.array([]),
-      notes: new UntypedFormControl(contact.notes)
+      notes: new UntypedFormControl(contact.notes),
     });
   }
 
@@ -67,7 +84,12 @@ export class EditContactComponent {
   appendEmails(): void {
     for (let i = 0; i < this.contactData.email.length; i++) {
       this.emails.push();
-      this.emailsArray.push(this.fb.control(this.contactData.email[i], Validators.pattern(this.emailPattern)));
+      this.emailsArray.push(
+        this.fb.control(
+          this.contactData.email[i],
+          Validators.pattern(this.emailPattern)
+        )
+      );
     }
 
     // If there is no email, append one by default
@@ -78,77 +100,100 @@ export class EditContactComponent {
 
   appendPhones(): void {
     for (let i = 0; i < this.contactData.phone.length; i++) {
-      this.phonesArray.push(this.fb.group({
-        type: this.contactData.phone[i].type,
-        data: this.contactData.phone[i].data,
-      }));
+      this.phonesArray.push(
+        this.fb.group({
+          type: this.contactData.phone[i].type,
+          data: this.contactData.phone[i].data,
+        })
+      );
     }
   }
 
   appendAddresses(): void {
     for (let i = 0; i < this.contactData.addresses.length; i++) {
-      this.addressesArray.push(this.fb.group({
-        type: this.contactData.addresses[i].type,
-        address: this.fb.group({
-          country: this.contactData.addresses[i].data.country,
-          city: this.contactData.addresses[i].data.city,
-          postalcode: this.contactData.addresses[i].data.postalcode,
-          state: this.contactData.addresses[i].data.state,
-          street: this.contactData.addresses[i].data.street
+      this.addressesArray.push(
+        this.fb.group({
+          type: this.contactData.addresses[i].type,
+          address: this.fb.group({
+            country: this.contactData.addresses[i].data.country,
+            city: this.contactData.addresses[i].data.city,
+            postalcode: this.contactData.addresses[i].data.postalcode,
+            state: this.contactData.addresses[i].data.state,
+            street: this.contactData.addresses[i].data.street,
+          }),
         })
-      }));
+      );
     }
   }
 
   updateContact(): void {
     this.assignFullname();
-    this.contactService.updateContact(this.config.apiUrl, this.form.value, this.config.headers).subscribe(
-      data => {
-        let contactData = { id: '', firstname: '', lastname: '', fullname: '', email: [], notes: '' };
-        contactData.id = data.id;
-        contactData.firstname = this.form.value.firstname;
-        contactData.lastname = this.form.value.lastname;
-        contactData.fullname = this.form.value.fullname;
-        contactData.email = this.form.value.email;
-        contactData.notes = this.form.value.notes;
-        this.onUpdateEmitter.emit(contactData);
-      },
-      error => {
-        this.onUpdateErrorEmitter.emit(error.error.message);
-      }
-    );
+    this.isLoading = true;
+    this.contactService
+      .updateContact(this.config.apiUrl, this.form.value, this.config.headers)
+      .subscribe(
+        (data) => {
+          let contactData = {
+            id: '',
+            firstname: '',
+            lastname: '',
+            fullname: '',
+            email: [],
+            notes: '',
+          };
+          contactData.id = data.id;
+          contactData.firstname = this.form.value.firstname;
+          contactData.lastname = this.form.value.lastname;
+          contactData.fullname = this.form.value.fullname;
+          contactData.email = this.form.value.email;
+          contactData.notes = this.form.value.notes;
+          this.onUpdateEmitter.emit(contactData);
+          this.isLoading = false;
+        },
+        (error) => {
+          this.onUpdateErrorEmitter.emit(error.error.message);
+          this.isLoading = false;
+        }
+      );
   }
 
   assignFullname(): void {
-    this.form.value.fullname = this.form.value.firstname + ' ' + this.form.value.lastname;
+    this.form.value.fullname =
+      this.form.value.firstname + ' ' + this.form.value.lastname;
   }
 
   addEmail(value?: string): void {
     const emails = this.emailsArray;
     if (!emails.value.includes(value)) {
-      emails.push(this.fb.control(value, Validators.pattern(this.emailPattern)));
+      emails.push(
+        this.fb.control(value, Validators.pattern(this.emailPattern))
+      );
     }
   }
 
   addAddress(): void {
-    this.addressesArray.push(this.fb.group({
-      type: this.config.addressTypeArray[0].value,
-      address: this.fb.group({
-        type: '',
-        country: '',
-        city: '',
-        postalcode: '',
-        state: '',
-        street: ''
+    this.addressesArray.push(
+      this.fb.group({
+        type: this.config.addressTypeArray[0].value,
+        address: this.fb.group({
+          type: '',
+          country: '',
+          city: '',
+          postalcode: '',
+          state: '',
+          street: '',
+        }),
       })
-    }));
+    );
   }
 
   addPhoneNumber(): void {
-    this.phonesArray.push(this.fb.group({
-      type: this.config.phoneTypeArray[0].value,
-      data: '',
-    }));
+    this.phonesArray.push(
+      this.fb.group({
+        type: this.config.phoneTypeArray[0].value,
+        data: '',
+      })
+    );
   }
 
   deleteEmail(i: number): void {
@@ -172,9 +217,9 @@ export class EditContactComponent {
   }
 
   isValidEmail(email: string): boolean {
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
-
   }
 
   onCancel(): void {

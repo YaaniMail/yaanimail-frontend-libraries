@@ -305,7 +305,7 @@
         type="button"
         class="btn btn-small btn-primary robot_contactCreate_save"
         (click)="addContact()"
-        [disabled]="!form.valid"
+        [disabled]="!form.valid || isLoading"
       >
         {{ config.saveButtonText }}
       </button>
