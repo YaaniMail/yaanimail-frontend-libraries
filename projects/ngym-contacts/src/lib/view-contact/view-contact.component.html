@@ -9,6 +9,14 @@
         <div class="h7-m robot_contactView_fullname">
           {{ contact.firstname }} {{ contact.lastname }}
         </div>
+        @if (contact.is_vip) {
+        <div class="d-flex align-items-center mb-2">
+          <img src="assets/img/favorite.svg" /><span
+            class="ml-1 favorite-contact-label"
+            >{{ config.favoriteContactText }}</span
+          >
+        </div>
+        }
         <div
           class="b2-r text-secondary content-overflow robot_contactView_jobTitle"
         >
@@ -85,6 +93,31 @@
   </div>
   <!-- Footer -->
   <div class="py-2 text-right">
+    @if(contact.is_vip) {
+    <button
+      class="btn btn-secondary-destructive robot_contactView_removeFavoriteButton mr-2"
+      type="button"
+      (click)="removeFavorite()"
+    >
+      <i
+        class="fa-regular fa-circle-minus fa-red fa-normal mr-1"
+        aria-hidden="true"
+      ></i>
+      {{ config.removeFavoriteButtonText }}
+    </button>
+    } @else {
+    <button
+      class="btn btn-secondary robot_contactView_addFavoriteButton mr-2"
+      type="button"
+      (click)="addFavorite()"
+    >
+      <i
+        class="fa-regular fa-plus fa-primary-anchor fa-normal mr-1"
+        aria-hidden="true"
+      ></i>
+      {{ config.addFavoriteButtonText }}
+    </button>
+    }
     <button
       class="btn btn-small btn-secondary robot_contactView_editButton"
       type="button"
