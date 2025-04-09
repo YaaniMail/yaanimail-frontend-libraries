@@ -93,7 +93,7 @@
   </div>
   <!-- Footer -->
   <div class="py-2 text-right">
-    @if(config.is_vip) {
+    @if(contact.is_vip) {
     <button
       class="btn btn-secondary-destructive robot_contactView_removeFavoriteButton mr-2"
       type="button"
@@ -105,7 +105,7 @@
       ></i>
       {{ config.removeFavoriteButtonText }}
     </button>
-    } else {
+    } @else {
     <button
       class="btn btn-secondary robot_contactView_addFavoriteButton mr-2"
       type="button"
