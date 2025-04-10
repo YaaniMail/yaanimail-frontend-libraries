@@ -98,6 +98,7 @@
       class="btn btn-secondary-destructive robot_contactView_removeFavoriteButton mr-2"
       type="button"
       (click)="removeFavorite()"
+      [disabled]="config.isLoading"
     >
       <i
         class="fa-regular fa-circle-minus fa-red fa-normal mr-1"
@@ -122,7 +123,6 @@
     <button
       class="btn btn-small btn-secondary robot_contactView_editButton"
       type="button"
-      [disabled]="config.isLoading"
       (click)="onEdit()"
     >
       {{ config.editButtonText }}
