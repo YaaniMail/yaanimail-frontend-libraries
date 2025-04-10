@@ -48,4 +48,5 @@ export interface ViewContactConfig {
   addFavoriteButtonText: string;
   removeFavoriteButtonText: string;
   favoriteContactText: string;
+  isLoading: boolean;
 }

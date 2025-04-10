@@ -109,6 +109,7 @@
     <button
       class="btn btn-secondary robot_contactView_addFavoriteButton mr-2"
       type="button"
+      [disabled]="config.isLoading"
       (click)="addFavorite()"
     >
       <i
@@ -121,6 +122,7 @@
     <button
       class="btn btn-small btn-secondary robot_contactView_editButton"
       type="button"
+      [disabled]="config.isLoading"
       (click)="onEdit()"
     >
       {{ config.editButtonText }}
