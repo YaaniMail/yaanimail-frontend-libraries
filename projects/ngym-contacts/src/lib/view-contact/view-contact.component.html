@@ -9,7 +9,7 @@
         <div class="h7-m robot_contactView_fullname">
           {{ contact.firstname }} {{ contact.lastname }}
         </div>
-        @if (contact.is_vip && config.isFavoriteContactsFeatureEnabled) {
+        @if (contact.is_vip && config.isFavoriteContactsFeatureEnabled === "true") {
         <div class="d-flex align-items-center mb-2">
           <i class="fa-kit fa-custom-star fa-primary fa-normal fa-gray"></i
           ><span class="ml-1 favorite-contact-label">{{
@@ -93,7 +93,7 @@
   </div>
   <!-- Footer -->
   <div class="py-2 text-right">
-    @if(config.isFavoriteContactsFeatureEnabled) { @if(contact.is_vip) {
+    @if(config.isFavoriteContactsFeatureEnabled === "true") { @if(contact.is_vip) {
     <button
       class="btn btn-secondary-destructive robot_contactView_removeFavoriteButton mr-2"
       type="button"
